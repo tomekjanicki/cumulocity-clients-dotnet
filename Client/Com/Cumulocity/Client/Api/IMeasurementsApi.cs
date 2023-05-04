@@ -8,6 +8,7 @@
 
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Com.Cumulocity.Client.Model;
 
@@ -56,8 +57,9 @@ namespace Com.Cumulocity.Client.Api
 		/// <param name="valueFragmentType">A characteristic which identifies the measurement. <br /></param>
 		/// <param name="withTotalElements">When set to <c>true</c>, the returned result will contain in the statistics object the total number of elements. Only applicable on <see href="https://en.wikipedia.org/wiki/Range_query_(database)" langword="range queries" />. <br /></param>
 		/// <param name="withTotalPages">When set to <c>true</c>, the returned result will contain in the statistics object the total number of pages. Only applicable on <see href="https://en.wikipedia.org/wiki/Range_query_(database)" langword="range queries" />. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<MeasurementCollection<TMeasurement>?> GetMeasurements<TMeasurement>(int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, int? pageSize = null, bool? revert = null, string? source = null, string? type = null, string? valueFragmentSeries = null, string? valueFragmentType = null, bool? withTotalElements = null, bool? withTotalPages = null) where TMeasurement : Measurement;
+		Task<MeasurementCollection<TMeasurement>?> GetMeasurements<TMeasurement>(int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, int? pageSize = null, bool? revert = null, string? source = null, string? type = null, string? valueFragmentSeries = null, string? valueFragmentType = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TMeasurement : Measurement;
 		
 		/// <summary> 
 		/// Create a measurement <br />
@@ -106,8 +108,9 @@ namespace Com.Cumulocity.Client.Api
 		/// </summary>
 		/// <param name="body"></param>
 		/// <param name="xCumulocityProcessingMode">Used to explicitly control the processing mode of the request. See <see href="#processing-mode" langword="Processing mode" /> for more details. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<TMeasurement?> CreateMeasurement<TMeasurement>(TMeasurement body, string? xCumulocityProcessingMode = null) where TMeasurement : Measurement;
+		Task<TMeasurement?> CreateMeasurement<TMeasurement>(TMeasurement body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) where TMeasurement : Measurement;
 		
 		/// <summary> 
 		/// Create a measurement <br />
@@ -156,8 +159,9 @@ namespace Com.Cumulocity.Client.Api
 		/// </summary>
 		/// <param name="body"></param>
 		/// <param name="xCumulocityProcessingMode">Used to explicitly control the processing mode of the request. See <see href="#processing-mode" langword="Processing mode" /> for more details. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<MeasurementCollection<TMeasurement>?> CreateMeasurement<TMeasurement>(MeasurementCollection<TMeasurement> body, string? xCumulocityProcessingMode = null) where TMeasurement : Measurement;
+		Task<MeasurementCollection<TMeasurement>?> CreateMeasurement<TMeasurement>(MeasurementCollection<TMeasurement> body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) where TMeasurement : Measurement;
 		
 		/// <summary> 
 		/// Remove measurement collections <br />
@@ -191,8 +195,9 @@ namespace Com.Cumulocity.Client.Api
 		/// <param name="fragmentType">A characteristic which identifies a managed object or event, for example, geolocation, electricity sensor, relay state. <br /></param>
 		/// <param name="source">The managed object ID to which the measurement is associated. <br /></param>
 		/// <param name="type">The type of measurement to search for. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<System.IO.Stream> DeleteMeasurements(string? xCumulocityProcessingMode = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? fragmentType = null, string? source = null, string? type = null) ;
+		Task<System.IO.Stream> DeleteMeasurements(string? xCumulocityProcessingMode = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? fragmentType = null, string? source = null, string? type = null, CancellationToken cToken = default) ;
 		
 		/// <summary> 
 		/// Retrieve a specific measurement <br />
@@ -219,8 +224,9 @@ namespace Com.Cumulocity.Client.Api
 		/// </list>
 		/// </summary>
 		/// <param name="id">Unique identifier of the measurement. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<TMeasurement?> GetMeasurement<TMeasurement>(string id) where TMeasurement : Measurement;
+		Task<TMeasurement?> GetMeasurement<TMeasurement>(string id, CancellationToken cToken = default) where TMeasurement : Measurement;
 		
 		/// <summary> 
 		/// Remove a specific measurement <br />
@@ -252,8 +258,9 @@ namespace Com.Cumulocity.Client.Api
 		/// </summary>
 		/// <param name="id">Unique identifier of the measurement. <br /></param>
 		/// <param name="xCumulocityProcessingMode">Used to explicitly control the processing mode of the request. See <see href="#processing-mode" langword="Processing mode" /> for more details. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<System.IO.Stream> DeleteMeasurement(string id, string? xCumulocityProcessingMode = null) ;
+		Task<System.IO.Stream> DeleteMeasurement(string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) ;
 		
 		/// <summary> 
 		/// Retrieve a list of series and their values <br />
@@ -284,8 +291,9 @@ namespace Com.Cumulocity.Client.Api
 		/// <param name="revert">If you are using a range query (that is, at least one of the <c>dateFrom</c> or <c>dateTo</c> parameters is included in the request), then setting <c>revert=true</c> will sort the results by the newest measurements first.By default, the results are sorted by the oldest measurements first. <br /></param>
 		/// <param name="series">The specific series to search for. <br />ⓘ Info: If you query for multiple series at once, comma-separate the values. <br /></param>
 		/// <param name="source">The managed object ID to which the measurement is associated. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<MeasurementSeries?> GetMeasurementSeries(string? aggregationType = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, bool? revert = null, List<string>? series = null, string? source = null) ;
+		Task<MeasurementSeries?> GetMeasurementSeries(string? aggregationType = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, bool? revert = null, List<string>? series = null, string? source = null, CancellationToken cToken = default) ;
 	}
 	#nullable disable
 }

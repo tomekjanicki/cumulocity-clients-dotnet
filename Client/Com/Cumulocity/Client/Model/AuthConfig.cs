@@ -304,7 +304,7 @@ namespace Com.Cumulocity.Client.Model
 				/// </summary>
 				///
 				[JsonPropertyName("mappings")]
-				public List<Mappings>? PMappings { get; set; }
+				public List<Mappings> PMappings { get; set; } = new List<Mappings>();
 			
 				/// <summary> 
 				/// Configuration of the mapping. <br />
@@ -350,14 +350,14 @@ namespace Com.Cumulocity.Client.Model
 					/// </summary>
 					///
 					[JsonPropertyName("thenApplications")]
-					public List<int>? ThenApplications { get; set; }
+					public List<int> ThenApplications { get; set; } = new List<int>();
 				
 					/// <summary> 
 					/// List of the groups' identifiers. <br />
 					/// </summary>
 					///
 					[JsonPropertyName("thenGroups")]
-					public List<int>? ThenGroups { get; set; }
+					public List<int> ThenGroups { get; set; } = new List<int>();
 				
 					public override string ToString()
 					{

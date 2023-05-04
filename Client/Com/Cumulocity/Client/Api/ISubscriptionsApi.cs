@@ -8,6 +8,7 @@
 
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Com.Cumulocity.Client.Model;
 
@@ -50,8 +51,9 @@ namespace Com.Cumulocity.Client.Api
 		/// <param name="pageSize">Indicates how many entries of the collection shall be returned. The upper limit for one page is 2,000 objects. <br /></param>
 		/// <param name="source">The managed object ID to which the subscription is associated. <br /></param>
 		/// <param name="withTotalPages">When set to <c>true</c>, the returned result will contain in the statistics object the total number of pages. Only applicable on <see href="https://en.wikipedia.org/wiki/Range_query_(database)" langword="range queries" />. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<NotificationSubscriptionCollection?> GetSubscriptions(string? context = null, int? currentPage = null, int? pageSize = null, string? source = null, bool? withTotalPages = null) ;
+		Task<NotificationSubscriptionCollection?> GetSubscriptions(string? context = null, int? currentPage = null, int? pageSize = null, string? source = null, bool? withTotalPages = null, CancellationToken cToken = default) ;
 		
 		/// <summary> 
 		/// Create a subscription <br />
@@ -114,8 +116,9 @@ namespace Com.Cumulocity.Client.Api
 		/// </summary>
 		/// <param name="body"></param>
 		/// <param name="xCumulocityProcessingMode">Used to explicitly control the processing mode of the request. See <see href="#processing-mode" langword="Processing mode" /> for more details. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<NotificationSubscription?> CreateSubscription(NotificationSubscription body, string? xCumulocityProcessingMode = null) ;
+		Task<NotificationSubscription?> CreateSubscription(NotificationSubscription body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) ;
 		
 		/// <summary> 
 		/// Remove subscriptions by source <br />
@@ -149,8 +152,9 @@ namespace Com.Cumulocity.Client.Api
 		/// <param name="xCumulocityProcessingMode">Used to explicitly control the processing mode of the request. See <see href="#processing-mode" langword="Processing mode" /> for more details. <br /></param>
 		/// <param name="context">The context to which the subscription is associated. <br />ⓘ Info: If the value is <c>mo</c>, then <c>source</c> must also be provided in the query. <br /></param>
 		/// <param name="source">The managed object ID to which the subscription is associated. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<System.IO.Stream> DeleteSubscriptions(string? xCumulocityProcessingMode = null, string? context = null, string? source = null) ;
+		Task<System.IO.Stream> DeleteSubscriptions(string? xCumulocityProcessingMode = null, string? context = null, string? source = null, CancellationToken cToken = default) ;
 		
 		/// <summary> 
 		/// Retrieve a specific subscription <br />
@@ -181,8 +185,9 @@ namespace Com.Cumulocity.Client.Api
 		/// </list>
 		/// </summary>
 		/// <param name="id">Unique identifier of the notification subscription. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<NotificationSubscription?> GetSubscription(string id) ;
+		Task<NotificationSubscription?> GetSubscription(string id, CancellationToken cToken = default) ;
 		
 		/// <summary> 
 		/// Remove a specific subscription <br />
@@ -214,8 +219,9 @@ namespace Com.Cumulocity.Client.Api
 		/// </summary>
 		/// <param name="id">Unique identifier of the notification subscription. <br /></param>
 		/// <param name="xCumulocityProcessingMode">Used to explicitly control the processing mode of the request. See <see href="#processing-mode" langword="Processing mode" /> for more details. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<System.IO.Stream> DeleteSubscription(string id, string? xCumulocityProcessingMode = null) ;
+		Task<System.IO.Stream> DeleteSubscription(string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) ;
 	}
 	#nullable disable
 }

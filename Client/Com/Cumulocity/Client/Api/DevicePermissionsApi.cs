@@ -13,6 +13,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using Com.Cumulocity.Client.Model;
@@ -61,41 +62,41 @@ namespace Com.Cumulocity.Client.Api
 		}
 	
 		/// <inheritdoc />
-		public async Task<DevicePermissions<TCustomProperties>?> GetDevicePermissionAssignments<TCustomProperties>(string id) where TCustomProperties : CustomProperties
+		public async Task<DevicePermissions<TCustomProperties>?> GetDevicePermissionAssignments<TCustomProperties>(string id, CancellationToken cToken = default) where TCustomProperties : CustomProperties
 		{
 			var client = HttpClient;
 			var resourcePath = $"/user/devicePermissions/{id}";
 			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			var request = new HttpRequestMessage 
+			using var request = new HttpRequestMessage 
 			{
 				Method = HttpMethod.Get,
 				RequestUri = new Uri(uriBuilder.ToString())
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
-			var response = await client.SendAsync(request);
+			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
 			response.EnsureSuccessStatusCode();
-			using var responseStream = await response.Content.ReadAsStreamAsync();
-			return await JsonSerializer.DeserializeAsync<DevicePermissions<TCustomProperties>?>(responseStream);
+			using var responseStream = await response.Content.ReadAsStreamAsync(cancellationToken: cToken).ConfigureAwait(false);
+			return await JsonSerializer.DeserializeAsync<DevicePermissions<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
 		
 		/// <inheritdoc />
-		public async Task<System.IO.Stream> UpdateDevicePermissionAssignments<TCustomProperties>(DevicePermissions<TCustomProperties> body, string id) where TCustomProperties : CustomProperties
+		public async Task<System.IO.Stream> UpdateDevicePermissionAssignments<TCustomProperties>(DevicePermissions<TCustomProperties> body, string id, CancellationToken cToken = default) where TCustomProperties : CustomProperties
 		{
 			var jsonNode = ToJsonNode<DevicePermissions<TCustomProperties>>(body);
 			var client = HttpClient;
 			var resourcePath = $"/user/devicePermissions/{id}";
 			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			var request = new HttpRequestMessage 
+			using var request = new HttpRequestMessage 
 			{
-				Content = new StringContent(jsonNode.ToString(), Encoding.UTF8, "application/json"),
+				Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),
 				Method = HttpMethod.Put,
 				RequestUri = new Uri(uriBuilder.ToString())
 			};
 			request.Headers.TryAddWithoutValidation("Content-Type", "application/json");
 			request.Headers.TryAddWithoutValidation("Accept", "application/json");
-			var response = await client.SendAsync(request);
+			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
 			response.EnsureSuccessStatusCode();
-			using var responseStream = await response.Content.ReadAsStreamAsync();
+			using var responseStream = await response.Content.ReadAsStreamAsync(cancellationToken: cToken).ConfigureAwait(false);
 			return responseStream;
 		}
 	}

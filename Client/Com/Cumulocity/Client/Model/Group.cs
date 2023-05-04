@@ -21,7 +21,7 @@ namespace Com.Cumulocity.Client.Model
 		/// </summary>
 		///
 		[JsonPropertyName("applications")]
-		public List<Application>? Applications { get; set; }
+		public List<Application> Applications { get; set; } = new List<Application>();
 	
 		/// <summary> 
 		/// An object with a list of custom properties. <br />
@@ -108,7 +108,7 @@ namespace Com.Cumulocity.Client.Model
 			/// </summary>
 			///
 			[JsonPropertyName("references")]
-			public List<RoleReference>? References { get; set; }
+			public List<RoleReference> References { get; set; } = new List<RoleReference>();
 		
 			/// <summary> 
 			/// Information about paging statistics. <br />
@@ -147,7 +147,7 @@ namespace Com.Cumulocity.Client.Model
 			/// </summary>
 			///
 			[JsonPropertyName("references")]
-			public List<User<TCustomProperties>>? References { get; set; }
+			public List<User<TCustomProperties>> References { get; set; } = new List<User<TCustomProperties>>();
 		
 			public override string ToString()
 			{

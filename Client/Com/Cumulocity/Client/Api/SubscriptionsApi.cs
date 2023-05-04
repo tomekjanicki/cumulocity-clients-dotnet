@@ -13,6 +13,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using Com.Cumulocity.Client.Model;
@@ -32,7 +33,7 @@ namespace Com.Cumulocity.Client.Api
 		}
 	
 		/// <inheritdoc />
-		public async Task<NotificationSubscriptionCollection?> GetSubscriptions(string? context = null, int? currentPage = null, int? pageSize = null, string? source = null, bool? withTotalPages = null) 
+		public async Task<NotificationSubscriptionCollection?> GetSubscriptions(string? context = null, int? currentPage = null, int? pageSize = null, string? source = null, bool? withTotalPages = null, CancellationToken cToken = default) 
 		{
 			var client = HttpClient;
 			var resourcePath = $"/notification2/subscriptions";
@@ -44,20 +45,20 @@ namespace Com.Cumulocity.Client.Api
 			queryString.AddIfRequired("source", source);
 			queryString.AddIfRequired("withTotalPages", withTotalPages);
 			uriBuilder.Query = queryString.ToString();
-			var request = new HttpRequestMessage 
+			using var request = new HttpRequestMessage 
 			{
 				Method = HttpMethod.Get,
 				RequestUri = new Uri(uriBuilder.ToString())
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.subscriptioncollection+json");
-			var response = await client.SendAsync(request);
+			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
 			response.EnsureSuccessStatusCode();
-			using var responseStream = await response.Content.ReadAsStreamAsync();
-			return await JsonSerializer.DeserializeAsync<NotificationSubscriptionCollection?>(responseStream);
+			using var responseStream = await response.Content.ReadAsStreamAsync(cancellationToken: cToken).ConfigureAwait(false);
+			return await JsonSerializer.DeserializeAsync<NotificationSubscriptionCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
 		
 		/// <inheritdoc />
-		public async Task<NotificationSubscription?> CreateSubscription(NotificationSubscription body, string? xCumulocityProcessingMode = null) 
+		public async Task<NotificationSubscription?> CreateSubscription(NotificationSubscription body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
 		{
 			var jsonNode = ToJsonNode<NotificationSubscription>(body);
 			jsonNode?.RemoveFromNode("self");
@@ -66,23 +67,23 @@ namespace Com.Cumulocity.Client.Api
 			var client = HttpClient;
 			var resourcePath = $"/notification2/subscriptions";
 			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			var request = new HttpRequestMessage 
+			using var request = new HttpRequestMessage 
 			{
-				Content = new StringContent(jsonNode.ToString(), Encoding.UTF8, "application/vnd.com.nsn.cumulocity.subscription+json"),
+				Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.subscription+json"),
 				Method = HttpMethod.Post,
 				RequestUri = new Uri(uriBuilder.ToString())
 			};
 			request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
 			request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.subscription+json");
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.subscription+json");
-			var response = await client.SendAsync(request);
+			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
 			response.EnsureSuccessStatusCode();
-			using var responseStream = await response.Content.ReadAsStreamAsync();
-			return await JsonSerializer.DeserializeAsync<NotificationSubscription?>(responseStream);
+			using var responseStream = await response.Content.ReadAsStreamAsync(cancellationToken: cToken).ConfigureAwait(false);
+			return await JsonSerializer.DeserializeAsync<NotificationSubscription?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
 		
 		/// <inheritdoc />
-		public async Task<System.IO.Stream> DeleteSubscriptions(string? xCumulocityProcessingMode = null, string? context = null, string? source = null) 
+		public async Task<System.IO.Stream> DeleteSubscriptions(string? xCumulocityProcessingMode = null, string? context = null, string? source = null, CancellationToken cToken = default) 
 		{
 			var client = HttpClient;
 			var resourcePath = $"/notification2/subscriptions";
@@ -91,53 +92,53 @@ namespace Com.Cumulocity.Client.Api
 			queryString.AddIfRequired("context", context);
 			queryString.AddIfRequired("source", source);
 			uriBuilder.Query = queryString.ToString();
-			var request = new HttpRequestMessage 
+			using var request = new HttpRequestMessage 
 			{
 				Method = HttpMethod.Delete,
 				RequestUri = new Uri(uriBuilder.ToString())
 			};
 			request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
 			request.Headers.TryAddWithoutValidation("Accept", "application/json");
-			var response = await client.SendAsync(request);
+			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
 			response.EnsureSuccessStatusCode();
-			using var responseStream = await response.Content.ReadAsStreamAsync();
+			using var responseStream = await response.Content.ReadAsStreamAsync(cancellationToken: cToken).ConfigureAwait(false);
 			return responseStream;
 		}
 		
 		/// <inheritdoc />
-		public async Task<NotificationSubscription?> GetSubscription(string id) 
+		public async Task<NotificationSubscription?> GetSubscription(string id, CancellationToken cToken = default) 
 		{
 			var client = HttpClient;
 			var resourcePath = $"/notification2/subscriptions/{id}";
 			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			var request = new HttpRequestMessage 
+			using var request = new HttpRequestMessage 
 			{
 				Method = HttpMethod.Get,
 				RequestUri = new Uri(uriBuilder.ToString())
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.subscription+json");
-			var response = await client.SendAsync(request);
+			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
 			response.EnsureSuccessStatusCode();
-			using var responseStream = await response.Content.ReadAsStreamAsync();
-			return await JsonSerializer.DeserializeAsync<NotificationSubscription?>(responseStream);
+			using var responseStream = await response.Content.ReadAsStreamAsync(cancellationToken: cToken).ConfigureAwait(false);
+			return await JsonSerializer.DeserializeAsync<NotificationSubscription?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
 		
 		/// <inheritdoc />
-		public async Task<System.IO.Stream> DeleteSubscription(string id, string? xCumulocityProcessingMode = null) 
+		public async Task<System.IO.Stream> DeleteSubscription(string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
 		{
 			var client = HttpClient;
 			var resourcePath = $"/notification2/subscriptions/{id}";
 			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			var request = new HttpRequestMessage 
+			using var request = new HttpRequestMessage 
 			{
 				Method = HttpMethod.Delete,
 				RequestUri = new Uri(uriBuilder.ToString())
 			};
 			request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
 			request.Headers.TryAddWithoutValidation("Accept", "application/json");
-			var response = await client.SendAsync(request);
+			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
 			response.EnsureSuccessStatusCode();
-			using var responseStream = await response.Content.ReadAsStreamAsync();
+			using var responseStream = await response.Content.ReadAsStreamAsync(cancellationToken: cToken).ConfigureAwait(false);
 			return responseStream;
 		}
 	}

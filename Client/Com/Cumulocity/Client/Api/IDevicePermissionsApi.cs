@@ -8,6 +8,7 @@
 
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Com.Cumulocity.Client.Model;
 
@@ -75,8 +76,9 @@ namespace Com.Cumulocity.Client.Api
 		/// </list>
 		/// </summary>
 		/// <param name="id">Unique identifier of the managed object. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<DevicePermissions<TCustomProperties>?> GetDevicePermissionAssignments<TCustomProperties>(string id) where TCustomProperties : CustomProperties;
+		Task<DevicePermissions<TCustomProperties>?> GetDevicePermissionAssignments<TCustomProperties>(string id, CancellationToken cToken = default) where TCustomProperties : CustomProperties;
 		
 		/// <summary> 
 		/// Updates the device permissions assignments <br />
@@ -104,8 +106,9 @@ namespace Com.Cumulocity.Client.Api
 		/// </summary>
 		/// <param name="body"></param>
 		/// <param name="id">Unique identifier of the managed object. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<System.IO.Stream> UpdateDevicePermissionAssignments<TCustomProperties>(DevicePermissions<TCustomProperties> body, string id) where TCustomProperties : CustomProperties;
+		Task<System.IO.Stream> UpdateDevicePermissionAssignments<TCustomProperties>(DevicePermissions<TCustomProperties> body, string id, CancellationToken cToken = default) where TCustomProperties : CustomProperties;
 	}
 	#nullable disable
 }

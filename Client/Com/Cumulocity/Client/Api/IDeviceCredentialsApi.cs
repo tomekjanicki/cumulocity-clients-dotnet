@@ -7,6 +7,7 @@
 ///
 
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Com.Cumulocity.Client.Model;
 
@@ -45,8 +46,9 @@ namespace Com.Cumulocity.Client.Api
 		/// </summary>
 		/// <param name="body"></param>
 		/// <param name="xCumulocityProcessingMode">Used to explicitly control the processing mode of the request. See <see href="#processing-mode" langword="Processing mode" /> for more details. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<DeviceCredentials?> CreateDeviceCredentials(DeviceCredentials body, string? xCumulocityProcessingMode = null) ;
+		Task<DeviceCredentials?> CreateDeviceCredentials(DeviceCredentials body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) ;
 		
 		/// <summary> 
 		/// Create a bulk device credentials request <br />
@@ -142,8 +144,9 @@ namespace Com.Cumulocity.Client.Api
 		/// </summary>
 		/// <param name="file">The CSV file to be uploaded. <br /></param>
 		/// <param name="xCumulocityProcessingMode">Used to explicitly control the processing mode of the request. See <see href="#processing-mode" langword="Processing mode" /> for more details. <br /></param>
+		/// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
 		///
-		Task<BulkNewDeviceRequest?> CreateBulkDeviceCredentials(byte[] file, string? xCumulocityProcessingMode = null) ;
+		Task<BulkNewDeviceRequest?> CreateBulkDeviceCredentials(byte[] file, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) ;
 	}
 	#nullable disable
 }

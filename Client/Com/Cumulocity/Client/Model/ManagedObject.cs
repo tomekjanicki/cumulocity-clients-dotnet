@@ -121,14 +121,14 @@ namespace Com.Cumulocity.Client.Model
 		/// </summary>
 		///
 		[JsonPropertyName("c8y_DeviceTypes")]
-		public List<string>? C8yDeviceTypes { get; set; }
+		public List<string> C8yDeviceTypes { get; set; } = new List<string>();
 	
 		/// <summary> 
 		/// Lists the operations that are available for a particular device, so that applications can trigger the operations. <br />
 		/// </summary>
 		///
 		[JsonPropertyName("c8y_SupportedOperations")]
-		public List<string>? C8ySupportedOperations { get; set; }
+		public List<string> C8ySupportedOperations { get; set; } = new List<string>();
 	
 		/// <summary> 
 		/// It is possible to add an arbitrary number of additional properties as a list of key-value pairs, for example, <c>"property1": {}</c>, <c>"property2": "value"</c>. These properties are known as custom fragments and can be of any type, for example, object or string. Each custom fragment is identified by a unique name. <br />

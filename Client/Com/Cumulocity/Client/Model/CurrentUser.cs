@@ -25,7 +25,7 @@ namespace Com.Cumulocity.Client.Model
 		/// </summary>
 		///
 		[JsonPropertyName("effectiveRoles")]
-		public List<Role>? EffectiveRoles { get; set; }
+		public List<Role> EffectiveRoles { get; set; } = new List<Role>();
 	
 		/// <summary> 
 		/// The user's email address. <br />

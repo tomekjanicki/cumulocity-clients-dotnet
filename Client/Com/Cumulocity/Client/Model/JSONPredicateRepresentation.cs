@@ -26,7 +26,7 @@ namespace Com.Cumulocity.Client.Model
 		/// </summary>
 		///
 		[JsonPropertyName("childPredicates")]
-		public List<JSONPredicateRepresentation>? ChildPredicates { get; set; }
+		public List<JSONPredicateRepresentation> ChildPredicates { get; set; } = new List<JSONPredicateRepresentation>();
 	
 		/// <summary> 
 		/// Operator executed on the parameter from the JWT access token claim pointed by <c>parameterPath</c> and the provided parameter <c>value</c>. <br />

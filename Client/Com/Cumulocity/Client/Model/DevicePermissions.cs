@@ -21,10 +21,10 @@ namespace Com.Cumulocity.Client.Model
 	{
 	
 		[JsonPropertyName("users")]
-		public List<User<TCustomProperties>>? Users { get; set; }
+		public List<User<TCustomProperties>> Users { get; set; } = new List<User<TCustomProperties>>();
 	
 		[JsonPropertyName("groups")]
-		public List<Group<TCustomProperties>>? Groups { get; set; }
+		public List<Group<TCustomProperties>> Groups { get; set; } = new List<Group<TCustomProperties>>();
 	
 		public override string ToString()
 		{

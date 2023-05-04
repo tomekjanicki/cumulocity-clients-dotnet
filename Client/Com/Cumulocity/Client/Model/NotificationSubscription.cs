@@ -30,7 +30,7 @@ namespace Com.Cumulocity.Client.Model
 		/// </summary>
 		///
 		[JsonPropertyName("fragmentsToCopy")]
-		public List<string>? FragmentsToCopy { get; set; }
+		public List<string> FragmentsToCopy { get; set; } = new List<string>();
 	
 		/// <summary> 
 		/// Unique identifier of the subscription. <br />
@@ -144,7 +144,7 @@ namespace Com.Cumulocity.Client.Model
 			/// </summary>
 			///
 			[JsonPropertyName("apis")]
-			public List<string>? Apis { get; set; }
+			public List<string> Apis { get; set; } = new List<string>();
 		
 			/// <summary> 
 			/// The data needs to have the specified value in its <c>type</c> property to meet the filter criteria. <br />
