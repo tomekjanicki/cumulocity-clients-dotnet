@@ -36,7 +36,7 @@ public sealed class RetentionRulesApi : IRetentionRulesApi
     /// <inheritdoc />
     public async Task<RetentionRuleCollection?> GetRetentionRules(int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var resourcePath = "/retention/retentions";
+        const string resourcePath = "/retention/retentions";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -62,7 +62,7 @@ public sealed class RetentionRulesApi : IRetentionRulesApi
         var jsonNode = body.ToJsonNode<RetentionRule>();
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
-        var resourcePath = "/retention/retentions";
+        const string resourcePath = "/retention/retentions";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

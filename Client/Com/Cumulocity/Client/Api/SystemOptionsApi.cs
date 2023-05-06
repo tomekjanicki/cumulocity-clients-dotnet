@@ -36,7 +36,7 @@ public sealed class SystemOptionsApi : ISystemOptionsApi
     /// <inheritdoc />
     public async Task<SystemOptionCollection?> GetSystemOptions(CancellationToken cToken = default) 
     {
-        var resourcePath = "/tenant/system/options";
+        const string resourcePath = "/tenant/system/options";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

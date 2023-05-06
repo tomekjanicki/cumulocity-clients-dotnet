@@ -275,7 +275,7 @@ public sealed class UsersApi : IUsersApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> Logout(string? cookie = null, string? xXSRFTOKEN = null, CancellationToken cToken = default) 
     {
-        var resourcePath = "/user/logout";
+        const string resourcePath = "/user/logout";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

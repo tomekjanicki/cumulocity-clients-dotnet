@@ -35,7 +35,7 @@ public sealed class CurrentUserApi : ICurrentUserApi
     /// <inheritdoc />
     public async Task<CurrentUser?> GetCurrentUser(CancellationToken cToken = default) 
     {
-        var resourcePath = "/user/currentUser";
+        const string resourcePath = "/user/currentUser";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -60,7 +60,7 @@ public sealed class CurrentUserApi : ICurrentUserApi
         jsonNode?.RemoveFromNode("lastPasswordChange");
         jsonNode?.RemoveFromNode("twoFactorAuthenticationEnabled");
         jsonNode?.RemoveFromNode("devicePermissions");
-        var resourcePath = "/user/currentUser";
+        const string resourcePath = "/user/currentUser";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -80,7 +80,7 @@ public sealed class CurrentUserApi : ICurrentUserApi
     public async Task<System.IO.Stream> UpdateCurrentUserPassword(PasswordChange body, CancellationToken cToken = default) 
     {
         var jsonNode = body.ToJsonNode<PasswordChange>();
-        var resourcePath = "/user/currentUser/password";
+        const string resourcePath = "/user/currentUser/password";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -99,7 +99,7 @@ public sealed class CurrentUserApi : ICurrentUserApi
     /// <inheritdoc />
     public async Task<CurrentUserTotpSecret?> GenerateTfaSecret(CancellationToken cToken = default) 
     {
-        var resourcePath = "/user/currentUser/totpSecret";
+        const string resourcePath = "/user/currentUser/totpSecret";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -116,7 +116,7 @@ public sealed class CurrentUserApi : ICurrentUserApi
     /// <inheritdoc />
     public async Task<CurrentUserTotpSecretActivity?> GetTfaState(CancellationToken cToken = default) 
     {
-        var resourcePath = "/user/currentUser/totpSecret/activity";
+        const string resourcePath = "/user/currentUser/totpSecret/activity";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -134,7 +134,7 @@ public sealed class CurrentUserApi : ICurrentUserApi
     public async Task<System.IO.Stream> SetTfaState(CurrentUserTotpSecretActivity body, CancellationToken cToken = default) 
     {
         var jsonNode = body.ToJsonNode<CurrentUserTotpSecretActivity>();
-        var resourcePath = "/user/currentUser/totpSecret/activity";
+        const string resourcePath = "/user/currentUser/totpSecret/activity";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -154,7 +154,7 @@ public sealed class CurrentUserApi : ICurrentUserApi
     public async Task<System.IO.Stream> VerifyTfaCode(CurrentUserTotpCode body, CancellationToken cToken = default) 
     {
         var jsonNode = body.ToJsonNode<CurrentUserTotpCode>();
-        var resourcePath = "/user/currentUser/totpSecret/verify";
+        const string resourcePath = "/user/currentUser/totpSecret/verify";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

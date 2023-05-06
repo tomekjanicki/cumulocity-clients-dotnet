@@ -37,7 +37,7 @@ public sealed class MeasurementsApi : IMeasurementsApi
     /// <inheritdoc />
     public async Task<MeasurementCollection<TMeasurement>?> GetMeasurements<TMeasurement>(int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, int? pageSize = null, bool? revert = null, string? source = null, string? type = null, string? valueFragmentSeries = null, string? valueFragmentType = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TMeasurement : Measurement
     {
-        var resourcePath = "/measurement/measurements";
+        const string resourcePath = "/measurement/measurements";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -71,7 +71,7 @@ public sealed class MeasurementsApi : IMeasurementsApi
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("source", "self");
-        var resourcePath = "/measurement/measurements";
+        const string resourcePath = "/measurement/measurements";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -96,7 +96,7 @@ public sealed class MeasurementsApi : IMeasurementsApi
         jsonNode?.RemoveFromNode("prev");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("statistics");
-        var resourcePath = "/measurement/measurements";
+        const string resourcePath = "/measurement/measurements";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -116,7 +116,7 @@ public sealed class MeasurementsApi : IMeasurementsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteMeasurements(string? xCumulocityProcessingMode = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? fragmentType = null, string? source = null, string? type = null, CancellationToken cToken = default) 
     {
-        var resourcePath = "/measurement/measurements";
+        const string resourcePath = "/measurement/measurements";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("dateFrom", dateFrom);
@@ -176,7 +176,7 @@ public sealed class MeasurementsApi : IMeasurementsApi
     /// <inheritdoc />
     public async Task<MeasurementSeries?> GetMeasurementSeries(string? aggregationType = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, bool? revert = null, List<string>? series = null, string? source = null, CancellationToken cToken = default) 
     {
-        var resourcePath = "/measurement/measurements/series";
+        const string resourcePath = "/measurement/measurements/series";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("aggregationType", aggregationType);

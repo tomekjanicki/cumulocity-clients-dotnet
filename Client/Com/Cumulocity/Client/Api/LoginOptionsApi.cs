@@ -37,7 +37,7 @@ public sealed class LoginOptionsApi : ILoginOptionsApi
     /// <inheritdoc />
     public async Task<LoginOptionCollection?> GetLoginOptions(bool? management = null, string? tenantId = null, CancellationToken cToken = default) 
     {
-        var resourcePath = "/tenant/loginOptions";
+        const string resourcePath = "/tenant/loginOptions";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("management", management);
@@ -61,7 +61,7 @@ public sealed class LoginOptionsApi : ILoginOptionsApi
         var jsonNode = body.ToJsonNode<AuthConfig>();
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
-        var resourcePath = "/tenant/loginOptions";
+        const string resourcePath = "/tenant/loginOptions";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

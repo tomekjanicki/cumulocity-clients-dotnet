@@ -118,7 +118,7 @@ public sealed class UsageStatisticsApi : IUsageStatisticsApi
     /// <inheritdoc />
     public async Task<TenantUsageStatisticsCollection?> GetTenantUsageStatisticsCollectionResource(int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var resourcePath = "/tenant/statistics";
+        const string resourcePath = "/tenant/statistics";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -143,7 +143,7 @@ public sealed class UsageStatisticsApi : IUsageStatisticsApi
     /// <inheritdoc />
     public async Task<SummaryTenantUsageStatistics?> GetTenantUsageStatistics(System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? tenant = null, CancellationToken cToken = default) 
     {
-        var resourcePath = "/tenant/statistics/summary";
+        const string resourcePath = "/tenant/statistics/summary";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("dateFrom", dateFrom);
@@ -165,7 +165,7 @@ public sealed class UsageStatisticsApi : IUsageStatisticsApi
     /// <inheritdoc />
     public async Task<List<SummaryAllTenantsUsageStatistics<TCustomProperties>>?> GetTenantsUsageStatistics<TCustomProperties>(System.DateTime? dateFrom = null, System.DateTime? dateTo = null, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var resourcePath = "/tenant/statistics/allTenantsSummary";
+        const string resourcePath = "/tenant/statistics/allTenantsSummary";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("dateFrom", dateFrom);
@@ -186,7 +186,7 @@ public sealed class UsageStatisticsApi : IUsageStatisticsApi
     /// <inheritdoc />
     public async Task<TenantUsageStatisticsFileCollection?> GetMetadata(int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, int? pageSize = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var resourcePath = "/tenant/statistics/files";
+        const string resourcePath = "/tenant/statistics/files";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -211,7 +211,7 @@ public sealed class UsageStatisticsApi : IUsageStatisticsApi
     public async Task<StatisticsFile?> GenerateStatisticsFile(RangeStatisticsFile body, CancellationToken cToken = default) 
     {
         var jsonNode = body.ToJsonNode<RangeStatisticsFile>();
-        var resourcePath = "/tenant/statistics/files";
+        const string resourcePath = "/tenant/statistics/files";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

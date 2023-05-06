@@ -36,7 +36,7 @@ public sealed class OperationsApi : IOperationsApi
     /// <inheritdoc />
     public async Task<OperationCollection<TOperation>?> GetOperations<TOperation>(string? agentId = null, string? bulkOperationId = null, int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? deviceId = null, string? fragmentType = null, int? pageSize = null, bool? revert = null, string? status = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TOperation : Operation
     {
-        var resourcePath = "/devicecontrol/operations";
+        const string resourcePath = "/devicecontrol/operations";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("agentId", agentId);
@@ -75,7 +75,7 @@ public sealed class OperationsApi : IOperationsApi
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("status");
-        var resourcePath = "/devicecontrol/operations";
+        const string resourcePath = "/devicecontrol/operations";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -95,7 +95,7 @@ public sealed class OperationsApi : IOperationsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteOperations(string? xCumulocityProcessingMode = null, string? agentId = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? deviceId = null, string? status = null, CancellationToken cToken = default) 
     {
-        var resourcePath = "/devicecontrol/operations";
+        const string resourcePath = "/devicecontrol/operations";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("agentId", agentId);

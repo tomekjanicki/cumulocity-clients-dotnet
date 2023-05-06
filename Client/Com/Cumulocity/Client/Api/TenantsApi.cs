@@ -48,7 +48,7 @@ public sealed class TenantsApi : ITenantsApi
     /// <inheritdoc />
     public async Task<TenantCollection<TCustomProperties>?> GetTenants<TCustomProperties>(int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, string? company = null, string? domain = null, string? parent = null, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var resourcePath = "/tenant/tenants";
+        const string resourcePath = "/tenant/tenants";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -83,7 +83,7 @@ public sealed class TenantsApi : ITenantsApi
         jsonNode?.RemoveFromNode("ownedApplications");
         jsonNode?.RemoveFromNode("applications");
         jsonNode?.RemoveFromNode("status");
-        var resourcePath = "/tenant/tenants";
+        const string resourcePath = "/tenant/tenants";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -102,7 +102,7 @@ public sealed class TenantsApi : ITenantsApi
     /// <inheritdoc />
     public async Task<CurrentTenant<TCustomProperties>?> GetCurrentTenant<TCustomProperties>(bool? withParent = null, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var resourcePath = "/tenant/currentTenant";
+        const string resourcePath = "/tenant/currentTenant";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("withParent", withParent);
