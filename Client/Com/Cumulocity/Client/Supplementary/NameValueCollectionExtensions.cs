@@ -6,7 +6,7 @@ namespace Client.Com.Cumulocity.Client.Supplementary;
 
 public static class NameValueCollectionExtensions
 {
-    public static string GetStringValue(this object input)
+    private static string GetStringValue(this object input)
     {
         if (input is System.DateTime dateTime)
         {
@@ -23,18 +23,22 @@ public static class NameValueCollectionExtensions
         }
     }
 	
-    public static void AddIfRequired<T>(this NameValueCollection collection, string key, List<T>? value, bool explode = true)
+    public static void AddIfRequired<T>(this NameValueCollection collection, string key, IReadOnlyList<T>? value, bool explode = true)
     {
-        if (value != null)
+        if (value == null)
         {
-            if (explode)
+            return;
+        }
+        if (explode)
+        {
+            foreach (var item in value.Where(e => e != null))
             {
-                value.Where(e => e != null).ToList().ForEach(e => collection.Add(key, e!.GetStringValue()));
+                collection.Add(key, item!.GetStringValue());
             }
-            else
-            {
-                collection.Add(key, string.Join(',', value.Where(e => e != null)));
-            }
+        }
+        else
+        {
+            collection.Add(key, string.Join(',', value.Where(static e => e != null)));
         }
     }
 }

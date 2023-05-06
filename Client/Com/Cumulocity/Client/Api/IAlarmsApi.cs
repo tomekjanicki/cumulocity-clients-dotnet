@@ -63,7 +63,7 @@ public interface IAlarmsApi
     /// <param name="withTotalPages">When set to <c>true</c>, the returned result will contain in the statistics object the total number of pages. Only applicable on <see href="https://en.wikipedia.org/wiki/Range_query_(database)" langword="range queries" />. <br /></param>
     /// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
     ///
-    Task<AlarmCollection<TAlarm>?> GetAlarms<TAlarm>(System.DateTime? createdFrom = null, System.DateTime? createdTo = null, int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, System.DateTime? lastUpdatedFrom = null, System.DateTime? lastUpdatedTo = null, int? pageSize = null, bool? resolved = null, List<string>? severity = null, string? source = null, List<string>? status = null, List<string>? type = null, bool? withSourceAssets = null, bool? withSourceDevices = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TAlarm : Alarm;
+    Task<AlarmCollection<TAlarm>?> GetAlarms<TAlarm>(System.DateTime? createdFrom = null, System.DateTime? createdTo = null, int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, System.DateTime? lastUpdatedFrom = null, System.DateTime? lastUpdatedTo = null, int? pageSize = null, bool? resolved = null, IReadOnlyList<string>? severity = null, string? source = null, IReadOnlyList<string>? status = null, IReadOnlyList<string>? type = null, bool? withSourceAssets = null, bool? withSourceDevices = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TAlarm : Alarm;
 		
     /// <summary> 
     /// Update alarm collections <br />
@@ -113,7 +113,7 @@ public interface IAlarmsApi
     /// <param name="withSourceDevices">When set to <c>true</c> also alarms for related source devices will be included in the request. When this parameter is provided a <c>source</c> must be specified. <br /></param>
     /// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
     ///
-    Task<System.IO.Stream> UpdateAlarms<TAlarm>(TAlarm body, string? xCumulocityProcessingMode = null, System.DateTime? createdFrom = null, System.DateTime? createdTo = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, bool? resolved = null, List<string>? severity = null, string? source = null, List<string>? status = null, bool? withSourceAssets = null, bool? withSourceDevices = null, CancellationToken cToken = default) where TAlarm : Alarm;
+    Task<System.IO.Stream> UpdateAlarms<TAlarm>(TAlarm body, string? xCumulocityProcessingMode = null, System.DateTime? createdFrom = null, System.DateTime? createdTo = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, bool? resolved = null, IReadOnlyList<string>? severity = null, string? source = null, IReadOnlyList<string>? status = null, bool? withSourceAssets = null, bool? withSourceDevices = null, CancellationToken cToken = default) where TAlarm : Alarm;
 		
     /// <summary> 
     /// Create an alarm <br />
@@ -214,7 +214,7 @@ public interface IAlarmsApi
     /// <param name="withSourceDevices">When set to <c>true</c> also alarms for related source devices will be included in the request. When this parameter is provided a <c>source</c> must be specified. <br /></param>
     /// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
     ///
-    Task<System.IO.Stream> DeleteAlarms(string? xCumulocityProcessingMode = null, System.DateTime? createdFrom = null, System.DateTime? createdTo = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, bool? resolved = null, List<string>? severity = null, string? source = null, List<string>? status = null, List<string>? type = null, bool? withSourceAssets = null, bool? withSourceDevices = null, CancellationToken cToken = default) ;
+    Task<System.IO.Stream> DeleteAlarms(string? xCumulocityProcessingMode = null, System.DateTime? createdFrom = null, System.DateTime? createdTo = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, bool? resolved = null, IReadOnlyList<string>? severity = null, string? source = null, IReadOnlyList<string>? status = null, IReadOnlyList<string>? type = null, bool? withSourceAssets = null, bool? withSourceDevices = null, CancellationToken cToken = default) ;
 		
     /// <summary> 
     /// Retrieve a specific alarm <br />
@@ -320,5 +320,5 @@ public interface IAlarmsApi
     /// <param name="withSourceDevices">When set to <c>true</c> also alarms for related source devices will be included in the request. When this parameter is provided a <c>source</c> must be specified. <br /></param>
     /// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
     ///
-    Task<int> GetNumberOfAlarms(System.DateTime? dateFrom = null, System.DateTime? dateTo = null, bool? resolved = null, List<string>? severity = null, string? source = null, List<string>? status = null, List<string>? type = null, bool? withSourceAssets = null, bool? withSourceDevices = null, CancellationToken cToken = default) ;
+    Task<int> GetNumberOfAlarms(System.DateTime? dateFrom = null, System.DateTime? dateTo = null, bool? resolved = null, IReadOnlyList<string>? severity = null, string? source = null, IReadOnlyList<string>? status = null, IReadOnlyList<string>? type = null, bool? withSourceAssets = null, bool? withSourceDevices = null, CancellationToken cToken = default) ;
 }

@@ -312,5 +312,5 @@ public interface IMeasurementsApi
     /// <param name="source">The managed object ID to which the measurement is associated. <br /></param>
     /// <param name="cToken">Propagates notification that operations should be canceled. <br /></param>
     ///
-    Task<MeasurementSeries?> GetMeasurementSeries(string? aggregationType = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, bool? revert = null, List<string>? series = null, string? source = null, CancellationToken cToken = default) ;
+    Task<MeasurementSeries?> GetMeasurementSeries(string? aggregationType = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, bool? revert = null, IReadOnlyList<string>? series = null, string? source = null, CancellationToken cToken = default) ;
 }
