@@ -37,7 +37,7 @@ public class SubscriptionsApi : AdaptableApi, ISubscriptionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/notification2/subscriptions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("context", context);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -69,7 +69,7 @@ public class SubscriptionsApi : AdaptableApi, ISubscriptionsApi
         jsonNode?.RemoveFromNode("source", "self");
         var client = HttpClient;
         var resourcePath = $"/notification2/subscriptions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.subscription+json"),
@@ -90,7 +90,7 @@ public class SubscriptionsApi : AdaptableApi, ISubscriptionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/notification2/subscriptions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("context", context);
         queryString.AddIfRequired("source", source);
@@ -113,7 +113,7 @@ public class SubscriptionsApi : AdaptableApi, ISubscriptionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/notification2/subscriptions/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -131,7 +131,7 @@ public class SubscriptionsApi : AdaptableApi, ISubscriptionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/notification2/subscriptions/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

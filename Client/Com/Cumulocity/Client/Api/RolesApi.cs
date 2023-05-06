@@ -38,7 +38,7 @@ public class RolesApi : AdaptableApi, IRolesApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/roles";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -62,7 +62,7 @@ public class RolesApi : AdaptableApi, IRolesApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/roles/{name}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -80,7 +80,7 @@ public class RolesApi : AdaptableApi, IRolesApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}/roles";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -103,7 +103,7 @@ public class RolesApi : AdaptableApi, IRolesApi
         var jsonNode = ToJsonNode<SubscribedRole>(body);
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}/roles";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.rolereference+json"),
@@ -123,7 +123,7 @@ public class RolesApi : AdaptableApi, IRolesApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}/roles/{roleId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,
@@ -142,7 +142,7 @@ public class RolesApi : AdaptableApi, IRolesApi
         var jsonNode = ToJsonNode<SubscribedRole>(body);
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/users/{userId}/roles";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.rolereference+json"),
@@ -162,7 +162,7 @@ public class RolesApi : AdaptableApi, IRolesApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/users/{userId}/roles/{roleId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

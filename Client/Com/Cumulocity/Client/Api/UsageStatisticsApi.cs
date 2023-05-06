@@ -119,7 +119,7 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/statistics";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("dateFrom", dateFrom);
@@ -145,7 +145,7 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/statistics/summary";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("dateFrom", dateFrom);
         queryString.AddIfRequired("dateTo", dateTo);
@@ -168,7 +168,7 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/statistics/allTenantsSummary";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("dateFrom", dateFrom);
         queryString.AddIfRequired("dateTo", dateTo);
@@ -190,7 +190,7 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/statistics/files";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("dateFrom", dateFrom);
@@ -216,7 +216,7 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
         var jsonNode = ToJsonNode<RangeStatisticsFile>(body);
         var client = HttpClient;
         var resourcePath = $"/tenant/statistics/files";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.tenantstatisticsdate+json"),
@@ -236,7 +236,7 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/statistics/files/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -254,7 +254,7 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/statistics/files/latest/{month}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,

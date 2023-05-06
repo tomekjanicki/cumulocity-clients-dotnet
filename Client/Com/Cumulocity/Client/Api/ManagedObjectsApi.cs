@@ -38,7 +38,7 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("childAdditionId", childAdditionId);
         queryString.AddIfRequired("childAssetId", childAssetId);
@@ -90,7 +90,7 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
         jsonNode?.RemoveFromNode("id");
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobject+json"),
@@ -111,7 +111,7 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/count";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("childAdditionId", childAdditionId);
         queryString.AddIfRequired("childAssetId", childAssetId);
@@ -139,7 +139,7 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("skipChildrenNames", skipChildrenNames);
         queryString.AddIfRequired("withChildren", withChildren);
@@ -175,7 +175,7 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
         jsonNode?.RemoveFromNode("id");
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobject+json"),
@@ -196,7 +196,7 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("cascade", cascade);
         queryString.AddIfRequired("forceCascade", forceCascade);
@@ -220,7 +220,7 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/availability";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -238,7 +238,7 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/supportedMeasurements";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -256,7 +256,7 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/supportedSeries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -274,7 +274,7 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/user";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -295,7 +295,7 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
         jsonNode?.RemoveFromNode("userName");
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/user";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobjectuser+json"),

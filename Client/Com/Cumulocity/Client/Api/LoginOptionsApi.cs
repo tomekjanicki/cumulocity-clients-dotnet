@@ -39,7 +39,7 @@ public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/loginOptions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("management", management);
         queryString.AddIfRequired("tenantId", tenantId);
@@ -64,7 +64,7 @@ public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
         jsonNode?.RemoveFromNode("id");
         var client = HttpClient;
         var resourcePath = $"/tenant/loginOptions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.authconfig+json"),
@@ -84,7 +84,7 @@ public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/loginOptions/{typeOrId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -104,7 +104,7 @@ public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
         jsonNode?.RemoveFromNode("self");
         var client = HttpClient;
         var resourcePath = $"/tenant/loginOptions/{typeOrId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.authconfig+json"),
@@ -125,7 +125,7 @@ public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/loginOptions/{typeOrId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,
@@ -144,7 +144,7 @@ public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
         var jsonNode = ToJsonNode<AuthConfigAccess>(body);
         var client = HttpClient;
         var resourcePath = $"/tenant/loginOptions/{typeOrId}/restrict";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("targetTenant", targetTenant);
         uriBuilder.Query = queryString.ToString();

@@ -38,7 +38,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAdditions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -66,7 +66,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
         var jsonNode = ToJsonNode<ChildOperationsAddOne>(body);
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAdditions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobjectreference+json"),
@@ -88,7 +88,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
         var jsonNode = ToJsonNode<ChildOperationsAddMultiple>(body);
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAdditions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json"),
@@ -121,7 +121,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
         jsonNode?.RemoveFromNode("id");
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAdditions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobject+json"),
@@ -143,7 +143,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
         var jsonNode = ToJsonNode<ChildOperationsAddMultiple>(body);
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAdditions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json"),
@@ -164,7 +164,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAdditions/{childId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -182,7 +182,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAdditions/{childId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,
@@ -201,7 +201,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAssets";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -229,7 +229,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
         var jsonNode = ToJsonNode<ChildOperationsAddOne>(body);
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAssets";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobjectreference+json"),
@@ -251,7 +251,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
         var jsonNode = ToJsonNode<ChildOperationsAddMultiple>(body);
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAssets";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json"),
@@ -284,7 +284,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
         jsonNode?.RemoveFromNode("id");
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAssets";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobject+json"),
@@ -306,7 +306,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
         var jsonNode = ToJsonNode<ChildOperationsAddMultiple>(body);
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAssets";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json"),
@@ -327,7 +327,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAssets/{childId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -345,7 +345,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childAssets/{childId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,
@@ -364,7 +364,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childDevices";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -392,7 +392,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
         var jsonNode = ToJsonNode<ChildOperationsAddOne>(body);
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childDevices";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobjectreference+json"),
@@ -414,7 +414,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
         var jsonNode = ToJsonNode<ChildOperationsAddMultiple>(body);
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childDevices";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json"),
@@ -447,7 +447,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
         jsonNode?.RemoveFromNode("id");
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childDevices";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobject+json"),
@@ -469,7 +469,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
         var jsonNode = ToJsonNode<ChildOperationsAddMultiple>(body);
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childDevices";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json"),
@@ -490,7 +490,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childDevices/{childId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -508,7 +508,7 @@ public class ChildOperationsApi : AdaptableApi, IChildOperationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/childDevices/{childId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

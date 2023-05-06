@@ -51,7 +51,7 @@ public class BulkOperationsApi : AdaptableApi, IBulkOperationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/devicecontrol/bulkoperations";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -80,7 +80,7 @@ public class BulkOperationsApi : AdaptableApi, IBulkOperationsApi
         jsonNode?.RemoveFromNode("status");
         var client = HttpClient;
         var resourcePath = $"/devicecontrol/bulkoperations";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.bulkoperation+json"),
@@ -101,7 +101,7 @@ public class BulkOperationsApi : AdaptableApi, IBulkOperationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/devicecontrol/bulkoperations/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -125,7 +125,7 @@ public class BulkOperationsApi : AdaptableApi, IBulkOperationsApi
         jsonNode?.RemoveFromNode("status");
         var client = HttpClient;
         var resourcePath = $"/devicecontrol/bulkoperations/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.bulkoperation+json"),
@@ -146,7 +146,7 @@ public class BulkOperationsApi : AdaptableApi, IBulkOperationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/devicecontrol/bulkoperations/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

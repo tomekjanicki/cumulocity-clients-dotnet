@@ -38,7 +38,7 @@ public class CurrentUserApi : AdaptableApi, ICurrentUserApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/currentUser";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -64,7 +64,7 @@ public class CurrentUserApi : AdaptableApi, ICurrentUserApi
         jsonNode?.RemoveFromNode("devicePermissions");
         var client = HttpClient;
         var resourcePath = $"/user/currentUser";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.currentuser+json"),
@@ -85,7 +85,7 @@ public class CurrentUserApi : AdaptableApi, ICurrentUserApi
         var jsonNode = ToJsonNode<PasswordChange>(body);
         var client = HttpClient;
         var resourcePath = $"/user/currentUser/password";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),
@@ -105,7 +105,7 @@ public class CurrentUserApi : AdaptableApi, ICurrentUserApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/currentUser/totpSecret";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Post,
@@ -123,7 +123,7 @@ public class CurrentUserApi : AdaptableApi, ICurrentUserApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/currentUser/totpSecret/activity";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -142,7 +142,7 @@ public class CurrentUserApi : AdaptableApi, ICurrentUserApi
         var jsonNode = ToJsonNode<CurrentUserTotpSecretActivity>(body);
         var client = HttpClient;
         var resourcePath = $"/user/currentUser/totpSecret/activity";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),
@@ -163,7 +163,7 @@ public class CurrentUserApi : AdaptableApi, ICurrentUserApi
         var jsonNode = ToJsonNode<CurrentUserTotpCode>(body);
         var client = HttpClient;
         var resourcePath = $"/user/currentUser/totpSecret/verify";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),

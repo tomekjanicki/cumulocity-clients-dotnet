@@ -38,7 +38,7 @@ public class OptionsApi : AdaptableApi, IOptionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/options";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -63,7 +63,7 @@ public class OptionsApi : AdaptableApi, IOptionsApi
         jsonNode?.RemoveFromNode("self");
         var client = HttpClient;
         var resourcePath = $"/tenant/options";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.option+json"),
@@ -83,7 +83,7 @@ public class OptionsApi : AdaptableApi, IOptionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/options/{category}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -102,7 +102,7 @@ public class OptionsApi : AdaptableApi, IOptionsApi
         var jsonNode = ToJsonNode<TCategoryOptions>(body);
         var client = HttpClient;
         var resourcePath = $"/tenant/options/{category}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),
@@ -122,7 +122,7 @@ public class OptionsApi : AdaptableApi, IOptionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/options/{category}/{key}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -141,7 +141,7 @@ public class OptionsApi : AdaptableApi, IOptionsApi
         var jsonNode = ToJsonNode<CategoryKeyOption>(body);
         var client = HttpClient;
         var resourcePath = $"/tenant/options/{category}/{key}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),
@@ -161,7 +161,7 @@ public class OptionsApi : AdaptableApi, IOptionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/options/{category}/{key}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

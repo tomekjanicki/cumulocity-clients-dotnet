@@ -37,7 +37,7 @@ public class ApplicationBinariesApi : AdaptableApi, IApplicationBinariesApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -55,7 +55,7 @@ public class ApplicationBinariesApi : AdaptableApi, IApplicationBinariesApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
         var fileContentFile = new ByteArrayContent(file);
         fileContentFile.Headers.ContentType = MediaTypeHeaderValue.Parse("application/zip");
@@ -79,7 +79,7 @@ public class ApplicationBinariesApi : AdaptableApi, IApplicationBinariesApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}/binaries/{binaryId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -97,7 +97,7 @@ public class ApplicationBinariesApi : AdaptableApi, IApplicationBinariesApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}/binaries/{binaryId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

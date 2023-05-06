@@ -37,7 +37,7 @@ public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}/versions?version=1.0";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("version", version);
         queryString.AddIfRequired("tag", tag);
@@ -59,7 +59,7 @@ public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}/versions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -77,7 +77,7 @@ public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}/versions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
         var fileContentApplicationBinary = new ByteArrayContent(applicationBinary);
         fileContentApplicationBinary.Headers.ContentType = MediaTypeHeaderValue.Parse("application/zip");
@@ -104,7 +104,7 @@ public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}/versions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("version", version);
         queryString.AddIfRequired("tag", tag);
@@ -127,7 +127,7 @@ public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
         var jsonNode = ToJsonNode<ApplicationVersionTag>(body);
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}/versions/{version}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),

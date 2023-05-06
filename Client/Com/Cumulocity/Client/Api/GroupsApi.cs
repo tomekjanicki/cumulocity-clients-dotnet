@@ -39,7 +39,7 @@ public class GroupsApi : AdaptableApi, IGroupsApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/groups";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -70,7 +70,7 @@ public class GroupsApi : AdaptableApi, IGroupsApi
         jsonNode?.RemoveFromNode("applications");
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/groups";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.group+json"),
@@ -90,7 +90,7 @@ public class GroupsApi : AdaptableApi, IGroupsApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -115,7 +115,7 @@ public class GroupsApi : AdaptableApi, IGroupsApi
         jsonNode?.RemoveFromNode("applications");
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.group+json"),
@@ -135,7 +135,7 @@ public class GroupsApi : AdaptableApi, IGroupsApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,
@@ -153,7 +153,7 @@ public class GroupsApi : AdaptableApi, IGroupsApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/groupByName/{groupName}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -171,7 +171,7 @@ public class GroupsApi : AdaptableApi, IGroupsApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/users/{userId}/groups";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);

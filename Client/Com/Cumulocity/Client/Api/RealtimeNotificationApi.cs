@@ -203,7 +203,7 @@ public class RealtimeNotificationApi : AdaptableApi, IRealtimeNotificationApi
         jsonNode?.RemoveFromNode("successful");
         var client = HttpClient;
         var resourcePath = $"/notification/realtime";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),

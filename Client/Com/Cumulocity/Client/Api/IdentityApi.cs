@@ -38,7 +38,7 @@ public class IdentityApi : AdaptableApi, IIdentityApi
     {
         var client = HttpClient;
         var resourcePath = $"/identity";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,

@@ -66,7 +66,7 @@ public class DevicePermissionsApi : AdaptableApi, IDevicePermissionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/devicePermissions/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -85,7 +85,7 @@ public class DevicePermissionsApi : AdaptableApi, IDevicePermissionsApi
         var jsonNode = ToJsonNode<DevicePermissions<TCustomProperties>>(body);
         var client = HttpClient;
         var resourcePath = $"/user/devicePermissions/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),

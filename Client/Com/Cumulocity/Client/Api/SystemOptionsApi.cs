@@ -40,7 +40,7 @@ public class SystemOptionsApi : AdaptableApi, ISystemOptionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/system/options";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -58,7 +58,7 @@ public class SystemOptionsApi : AdaptableApi, ISystemOptionsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/system/options/{category}/{key}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,

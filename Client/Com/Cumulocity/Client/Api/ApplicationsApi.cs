@@ -41,7 +41,7 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applications";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("name", name);
@@ -79,7 +79,7 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
         jsonNode?.RemoveFromNode("resourcesUrl");
         var client = HttpClient;
         var resourcePath = $"/application/applications";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.application+json"),
@@ -100,7 +100,7 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -125,7 +125,7 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
         jsonNode?.RemoveFromNode("resourcesUrl");
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.application+json"),
@@ -146,7 +146,7 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("force", force);
         uriBuilder.Query = queryString.ToString();
@@ -168,7 +168,7 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}/clone";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("version", version);
         queryString.AddIfRequired("tag", tag);
@@ -191,7 +191,7 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applicationsByName/{name}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -209,7 +209,7 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applicationsByTenant/{tenantId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -227,7 +227,7 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applicationsByOwner/{tenantId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -251,7 +251,7 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applicationsByUser/{username}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);

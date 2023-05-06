@@ -37,7 +37,7 @@ public class BootstrapUserApi : AdaptableApi, IBootstrapUserApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/applications/{id}/bootstrapUser";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,

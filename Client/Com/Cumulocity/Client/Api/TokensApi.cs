@@ -38,7 +38,7 @@ public class TokensApi : AdaptableApi, ITokensApi
         var jsonNode = ToJsonNode<NotificationTokenClaims>(body);
         var client = HttpClient;
         var resourcePath = $"/notification2/token";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),
@@ -59,7 +59,7 @@ public class TokensApi : AdaptableApi, ITokensApi
     {
         var client = HttpClient;
         var resourcePath = $"/notification2/unsubscribe";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("token", token);
         uriBuilder.Query = queryString.ToString();

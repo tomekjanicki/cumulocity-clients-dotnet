@@ -38,7 +38,7 @@ public class UsersApi : AdaptableApi, IUsersApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/users";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("groups", groups, false);
@@ -79,7 +79,7 @@ public class UsersApi : AdaptableApi, IUsersApi
         jsonNode?.RemoveFromNode("applications");
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/users";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.user+json"),
@@ -99,7 +99,7 @@ public class UsersApi : AdaptableApi, IUsersApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/users/{userId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -130,7 +130,7 @@ public class UsersApi : AdaptableApi, IUsersApi
         jsonNode?.RemoveFromNode("applications");
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/users/{userId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.user+json"),
@@ -150,7 +150,7 @@ public class UsersApi : AdaptableApi, IUsersApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/users/{userId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,
@@ -169,7 +169,7 @@ public class UsersApi : AdaptableApi, IUsersApi
         var jsonNode = ToJsonNode<PasswordChange>(body);
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/users/{userId}/password";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),
@@ -189,7 +189,7 @@ public class UsersApi : AdaptableApi, IUsersApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/users/{userId}/tfa";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -207,7 +207,7 @@ public class UsersApi : AdaptableApi, IUsersApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/userByName/{username}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -225,7 +225,7 @@ public class UsersApi : AdaptableApi, IUsersApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}/users";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -249,7 +249,7 @@ public class UsersApi : AdaptableApi, IUsersApi
         var jsonNode = ToJsonNode<SubscribedUser>(body);
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}/users";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.userreference+json"),
@@ -269,7 +269,7 @@ public class UsersApi : AdaptableApi, IUsersApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}/users/{userId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,
@@ -287,7 +287,7 @@ public class UsersApi : AdaptableApi, IUsersApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/logout";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Post,
@@ -307,7 +307,7 @@ public class UsersApi : AdaptableApi, IUsersApi
     {
         var client = HttpClient;
         var resourcePath = $"/user/logout/{tenantId}/allUsers";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Post,

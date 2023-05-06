@@ -37,7 +37,7 @@ public class AttachmentsApi : AdaptableApi, IAttachmentsApi
     {
         var client = HttpClient;
         var resourcePath = $"/event/events/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -55,7 +55,7 @@ public class AttachmentsApi : AdaptableApi, IAttachmentsApi
     {
         var client = HttpClient;
         var resourcePath = $"/event/events/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new ByteArrayContent(body),
@@ -75,7 +75,7 @@ public class AttachmentsApi : AdaptableApi, IAttachmentsApi
     {
         var client = HttpClient;
         var resourcePath = $"/event/events/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new ByteArrayContent(body),
@@ -95,7 +95,7 @@ public class AttachmentsApi : AdaptableApi, IAttachmentsApi
     {
         var client = HttpClient;
         var resourcePath = $"/event/events/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
         var fileContentObject = new StringContent(JsonSerializer.Serialize(pObject));
         fileContentObject.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
@@ -122,7 +122,7 @@ public class AttachmentsApi : AdaptableApi, IAttachmentsApi
     {
         var client = HttpClient;
         var resourcePath = $"/event/events/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

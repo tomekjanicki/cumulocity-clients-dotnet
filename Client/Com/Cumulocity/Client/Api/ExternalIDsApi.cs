@@ -38,7 +38,7 @@ public class ExternalIDsApi : AdaptableApi, IExternalIDsApi
     {
         var client = HttpClient;
         var resourcePath = $"/identity/globalIds/{id}/externalIds";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -59,7 +59,7 @@ public class ExternalIDsApi : AdaptableApi, IExternalIDsApi
         jsonNode?.RemoveFromNode("self");
         var client = HttpClient;
         var resourcePath = $"/identity/globalIds/{id}/externalIds";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.externalid+json"),
@@ -79,7 +79,7 @@ public class ExternalIDsApi : AdaptableApi, IExternalIDsApi
     {
         var client = HttpClient;
         var resourcePath = $"/identity/externalIds/{type}/{externalId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -97,7 +97,7 @@ public class ExternalIDsApi : AdaptableApi, IExternalIDsApi
     {
         var client = HttpClient;
         var resourcePath = $"/identity/externalIds/{type}/{externalId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

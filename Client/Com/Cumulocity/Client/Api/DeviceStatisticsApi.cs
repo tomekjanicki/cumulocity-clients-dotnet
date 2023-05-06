@@ -76,7 +76,7 @@ public class DeviceStatisticsApi : AdaptableApi, IDeviceStatisticsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/statistics/device/{tenantId}/monthly/{date}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("deviceId", deviceId);
@@ -100,7 +100,7 @@ public class DeviceStatisticsApi : AdaptableApi, IDeviceStatisticsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/statistics/device/{tenantId}/daily/{date}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("deviceId", deviceId);

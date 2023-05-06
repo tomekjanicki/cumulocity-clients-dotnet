@@ -37,7 +37,7 @@ public class CurrentApplicationApi : AdaptableApi, ICurrentApplicationApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/currentApplication";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -61,7 +61,7 @@ public class CurrentApplicationApi : AdaptableApi, ICurrentApplicationApi
         jsonNode?.RemoveFromNode("resourcesUrl");
         var client = HttpClient;
         var resourcePath = $"/application/currentApplication";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.application+json"),
@@ -81,7 +81,7 @@ public class CurrentApplicationApi : AdaptableApi, ICurrentApplicationApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/currentApplication/settings";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -99,7 +99,7 @@ public class CurrentApplicationApi : AdaptableApi, ICurrentApplicationApi
     {
         var client = HttpClient;
         var resourcePath = $"/application/currentApplication/subscriptions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,

@@ -38,7 +38,7 @@ public class AlarmsApi : AdaptableApi, IAlarmsApi
     {
         var client = HttpClient;
         var resourcePath = $"/alarm/alarms";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("createdFrom", createdFrom);
         queryString.AddIfRequired("createdTo", createdTo);
@@ -87,7 +87,7 @@ public class AlarmsApi : AdaptableApi, IAlarmsApi
         jsonNode?.RemoveFromNode("type");
         var client = HttpClient;
         var resourcePath = $"/alarm/alarms";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("createdFrom", createdFrom);
         queryString.AddIfRequired("createdTo", createdTo);
@@ -128,7 +128,7 @@ public class AlarmsApi : AdaptableApi, IAlarmsApi
         jsonNode?.RemoveFromNode("source", "self");
         var client = HttpClient;
         var resourcePath = $"/alarm/alarms";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.alarm+json"),
@@ -149,7 +149,7 @@ public class AlarmsApi : AdaptableApi, IAlarmsApi
     {
         var client = HttpClient;
         var resourcePath = $"/alarm/alarms";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("createdFrom", createdFrom);
         queryString.AddIfRequired("createdTo", createdTo);
@@ -181,7 +181,7 @@ public class AlarmsApi : AdaptableApi, IAlarmsApi
     {
         var client = HttpClient;
         var resourcePath = $"/alarm/alarms/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -209,7 +209,7 @@ public class AlarmsApi : AdaptableApi, IAlarmsApi
         jsonNode?.RemoveFromNode("type");
         var client = HttpClient;
         var resourcePath = $"/alarm/alarms/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.alarm+json"),
@@ -230,7 +230,7 @@ public class AlarmsApi : AdaptableApi, IAlarmsApi
     {
         var client = HttpClient;
         var resourcePath = $"/alarm/alarms/count";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("dateFrom", dateFrom);
         queryString.AddIfRequired("dateTo", dateTo);

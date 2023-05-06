@@ -50,7 +50,7 @@ public class TenantsApi : AdaptableApi, ITenantsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -86,7 +86,7 @@ public class TenantsApi : AdaptableApi, ITenantsApi
         jsonNode?.RemoveFromNode("status");
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.tenant+json"),
@@ -106,7 +106,7 @@ public class TenantsApi : AdaptableApi, ITenantsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/currentTenant";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("withParent", withParent);
         uriBuilder.Query = queryString.ToString();
@@ -127,7 +127,7 @@ public class TenantsApi : AdaptableApi, ITenantsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -155,7 +155,7 @@ public class TenantsApi : AdaptableApi, ITenantsApi
         jsonNode?.RemoveFromNode("status");
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.tenant+json"),
@@ -175,7 +175,7 @@ public class TenantsApi : AdaptableApi, ITenantsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,
@@ -193,7 +193,7 @@ public class TenantsApi : AdaptableApi, ITenantsApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}/tfa";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,

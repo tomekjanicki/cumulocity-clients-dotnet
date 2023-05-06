@@ -38,7 +38,7 @@ public class NewDeviceRequestsApi : AdaptableApi, INewDeviceRequestsApi
     {
         var client = HttpClient;
         var resourcePath = $"/devicecontrol/newDeviceRequests";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -65,7 +65,7 @@ public class NewDeviceRequestsApi : AdaptableApi, INewDeviceRequestsApi
         jsonNode?.RemoveFromNode("status");
         var client = HttpClient;
         var resourcePath = $"/devicecontrol/newDeviceRequests";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.newdevicerequest+json"),
@@ -86,7 +86,7 @@ public class NewDeviceRequestsApi : AdaptableApi, INewDeviceRequestsApi
     {
         var client = HttpClient;
         var resourcePath = $"/devicecontrol/newDeviceRequests/{requestId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -107,7 +107,7 @@ public class NewDeviceRequestsApi : AdaptableApi, INewDeviceRequestsApi
         jsonNode?.RemoveFromNode("id");
         var client = HttpClient;
         var resourcePath = $"/devicecontrol/newDeviceRequests/{requestId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.newdevicerequest+json"),
@@ -127,7 +127,7 @@ public class NewDeviceRequestsApi : AdaptableApi, INewDeviceRequestsApi
     {
         var client = HttpClient;
         var resourcePath = $"/devicecontrol/newDeviceRequests/{requestId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

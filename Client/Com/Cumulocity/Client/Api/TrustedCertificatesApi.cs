@@ -39,7 +39,7 @@ public class TrustedCertificatesApi : AdaptableApi, ITrustedCertificatesApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -64,7 +64,7 @@ public class TrustedCertificatesApi : AdaptableApi, ITrustedCertificatesApi
         var jsonNode = ToJsonNode<UploadedTrustedCertificate>(body);
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("addToTrustStore", addToTrustStore);
         uriBuilder.Query = queryString.ToString();
@@ -93,7 +93,7 @@ public class TrustedCertificatesApi : AdaptableApi, ITrustedCertificatesApi
         jsonNode?.RemoveFromNode("statistics");
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates/bulk";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("addToTrustStore", addToTrustStore);
         uriBuilder.Query = queryString.ToString();
@@ -116,7 +116,7 @@ public class TrustedCertificatesApi : AdaptableApi, ITrustedCertificatesApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates/{fingerprint}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -148,7 +148,7 @@ public class TrustedCertificatesApi : AdaptableApi, ITrustedCertificatesApi
         jsonNode?.RemoveFromNode("certInPemFormat");
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates/{fingerprint}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),
@@ -168,7 +168,7 @@ public class TrustedCertificatesApi : AdaptableApi, ITrustedCertificatesApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates/{fingerprint}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,
@@ -187,7 +187,7 @@ public class TrustedCertificatesApi : AdaptableApi, ITrustedCertificatesApi
         var jsonNode = ToJsonNode<UploadedTrustedCertSignedVerificationCode>(body);
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates-pop/{fingerprint}/pop";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),
@@ -207,7 +207,7 @@ public class TrustedCertificatesApi : AdaptableApi, ITrustedCertificatesApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates-pop/{fingerprint}/confirmed";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Post,
@@ -225,7 +225,7 @@ public class TrustedCertificatesApi : AdaptableApi, ITrustedCertificatesApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates-pop/{fingerprint}/verification-code";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Post,
@@ -243,7 +243,7 @@ public class TrustedCertificatesApi : AdaptableApi, ITrustedCertificatesApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/verify-cert-chain/fileUpload";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
         var fileContentTenantId = new StringContent(JsonSerializer.Serialize(tenantId));
         fileContentTenantId.Headers.ContentType = MediaTypeHeaderValue.Parse("text/plain");
@@ -270,7 +270,7 @@ public class TrustedCertificatesApi : AdaptableApi, ITrustedCertificatesApi
     {
         var client = HttpClient;
         var resourcePath = $"/tenant/tenants/verify-cert-chain";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Post,
