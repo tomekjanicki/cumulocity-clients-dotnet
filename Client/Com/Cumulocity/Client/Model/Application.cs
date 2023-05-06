@@ -164,7 +164,7 @@ public sealed class Application
     /// URL to the application base directory hosted on an external server. Only present in legacy hosted applications. <br />
     /// </summary>
     ///
-    [System.ObsoleteAttribute("This property might be removed in future releases.", false)]
+    [System.Obsolete("This property might be removed in future releases.", false)]
     [JsonPropertyName("resourcesUrl")]
     public string? ResourcesUrl { get; set; }
 	

@@ -170,7 +170,7 @@ public sealed class User<TCustomProperties> where TCustomProperties : CustomProp
     /// An object with a list of the user's device permissions. <br />
     /// </summary>
     ///
-    [System.ObsoleteAttribute("This property might be removed in future releases.", false)]
+    [System.Obsolete("This property might be removed in future releases.", false)]
     [JsonPropertyName("devicePermissions")]
     public DeprecatedDevicePermissions? DevicePermissions { get; set; }
 	

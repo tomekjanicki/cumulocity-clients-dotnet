@@ -22,7 +22,7 @@ public sealed class WebApplicationManifest
     /// A legacy flag that identified a certain type of web application that would control the behavior of plugin tab in the application details view.It is no longer used. <br />
     /// </summary>
     ///
-    [System.ObsoleteAttribute("This property might be removed in future releases.", false)]
+    [System.Obsolete("This property might be removed in future releases.", false)]
     [JsonPropertyName("_webpaas")]
     public bool? PWebpaas { get; set; }
 	

@@ -122,7 +122,7 @@ public sealed class LoginOption
     /// The type of authentication. <br />
     /// </summary>
     ///
-    [System.ObsoleteAttribute("This property might be removed in future releases.", false)]
+    [System.Obsolete("This property might be removed in future releases.", false)]
     [JsonPropertyName("_type")]
     public string? PType { get; set; }
 	
