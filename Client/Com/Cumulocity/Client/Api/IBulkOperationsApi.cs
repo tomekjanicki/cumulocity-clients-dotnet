@@ -32,7 +32,7 @@ namespace Com.Cumulocity.Client.Api;
 /// The Accept header should be provided in all POST/PUT requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public interface IBulkOperationsApi
 {
 	
@@ -183,4 +183,3 @@ public interface IBulkOperationsApi
     ///
     Task<System.IO.Stream> DeleteBulkOperation(string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) ;
 }
-#nullable disable

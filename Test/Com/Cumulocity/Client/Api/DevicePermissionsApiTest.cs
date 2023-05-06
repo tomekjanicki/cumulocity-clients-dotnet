@@ -15,7 +15,7 @@ using Com.Cumulocity.Client.Supplementary;
 using Com.Cumulocity.Client.Model;
 
 namespace Com.Cumulocity.Client.Api;
-#nullable enable
+
 [TestClass]
 public class DevicePermissionsApiTest
 {
@@ -39,4 +39,3 @@ public class DevicePermissionsApiTest
     }
 	
 }
-#nullable disable

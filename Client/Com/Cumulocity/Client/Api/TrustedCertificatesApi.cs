@@ -27,7 +27,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header must be provided in all POST/PUT requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class TrustedCertificatesApi : AdaptableApi, ITrustedCertificatesApi
 {
     public TrustedCertificatesApi(HttpClient httpClient) : base(httpClient)
@@ -285,4 +285,3 @@ public class TrustedCertificatesApi : AdaptableApi, ITrustedCertificatesApi
         return await JsonSerializer.DeserializeAsync<VerifyCertificateChain?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

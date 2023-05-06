@@ -19,7 +19,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public interface IExternalIDsApi
 {
 	
@@ -138,4 +138,3 @@ public interface IExternalIDsApi
     ///
     Task<System.IO.Stream> DeleteExternalId(string type, string externalId, CancellationToken cToken = default) ;
 }
-#nullable disable

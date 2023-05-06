@@ -26,7 +26,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST/PUT requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
 {
     public ManagedObjectsApi(HttpClient httpClient) : base(httpClient)
@@ -311,4 +311,3 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
         return await JsonSerializer.DeserializeAsync<ManagedObjectUser?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

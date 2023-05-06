@@ -17,7 +17,7 @@ namespace Com.Cumulocity.Client.Api;
 /// API methods to retrieve the bootstrap user of an application. <br />
 /// </summary>
 ///
-#nullable enable
+
 public interface IBootstrapUserApi
 {
 	
@@ -51,4 +51,3 @@ public interface IBootstrapUserApi
     ///
     Task<BootstrapUser?> GetBootstrapUser(string id, CancellationToken cToken = default) ;
 }
-#nullable disable

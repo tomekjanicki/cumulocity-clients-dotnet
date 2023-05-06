@@ -19,7 +19,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public interface IChildOperationsApi
 {
 	
@@ -860,4 +860,3 @@ public interface IChildOperationsApi
     ///
     Task<System.IO.Stream> UnassignChildDevice(string id, string childId, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) ;
 }
-#nullable disable

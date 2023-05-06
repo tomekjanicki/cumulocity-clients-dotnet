@@ -25,7 +25,7 @@ namespace Com.Cumulocity.Client.Api;
 /// API methods to retrieve and update the current application and to retrieve its subscribers.It is the authenticated microservice user's application. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class CurrentApplicationApi : AdaptableApi, ICurrentApplicationApi
 {
     public CurrentApplicationApi(HttpClient httpClient) : base(httpClient)
@@ -112,4 +112,3 @@ public class CurrentApplicationApi : AdaptableApi, ICurrentApplicationApi
         return await JsonSerializer.DeserializeAsync<ApplicationUserCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

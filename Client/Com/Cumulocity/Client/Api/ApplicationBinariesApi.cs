@@ -25,7 +25,7 @@ namespace Com.Cumulocity.Client.Api;
 /// An API method to upload an application binary. It is a deployable microservice or web application. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class ApplicationBinariesApi : AdaptableApi, IApplicationBinariesApi
 {
     public ApplicationBinariesApi(HttpClient httpClient) : base(httpClient)
@@ -110,4 +110,3 @@ public class ApplicationBinariesApi : AdaptableApi, IApplicationBinariesApi
         return responseStream;
     }
 }
-#nullable disable

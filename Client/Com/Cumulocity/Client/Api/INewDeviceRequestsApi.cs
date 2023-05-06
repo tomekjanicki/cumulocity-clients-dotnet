@@ -19,7 +19,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST/PUT requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public interface INewDeviceRequestsApi
 {
 	
@@ -173,4 +173,3 @@ public interface INewDeviceRequestsApi
     ///
     Task<System.IO.Stream> DeleteNewDeviceRequest(string requestId, CancellationToken cToken = default) ;
 }
-#nullable disable

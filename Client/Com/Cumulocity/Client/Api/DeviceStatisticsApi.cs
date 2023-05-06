@@ -64,7 +64,7 @@ namespace Com.Cumulocity.Client.Api;
 /// Separately for each child. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class DeviceStatisticsApi : AdaptableApi, IDeviceStatisticsApi
 {
     public DeviceStatisticsApi(HttpClient httpClient) : base(httpClient)
@@ -119,4 +119,3 @@ public class DeviceStatisticsApi : AdaptableApi, IDeviceStatisticsApi
         return await JsonSerializer.DeserializeAsync<DeviceStatisticsCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

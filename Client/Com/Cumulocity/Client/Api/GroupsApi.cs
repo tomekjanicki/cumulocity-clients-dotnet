@@ -27,7 +27,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST/PUT requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class GroupsApi : AdaptableApi, IGroupsApi
 {
     public GroupsApi(HttpClient httpClient) : base(httpClient)
@@ -190,4 +190,3 @@ public class GroupsApi : AdaptableApi, IGroupsApi
         return await JsonSerializer.DeserializeAsync<GroupReferenceCollection<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

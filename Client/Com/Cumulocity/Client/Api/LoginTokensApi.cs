@@ -25,7 +25,7 @@ namespace Com.Cumulocity.Client.Api;
 /// API methods to obtain access tokens to the Cumulocity IoT platform in case of OAI-Secure or SSO authentication. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class LoginTokensApi : AdaptableApi, ILoginTokensApi
 {
     public LoginTokensApi(HttpClient httpClient) : base(httpClient)
@@ -33,4 +33,3 @@ public class LoginTokensApi : AdaptableApi, ILoginTokensApi
     }
 	
 }
-#nullable disable

@@ -18,7 +18,7 @@ namespace Com.Cumulocity.Client.Api;
 /// An API method to upload an application binary. It is a deployable microservice or web application. <br />
 /// </summary>
 ///
-#nullable enable
+
 public interface IApplicationBinariesApi
 {
 	
@@ -146,4 +146,3 @@ public interface IApplicationBinariesApi
     ///
     Task<System.IO.Stream> DeleteApplicationAttachment(string id, string binaryId, CancellationToken cToken = default) ;
 }
-#nullable disable

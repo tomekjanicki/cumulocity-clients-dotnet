@@ -25,7 +25,7 @@ namespace Com.Cumulocity.Client.Api;
 /// Methods to create, retrieve and delete notification subscriptions. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class SubscriptionsApi : AdaptableApi, ISubscriptionsApi
 {
     public SubscriptionsApi(HttpClient httpClient) : base(httpClient)
@@ -145,4 +145,3 @@ public class SubscriptionsApi : AdaptableApi, ISubscriptionsApi
         return responseStream;
     }
 }
-#nullable disable

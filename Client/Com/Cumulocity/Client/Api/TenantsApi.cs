@@ -38,7 +38,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST/PUT requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class TenantsApi : AdaptableApi, ITenantsApi
 {
     public TenantsApi(HttpClient httpClient) : base(httpClient)
@@ -206,4 +206,3 @@ public class TenantsApi : AdaptableApi, ITenantsApi
         return await JsonSerializer.DeserializeAsync<TenantTfaData?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

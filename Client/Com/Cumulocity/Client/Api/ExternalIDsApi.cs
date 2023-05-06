@@ -26,7 +26,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class ExternalIDsApi : AdaptableApi, IExternalIDsApi
 {
     public ExternalIDsApi(HttpClient httpClient) : base(httpClient)
@@ -110,4 +110,3 @@ public class ExternalIDsApi : AdaptableApi, IExternalIDsApi
         return responseStream;
     }
 }
-#nullable disable

@@ -20,7 +20,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header must be provided in all POST/PUT requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public interface ITrustedCertificatesApi
 {
 	
@@ -402,4 +402,3 @@ public interface ITrustedCertificatesApi
     ///
     Task<VerifyCertificateChain?> ValidateChainByHeader(string? xCumulocityTenantId = null, string? xCumulocityClientCertChain = null, CancellationToken cToken = default) ;
 }
-#nullable disable

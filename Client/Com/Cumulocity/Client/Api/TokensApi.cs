@@ -25,7 +25,7 @@ namespace Com.Cumulocity.Client.Api;
 /// In order to receive subscribed notifications, a consumer application or microservice must obtain an authorization token that provides proof that the holder is allowed to receive subscribed notifications. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class TokensApi : AdaptableApi, ITokensApi
 {
     public TokensApi(HttpClient httpClient) : base(httpClient)
@@ -76,4 +76,3 @@ public class TokensApi : AdaptableApi, ITokensApi
         return await JsonSerializer.DeserializeAsync<NotificationSubscriptionResult?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

@@ -19,7 +19,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public interface ITenantApplicationsApi
 {
 	
@@ -134,4 +134,3 @@ public interface ITenantApplicationsApi
     ///
     Task<System.IO.Stream> UnsubscribeApplication(string tenantId, string applicationId, CancellationToken cToken = default) ;
 }
-#nullable disable

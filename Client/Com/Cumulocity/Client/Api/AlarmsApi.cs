@@ -26,7 +26,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST/PUT requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class AlarmsApi : AdaptableApi, IAlarmsApi
 {
     public AlarmsApi(HttpClient httpClient) : base(httpClient)
@@ -254,4 +254,3 @@ public class AlarmsApi : AdaptableApi, IAlarmsApi
         return await JsonSerializer.DeserializeAsync<int>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

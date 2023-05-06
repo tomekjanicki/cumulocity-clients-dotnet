@@ -107,7 +107,7 @@ namespace Com.Cumulocity.Client.Api;
 /// The microservice usage's information is stored in the <c>resources</c> object. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
 {
     public UsageStatisticsApi(HttpClient httpClient) : base(httpClient)
@@ -267,4 +267,3 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
         return responseStream;
     }
 }
-#nullable disable

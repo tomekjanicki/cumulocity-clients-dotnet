@@ -27,7 +27,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: If OAuth external is the only login option shown in the response, the user will be automatically redirected to the SSO login screen. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
 {
     public LoginOptionsApi(HttpClient httpClient) : base(httpClient)
@@ -162,4 +162,3 @@ public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
         return await JsonSerializer.DeserializeAsync<AuthConfig?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

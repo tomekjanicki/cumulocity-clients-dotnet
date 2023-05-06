@@ -18,7 +18,7 @@ namespace Com.Cumulocity.Client.Api;
 /// Methods to create, retrieve and delete notification subscriptions. <br />
 /// </summary>
 ///
-#nullable enable
+
 public interface ISubscriptionsApi
 {
 	
@@ -230,4 +230,3 @@ public interface ISubscriptionsApi
     ///
     Task<System.IO.Stream> DeleteSubscription(string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) ;
 }
-#nullable disable

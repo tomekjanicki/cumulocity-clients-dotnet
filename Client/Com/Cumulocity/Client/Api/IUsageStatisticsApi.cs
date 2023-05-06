@@ -100,7 +100,7 @@ namespace Com.Cumulocity.Client.Api;
 /// The microservice usage's information is stored in the <c>resources</c> object. <br />
 /// </summary>
 ///
-#nullable enable
+
 public interface IUsageStatisticsApi
 {
 	
@@ -330,4 +330,3 @@ public interface IUsageStatisticsApi
     ///
     Task<System.IO.Stream> GetLatestStatisticsFile(System.DateTime month, CancellationToken cToken = default) ;
 }
-#nullable disable

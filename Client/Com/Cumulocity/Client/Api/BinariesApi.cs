@@ -26,7 +26,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST/PUT requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class BinariesApi : AdaptableApi, IBinariesApi
 {
     public BinariesApi(HttpClient httpClient) : base(httpClient)
@@ -146,4 +146,3 @@ public class BinariesApi : AdaptableApi, IBinariesApi
         return responseStream;
     }
 }
-#nullable disable

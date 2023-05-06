@@ -15,7 +15,7 @@ using Com.Cumulocity.Client.Supplementary;
 using Com.Cumulocity.Client.Model;
 
 namespace Com.Cumulocity.Client.Api;
-#nullable enable
+
 [TestClass]
 public class InventoryRolesApiTest
 {
@@ -46,4 +46,3 @@ public class InventoryRolesApiTest
         Debug.Assert(response != null);
     }
 }
-#nullable disable

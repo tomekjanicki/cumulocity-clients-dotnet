@@ -186,7 +186,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ]]>
 /// </summary>
 ///
-#nullable enable
+
 public class RealtimeNotificationApi : AdaptableApi, IRealtimeNotificationApi
 {
     public RealtimeNotificationApi(HttpClient httpClient) : base(httpClient)
@@ -219,4 +219,3 @@ public class RealtimeNotificationApi : AdaptableApi, IRealtimeNotificationApi
         return await JsonSerializer.DeserializeAsync<RealtimeNotification?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

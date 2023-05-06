@@ -25,7 +25,7 @@ namespace Com.Cumulocity.Client.Api;
 /// API methods to retrieve, create, update and delete application versions. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
 {
     public ApplicationVersionsApi(HttpClient httpClient) : base(httpClient)
@@ -142,4 +142,3 @@ public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
         return await JsonSerializer.DeserializeAsync<ApplicationVersion?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

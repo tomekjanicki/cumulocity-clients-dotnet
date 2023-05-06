@@ -39,7 +39,7 @@ namespace Com.Cumulocity.Client.Api;
 /// The Accept header should be provided in all POST/PUT requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class BulkOperationsApi : AdaptableApi, IBulkOperationsApi
 {
     public BulkOperationsApi(HttpClient httpClient) : base(httpClient)
@@ -160,4 +160,3 @@ public class BulkOperationsApi : AdaptableApi, IBulkOperationsApi
         return responseStream;
     }
 }
-#nullable disable

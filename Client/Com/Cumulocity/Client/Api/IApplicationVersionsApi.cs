@@ -18,7 +18,7 @@ namespace Com.Cumulocity.Client.Api;
 /// API methods to retrieve, create, update and delete application versions. <br />
 /// </summary>
 ///
-#nullable enable
+
 public interface IApplicationVersionsApi
 {
 	
@@ -208,4 +208,3 @@ public interface IApplicationVersionsApi
     ///
     Task<ApplicationVersion?> UpdateApplicationVersion(ApplicationVersionTag body, string id, string version, CancellationToken cToken = default) ;
 }
-#nullable disable

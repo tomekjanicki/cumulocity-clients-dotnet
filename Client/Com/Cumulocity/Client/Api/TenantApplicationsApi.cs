@@ -26,7 +26,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class TenantApplicationsApi : AdaptableApi, ITenantApplicationsApi
 {
     public TenantApplicationsApi(HttpClient httpClient) : base(httpClient)
@@ -96,4 +96,3 @@ public class TenantApplicationsApi : AdaptableApi, ITenantApplicationsApi
         return responseStream;
     }
 }
-#nullable disable

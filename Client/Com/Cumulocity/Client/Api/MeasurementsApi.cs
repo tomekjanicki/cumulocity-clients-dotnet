@@ -26,7 +26,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class MeasurementsApi : AdaptableApi, IMeasurementsApi
 {
     public MeasurementsApi(HttpClient httpClient) : base(httpClient)
@@ -204,4 +204,3 @@ public class MeasurementsApi : AdaptableApi, IMeasurementsApi
         return await JsonSerializer.DeserializeAsync<MeasurementSeries?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

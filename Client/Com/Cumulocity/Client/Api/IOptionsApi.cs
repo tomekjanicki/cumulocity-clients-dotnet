@@ -19,7 +19,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST/PUT requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public interface IOptionsApi
 {
 	
@@ -246,4 +246,3 @@ public interface IOptionsApi
     ///
     Task<System.IO.Stream> DeleteOption(string category, string key, CancellationToken cToken = default) ;
 }
-#nullable disable

@@ -15,7 +15,7 @@ using Com.Cumulocity.Client.Supplementary;
 using Com.Cumulocity.Client.Model;
 
 namespace Com.Cumulocity.Client.Api;
-#nullable enable
+
 [TestClass]
 public class ManagedObjectsApiTest
 {
@@ -54,4 +54,3 @@ public class ManagedObjectsApiTest
         Debug.Assert(response != null);
     }
 }
-#nullable disable

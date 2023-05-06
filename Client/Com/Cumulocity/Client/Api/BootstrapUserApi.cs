@@ -25,7 +25,7 @@ namespace Com.Cumulocity.Client.Api;
 /// API methods to retrieve the bootstrap user of an application. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class BootstrapUserApi : AdaptableApi, IBootstrapUserApi
 {
     public BootstrapUserApi(HttpClient httpClient) : base(httpClient)
@@ -50,4 +50,3 @@ public class BootstrapUserApi : AdaptableApi, IBootstrapUserApi
         return await JsonSerializer.DeserializeAsync<BootstrapUser?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

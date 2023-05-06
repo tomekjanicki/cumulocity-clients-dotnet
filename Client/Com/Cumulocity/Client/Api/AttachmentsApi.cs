@@ -25,7 +25,7 @@ namespace Com.Cumulocity.Client.Api;
 /// It is possible to store, retrieve and delete binaries for events. Each event can have one binary attached. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class AttachmentsApi : AdaptableApi, IAttachmentsApi
 {
     public AttachmentsApi(HttpClient httpClient) : base(httpClient)
@@ -135,4 +135,3 @@ public class AttachmentsApi : AdaptableApi, IAttachmentsApi
         return responseStream;
     }
 }
-#nullable disable

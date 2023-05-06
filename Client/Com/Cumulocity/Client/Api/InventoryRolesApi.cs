@@ -26,7 +26,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all POST/PUT requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class InventoryRolesApi : AdaptableApi, IInventoryRolesApi
 {
     public InventoryRolesApi(HttpClient httpClient) : base(httpClient)
@@ -236,4 +236,3 @@ public class InventoryRolesApi : AdaptableApi, IInventoryRolesApi
         return responseStream;
     }
 }
-#nullable disable

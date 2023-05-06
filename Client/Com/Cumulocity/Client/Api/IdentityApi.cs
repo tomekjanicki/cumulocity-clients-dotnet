@@ -26,7 +26,7 @@ namespace Com.Cumulocity.Client.Api;
 /// The identity API resource returns URIs and URI templates for associating external identifiers with unique identifiers. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class IdentityApi : AdaptableApi, IIdentityApi
 {
     public IdentityApi(HttpClient httpClient) : base(httpClient)
@@ -51,4 +51,3 @@ public class IdentityApi : AdaptableApi, IIdentityApi
         return await JsonSerializer.DeserializeAsync<IdentityApiResource?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
     }
 }
-#nullable disable

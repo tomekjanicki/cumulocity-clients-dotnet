@@ -26,7 +26,7 @@ namespace Com.Cumulocity.Client.Api;
 /// ⓘ Info: The Accept header should be provided in all PUT requests, otherwise an empty response body will be returned. <br />
 /// </summary>
 ///
-#nullable enable
+
 public class CurrentUserApi : AdaptableApi, ICurrentUserApi
 {
     public CurrentUserApi(HttpClient httpClient) : base(httpClient)
@@ -178,4 +178,3 @@ public class CurrentUserApi : AdaptableApi, ICurrentUserApi
         return responseStream;
     }
 }
-#nullable disable
