@@ -33,7 +33,7 @@ public class CustomProperties : IWithCustomFragments
     /// </summary>
     ///
     [JsonPropertyName("customProperties")]
-    public Dictionary<string, object?> CustomFragments { get; set; } = new Dictionary<string, object?>();
+    public IDictionary<string, object?> CustomFragments { get; set; } = new Dictionary<string, object?>();
 		
     [JsonIgnore]
     public object? this[string key]

@@ -4,5 +4,5 @@ namespace Client.Com.Cumulocity.Client.Converter;
 
 public interface IWithCustomFragments
 {
-    Dictionary<string, object?> CustomFragments { get; set; }
+    IDictionary<string, object?> CustomFragments { get; set; }
 }

@@ -84,7 +84,7 @@ public abstract class BaseWithCustomFragmentsJsonConverter<T> : JsonConverter<T>
             {
                 continue;
             }
-            if (typeof(Dictionary<string, object?>).IsAssignableFrom(property.PropertyType))
+            if (typeof(IDictionary<string, object?>).IsAssignableFrom(property.PropertyType))
             {
                 HandleDictionarySerialization(writer, options, propertyValue);
 
@@ -113,7 +113,7 @@ public abstract class BaseWithCustomFragmentsJsonConverter<T> : JsonConverter<T>
 
     private static void HandleDictionarySerialization(Utf8JsonWriter writer, JsonSerializerOptions options, object propertyValue)
     {
-        var dictionary = (Dictionary<string, object?>)propertyValue;
+        var dictionary = (IDictionary<string, object?>)propertyValue;
         foreach (var item in dictionary)
         {
             writer.WritePropertyName(item.Key);

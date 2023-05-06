@@ -79,7 +79,7 @@ public class Event : IWithCustomFragments
     /// </summary>
     ///
     [JsonPropertyName("customFragments")]
-    public Dictionary<string, object?> CustomFragments { get; set; } = new Dictionary<string, object?>();
+    public IDictionary<string, object?> CustomFragments { get; set; } = new Dictionary<string, object?>();
 		
     [JsonIgnore]
     public object? this[string key]
