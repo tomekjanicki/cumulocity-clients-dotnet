@@ -199,14 +199,18 @@ public class Alarm : IWithCustomFragments
         };
         return JsonSerializer.Serialize(this, jsonOptions);
     }
-	
-    public sealed class Serialization
+
+    private static readonly Dictionary<string, System.Type> AdditionalPropertyClasses = new();
+
+    public static bool TryAddProperty(string key, System.Type type)
     {
-        public static readonly IDictionary<string, System.Type> AdditionalPropertyClasses = new Dictionary<string, System.Type>();
-		
-        public static void RegisterAdditionalProperty(string typeName, System.Type type)
+        return AdditionalPropertyClasses.TryAdd(key, type);
+    }
+
+    public sealed class AlarmJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : Alarm
+    {
+        public AlarmJsonConverter() : base(AdditionalPropertyClasses)
         {
-            AdditionalPropertyClasses[typeName] = type;
         }
     }
 }

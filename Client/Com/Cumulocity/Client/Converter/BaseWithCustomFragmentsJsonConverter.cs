@@ -10,18 +10,16 @@ namespace Client.Com.Cumulocity.Client.Converter;
 public abstract class BaseWithCustomFragmentsJsonConverter<T> : JsonConverter<T>
     where T : class, IWithCustomFragments
 {
-    private readonly Func<T> _constructorFunc;
-    private readonly IDictionary<string, Type> _additionalPropertyClasses;
+    private readonly IReadOnlyDictionary<string, Type> _additionalPropertyClasses;
 
-    protected BaseWithCustomFragmentsJsonConverter(Func<T> constructorFunc, IDictionary<string, Type> additionalPropertyClasses)
+    protected BaseWithCustomFragmentsJsonConverter(IReadOnlyDictionary<string, Type> additionalPropertyClasses)
     {
-        _constructorFunc = constructorFunc;
         _additionalPropertyClasses = additionalPropertyClasses;
     }
 
     public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        var instance = _constructorFunc();
+        var instance = (T)Activator.CreateInstance(typeof(T));
         var additionalObjects = new Dictionary<string, object?>();
         var instanceProperties = typeToConvert.GetTypeInfo().DeclaredProperties.ToList();
         using (var jsonDocument = JsonDocument.ParseValue(ref reader))

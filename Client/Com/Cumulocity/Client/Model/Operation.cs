@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -112,14 +113,18 @@ public class Operation : IWithCustomFragments
         };
         return JsonSerializer.Serialize(this, jsonOptions);
     }
-	
-    public sealed class Serialization
+
+    private static readonly Dictionary<string, System.Type> AdditionalPropertyClasses = new();
+
+    public static bool TryAddProperty(string key, System.Type type)
     {
-        public static readonly IDictionary<string, System.Type> AdditionalPropertyClasses = new Dictionary<string, System.Type>();
-		
-        public static void RegisterAdditionalProperty(string typeName, System.Type type)
+        return AdditionalPropertyClasses.TryAdd(key, type);
+    }
+
+    public sealed class OperationJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : Operation
+    {
+        public OperationJsonConverter() : base(AdditionalPropertyClasses)
         {
-            AdditionalPropertyClasses[typeName] = type;
         }
     }
 }
