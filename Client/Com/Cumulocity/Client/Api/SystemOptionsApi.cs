@@ -24,18 +24,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class SystemOptionsApi : AdaptableApi, ISystemOptionsApi
+public class SystemOptionsApi : ISystemOptionsApi
 {
-    public SystemOptionsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public SystemOptionsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<SystemOptionCollection?> GetSystemOptions(CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/system/options";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -51,9 +54,9 @@ public class SystemOptionsApi : AdaptableApi, ISystemOptionsApi
     /// <inheritdoc />
     public async Task<SystemOption?> GetSystemOption(string category, string key, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/system/options/{category}/{key}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,

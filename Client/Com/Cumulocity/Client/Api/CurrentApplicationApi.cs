@@ -23,18 +23,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class CurrentApplicationApi : AdaptableApi, ICurrentApplicationApi
+public class CurrentApplicationApi : ICurrentApplicationApi
 {
-    public CurrentApplicationApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public CurrentApplicationApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<Application?> GetCurrentApplication(CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/currentApplication";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -50,15 +53,15 @@ public class CurrentApplicationApi : AdaptableApi, ICurrentApplicationApi
     /// <inheritdoc />
     public async Task<Application?> UpdateCurrentApplication(Application body, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<Application>(body);
+        var jsonNode = body.ToJsonNode<Application>();
         jsonNode?.RemoveFromNode("owner");
         jsonNode?.RemoveFromNode("activeVersionId");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("resourcesUrl");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/currentApplication";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.application+json"),
@@ -76,9 +79,9 @@ public class CurrentApplicationApi : AdaptableApi, ICurrentApplicationApi
     /// <inheritdoc />
     public async Task<List<ApplicationSettings>?> GetCurrentApplicationSettings(CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/currentApplication/settings";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -94,9 +97,9 @@ public class CurrentApplicationApi : AdaptableApi, ICurrentApplicationApi
     /// <inheritdoc />
     public async Task<ApplicationUserCollection?> GetSubscribedUsers(CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/currentApplication/subscriptions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,

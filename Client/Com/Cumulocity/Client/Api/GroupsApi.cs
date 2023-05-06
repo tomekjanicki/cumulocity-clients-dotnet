@@ -25,18 +25,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class GroupsApi : AdaptableApi, IGroupsApi
+public class GroupsApi : IGroupsApi
 {
-    public GroupsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public GroupsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<UserGroupCollection<TCustomProperties>?> GetTenantUserGroups<TCustomProperties>(string tenantId, int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/user/{tenantId}/groups";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -58,16 +61,16 @@ public class GroupsApi : AdaptableApi, IGroupsApi
     /// <inheritdoc />
     public async Task<Group<TCustomProperties>?> CreateUserGroup<TCustomProperties>(Group<TCustomProperties> body, string tenantId, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var jsonNode = ToJsonNode<Group<TCustomProperties>>(body);
+        var jsonNode = body.ToJsonNode<Group<TCustomProperties>>();
         jsonNode?.RemoveFromNode("roles");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("devicePermissions");
         jsonNode?.RemoveFromNode("users");
         jsonNode?.RemoveFromNode("applications");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/user/{tenantId}/groups";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.group+json"),
@@ -85,9 +88,9 @@ public class GroupsApi : AdaptableApi, IGroupsApi
     /// <inheritdoc />
     public async Task<Group<TCustomProperties>?> GetUserGroup<TCustomProperties>(string tenantId, int groupId, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -103,16 +106,16 @@ public class GroupsApi : AdaptableApi, IGroupsApi
     /// <inheritdoc />
     public async Task<Group<TCustomProperties>?> UpdateUserGroup<TCustomProperties>(Group<TCustomProperties> body, string tenantId, int groupId, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var jsonNode = ToJsonNode<Group<TCustomProperties>>(body);
+        var jsonNode = body.ToJsonNode<Group<TCustomProperties>>();
         jsonNode?.RemoveFromNode("roles");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("devicePermissions");
         jsonNode?.RemoveFromNode("users");
         jsonNode?.RemoveFromNode("applications");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.group+json"),
@@ -130,9 +133,9 @@ public class GroupsApi : AdaptableApi, IGroupsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteUserGroup(string tenantId, int groupId, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,
@@ -148,9 +151,9 @@ public class GroupsApi : AdaptableApi, IGroupsApi
     /// <inheritdoc />
     public async Task<Group<TCustomProperties>?> GetUserGroupByName<TCustomProperties>(string tenantId, string groupName, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/user/{tenantId}/groupByName/{groupName}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -166,9 +169,9 @@ public class GroupsApi : AdaptableApi, IGroupsApi
     /// <inheritdoc />
     public async Task<GroupReferenceCollection<TCustomProperties>?> GetUserGroups<TCustomProperties>(string tenantId, string userId, int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/user/{tenantId}/users/{userId}/groups";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);

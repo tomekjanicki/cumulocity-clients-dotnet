@@ -25,18 +25,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
+public class ManagedObjectsApi : IManagedObjectsApi
 {
-    public ManagedObjectsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public ManagedObjectsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<ManagedObjectCollection<TManagedObject>?> GetManagedObjects<TManagedObject>(string? childAdditionId = null, string? childAssetId = null, string? childDeviceId = null, int? currentPage = null, string? fragmentType = null, List<string>? ids = null, bool? onlyRoots = null, string? owner = null, int? pageSize = null, string? q = null, string? query = null, bool? skipChildrenNames = null, string? text = null, string? type = null, bool? withChildren = null, bool? withChildrenCount = null, bool? withGroups = null, bool? withParents = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TManagedObject : ManagedObject
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/managedObjects";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("childAdditionId", childAdditionId);
         queryString.AddIfRequired("childAssetId", childAssetId);
@@ -74,7 +77,7 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     /// <inheritdoc />
     public async Task<TManagedObject?> CreateManagedObject<TManagedObject>(TManagedObject body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) where TManagedObject : ManagedObject
     {
-        var jsonNode = ToJsonNode<TManagedObject>(body);
+        var jsonNode = body.ToJsonNode<TManagedObject>();
         jsonNode?.RemoveFromNode("owner");
         jsonNode?.RemoveFromNode("additionParents");
         jsonNode?.RemoveFromNode("lastUpdated");
@@ -86,9 +89,9 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
         jsonNode?.RemoveFromNode("assetParents");
         jsonNode?.RemoveFromNode("deviceParents");
         jsonNode?.RemoveFromNode("id");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/managedObjects";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobject+json"),
@@ -107,9 +110,9 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     /// <inheritdoc />
     public async Task<int> GetNumberOfManagedObjects(string? childAdditionId = null, string? childAssetId = null, string? childDeviceId = null, string? fragmentType = null, List<string>? ids = null, string? owner = null, string? text = null, string? type = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/managedObjects/count";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("childAdditionId", childAdditionId);
         queryString.AddIfRequired("childAssetId", childAssetId);
@@ -135,9 +138,9 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     /// <inheritdoc />
     public async Task<TManagedObject?> GetManagedObject<TManagedObject>(string id, bool? skipChildrenNames = null, bool? withChildren = null, bool? withChildrenCount = null, bool? withParents = null, CancellationToken cToken = default) where TManagedObject : ManagedObject
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/managedObjects/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("skipChildrenNames", skipChildrenNames);
         queryString.AddIfRequired("withChildren", withChildren);
@@ -159,7 +162,7 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     /// <inheritdoc />
     public async Task<TManagedObject?> UpdateManagedObject<TManagedObject>(TManagedObject body, string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) where TManagedObject : ManagedObject
     {
-        var jsonNode = ToJsonNode<TManagedObject>(body);
+        var jsonNode = body.ToJsonNode<TManagedObject>();
         jsonNode?.RemoveFromNode("owner");
         jsonNode?.RemoveFromNode("additionParents");
         jsonNode?.RemoveFromNode("lastUpdated");
@@ -171,9 +174,9 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
         jsonNode?.RemoveFromNode("assetParents");
         jsonNode?.RemoveFromNode("deviceParents");
         jsonNode?.RemoveFromNode("id");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/managedObjects/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobject+json"),
@@ -192,9 +195,9 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteManagedObject(string id, string? xCumulocityProcessingMode = null, bool? cascade = null, bool? forceCascade = null, bool? withDeviceUser = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/managedObjects/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("cascade", cascade);
         queryString.AddIfRequired("forceCascade", forceCascade);
@@ -216,9 +219,9 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     /// <inheritdoc />
     public async Task<System.DateTime> GetLatestAvailability(string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/availability";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -234,9 +237,9 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     /// <inheritdoc />
     public async Task<SupportedMeasurements?> GetSupportedMeasurements(string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/supportedMeasurements";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -252,9 +255,9 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     /// <inheritdoc />
     public async Task<SupportedSeries?> GetSupportedSeries(string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/supportedSeries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -270,9 +273,9 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     /// <inheritdoc />
     public async Task<ManagedObjectUser?> GetManagedObjectUser(string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/user";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -288,12 +291,12 @@ public class ManagedObjectsApi : AdaptableApi, IManagedObjectsApi
     /// <inheritdoc />
     public async Task<ManagedObjectUser?> UpdateManagedObjectUser(ManagedObjectUser body, string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<ManagedObjectUser>(body);
+        var jsonNode = body.ToJsonNode<ManagedObjectUser>();
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("userName");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/managedObjects/{id}/user";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.managedobjectuser+json"),

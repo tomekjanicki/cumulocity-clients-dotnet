@@ -24,18 +24,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class OperationsApi : AdaptableApi, IOperationsApi
+public class OperationsApi : IOperationsApi
 {
-    public OperationsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public OperationsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<OperationCollection<TOperation>?> GetOperations<TOperation>(string? agentId = null, string? bulkOperationId = null, int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? deviceId = null, string? fragmentType = null, int? pageSize = null, bool? revert = null, string? status = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TOperation : Operation
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/devicecontrol/operations";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("agentId", agentId);
         queryString.AddIfRequired("bulkOperationId", bulkOperationId);
@@ -65,7 +68,7 @@ public class OperationsApi : AdaptableApi, IOperationsApi
     /// <inheritdoc />
     public async Task<TOperation?> CreateOperation<TOperation>(TOperation body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) where TOperation : Operation
     {
-        var jsonNode = ToJsonNode<TOperation>(body);
+        var jsonNode = body.ToJsonNode<TOperation>();
         jsonNode?.RemoveFromNode("creationTime");
         jsonNode?.RemoveFromNode("deviceExternalIDs", "self");
         jsonNode?.RemoveFromNode("bulkOperationId");
@@ -73,9 +76,9 @@ public class OperationsApi : AdaptableApi, IOperationsApi
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("status");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/devicecontrol/operations";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.operation+json"),
@@ -94,9 +97,9 @@ public class OperationsApi : AdaptableApi, IOperationsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteOperations(string? xCumulocityProcessingMode = null, string? agentId = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? deviceId = null, string? status = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/devicecontrol/operations";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("agentId", agentId);
         queryString.AddIfRequired("dateFrom", dateFrom);
@@ -120,9 +123,9 @@ public class OperationsApi : AdaptableApi, IOperationsApi
     /// <inheritdoc />
     public async Task<TOperation?> GetOperation<TOperation>(string id, CancellationToken cToken = default) where TOperation : Operation
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/devicecontrol/operations/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -138,7 +141,7 @@ public class OperationsApi : AdaptableApi, IOperationsApi
     /// <inheritdoc />
     public async Task<TOperation?> UpdateOperation<TOperation>(TOperation body, string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) where TOperation : Operation
     {
-        var jsonNode = ToJsonNode<TOperation>(body);
+        var jsonNode = body.ToJsonNode<TOperation>();
         jsonNode?.RemoveFromNode("creationTime");
         jsonNode?.RemoveFromNode("deviceExternalIDs", "self");
         jsonNode?.RemoveFromNode("bulkOperationId");
@@ -146,9 +149,9 @@ public class OperationsApi : AdaptableApi, IOperationsApi
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("deviceId");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/devicecontrol/operations/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.operation+json"),

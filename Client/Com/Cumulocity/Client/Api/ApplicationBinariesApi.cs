@@ -22,18 +22,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class ApplicationBinariesApi : AdaptableApi, IApplicationBinariesApi
+public class ApplicationBinariesApi : IApplicationBinariesApi
 {
-    public ApplicationBinariesApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public ApplicationBinariesApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<ApplicationBinaries?> GetApplicationAttachments(string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -49,9 +52,9 @@ public class ApplicationBinariesApi : AdaptableApi, IApplicationBinariesApi
     /// <inheritdoc />
     public async Task<Application?> UploadApplicationAttachment(byte[] file, string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
         var fileContentFile = new ByteArrayContent(file);
         fileContentFile.Headers.ContentType = MediaTypeHeaderValue.Parse("application/zip");
@@ -73,9 +76,9 @@ public class ApplicationBinariesApi : AdaptableApi, IApplicationBinariesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> GetApplicationAttachment(string id, string binaryId, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}/binaries/{binaryId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -91,9 +94,9 @@ public class ApplicationBinariesApi : AdaptableApi, IApplicationBinariesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteApplicationAttachment(string id, string binaryId, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}/binaries/{binaryId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

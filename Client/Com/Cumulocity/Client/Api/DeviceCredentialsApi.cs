@@ -26,23 +26,26 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class DeviceCredentialsApi : AdaptableApi, IDeviceCredentialsApi
+public class DeviceCredentialsApi : IDeviceCredentialsApi
 {
-    public DeviceCredentialsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public DeviceCredentialsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<DeviceCredentials?> CreateDeviceCredentials(DeviceCredentials body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<DeviceCredentials>(body);
+        var jsonNode = body.ToJsonNode<DeviceCredentials>();
         jsonNode?.RemoveFromNode("password");
         jsonNode?.RemoveFromNode("tenantId");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("username");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/devicecontrol/deviceCredentials";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.devicecredentials+json"),
@@ -61,9 +64,9 @@ public class DeviceCredentialsApi : AdaptableApi, IDeviceCredentialsApi
     /// <inheritdoc />
     public async Task<BulkNewDeviceRequest?> CreateBulkDeviceCredentials(byte[] file, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/devicecontrol/bulkNewDeviceRequests";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
         var fileContentFile = new ByteArrayContent(file);
         fileContentFile.Headers.ContentType = MediaTypeHeaderValue.Parse("text/csv");

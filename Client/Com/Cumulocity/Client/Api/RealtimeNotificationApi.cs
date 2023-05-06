@@ -183,23 +183,26 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class RealtimeNotificationApi : AdaptableApi, IRealtimeNotificationApi
+public class RealtimeNotificationApi : IRealtimeNotificationApi
 {
-    public RealtimeNotificationApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public RealtimeNotificationApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<RealtimeNotification?> CreateRealtimeNotification(RealtimeNotification body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<RealtimeNotification>(body);
+        var jsonNode = body.ToJsonNode<RealtimeNotification>();
         jsonNode?.RemoveFromNode("clientId");
         jsonNode?.RemoveFromNode("data");
         jsonNode?.RemoveFromNode("error");
         jsonNode?.RemoveFromNode("successful");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/notification/realtime";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),

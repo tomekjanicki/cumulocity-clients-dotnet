@@ -16,9 +16,9 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class LoginTokensApi : AdaptableApi, ILoginTokensApi
+public class LoginTokensApi : ILoginTokensApi
 {
-    public LoginTokensApi(HttpClient httpClient) : base(httpClient)
+    public LoginTokensApi(HttpClient httpClient)
     {
     }
 	

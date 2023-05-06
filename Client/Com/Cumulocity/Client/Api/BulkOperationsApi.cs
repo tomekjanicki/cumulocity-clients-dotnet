@@ -37,18 +37,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class BulkOperationsApi : AdaptableApi, IBulkOperationsApi
+public class BulkOperationsApi : IBulkOperationsApi
 {
-    public BulkOperationsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public BulkOperationsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<BulkOperationCollection?> GetBulkOperations(int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/devicecontrol/bulkoperations";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -69,15 +72,15 @@ public class BulkOperationsApi : AdaptableApi, IBulkOperationsApi
     /// <inheritdoc />
     public async Task<BulkOperation?> CreateBulkOperation(BulkOperation body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<BulkOperation>(body);
+        var jsonNode = body.ToJsonNode<BulkOperation>();
         jsonNode?.RemoveFromNode("generalStatus");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("progress");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("status");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/devicecontrol/bulkoperations";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.bulkoperation+json"),
@@ -96,9 +99,9 @@ public class BulkOperationsApi : AdaptableApi, IBulkOperationsApi
     /// <inheritdoc />
     public async Task<BulkOperation?> GetBulkOperation(string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/devicecontrol/bulkoperations/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -114,15 +117,15 @@ public class BulkOperationsApi : AdaptableApi, IBulkOperationsApi
     /// <inheritdoc />
     public async Task<BulkOperation?> UpdateBulkOperation(BulkOperation body, string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<BulkOperation>(body);
+        var jsonNode = body.ToJsonNode<BulkOperation>();
         jsonNode?.RemoveFromNode("generalStatus");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("progress");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("status");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/devicecontrol/bulkoperations/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.bulkoperation+json"),
@@ -141,9 +144,9 @@ public class BulkOperationsApi : AdaptableApi, IBulkOperationsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteBulkOperation(string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/devicecontrol/bulkoperations/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

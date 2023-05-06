@@ -24,18 +24,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
+public class ApplicationVersionsApi : IApplicationVersionsApi
 {
-    public ApplicationVersionsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public ApplicationVersionsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<ApplicationVersion?> GetApplicationVersion(string id, string? version = null, string? tag = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}/versions?version=1.0";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("version", version);
         queryString.AddIfRequired("tag", tag);
@@ -55,9 +58,9 @@ public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
     /// <inheritdoc />
     public async Task<ApplicationVersionCollection?> GetApplicationVersions(string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}/versions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -73,9 +76,9 @@ public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
     /// <inheritdoc />
     public async Task<ApplicationVersion?> CreateApplicationVersion(byte[] applicationBinary, string applicationVersion, string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}/versions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
         var fileContentApplicationBinary = new ByteArrayContent(applicationBinary);
         fileContentApplicationBinary.Headers.ContentType = MediaTypeHeaderValue.Parse("application/zip");
@@ -100,9 +103,9 @@ public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteApplicationVersion(string id, string? version = null, string? tag = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}/versions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("version", version);
         queryString.AddIfRequired("tag", tag);
@@ -122,10 +125,10 @@ public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
     /// <inheritdoc />
     public async Task<ApplicationVersion?> UpdateApplicationVersion(ApplicationVersionTag body, string id, string version, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<ApplicationVersionTag>(body);
-        var client = HttpClient;
+        var jsonNode = body.ToJsonNode<ApplicationVersionTag>();
+        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}/versions/{version}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),

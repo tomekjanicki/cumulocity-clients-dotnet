@@ -23,19 +23,22 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class TokensApi : AdaptableApi, ITokensApi
+public class TokensApi : ITokensApi
 {
-    public TokensApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public TokensApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<NotificationToken?> CreateToken(NotificationTokenClaims body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<NotificationTokenClaims>(body);
-        var client = HttpClient;
+        var jsonNode = body.ToJsonNode<NotificationTokenClaims>();
+        var client = _httpClient;
         var resourcePath = $"/notification2/token";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),
@@ -54,9 +57,9 @@ public class TokensApi : AdaptableApi, ITokensApi
     /// <inheritdoc />
     public async Task<NotificationSubscriptionResult?> UnsubscribeSubscriber(string? xCumulocityProcessingMode = null, string? token = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/notification2/unsubscribe";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("token", token);
         uriBuilder.Query = queryString.ToString();

@@ -25,18 +25,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class MeasurementsApi : AdaptableApi, IMeasurementsApi
+public class MeasurementsApi : IMeasurementsApi
 {
-    public MeasurementsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public MeasurementsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<MeasurementCollection<TMeasurement>?> GetMeasurements<TMeasurement>(int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, int? pageSize = null, bool? revert = null, string? source = null, string? type = null, string? valueFragmentSeries = null, string? valueFragmentType = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TMeasurement : Measurement
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/measurement/measurements";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("dateFrom", dateFrom);
@@ -65,13 +68,13 @@ public class MeasurementsApi : AdaptableApi, IMeasurementsApi
     /// <inheritdoc />
     public async Task<TMeasurement?> CreateMeasurement<TMeasurement>(TMeasurement body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) where TMeasurement : Measurement
     {
-        var jsonNode = ToJsonNode<TMeasurement>(body);
+        var jsonNode = body.ToJsonNode<TMeasurement>();
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("source", "self");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/measurement/measurements";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.measurement+json"),
@@ -90,14 +93,14 @@ public class MeasurementsApi : AdaptableApi, IMeasurementsApi
     /// <inheritdoc />
     public async Task<MeasurementCollection<TMeasurement>?> CreateMeasurement<TMeasurement>(MeasurementCollection<TMeasurement> body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) where TMeasurement : Measurement
     {
-        var jsonNode = ToJsonNode<MeasurementCollection<TMeasurement>>(body);
+        var jsonNode = body.ToJsonNode<MeasurementCollection<TMeasurement>>();
         jsonNode?.RemoveFromNode("next");
         jsonNode?.RemoveFromNode("prev");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("statistics");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/measurement/measurements";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.measurementcollection+json"),
@@ -116,9 +119,9 @@ public class MeasurementsApi : AdaptableApi, IMeasurementsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteMeasurements(string? xCumulocityProcessingMode = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? fragmentType = null, string? source = null, string? type = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/measurement/measurements";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("dateFrom", dateFrom);
         queryString.AddIfRequired("dateTo", dateTo);
@@ -142,9 +145,9 @@ public class MeasurementsApi : AdaptableApi, IMeasurementsApi
     /// <inheritdoc />
     public async Task<TMeasurement?> GetMeasurement<TMeasurement>(string id, CancellationToken cToken = default) where TMeasurement : Measurement
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/measurement/measurements/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -160,9 +163,9 @@ public class MeasurementsApi : AdaptableApi, IMeasurementsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteMeasurement(string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/measurement/measurements/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,
@@ -179,9 +182,9 @@ public class MeasurementsApi : AdaptableApi, IMeasurementsApi
     /// <inheritdoc />
     public async Task<MeasurementSeries?> GetMeasurementSeries(string? aggregationType = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, bool? revert = null, List<string>? series = null, string? source = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/measurement/measurements/series";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("aggregationType", aggregationType);
         queryString.AddIfRequired("dateFrom", dateFrom);

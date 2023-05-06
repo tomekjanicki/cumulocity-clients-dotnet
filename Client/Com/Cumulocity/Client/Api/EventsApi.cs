@@ -24,18 +24,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class EventsApi : AdaptableApi, IEventsApi
+public class EventsApi : IEventsApi
 {
-    public EventsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public EventsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<EventCollection<TEvent>?> GetEvents<TEvent>(System.DateTime? createdFrom = null, System.DateTime? createdTo = null, int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? fragmentType = null, string? fragmentValue = null, System.DateTime? lastUpdatedFrom = null, System.DateTime? lastUpdatedTo = null, int? pageSize = null, bool? revert = null, string? source = null, string? type = null, bool? withSourceAssets = null, bool? withSourceDevices = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TEvent : Event
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/event/events";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("createdFrom", createdFrom);
         queryString.AddIfRequired("createdTo", createdTo);
@@ -70,15 +73,15 @@ public class EventsApi : AdaptableApi, IEventsApi
     /// <inheritdoc />
     public async Task<TEvent?> CreateEvent<TEvent>(TEvent body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) where TEvent : Event
     {
-        var jsonNode = ToJsonNode<TEvent>(body);
+        var jsonNode = body.ToJsonNode<TEvent>();
         jsonNode?.RemoveFromNode("lastUpdated");
         jsonNode?.RemoveFromNode("creationTime");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("source", "self");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/event/events";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.event+json"),
@@ -97,9 +100,9 @@ public class EventsApi : AdaptableApi, IEventsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteEvents(string? xCumulocityProcessingMode = null, System.DateTime? createdFrom = null, System.DateTime? createdTo = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? fragmentType = null, string? source = null, string? type = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/event/events";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("createdFrom", createdFrom);
         queryString.AddIfRequired("createdTo", createdTo);
@@ -125,9 +128,9 @@ public class EventsApi : AdaptableApi, IEventsApi
     /// <inheritdoc />
     public async Task<TEvent?> GetEvent<TEvent>(string id, CancellationToken cToken = default) where TEvent : Event
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/event/events/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -143,7 +146,7 @@ public class EventsApi : AdaptableApi, IEventsApi
     /// <inheritdoc />
     public async Task<TEvent?> UpdateEvent<TEvent>(TEvent body, string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) where TEvent : Event
     {
-        var jsonNode = ToJsonNode<TEvent>(body);
+        var jsonNode = body.ToJsonNode<TEvent>();
         jsonNode?.RemoveFromNode("lastUpdated");
         jsonNode?.RemoveFromNode("creationTime");
         jsonNode?.RemoveFromNode("self");
@@ -151,9 +154,9 @@ public class EventsApi : AdaptableApi, IEventsApi
         jsonNode?.RemoveFromNode("source");
         jsonNode?.RemoveFromNode("time");
         jsonNode?.RemoveFromNode("type");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/event/events/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.event+json"),
@@ -172,9 +175,9 @@ public class EventsApi : AdaptableApi, IEventsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteEvent(string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/event/events/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

@@ -24,18 +24,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class TenantApplicationsApi : AdaptableApi, ITenantApplicationsApi
+public class TenantApplicationsApi : ITenantApplicationsApi
 {
-    public TenantApplicationsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public TenantApplicationsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<ApplicationReferenceCollection?> GetSubscribedApplications(string tenantId, int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}/applications";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -57,10 +60,10 @@ public class TenantApplicationsApi : AdaptableApi, ITenantApplicationsApi
     /// <inheritdoc />
     public async Task<ApplicationReference?> SubscribeApplication(SubscribedApplicationReference body, string tenantId, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<SubscribedApplicationReference>(body);
-        var client = HttpClient;
+        var jsonNode = body.ToJsonNode<SubscribedApplicationReference>();
+        var client = _httpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}/applications";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.applicationreference+json"),
@@ -78,9 +81,9 @@ public class TenantApplicationsApi : AdaptableApi, ITenantApplicationsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> UnsubscribeApplication(string tenantId, string applicationId, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/tenants/{tenantId}/applications/{applicationId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

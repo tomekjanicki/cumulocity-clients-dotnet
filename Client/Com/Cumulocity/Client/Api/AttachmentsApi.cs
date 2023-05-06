@@ -22,18 +22,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class AttachmentsApi : AdaptableApi, IAttachmentsApi
+public class AttachmentsApi : IAttachmentsApi
 {
-    public AttachmentsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public AttachmentsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<System.IO.Stream> GetEventAttachment(string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/event/events/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -49,9 +52,9 @@ public class AttachmentsApi : AdaptableApi, IAttachmentsApi
     /// <inheritdoc />
     public async Task<EventBinary?> ReplaceEventAttachment(byte[] body, string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/event/events/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new ByteArrayContent(body),
@@ -69,9 +72,9 @@ public class AttachmentsApi : AdaptableApi, IAttachmentsApi
     /// <inheritdoc />
     public async Task<EventBinary?> UploadEventAttachment(byte[] body, string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/event/events/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new ByteArrayContent(body),
@@ -89,9 +92,9 @@ public class AttachmentsApi : AdaptableApi, IAttachmentsApi
     /// <inheritdoc />
     public async Task<EventBinary?> UploadEventAttachment(BinaryInfo pObject, byte[] file, string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/event/events/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
         var fileContentObject = new StringContent(JsonSerializer.Serialize(pObject));
         fileContentObject.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
@@ -116,9 +119,9 @@ public class AttachmentsApi : AdaptableApi, IAttachmentsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteEventAttachment(string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/event/events/{id}/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

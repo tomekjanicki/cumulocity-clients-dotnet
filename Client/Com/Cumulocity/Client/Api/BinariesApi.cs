@@ -25,18 +25,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class BinariesApi : AdaptableApi, IBinariesApi
+public class BinariesApi : IBinariesApi
 {
-    public BinariesApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public BinariesApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<BinaryCollection?> GetBinaries(string? childAdditionId = null, string? childAssetId = null, string? childDeviceId = null, int? currentPage = null, List<string>? ids = null, string? owner = null, int? pageSize = null, string? text = null, string? type = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("childAdditionId", childAdditionId);
         queryString.AddIfRequired("childAssetId", childAssetId);
@@ -64,9 +67,9 @@ public class BinariesApi : AdaptableApi, IBinariesApi
     /// <inheritdoc />
     public async Task<Binary?> UploadBinary(BinaryInfo pObject, byte[] file, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/binaries";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
         var fileContentObject = new StringContent(JsonSerializer.Serialize(pObject));
         fileContentObject.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
@@ -91,9 +94,9 @@ public class BinariesApi : AdaptableApi, IBinariesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> GetBinary(string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/binaries/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -109,9 +112,9 @@ public class BinariesApi : AdaptableApi, IBinariesApi
     /// <inheritdoc />
     public async Task<Binary?> ReplaceBinary(byte[] body, string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/binaries/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new ByteArrayContent(body),
@@ -129,9 +132,9 @@ public class BinariesApi : AdaptableApi, IBinariesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> RemoveBinary(string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/inventory/binaries/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,

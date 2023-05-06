@@ -43,18 +43,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class AuditsApi : AdaptableApi, IAuditsApi
+public class AuditsApi : IAuditsApi
 {
-    public AuditsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public AuditsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<AuditRecordCollection<TAuditRecord>?> GetAuditRecords<TAuditRecord>(string? application = null, int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, int? pageSize = null, string? source = null, string? type = null, string? user = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TAuditRecord : AuditRecord
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/audit/auditRecords";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("application", application);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -82,7 +85,7 @@ public class AuditsApi : AdaptableApi, IAuditsApi
     /// <inheritdoc />
     public async Task<TAuditRecord?> CreateAuditRecord<TAuditRecord>(TAuditRecord body, CancellationToken cToken = default) where TAuditRecord : AuditRecord
     {
-        var jsonNode = ToJsonNode<TAuditRecord>(body);
+        var jsonNode = body.ToJsonNode<TAuditRecord>();
         jsonNode?.RemoveFromNode("severity");
         jsonNode?.RemoveFromNode("application");
         jsonNode?.RemoveFromNode("creationTime");
@@ -91,9 +94,9 @@ public class AuditsApi : AdaptableApi, IAuditsApi
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("source", "self");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/audit/auditRecords";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.auditrecord+json"),
@@ -111,9 +114,9 @@ public class AuditsApi : AdaptableApi, IAuditsApi
     /// <inheritdoc />
     public async Task<TAuditRecord?> GetAuditRecord<TAuditRecord>(string id, CancellationToken cToken = default) where TAuditRecord : AuditRecord
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/audit/auditRecords/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,

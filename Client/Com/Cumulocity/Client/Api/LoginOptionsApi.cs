@@ -25,18 +25,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
+public class LoginOptionsApi : ILoginOptionsApi
 {
-    public LoginOptionsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public LoginOptionsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<LoginOptionCollection?> GetLoginOptions(bool? management = null, string? tenantId = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/loginOptions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("management", management);
         queryString.AddIfRequired("tenantId", tenantId);
@@ -56,12 +59,12 @@ public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
     /// <inheritdoc />
     public async Task<AuthConfig?> CreateLoginOption(AuthConfig body, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<AuthConfig>(body);
+        var jsonNode = body.ToJsonNode<AuthConfig>();
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/loginOptions";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.authconfig+json"),
@@ -79,9 +82,9 @@ public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
     /// <inheritdoc />
     public async Task<AuthConfig?> GetLoginOption(string typeOrId, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/loginOptions/{typeOrId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -97,11 +100,11 @@ public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
     /// <inheritdoc />
     public async Task<AuthConfig?> UpdateLoginOption(AuthConfig body, string typeOrId, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<AuthConfig>(body);
+        var jsonNode = body.ToJsonNode<AuthConfig>();
         jsonNode?.RemoveFromNode("self");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/loginOptions/{typeOrId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.authconfig+json"),
@@ -120,9 +123,9 @@ public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteLoginOption(string typeOrId, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/loginOptions/{typeOrId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Delete,
@@ -138,10 +141,10 @@ public class LoginOptionsApi : AdaptableApi, ILoginOptionsApi
     /// <inheritdoc />
     public async Task<AuthConfig?> UpdateLoginOptionAccess(AuthConfigAccess body, string typeOrId, string? targetTenant = null, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<AuthConfigAccess>(body);
-        var client = HttpClient;
+        var jsonNode = body.ToJsonNode<AuthConfigAccess>();
+        var client = _httpClient;
         var resourcePath = $"/tenant/loginOptions/{typeOrId}/restrict";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("targetTenant", targetTenant);
         uriBuilder.Query = queryString.ToString();

@@ -51,18 +51,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class DevicePermissionsApi : AdaptableApi, IDevicePermissionsApi
+public class DevicePermissionsApi : IDevicePermissionsApi
 {
-    public DevicePermissionsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public DevicePermissionsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<DevicePermissions<TCustomProperties>?> GetDevicePermissionAssignments<TCustomProperties>(string id, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/user/devicePermissions/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -78,10 +81,10 @@ public class DevicePermissionsApi : AdaptableApi, IDevicePermissionsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> UpdateDevicePermissionAssignments<TCustomProperties>(DevicePermissions<TCustomProperties> body, string id, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var jsonNode = ToJsonNode<DevicePermissions<TCustomProperties>>(body);
-        var client = HttpClient;
+        var jsonNode = body.ToJsonNode<DevicePermissions<TCustomProperties>>();
+        var client = _httpClient;
         var resourcePath = $"/user/devicePermissions/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),

@@ -106,18 +106,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
+public class UsageStatisticsApi : IUsageStatisticsApi
 {
-    public UsageStatisticsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public UsageStatisticsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<TenantUsageStatisticsCollection?> GetTenantUsageStatisticsCollectionResource(int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/statistics";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("dateFrom", dateFrom);
@@ -141,9 +144,9 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
     /// <inheritdoc />
     public async Task<SummaryTenantUsageStatistics?> GetTenantUsageStatistics(System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? tenant = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/statistics/summary";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("dateFrom", dateFrom);
         queryString.AddIfRequired("dateTo", dateTo);
@@ -164,9 +167,9 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
     /// <inheritdoc />
     public async Task<List<SummaryAllTenantsUsageStatistics<TCustomProperties>>?> GetTenantsUsageStatistics<TCustomProperties>(System.DateTime? dateFrom = null, System.DateTime? dateTo = null, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/statistics/allTenantsSummary";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("dateFrom", dateFrom);
         queryString.AddIfRequired("dateTo", dateTo);
@@ -186,9 +189,9 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
     /// <inheritdoc />
     public async Task<TenantUsageStatisticsFileCollection?> GetMetadata(int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, int? pageSize = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/statistics/files";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("dateFrom", dateFrom);
@@ -211,10 +214,10 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
     /// <inheritdoc />
     public async Task<StatisticsFile?> GenerateStatisticsFile(RangeStatisticsFile body, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<RangeStatisticsFile>(body);
-        var client = HttpClient;
+        var jsonNode = body.ToJsonNode<RangeStatisticsFile>();
+        var client = _httpClient;
         var resourcePath = $"/tenant/statistics/files";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.tenantstatisticsdate+json"),
@@ -232,9 +235,9 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> GetStatisticsFile(string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/statistics/files/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -250,9 +253,9 @@ public class UsageStatisticsApi : AdaptableApi, IUsageStatisticsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> GetLatestStatisticsFile(System.DateTime month, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/tenant/statistics/files/latest/{month}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,

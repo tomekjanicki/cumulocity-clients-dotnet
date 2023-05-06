@@ -27,18 +27,21 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class ApplicationsApi : AdaptableApi, IApplicationsApi
+public class ApplicationsApi : IApplicationsApi
 {
-    public ApplicationsApi(HttpClient httpClient) : base(httpClient)
+    private readonly HttpClient _httpClient;
+
+    public ApplicationsApi(HttpClient httpClient)
     {
+        _httpClient = httpClient;
     }
 	
     /// <inheritdoc />
     public async Task<ApplicationCollection?> GetApplications(int? currentPage = null, string? name = null, string? owner = null, int? pageSize = null, string? providedFor = null, string? subscriber = null, string? tenant = null, string? type = null, string? user = null, bool? withTotalElements = null, bool? withTotalPages = null, bool? hasVersions = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("name", name);
@@ -68,15 +71,15 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     /// <inheritdoc />
     public async Task<Application?> CreateApplication(Application body, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<Application>(body);
+        var jsonNode = body.ToJsonNode<Application>();
         jsonNode?.RemoveFromNode("owner");
         jsonNode?.RemoveFromNode("activeVersionId");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("resourcesUrl");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.application+json"),
@@ -95,9 +98,9 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     /// <inheritdoc />
     public async Task<Application?> GetApplication(string id, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -113,16 +116,16 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     /// <inheritdoc />
     public async Task<Application?> UpdateApplication(Application body, string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var jsonNode = ToJsonNode<Application>(body);
+        var jsonNode = body.ToJsonNode<Application>();
         jsonNode?.RemoveFromNode("owner");
         jsonNode?.RemoveFromNode("activeVersionId");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("type");
         jsonNode?.RemoveFromNode("resourcesUrl");
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/vnd.com.nsn.cumulocity.application+json"),
@@ -141,9 +144,9 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteApplication(string id, bool? force = null, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("force", force);
         uriBuilder.Query = queryString.ToString();
@@ -163,9 +166,9 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     /// <inheritdoc />
     public async Task<Application?> CopyApplication(string id, string? version = null, string? tag = null, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}/clone";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("version", version);
         queryString.AddIfRequired("tag", tag);
@@ -186,9 +189,9 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     /// <inheritdoc />
     public async Task<ApplicationCollection?> GetApplicationsByName(string name, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applicationsByName/{name}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -204,9 +207,9 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     /// <inheritdoc />
     public async Task<ApplicationCollection?> GetApplicationsByTenant(string tenantId, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applicationsByTenant/{tenantId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
             Method = HttpMethod.Get,
@@ -222,9 +225,9 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     /// <inheritdoc />
     public async Task<ApplicationCollection?> GetApplicationsByOwner(string tenantId, int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applicationsByOwner/{tenantId}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
@@ -246,9 +249,9 @@ public class ApplicationsApi : AdaptableApi, IApplicationsApi
     /// <inheritdoc />
     public async Task<ApplicationCollection?> GetApplicationsByUser(string username, int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var client = HttpClient;
+        var client = _httpClient;
         var resourcePath = $"/application/applicationsByUser/{username}";
-        var uriBuilder = new UriBuilder(new Uri(HttpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
         queryString.AddIfRequired("pageSize", pageSize);
