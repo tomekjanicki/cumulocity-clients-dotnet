@@ -60,9 +60,9 @@ public sealed class MeasurementsApi : IMeasurementsApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.measurementcollection+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<MeasurementCollection<TMeasurement>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<MeasurementCollection<TMeasurement>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -85,9 +85,9 @@ public sealed class MeasurementsApi : IMeasurementsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.measurement+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.measurement+json, application/vnd.com.nsn.cumulocity.measurementcollection+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<TMeasurement?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<TMeasurement?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -111,9 +111,9 @@ public sealed class MeasurementsApi : IMeasurementsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.measurementcollection+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.measurement+json, application/vnd.com.nsn.cumulocity.measurementcollection+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<MeasurementCollection<TMeasurement>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<MeasurementCollection<TMeasurement>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -137,7 +137,7 @@ public sealed class MeasurementsApi : IMeasurementsApi
         request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -155,9 +155,9 @@ public sealed class MeasurementsApi : IMeasurementsApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.measurement+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<TMeasurement?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<TMeasurement?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -174,7 +174,7 @@ public sealed class MeasurementsApi : IMeasurementsApi
         request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -200,8 +200,8 @@ public sealed class MeasurementsApi : IMeasurementsApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<MeasurementSeries?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<MeasurementSeries?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 }

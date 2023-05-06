@@ -55,9 +55,9 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<ManagedObjectReferenceCollection<TManagedObject>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<ManagedObjectReferenceCollection<TManagedObject>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -77,7 +77,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.managedobjectreference+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -99,7 +99,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -132,7 +132,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.managedobject+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -154,7 +154,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -172,9 +172,9 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.managedobjectreference+json, application/vnd.com.nsn.cumulocity.error+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<ManagedObjectReference<TManagedObject>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<ManagedObjectReference<TManagedObject>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -191,7 +191,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -218,9 +218,9 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<ManagedObjectReferenceCollection<TManagedObject>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<ManagedObjectReferenceCollection<TManagedObject>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -240,7 +240,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.managedobjectreference+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -262,7 +262,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -295,7 +295,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.managedobject+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -317,7 +317,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -335,9 +335,9 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.managedobjectreference+json, application/vnd.com.nsn.cumulocity.error+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<ManagedObjectReference<TManagedObject>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<ManagedObjectReference<TManagedObject>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -354,7 +354,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -381,9 +381,9 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<ManagedObjectReferenceCollection<TManagedObject>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<ManagedObjectReferenceCollection<TManagedObject>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -403,7 +403,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.managedobjectreference+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -425,7 +425,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -458,7 +458,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.managedobject+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -480,7 +480,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.managedobjectreferencecollection+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -498,9 +498,9 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.managedobjectreference+json, application/vnd.com.nsn.cumulocity.error+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<ManagedObjectReference<TManagedObject>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<ManagedObjectReference<TManagedObject>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -517,7 +517,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
         request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }

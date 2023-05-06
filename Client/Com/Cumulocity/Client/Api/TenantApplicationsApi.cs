@@ -52,9 +52,9 @@ public sealed class TenantApplicationsApi : ITenantApplicationsApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.applicationreferencecollection+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<ApplicationReferenceCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<ApplicationReferenceCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -73,9 +73,9 @@ public sealed class TenantApplicationsApi : ITenantApplicationsApi
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.applicationreference+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.applicationreference+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<ApplicationReference?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<ApplicationReference?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -91,7 +91,7 @@ public sealed class TenantApplicationsApi : ITenantApplicationsApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }

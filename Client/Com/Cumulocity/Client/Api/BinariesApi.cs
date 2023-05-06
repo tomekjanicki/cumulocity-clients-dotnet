@@ -59,9 +59,9 @@ public sealed class BinariesApi : IBinariesApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.managedobjectcollection+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<BinaryCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<BinaryCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -86,9 +86,9 @@ public sealed class BinariesApi : IBinariesApi
         request.Headers.TryAddWithoutValidation("Content-Type", "multipart/form-data");
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.managedobject+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<Binary?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<Binary?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -104,7 +104,7 @@ public sealed class BinariesApi : IBinariesApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/octet-stream");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
@@ -124,9 +124,9 @@ public sealed class BinariesApi : IBinariesApi
         request.Headers.TryAddWithoutValidation("Content-Type", "text/plain");
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.managedobject+json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<Binary?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+        return await JsonSerializer.DeserializeAsync<Binary?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -142,7 +142,7 @@ public sealed class BinariesApi : IBinariesApi
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
         using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
     }
