@@ -12,44 +12,43 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+[JsonConverter(typeof(CategoryOptionsJsonConverter<CategoryOptions>))]
+public class CategoryOptions 
 {
-	[JsonConverter(typeof(CategoryOptionsJsonConverter<CategoryOptions>))]
-	public class CategoryOptions 
-	{
 	
-		/// <summary> 
-		/// It is possible to specify an arbitrary number of existing options as a list of key-value pairs, for example, <c>"key1": "value1"</c>, <c>"key2": "value2"</c>. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("keyValuePairs")]
-		public Dictionary<string, object> KeyValuePairs { get; set; } = new Dictionary<string, object>();
+    /// <summary> 
+    /// It is possible to specify an arbitrary number of existing options as a list of key-value pairs, for example, <c>"key1": "value1"</c>, <c>"key2": "value2"</c>. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("keyValuePairs")]
+    public Dictionary<string, object> KeyValuePairs { get; set; } = new Dictionary<string, object>();
 		
-		[JsonIgnore]
-		public object this[string key]
-		{
-			get => KeyValuePairs[key];
-			set => KeyValuePairs[key] = value;
-		}
+    [JsonIgnore]
+    public object this[string key]
+    {
+        get => KeyValuePairs[key];
+        set => KeyValuePairs[key] = value;
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 	
-		public class Serialization
-		{
-			public static readonly IDictionary<string, System.Type> AdditionalPropertyClasses = new Dictionary<string, System.Type>();
+    public class Serialization
+    {
+        public static readonly IDictionary<string, System.Type> AdditionalPropertyClasses = new Dictionary<string, System.Type>();
 		
-			public static void RegisterAdditionalProperty(string typeName, System.Type type)
-			{
-				AdditionalPropertyClasses[typeName] = type;
-			}
-		}
-	}
+        public static void RegisterAdditionalProperty(string typeName, System.Type type)
+        {
+            AdditionalPropertyClasses[typeName] = type;
+        }
+    }
 }

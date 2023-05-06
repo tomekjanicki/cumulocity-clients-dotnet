@@ -14,38 +14,36 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Com.Cumulocity.Client.Supplementary;
 using Com.Cumulocity.Client.Model;
 
-namespace Com.Cumulocity.Client.Api 
+namespace Com.Cumulocity.Client.Api;
+#nullable enable
+[TestClass]
+public class RetentionRulesApiTest
 {
-	#nullable enable
-	[TestClass]
-	public class RetentionRulesApiTest
-	{
 	
-		private static HttpClient? HttpClient { get; set; }
+    private static HttpClient? HttpClient { get; set; }
 	
-		[ClassInitialize]
-		public static void SetupHttpClient(TestContext context)
-		{
-			var configuration = new TestConfiguration();
-			configuration.Load();
+    [ClassInitialize]
+    public static void SetupHttpClient(TestContext context)
+    {
+        var configuration = new TestConfiguration();
+        configuration.Load();
 	
-			var httpClientHandler = new HttpClientHandler()
-			{
-				Credentials = new NetworkCredential(configuration.Username, configuration.Password)
-			};
-			RetentionRulesApiTest.HttpClient = new HttpClient(httpClientHandler)
-			{
-				BaseAddress = new Uri(configuration.Hostname)
-			};
-		}
+        var httpClientHandler = new HttpClientHandler()
+        {
+            Credentials = new NetworkCredential(configuration.Username, configuration.Password)
+        };
+        RetentionRulesApiTest.HttpClient = new HttpClient(httpClientHandler)
+        {
+            BaseAddress = new Uri(configuration.Hostname)
+        };
+    }
 	
-		[TestMethod]
-		public async void TestGetRetentionRules()
-		{
-			var api = new RetentionRulesApi(HttpClient!);
-			var response = await api.GetRetentionRules();
-			Debug.Assert(response != null);
-		}
-	}
-	#nullable disable
+    [TestMethod]
+    public async void TestGetRetentionRules()
+    {
+        var api = new RetentionRulesApi(HttpClient!);
+        var response = await api.GetRetentionRules();
+        Debug.Assert(response != null);
+    }
 }
+#nullable disable

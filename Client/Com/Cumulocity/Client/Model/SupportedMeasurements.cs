@@ -11,26 +11,25 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class SupportedMeasurements 
 {
-	public class SupportedMeasurements 
-	{
 	
-		/// <summary> 
-		/// An array containing all supported measurements of the specified managed object. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("c8y_SupportedMeasurements")]
-		public List<string> C8ySupportedMeasurements { get; set; } = new List<string>();
+    /// <summary> 
+    /// An array containing all supported measurements of the specified managed object. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("c8y_SupportedMeasurements")]
+    public List<string> C8ySupportedMeasurements { get; set; } = new List<string>();
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

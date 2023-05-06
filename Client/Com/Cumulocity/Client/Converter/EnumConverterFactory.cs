@@ -16,42 +16,41 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 
-namespace Com.Cumulocity.Client.Converter 
+namespace Com.Cumulocity.Client.Converter;
+
+public class EnumConverterFactory : JsonConverterFactory
 {
-	public class EnumConverterFactory : JsonConverterFactory
-	{
 	
-		public EnumConverterFactory()
-		{
-		}
+    public EnumConverterFactory()
+    {
+    }
 	
-		public override bool CanConvert(Type typeToConvert)
-		{
-			return typeToConvert.IsEnum;
-		}
+    public override bool CanConvert(Type typeToConvert)
+    {
+        return typeToConvert.IsEnum;
+    }
 	
-		public override JsonConverter? CreateConverter(Type typeToConvert, JsonSerializerOptions options)
-		{
-	 		var findEnumMembers = from field in typeToConvert.GetFields(BindingFlags.Public | BindingFlags.Static)
-				let attr = field.GetCustomAttribute<EnumMemberAttribute>()
-				where attr != null
-				select (field.Name, attr.Value);
-	 		var dictionary = findEnumMembers.ToDictionary(p => p.Item1, p => p.Item2);
-			var converter = new JsonStringEnumConverter(namingPolicy: new DictionaryLookupNamingPolicy(literalNames: dictionary), allowIntegerValues: false);
-			return converter.CreateConverter(typeToConvert, options);
-		}
-	}
+    public override JsonConverter? CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+    {
+        var findEnumMembers = from field in typeToConvert.GetFields(BindingFlags.Public | BindingFlags.Static)
+            let attr = field.GetCustomAttribute<EnumMemberAttribute>()
+            where attr != null
+            select (field.Name, attr.Value);
+        var dictionary = findEnumMembers.ToDictionary(p => p.Item1, p => p.Item2);
+        var converter = new JsonStringEnumConverter(namingPolicy: new DictionaryLookupNamingPolicy(literalNames: dictionary), allowIntegerValues: false);
+        return converter.CreateConverter(typeToConvert, options);
+    }
+}
 	
-	internal class DictionaryLookupNamingPolicy : JsonNamingPolicy
-	{
+internal class DictionaryLookupNamingPolicy : JsonNamingPolicy
+{
 	
-		readonly Dictionary<string, string> literalNames;
+    readonly Dictionary<string, string> literalNames;
 	
-		public DictionaryLookupNamingPolicy(Dictionary<string, string> literalNames) : base() => this.literalNames = literalNames;
+    public DictionaryLookupNamingPolicy(Dictionary<string, string> literalNames) : base() => this.literalNames = literalNames;
 	
-		public override string ConvertName(string name)
-		{
-			return literalNames.TryGetValue(name, out var value) ? value : name;
-		}
-	}
+    public override string ConvertName(string name)
+    {
+        return literalNames.TryGetValue(name, out var value) ? value : name;
+    }
 }

@@ -10,27 +10,26 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// Devices can be monitored for availability by adding a <c>c8y_RequiredAvailability</c> fragment to the device. <br />
+/// Devices that have not sent any message in the response interval are considered disconnected. The response interval can have a value between <c>-32768</c> and <c>32767</c> and any values out of range will be shrunk to the range borders. Such devices are marked as unavailable and an unavailability alarm is raised. <br />
+/// </summary>
+///
+public class C8yRequiredAvailability 
 {
-	/// <summary> 
-	/// Devices can be monitored for availability by adding a <c>c8y_RequiredAvailability</c> fragment to the device. <br />
-	/// Devices that have not sent any message in the response interval are considered disconnected. The response interval can have a value between <c>-32768</c> and <c>32767</c> and any values out of range will be shrunk to the range borders. Such devices are marked as unavailable and an unavailability alarm is raised. <br />
-	/// </summary>
-	///
-	public class C8yRequiredAvailability 
-	{
 	
-		[JsonPropertyName("responseInterval")]
-		public int? ResponseInterval { get; set; }
+    [JsonPropertyName("responseInterval")]
+    public int? ResponseInterval { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

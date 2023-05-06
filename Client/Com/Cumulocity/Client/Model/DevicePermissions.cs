@@ -11,29 +11,28 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// A list of device permissions. <br />
+/// </summary>
+///
+public class DevicePermissions<TCustomProperties> where TCustomProperties : CustomProperties
 {
-	/// <summary> 
-	/// A list of device permissions. <br />
-	/// </summary>
-	///
-	public class DevicePermissions<TCustomProperties> where TCustomProperties : CustomProperties
-	{
 	
-		[JsonPropertyName("users")]
-		public List<User<TCustomProperties>> Users { get; set; } = new List<User<TCustomProperties>>();
+    [JsonPropertyName("users")]
+    public List<User<TCustomProperties>> Users { get; set; } = new List<User<TCustomProperties>>();
 	
-		[JsonPropertyName("groups")]
-		public List<Group<TCustomProperties>> Groups { get; set; } = new List<Group<TCustomProperties>>();
+    [JsonPropertyName("groups")]
+    public List<Group<TCustomProperties>> Groups { get; set; } = new List<Group<TCustomProperties>>();
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

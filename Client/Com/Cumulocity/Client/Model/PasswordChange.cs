@@ -10,43 +10,42 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class PasswordChange 
 {
-	public class PasswordChange 
-	{
 	
-		/// <summary> 
-		/// The current password of the user performing the request. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("currentUserPassword")]
-		public string? CurrentUserPassword { get; set; }
+    /// <summary> 
+    /// The current password of the user performing the request. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("currentUserPassword")]
+    public string? CurrentUserPassword { get; set; }
 	
-		/// <summary> 
-		/// The new password to be set for the user performing the request. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("newPassword")]
-		public string? NewPassword { get; set; }
+    /// <summary> 
+    /// The new password to be set for the user performing the request. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("newPassword")]
+    public string? NewPassword { get; set; }
 	
-		public PasswordChange() 
-		{
-		}
+    public PasswordChange() 
+    {
+    }
 	
-		public PasswordChange(string currentUserPassword, string newPassword)
-		{
-			this.CurrentUserPassword = currentUserPassword;
-			this.NewPassword = newPassword;
-		}
+    public PasswordChange(string currentUserPassword, string newPassword)
+    {
+        this.CurrentUserPassword = currentUserPassword;
+        this.NewPassword = newPassword;
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

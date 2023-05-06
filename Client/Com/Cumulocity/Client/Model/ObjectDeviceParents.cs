@@ -11,37 +11,36 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// A collection of references to device parent objects. <br />
+/// </summary>
+///
+public class ObjectDeviceParents 
 {
-	/// <summary> 
-	/// A collection of references to device parent objects. <br />
-	/// </summary>
-	///
-	public class ObjectDeviceParents 
-	{
 	
-		/// <summary> 
-		/// An array with the references to parent objects. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("references")]
-		public List<ManagedObjectReferenceTuple> References { get; set; } = new List<ManagedObjectReferenceTuple>();
+    /// <summary> 
+    /// An array with the references to parent objects. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("references")]
+    public List<ManagedObjectReferenceTuple> References { get; set; } = new List<ManagedObjectReferenceTuple>();
 	
-		/// <summary> 
-		/// Link to this resource's parent objects. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("self")]
-		public string? Self { get; set; }
+    /// <summary> 
+    /// Link to this resource's parent objects. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("self")]
+    public string? Self { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

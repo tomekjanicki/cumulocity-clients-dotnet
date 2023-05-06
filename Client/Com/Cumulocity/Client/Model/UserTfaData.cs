@@ -11,61 +11,60 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class UserTfaData 
 {
-	public class UserTfaData 
-	{
 	
-		/// <summary> 
-		/// Latest date and time when the user has used two-factor authentication to log in. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("lastTfaRequestTime")]
-		public System.DateTime? LastTfaRequestTime { get; set; }
+    /// <summary> 
+    /// Latest date and time when the user has used two-factor authentication to log in. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("lastTfaRequestTime")]
+    public System.DateTime? LastTfaRequestTime { get; set; }
 	
-		/// <summary> 
-		/// Two-factor authentication strategy. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("strategy")]
-		public Strategy? PStrategy { get; set; }
+    /// <summary> 
+    /// Two-factor authentication strategy. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("strategy")]
+    public Strategy? PStrategy { get; set; }
 	
-		/// <summary> 
-		/// Indicates whether the user has enabled two-factor authentication or not. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("tfaEnabled")]
-		public bool? TfaEnabled { get; set; }
+    /// <summary> 
+    /// Indicates whether the user has enabled two-factor authentication or not. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("tfaEnabled")]
+    public bool? TfaEnabled { get; set; }
 	
-		/// <summary> 
-		/// Indicates whether two-factor authentication is enforced by the tenant admin or not. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("tfaEnforced")]
-		public bool? TfaEnforced { get; set; }
+    /// <summary> 
+    /// Indicates whether two-factor authentication is enforced by the tenant admin or not. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("tfaEnforced")]
+    public bool? TfaEnforced { get; set; }
 	
-		/// <summary> 
-		/// Two-factor authentication strategy. <br />
-		/// </summary>
-		///
-		[JsonConverter(typeof(EnumConverterFactory))]
-		public enum Strategy 
-		{
-			[EnumMember(Value = "SMS")]
-			SMS,
-			[EnumMember(Value = "TOTP")]
-			TOTP
-		}
+    /// <summary> 
+    /// Two-factor authentication strategy. <br />
+    /// </summary>
+    ///
+    [JsonConverter(typeof(EnumConverterFactory))]
+    public enum Strategy 
+    {
+        [EnumMember(Value = "SMS")]
+        SMS,
+        [EnumMember(Value = "TOTP")]
+        TOTP
+    }
 	
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

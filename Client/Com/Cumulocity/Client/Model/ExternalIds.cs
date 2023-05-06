@@ -11,33 +11,32 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class ExternalIds 
 {
-	public class ExternalIds 
-	{
 	
-		/// <summary> 
-		/// An array containing the details of all external IDs (if any). <br />
-		/// </summary>
-		///
-		[JsonPropertyName("externalIds")]
-		public List<ExternalId> PExternalIds { get; set; } = new List<ExternalId>();
+    /// <summary> 
+    /// An array containing the details of all external IDs (if any). <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("externalIds")]
+    public List<ExternalId> PExternalIds { get; set; } = new List<ExternalId>();
 	
-		/// <summary> 
-		/// A URL linking to this resource. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("self")]
-		public string? Self { get; set; }
+    /// <summary> 
+    /// A URL linking to this resource. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("self")]
+    public string? Self { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

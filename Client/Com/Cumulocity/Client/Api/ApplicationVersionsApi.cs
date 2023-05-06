@@ -19,128 +19,127 @@ using System.Web;
 using Com.Cumulocity.Client.Model;
 using Com.Cumulocity.Client.Supplementary;
 
-namespace Com.Cumulocity.Client.Api 
+namespace Com.Cumulocity.Client.Api;
+
+/// <summary> 
+/// API methods to retrieve, create, update and delete application versions. <br />
+/// </summary>
+///
+#nullable enable
+public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
 {
-	/// <summary> 
-	/// API methods to retrieve, create, update and delete application versions. <br />
-	/// </summary>
-	///
-	#nullable enable
-	public class ApplicationVersionsApi : AdaptableApi, IApplicationVersionsApi
-	{
-		public ApplicationVersionsApi(HttpClient httpClient) : base(httpClient)
-		{
-		}
+    public ApplicationVersionsApi(HttpClient httpClient) : base(httpClient)
+    {
+    }
 	
-		/// <inheritdoc />
-		public async Task<ApplicationVersion?> GetApplicationVersion(string id, string? version = null, string? tag = null, CancellationToken cToken = default) 
-		{
-			var client = HttpClient;
-			var resourcePath = $"/application/applications/{id}/versions?version=1.0";
-			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
-			queryString.AddIfRequired("version", version);
-			queryString.AddIfRequired("tag", tag);
-			uriBuilder.Query = queryString.ToString();
-			using var request = new HttpRequestMessage 
-			{
-				Method = HttpMethod.Get,
-				RequestUri = new Uri(uriBuilder.ToString())
-			};
-			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.applicationVersion+json");
-			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			await response.EnsureSuccessStatusCodeWithContentInfo().ConfigureAwait(false);;
-            await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-			return await JsonSerializer.DeserializeAsync<ApplicationVersion?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
-		}
+    /// <inheritdoc />
+    public async Task<ApplicationVersion?> GetApplicationVersion(string id, string? version = null, string? tag = null, CancellationToken cToken = default) 
+    {
+        var client = HttpClient;
+        var resourcePath = $"/application/applications/{id}/versions?version=1.0";
+        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
+        queryString.AddIfRequired("version", version);
+        queryString.AddIfRequired("tag", tag);
+        uriBuilder.Query = queryString.ToString();
+        using var request = new HttpRequestMessage 
+        {
+            Method = HttpMethod.Get,
+            RequestUri = new Uri(uriBuilder.ToString())
+        };
+        request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.applicationVersion+json");
+        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        return await JsonSerializer.DeserializeAsync<ApplicationVersion?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+    }
 		
-		/// <inheritdoc />
-		public async Task<ApplicationVersionCollection?> GetApplicationVersions(string id, CancellationToken cToken = default) 
-		{
-			var client = HttpClient;
-			var resourcePath = $"/application/applications/{id}/versions";
-			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			using var request = new HttpRequestMessage 
-			{
-				Method = HttpMethod.Get,
-				RequestUri = new Uri(uriBuilder.ToString())
-			};
-			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.applicationVersionCollection+json");
-			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			await response.EnsureSuccessStatusCodeWithContentInfo().ConfigureAwait(false);;
-            await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-			return await JsonSerializer.DeserializeAsync<ApplicationVersionCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
-		}
+    /// <inheritdoc />
+    public async Task<ApplicationVersionCollection?> GetApplicationVersions(string id, CancellationToken cToken = default) 
+    {
+        var client = HttpClient;
+        var resourcePath = $"/application/applications/{id}/versions";
+        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        using var request = new HttpRequestMessage 
+        {
+            Method = HttpMethod.Get,
+            RequestUri = new Uri(uriBuilder.ToString())
+        };
+        request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.applicationVersionCollection+json");
+        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        return await JsonSerializer.DeserializeAsync<ApplicationVersionCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+    }
 		
-		/// <inheritdoc />
-		public async Task<ApplicationVersion?> CreateApplicationVersion(byte[] applicationBinary, string applicationVersion, string id, CancellationToken cToken = default) 
-		{
-			var client = HttpClient;
-			var resourcePath = $"/application/applications/{id}/versions";
-			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			var requestContent = new MultipartFormDataContent();
-			var fileContentApplicationBinary = new ByteArrayContent(applicationBinary);
-			fileContentApplicationBinary.Headers.ContentType = MediaTypeHeaderValue.Parse("application/zip");
-			requestContent.Add(fileContentApplicationBinary, "applicationBinary");
-			var fileContentApplicationVersion = new StringContent(JsonSerializer.Serialize(applicationVersion));
-			fileContentApplicationVersion.Headers.ContentType = MediaTypeHeaderValue.Parse("text/plain");
-			requestContent.Add(fileContentApplicationVersion, "applicationVersion");
-			using var request = new HttpRequestMessage 
-			{
-				Content = requestContent,
-				Method = HttpMethod.Post,
-				RequestUri = new Uri(uriBuilder.ToString())
-			};
-			request.Headers.TryAddWithoutValidation("Content-Type", "multipart/form-data");
-			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.applicationVersion+json");
-			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			await response.EnsureSuccessStatusCodeWithContentInfo().ConfigureAwait(false);;
-            await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-			return await JsonSerializer.DeserializeAsync<ApplicationVersion?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
-		}
+    /// <inheritdoc />
+    public async Task<ApplicationVersion?> CreateApplicationVersion(byte[] applicationBinary, string applicationVersion, string id, CancellationToken cToken = default) 
+    {
+        var client = HttpClient;
+        var resourcePath = $"/application/applications/{id}/versions";
+        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var requestContent = new MultipartFormDataContent();
+        var fileContentApplicationBinary = new ByteArrayContent(applicationBinary);
+        fileContentApplicationBinary.Headers.ContentType = MediaTypeHeaderValue.Parse("application/zip");
+        requestContent.Add(fileContentApplicationBinary, "applicationBinary");
+        var fileContentApplicationVersion = new StringContent(JsonSerializer.Serialize(applicationVersion));
+        fileContentApplicationVersion.Headers.ContentType = MediaTypeHeaderValue.Parse("text/plain");
+        requestContent.Add(fileContentApplicationVersion, "applicationVersion");
+        using var request = new HttpRequestMessage 
+        {
+            Content = requestContent,
+            Method = HttpMethod.Post,
+            RequestUri = new Uri(uriBuilder.ToString())
+        };
+        request.Headers.TryAddWithoutValidation("Content-Type", "multipart/form-data");
+        request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.applicationVersion+json");
+        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        return await JsonSerializer.DeserializeAsync<ApplicationVersion?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+    }
 		
-		/// <inheritdoc />
-		public async Task<System.IO.Stream> DeleteApplicationVersion(string id, string? version = null, string? tag = null, CancellationToken cToken = default) 
-		{
-			var client = HttpClient;
-			var resourcePath = $"/application/applications/{id}/versions";
-			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
-			queryString.AddIfRequired("version", version);
-			queryString.AddIfRequired("tag", tag);
-			uriBuilder.Query = queryString.ToString();
-			using var request = new HttpRequestMessage 
-			{
-				Method = HttpMethod.Delete,
-				RequestUri = new Uri(uriBuilder.ToString())
-			};
-			request.Headers.TryAddWithoutValidation("Accept", "application/json");
-			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			await response.EnsureSuccessStatusCodeWithContentInfo().ConfigureAwait(false);;
-            await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-			return responseStream;
-		}
+    /// <inheritdoc />
+    public async Task<System.IO.Stream> DeleteApplicationVersion(string id, string? version = null, string? tag = null, CancellationToken cToken = default) 
+    {
+        var client = HttpClient;
+        var resourcePath = $"/application/applications/{id}/versions";
+        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
+        queryString.AddIfRequired("version", version);
+        queryString.AddIfRequired("tag", tag);
+        uriBuilder.Query = queryString.ToString();
+        using var request = new HttpRequestMessage 
+        {
+            Method = HttpMethod.Delete,
+            RequestUri = new Uri(uriBuilder.ToString())
+        };
+        request.Headers.TryAddWithoutValidation("Accept", "application/json");
+        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        return responseStream;
+    }
 		
-		/// <inheritdoc />
-		public async Task<ApplicationVersion?> UpdateApplicationVersion(ApplicationVersionTag body, string id, string version, CancellationToken cToken = default) 
-		{
-			var jsonNode = ToJsonNode<ApplicationVersionTag>(body);
-			var client = HttpClient;
-			var resourcePath = $"/application/applications/{id}/versions/{version}";
-			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			using var request = new HttpRequestMessage 
-			{
-				Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),
-				Method = HttpMethod.Put,
-				RequestUri = new Uri(uriBuilder.ToString())
-			};
-			request.Headers.TryAddWithoutValidation("Content-Type", "application/json");
-			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.applicationVersion+json");
-			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			await response.EnsureSuccessStatusCodeWithContentInfo().ConfigureAwait(false);;
-            await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-			return await JsonSerializer.DeserializeAsync<ApplicationVersion?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
-		}
-	}
-	#nullable disable
+    /// <inheritdoc />
+    public async Task<ApplicationVersion?> UpdateApplicationVersion(ApplicationVersionTag body, string id, string version, CancellationToken cToken = default) 
+    {
+        var jsonNode = ToJsonNode<ApplicationVersionTag>(body);
+        var client = HttpClient;
+        var resourcePath = $"/application/applications/{id}/versions/{version}";
+        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        using var request = new HttpRequestMessage 
+        {
+            Content = new StringContent(jsonNode?.ToString() ?? string.Empty, Encoding.UTF8, "application/json"),
+            Method = HttpMethod.Put,
+            RequestUri = new Uri(uriBuilder.ToString())
+        };
+        request.Headers.TryAddWithoutValidation("Content-Type", "application/json");
+        request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.applicationVersion+json");
+        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        return await JsonSerializer.DeserializeAsync<ApplicationVersion?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+    }
 }
+#nullable disable

@@ -14,46 +14,44 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Com.Cumulocity.Client.Supplementary;
 using Com.Cumulocity.Client.Model;
 
-namespace Com.Cumulocity.Client.Api 
+namespace Com.Cumulocity.Client.Api;
+#nullable enable
+[TestClass]
+public class AlarmsApiTest
 {
-	#nullable enable
-	[TestClass]
-	public class AlarmsApiTest
-	{
 	
-		private static HttpClient? HttpClient { get; set; }
+    private static HttpClient? HttpClient { get; set; }
 	
-		[ClassInitialize]
-		public static void SetupHttpClient(TestContext context)
-		{
-			var configuration = new TestConfiguration();
-			configuration.Load();
+    [ClassInitialize]
+    public static void SetupHttpClient(TestContext context)
+    {
+        var configuration = new TestConfiguration();
+        configuration.Load();
 	
-			var httpClientHandler = new HttpClientHandler()
-			{
-				Credentials = new NetworkCredential(configuration.Username, configuration.Password)
-			};
-			AlarmsApiTest.HttpClient = new HttpClient(httpClientHandler)
-			{
-				BaseAddress = new Uri(configuration.Hostname)
-			};
-		}
+        var httpClientHandler = new HttpClientHandler()
+        {
+            Credentials = new NetworkCredential(configuration.Username, configuration.Password)
+        };
+        AlarmsApiTest.HttpClient = new HttpClient(httpClientHandler)
+        {
+            BaseAddress = new Uri(configuration.Hostname)
+        };
+    }
 	
-		[TestMethod]
-		public async void TestGetAlarms()
-		{
-			var api = new AlarmsApi(HttpClient!);
-			var response = await api.GetAlarms<Alarm>();
-			Debug.Assert(response != null);
-		}
+    [TestMethod]
+    public async void TestGetAlarms()
+    {
+        var api = new AlarmsApi(HttpClient!);
+        var response = await api.GetAlarms<Alarm>();
+        Debug.Assert(response != null);
+    }
 		
-		[TestMethod]
-		public async void TestGetNumberOfAlarms()
-		{
-			var api = new AlarmsApi(HttpClient!);
-			var response = await api.GetNumberOfAlarms();
-			Debug.Assert(response != null);
-		}
-	}
-	#nullable disable
+    [TestMethod]
+    public async void TestGetNumberOfAlarms()
+    {
+        var api = new AlarmsApi(HttpClient!);
+        var response = await api.GetNumberOfAlarms();
+        Debug.Assert(response != null);
+    }
 }
+#nullable disable

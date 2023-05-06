@@ -10,29 +10,28 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// A measurement is a value with a unit. <br />
+/// </summary>
+///
+public class C8yMeasurementValue 
 {
-	/// <summary> 
-	/// A measurement is a value with a unit. <br />
-	/// </summary>
-	///
-	public class C8yMeasurementValue 
-	{
 	
-		[JsonPropertyName("value")]
-		public decimal? Value { get; set; }
+    [JsonPropertyName("value")]
+    public decimal? Value { get; set; }
 	
-		[JsonPropertyName("unit")]
-		public string? Unit { get; set; }
+    [JsonPropertyName("unit")]
+    public string? Unit { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

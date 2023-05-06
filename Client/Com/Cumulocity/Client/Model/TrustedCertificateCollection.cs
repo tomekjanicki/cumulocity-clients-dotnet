@@ -11,58 +11,57 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// A collection of trusted certificates. <br />
+/// </summary>
+///
+public class TrustedCertificateCollection 
 {
-	/// <summary> 
-	/// A collection of trusted certificates. <br />
-	/// </summary>
-	///
-	public class TrustedCertificateCollection 
-	{
 	
-		/// <summary> 
-		/// An array containing trusted certificates. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("certificates")]
-		public List<TrustedCertificate> Certificates { get; set; } = new List<TrustedCertificate>();
+    /// <summary> 
+    /// An array containing trusted certificates. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("certificates")]
+    public List<TrustedCertificate> Certificates { get; set; } = new List<TrustedCertificate>();
 	
-		/// <summary> 
-		/// A URI reference [<see href="https://tools.ietf.org/html/rfc3986" langword="RFC3986" />] to a potential next page of managed objects. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("next")]
-		public string? Next { get; set; }
+    /// <summary> 
+    /// A URI reference [<see href="https://tools.ietf.org/html/rfc3986" langword="RFC3986" />] to a potential next page of managed objects. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("next")]
+    public string? Next { get; set; }
 	
-		/// <summary> 
-		/// A URI reference [<see href="https://tools.ietf.org/html/rfc3986" langword="RFC3986" />] to a potential previous page of managed objects. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("prev")]
-		public string? Prev { get; set; }
+    /// <summary> 
+    /// A URI reference [<see href="https://tools.ietf.org/html/rfc3986" langword="RFC3986" />] to a potential previous page of managed objects. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("prev")]
+    public string? Prev { get; set; }
 	
-		/// <summary> 
-		/// A URL linking to this resource. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("self")]
-		public string? Self { get; set; }
+    /// <summary> 
+    /// A URL linking to this resource. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("self")]
+    public string? Self { get; set; }
 	
-		/// <summary> 
-		/// Information about paging statistics. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("statistics")]
-		public PageStatistics? Statistics { get; set; }
+    /// <summary> 
+    /// Information about paging statistics. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("statistics")]
+    public PageStatistics? Statistics { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

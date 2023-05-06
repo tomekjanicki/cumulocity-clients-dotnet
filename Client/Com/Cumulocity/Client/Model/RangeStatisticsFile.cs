@@ -10,43 +10,42 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class RangeStatisticsFile 
 {
-	public class RangeStatisticsFile 
-	{
 	
-		/// <summary> 
-		/// Statistics generation start date. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("dateFrom")]
-		public System.DateTime? DateFrom { get; set; }
+    /// <summary> 
+    /// Statistics generation start date. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("dateFrom")]
+    public System.DateTime? DateFrom { get; set; }
 	
-		/// <summary> 
-		/// Statistics generation end date. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("dateTo")]
-		public System.DateTime? DateTo { get; set; }
+    /// <summary> 
+    /// Statistics generation end date. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("dateTo")]
+    public System.DateTime? DateTo { get; set; }
 	
-		public RangeStatisticsFile() 
-		{
-		}
+    public RangeStatisticsFile() 
+    {
+    }
 	
-		public RangeStatisticsFile(System.DateTime dateFrom, System.DateTime dateTo)
-		{
-			this.DateFrom = dateFrom;
-			this.DateTo = dateTo;
-		}
+    public RangeStatisticsFile(System.DateTime dateFrom, System.DateTime dateTo)
+    {
+        this.DateFrom = dateFrom;
+        this.DateTo = dateTo;
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

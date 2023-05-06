@@ -10,63 +10,62 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// A type of measurement fragment. <br />
+/// </summary>
+///
+public class C8ySteam 
 {
-	/// <summary> 
-	/// A type of measurement fragment. <br />
-	/// </summary>
-	///
-	public class C8ySteam 
-	{
 	
-		[JsonPropertyName("Temperature")]
-		public Temperature? PTemperature { get; set; }
+    [JsonPropertyName("Temperature")]
+    public Temperature? PTemperature { get; set; }
 	
-		public class Temperature 
-		{
+    public class Temperature 
+    {
 		
-			/// <summary> 
-			/// The unit of the measurement. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("unit")]
-			public string? Unit { get; set; }
+        /// <summary> 
+        /// The unit of the measurement. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("unit")]
+        public string? Unit { get; set; }
 		
-			/// <summary> 
-			/// The value of the individual measurement. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("value")]
-			public decimal? Value { get; set; }
+        /// <summary> 
+        /// The value of the individual measurement. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("value")]
+        public decimal? Value { get; set; }
 		
-			public Temperature() 
-			{
-			}
+        public Temperature() 
+        {
+        }
 		
-			public Temperature(decimal value)
-			{
-				this.Value = value;
-			}
+        public Temperature(decimal value)
+        {
+            this.Value = value;
+        }
 		
-			public override string ToString()
-			{
-				var jsonOptions = new JsonSerializerOptions() 
-				{ 
-					WriteIndented = true,
-					DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-				};
-				return JsonSerializer.Serialize(this, jsonOptions);
-			}
-		}
+        public override string ToString()
+        {
+            var jsonOptions = new JsonSerializerOptions() 
+            { 
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+            return JsonSerializer.Serialize(this, jsonOptions);
+        }
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

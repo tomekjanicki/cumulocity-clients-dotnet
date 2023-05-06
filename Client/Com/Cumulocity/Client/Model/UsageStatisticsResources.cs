@@ -11,44 +11,43 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// Resources usage for each subscribed microservice application. <br />
+/// </summary>
+///
+public class UsageStatisticsResources 
 {
-	/// <summary> 
-	/// Resources usage for each subscribed microservice application. <br />
-	/// </summary>
-	///
-	public class UsageStatisticsResources 
-	{
 	
-		/// <summary> 
-		/// Total number of CPU usage for tenant microservices, specified in CPU milliseconds (1000m = 1 CPU). <br />
-		/// </summary>
-		///
-		[JsonPropertyName("cpu")]
-		public int? Cpu { get; set; }
+    /// <summary> 
+    /// Total number of CPU usage for tenant microservices, specified in CPU milliseconds (1000m = 1 CPU). <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("cpu")]
+    public int? Cpu { get; set; }
 	
-		/// <summary> 
-		/// Total number of memory usage for tenant microservices, specified in MB. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("memory")]
-		public int? Memory { get; set; }
+    /// <summary> 
+    /// Total number of memory usage for tenant microservices, specified in MB. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("memory")]
+    public int? Memory { get; set; }
 	
-		/// <summary> 
-		/// Collection of resources usage for each microservice. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("usedBy")]
-		public List<UsageStatisticsResourcesUsedBy> UsedBy { get; set; } = new List<UsageStatisticsResourcesUsedBy>();
+    /// <summary> 
+    /// Collection of resources usage for each microservice. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("usedBy")]
+    public List<UsageStatisticsResourcesUsedBy> UsedBy { get; set; } = new List<UsageStatisticsResourcesUsedBy>();
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

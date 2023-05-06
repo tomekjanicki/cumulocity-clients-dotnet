@@ -10,69 +10,68 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class SubscribedApplicationReference 
 {
-	public class SubscribedApplicationReference 
-	{
 	
-		/// <summary> 
-		/// The application to be subscribed to. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("application")]
-		public Application? PApplication { get; set; }
+    /// <summary> 
+    /// The application to be subscribed to. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("application")]
+    public Application? PApplication { get; set; }
 	
-		public SubscribedApplicationReference() 
-		{
-		}
+    public SubscribedApplicationReference() 
+    {
+    }
 	
-		public SubscribedApplicationReference(Application application)
-		{
-			this.PApplication = application;
-		}
+    public SubscribedApplicationReference(Application application)
+    {
+        this.PApplication = application;
+    }
 	
-		/// <summary> 
-		/// The application to be subscribed to. <br />
-		/// </summary>
-		///
-		public class Application 
-		{
+    /// <summary> 
+    /// The application to be subscribed to. <br />
+    /// </summary>
+    ///
+    public class Application 
+    {
 		
-			/// <summary> 
-			/// A URL linking to this resource. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("self")]
-			public string? Self { get; set; }
+        /// <summary> 
+        /// A URL linking to this resource. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("self")]
+        public string? Self { get; set; }
 		
-			public Application() 
-			{
-			}
+        public Application() 
+        {
+        }
 		
-			public Application(string self)
-			{
-				this.Self = self;
-			}
+        public Application(string self)
+        {
+            this.Self = self;
+        }
 		
-			public override string ToString()
-			{
-				var jsonOptions = new JsonSerializerOptions() 
-				{ 
-					WriteIndented = true,
-					DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-				};
-				return JsonSerializer.Serialize(this, jsonOptions);
-			}
-		}
+        public override string ToString()
+        {
+            var jsonOptions = new JsonSerializerOptions() 
+            { 
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+            return JsonSerializer.Serialize(this, jsonOptions);
+        }
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

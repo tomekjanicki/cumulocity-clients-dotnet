@@ -10,31 +10,30 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// Light is measured with two main alternative sets of units. <br />
+/// Radiometry consists of measurements of light power at all wavelengths, while photometry measures light with wavelength weighted with respect to a standardized model of human brightness perception. Photometry is useful, for example, to quantify illumination (lighting) intended for human use. <br />
+/// </summary>
+///
+public class C8yLightMeasurement 
 {
-	/// <summary> 
-	/// Light is measured with two main alternative sets of units. <br />
-	/// Radiometry consists of measurements of light power at all wavelengths, while photometry measures light with wavelength weighted with respect to a standardized model of human brightness perception. Photometry is useful, for example, to quantify illumination (lighting) intended for human use. <br />
-	/// </summary>
-	///
-	public class C8yLightMeasurement 
-	{
 	
-		/// <summary> 
-		/// A measurement is a value with a unit. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("e")]
-		public C8yMeasurementValue? E { get; set; }
+    /// <summary> 
+    /// A measurement is a value with a unit. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("e")]
+    public C8yMeasurementValue? E { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

@@ -10,26 +10,25 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// In order to send commands as text messages to devices, the devices must be put into SMS mode. To indicate that it supports SMS mode, a device needs to add the fragment <c>c8y_CommunicationMode</c> with a mode property of <c>SMS</c>. <br />
+/// </summary>
+///
+public class C8yCommunicationMode 
 {
-	/// <summary> 
-	/// In order to send commands as text messages to devices, the devices must be put into SMS mode. To indicate that it supports SMS mode, a device needs to add the fragment <c>c8y_CommunicationMode</c> with a mode property of <c>SMS</c>. <br />
-	/// </summary>
-	///
-	public class C8yCommunicationMode 
-	{
 	
-		[JsonPropertyName("mode")]
-		public string? Mode { get; set; }
+    [JsonPropertyName("mode")]
+    public string? Mode { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

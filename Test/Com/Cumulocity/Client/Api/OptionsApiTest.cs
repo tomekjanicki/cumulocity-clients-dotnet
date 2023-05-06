@@ -14,38 +14,36 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Com.Cumulocity.Client.Supplementary;
 using Com.Cumulocity.Client.Model;
 
-namespace Com.Cumulocity.Client.Api 
+namespace Com.Cumulocity.Client.Api;
+#nullable enable
+[TestClass]
+public class OptionsApiTest
 {
-	#nullable enable
-	[TestClass]
-	public class OptionsApiTest
-	{
 	
-		private static HttpClient? HttpClient { get; set; }
+    private static HttpClient? HttpClient { get; set; }
 	
-		[ClassInitialize]
-		public static void SetupHttpClient(TestContext context)
-		{
-			var configuration = new TestConfiguration();
-			configuration.Load();
+    [ClassInitialize]
+    public static void SetupHttpClient(TestContext context)
+    {
+        var configuration = new TestConfiguration();
+        configuration.Load();
 	
-			var httpClientHandler = new HttpClientHandler()
-			{
-				Credentials = new NetworkCredential(configuration.Username, configuration.Password)
-			};
-			OptionsApiTest.HttpClient = new HttpClient(httpClientHandler)
-			{
-				BaseAddress = new Uri(configuration.Hostname)
-			};
-		}
+        var httpClientHandler = new HttpClientHandler()
+        {
+            Credentials = new NetworkCredential(configuration.Username, configuration.Password)
+        };
+        OptionsApiTest.HttpClient = new HttpClient(httpClientHandler)
+        {
+            BaseAddress = new Uri(configuration.Hostname)
+        };
+    }
 	
-		[TestMethod]
-		public async void TestGetOptions()
-		{
-			var api = new OptionsApi(HttpClient!);
-			var response = await api.GetOptions();
-			Debug.Assert(response != null);
-		}
-	}
-	#nullable disable
+    [TestMethod]
+    public async void TestGetOptions()
+    {
+        var api = new OptionsApi(HttpClient!);
+        var response = await api.GetOptions();
+        Debug.Assert(response != null);
+    }
 }
+#nullable disable

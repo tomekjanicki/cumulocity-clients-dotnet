@@ -10,61 +10,60 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class ChildOperationsAddOne 
 {
-	public class ChildOperationsAddOne 
-	{
 	
-		[JsonPropertyName("managedObject")]
-		public ManagedObject? PManagedObject { get; set; }
+    [JsonPropertyName("managedObject")]
+    public ManagedObject? PManagedObject { get; set; }
 	
-		public ChildOperationsAddOne() 
-		{
-		}
+    public ChildOperationsAddOne() 
+    {
+    }
 	
-		public ChildOperationsAddOne(ManagedObject managedObject)
-		{
-			this.PManagedObject = managedObject;
-		}
+    public ChildOperationsAddOne(ManagedObject managedObject)
+    {
+        this.PManagedObject = managedObject;
+    }
 	
-		public class ManagedObject 
-		{
+    public class ManagedObject 
+    {
 		
-			/// <summary> 
-			/// Unique identifier of the object. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("id")]
-			public string? Id { get; set; }
+        /// <summary> 
+        /// Unique identifier of the object. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("id")]
+        public string? Id { get; set; }
 		
-			public ManagedObject() 
-			{
-			}
+        public ManagedObject() 
+        {
+        }
 		
-			public ManagedObject(string id)
-			{
-				this.Id = id;
-			}
+        public ManagedObject(string id)
+        {
+            this.Id = id;
+        }
 		
-			public override string ToString()
-			{
-				var jsonOptions = new JsonSerializerOptions() 
-				{ 
-					WriteIndented = true,
-					DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-				};
-				return JsonSerializer.Serialize(this, jsonOptions);
-			}
-		}
+        public override string ToString()
+        {
+            var jsonOptions = new JsonSerializerOptions() 
+            { 
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+            return JsonSerializer.Serialize(this, jsonOptions);
+        }
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

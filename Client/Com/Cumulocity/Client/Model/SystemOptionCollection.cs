@@ -11,30 +11,29 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// All available system options of the tenant. <br />
+/// </summary>
+///
+public class SystemOptionCollection 
 {
-	/// <summary> 
-	/// All available system options of the tenant. <br />
-	/// </summary>
-	///
-	public class SystemOptionCollection 
-	{
 	
-		/// <summary> 
-		/// An array containing the predefined system options. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("options")]
-		public List<SystemOption> Options { get; set; } = new List<SystemOption>();
+    /// <summary> 
+    /// An array containing the predefined system options. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("options")]
+    public List<SystemOption> Options { get; set; } = new List<SystemOption>();
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

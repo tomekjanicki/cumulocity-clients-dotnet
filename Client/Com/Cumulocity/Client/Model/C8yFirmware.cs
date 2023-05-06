@@ -10,44 +10,43 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// Contains information on a device's firmware. In the inventory, <c>c8y_Firmware</c> represents the currently installed firmware on the device. As part of an operation, <c>c8y_Firmware</c> requests the device to install the indicated firmware. To enable firmware installation through the user interface, add <c>c8y_Firmware</c> to the list of supported operations. <br />
+/// </summary>
+///
+public class C8yFirmware 
 {
-	/// <summary> 
-	/// Contains information on a device's firmware. In the inventory, <c>c8y_Firmware</c> represents the currently installed firmware on the device. As part of an operation, <c>c8y_Firmware</c> requests the device to install the indicated firmware. To enable firmware installation through the user interface, add <c>c8y_Firmware</c> to the list of supported operations. <br />
-	/// </summary>
-	///
-	public class C8yFirmware 
-	{
 	
-		/// <summary> 
-		/// Name of the firmware. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("name")]
-		public string? Name { get; set; }
+    /// <summary> 
+    /// Name of the firmware. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("name")]
+    public string? Name { get; set; }
 	
-		/// <summary> 
-		/// A version identifier of the firmware. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("version")]
-		public string? Version { get; set; }
+    /// <summary> 
+    /// A version identifier of the firmware. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("version")]
+    public string? Version { get; set; }
 	
-		/// <summary> 
-		/// A URI linking to the location to download the firmware from. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("url")]
-		public string? Url { get; set; }
+    /// <summary> 
+    /// A URI linking to the location to download the firmware from. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("url")]
+    public string? Url { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

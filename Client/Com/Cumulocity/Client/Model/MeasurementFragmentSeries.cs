@@ -10,40 +10,39 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class MeasurementFragmentSeries 
 {
-	public class MeasurementFragmentSeries 
-	{
 	
-		/// <summary> 
-		/// The unit of the measurement. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("unit")]
-		public string? Unit { get; set; }
+    /// <summary> 
+    /// The unit of the measurement. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("unit")]
+    public string? Unit { get; set; }
 	
-		/// <summary> 
-		/// The name of the measurement. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("name")]
-		public string? Name { get; set; }
+    /// <summary> 
+    /// The name of the measurement. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("name")]
+    public string? Name { get; set; }
 	
-		/// <summary> 
-		/// The type of measurement. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("type")]
-		public string? Type { get; set; }
+    /// <summary> 
+    /// The type of measurement. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("type")]
+    public string? Type { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

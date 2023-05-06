@@ -11,33 +11,32 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class InventoryAssignmentCollection 
 {
-	public class InventoryAssignmentCollection 
-	{
 	
-		/// <summary> 
-		/// A URL linking to this resource. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("self")]
-		public string? Self { get; set; }
+    /// <summary> 
+    /// A URL linking to this resource. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("self")]
+    public string? Self { get; set; }
 	
-		/// <summary> 
-		/// An array of inventory assignments. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("inventoryAssignments")]
-		public List<InventoryAssignment> InventoryAssignments { get; set; } = new List<InventoryAssignment>();
+    /// <summary> 
+    /// An array of inventory assignments. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("inventoryAssignments")]
+    public List<InventoryAssignment> InventoryAssignments { get; set; } = new List<InventoryAssignment>();
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

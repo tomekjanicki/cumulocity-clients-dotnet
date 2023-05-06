@@ -10,68 +10,67 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class UserApiResource 
 {
-	public class UserApiResource 
-	{
 	
-		/// <summary> 
-		/// A URL linking to this resource. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("self")]
-		public string? Self { get; set; }
+    /// <summary> 
+    /// A URL linking to this resource. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("self")]
+    public string? Self { get; set; }
 	
-		/// <summary> 
-		/// Collection of all users belonging to a given tenant. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("users")]
-		public string? Users { get; set; }
+    /// <summary> 
+    /// Collection of all users belonging to a given tenant. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("users")]
+    public string? Users { get; set; }
 	
-		/// <summary> 
-		/// Reference to a resource of type user. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("userByName")]
-		public string? UserByName { get; set; }
+    /// <summary> 
+    /// Reference to a resource of type user. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("userByName")]
+    public string? UserByName { get; set; }
 	
-		/// <summary> 
-		/// Reference to the resource of the logged in user. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("currentUser")]
-		public string? CurrentUser { get; set; }
+    /// <summary> 
+    /// Reference to the resource of the logged in user. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("currentUser")]
+    public string? CurrentUser { get; set; }
 	
-		/// <summary> 
-		/// Collection of all users belonging to a given tenant. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("groups")]
-		public string? Groups { get; set; }
+    /// <summary> 
+    /// Collection of all users belonging to a given tenant. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("groups")]
+    public string? Groups { get; set; }
 	
-		/// <summary> 
-		/// Reference to a resource of type group. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("groupByName")]
-		public string? GroupByName { get; set; }
+    /// <summary> 
+    /// Reference to a resource of type group. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("groupByName")]
+    public string? GroupByName { get; set; }
 	
-		/// <summary> 
-		/// Collection of all roles. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("roles")]
-		public string? Roles { get; set; }
+    /// <summary> 
+    /// Collection of all roles. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("roles")]
+    public string? Roles { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

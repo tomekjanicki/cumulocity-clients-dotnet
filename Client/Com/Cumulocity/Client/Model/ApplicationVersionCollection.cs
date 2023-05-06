@@ -11,26 +11,25 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class ApplicationVersionCollection 
 {
-	public class ApplicationVersionCollection 
-	{
 	
-		/// <summary> 
-		/// An array of application versions. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("versions")]
-		public List<ApplicationVersion> Versions { get; set; } = new List<ApplicationVersion>();
+    /// <summary> 
+    /// An array of application versions. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("versions")]
+    public List<ApplicationVersion> Versions { get; set; } = new List<ApplicationVersion>();
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

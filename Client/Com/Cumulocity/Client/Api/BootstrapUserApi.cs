@@ -19,36 +19,35 @@ using System.Web;
 using Com.Cumulocity.Client.Model;
 using Com.Cumulocity.Client.Supplementary;
 
-namespace Com.Cumulocity.Client.Api 
+namespace Com.Cumulocity.Client.Api;
+
+/// <summary> 
+/// API methods to retrieve the bootstrap user of an application. <br />
+/// </summary>
+///
+#nullable enable
+public class BootstrapUserApi : AdaptableApi, IBootstrapUserApi
 {
-	/// <summary> 
-	/// API methods to retrieve the bootstrap user of an application. <br />
-	/// </summary>
-	///
-	#nullable enable
-	public class BootstrapUserApi : AdaptableApi, IBootstrapUserApi
-	{
-		public BootstrapUserApi(HttpClient httpClient) : base(httpClient)
-		{
-		}
+    public BootstrapUserApi(HttpClient httpClient) : base(httpClient)
+    {
+    }
 	
-		/// <inheritdoc />
-		public async Task<BootstrapUser?> GetBootstrapUser(string id, CancellationToken cToken = default) 
-		{
-			var client = HttpClient;
-			var resourcePath = $"/application/applications/{id}/bootstrapUser";
-			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			using var request = new HttpRequestMessage 
-			{
-				Method = HttpMethod.Get,
-				RequestUri = new Uri(uriBuilder.ToString())
-			};
-			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.user+json");
-			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
-            await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-			return await JsonSerializer.DeserializeAsync<BootstrapUser?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
-		}
-	}
-	#nullable disable
+    /// <inheritdoc />
+    public async Task<BootstrapUser?> GetBootstrapUser(string id, CancellationToken cToken = default) 
+    {
+        var client = HttpClient;
+        var resourcePath = $"/application/applications/{id}/bootstrapUser";
+        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        using var request = new HttpRequestMessage 
+        {
+            Method = HttpMethod.Get,
+            RequestUri = new Uri(uriBuilder.ToString())
+        };
+        request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.user+json");
+        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        return await JsonSerializer.DeserializeAsync<BootstrapUser?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+    }
 }
+#nullable disable

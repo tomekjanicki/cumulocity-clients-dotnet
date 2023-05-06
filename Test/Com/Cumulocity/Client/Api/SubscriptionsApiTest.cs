@@ -14,38 +14,36 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Com.Cumulocity.Client.Supplementary;
 using Com.Cumulocity.Client.Model;
 
-namespace Com.Cumulocity.Client.Api 
+namespace Com.Cumulocity.Client.Api;
+#nullable enable
+[TestClass]
+public class SubscriptionsApiTest
 {
-	#nullable enable
-	[TestClass]
-	public class SubscriptionsApiTest
-	{
 	
-		private static HttpClient? HttpClient { get; set; }
+    private static HttpClient? HttpClient { get; set; }
 	
-		[ClassInitialize]
-		public static void SetupHttpClient(TestContext context)
-		{
-			var configuration = new TestConfiguration();
-			configuration.Load();
+    [ClassInitialize]
+    public static void SetupHttpClient(TestContext context)
+    {
+        var configuration = new TestConfiguration();
+        configuration.Load();
 	
-			var httpClientHandler = new HttpClientHandler()
-			{
-				Credentials = new NetworkCredential(configuration.Username, configuration.Password)
-			};
-			SubscriptionsApiTest.HttpClient = new HttpClient(httpClientHandler)
-			{
-				BaseAddress = new Uri(configuration.Hostname)
-			};
-		}
+        var httpClientHandler = new HttpClientHandler()
+        {
+            Credentials = new NetworkCredential(configuration.Username, configuration.Password)
+        };
+        SubscriptionsApiTest.HttpClient = new HttpClient(httpClientHandler)
+        {
+            BaseAddress = new Uri(configuration.Hostname)
+        };
+    }
 	
-		[TestMethod]
-		public async void TestGetSubscriptions()
-		{
-			var api = new SubscriptionsApi(HttpClient!);
-			var response = await api.GetSubscriptions();
-			Debug.Assert(response != null);
-		}
-	}
-	#nullable disable
+    [TestMethod]
+    public async void TestGetSubscriptions()
+    {
+        var api = new SubscriptionsApi(HttpClient!);
+        var response = await api.GetSubscriptions();
+        Debug.Assert(response != null);
+    }
 }
+#nullable disable

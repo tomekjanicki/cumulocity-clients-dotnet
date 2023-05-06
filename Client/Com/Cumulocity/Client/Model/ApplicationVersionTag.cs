@@ -11,35 +11,34 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class ApplicationVersionTag 
 {
-	public class ApplicationVersionTag 
-	{
 	
-		/// <summary> 
-		/// Tag assigned to the version. Version tags must be unique across all versions and version fields of application versions. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("tag")]
-		public List<string> Tag { get; set; } = new List<string>();
+    /// <summary> 
+    /// Tag assigned to the version. Version tags must be unique across all versions and version fields of application versions. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("tag")]
+    public List<string> Tag { get; set; } = new List<string>();
 	
-		public ApplicationVersionTag() 
-		{
-		}
+    public ApplicationVersionTag() 
+    {
+    }
 	
-		public ApplicationVersionTag(List<string> tag)
-		{
-			this.Tag = tag;
-		}
+    public ApplicationVersionTag(List<string> tag)
+    {
+        this.Tag = tag;
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

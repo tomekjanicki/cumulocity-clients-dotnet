@@ -10,47 +10,46 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class EventBinary 
 {
-	public class EventBinary 
-	{
 	
-		/// <summary> 
-		/// Name of the attachment. If it is not provided in the request, it will be set as the event ID. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("name")]
-		public string? Name { get; set; }
+    /// <summary> 
+    /// Name of the attachment. If it is not provided in the request, it will be set as the event ID. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("name")]
+    public string? Name { get; set; }
 	
-		/// <summary> 
-		/// A URL linking to this resource. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("self")]
-		public string? Self { get; set; }
+    /// <summary> 
+    /// A URL linking to this resource. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("self")]
+    public string? Self { get; set; }
 	
-		/// <summary> 
-		/// Unique identifier of the event. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("source")]
-		public string? Source { get; set; }
+    /// <summary> 
+    /// Unique identifier of the event. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("source")]
+    public string? Source { get; set; }
 	
-		/// <summary> 
-		/// Media type of the attachment. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("type")]
-		public string? Type { get; set; }
+    /// <summary> 
+    /// Media type of the attachment. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("type")]
+    public string? Type { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

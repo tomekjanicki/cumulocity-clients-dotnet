@@ -10,30 +10,29 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// Current measurement. <br />
+/// </summary>
+///
+public class C8yCurrentMeasurement 
 {
-	/// <summary> 
-	/// Current measurement. <br />
-	/// </summary>
-	///
-	public class C8yCurrentMeasurement 
-	{
 	
-		/// <summary> 
-		/// A measurement is a value with a unit. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("current")]
-		public C8yMeasurementValue? Current { get; set; }
+    /// <summary> 
+    /// A measurement is a value with a unit. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("current")]
+    public C8yMeasurementValue? Current { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

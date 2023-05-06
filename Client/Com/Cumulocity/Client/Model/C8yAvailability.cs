@@ -10,37 +10,36 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// The availability information computed by Cumulocity IoT is stored in fragments <c>c8y_Availability</c> and <c>c8y_Connection</c> of the device. <br />
+/// </summary>
+///
+public class C8yAvailability 
 {
-	/// <summary> 
-	/// The availability information computed by Cumulocity IoT is stored in fragments <c>c8y_Availability</c> and <c>c8y_Connection</c> of the device. <br />
-	/// </summary>
-	///
-	public class C8yAvailability 
-	{
 	
-		/// <summary> 
-		/// The current status, one of <c>AVAILABLE</c>, <c>CONNECTED</c>, <c>MAINTENANCE</c>, <c>DISCONNECTED</c>. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("status")]
-		public C8yAvailabilityStatus? Status { get; set; }
+    /// <summary> 
+    /// The current status, one of <c>AVAILABLE</c>, <c>CONNECTED</c>, <c>MAINTENANCE</c>, <c>DISCONNECTED</c>. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("status")]
+    public C8yAvailabilityStatus? Status { get; set; }
 	
-		/// <summary> 
-		/// The time when the device sent the last message to Cumulocity IoT. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("lastMessage")]
-		public System.DateTime? LastMessage { get; set; }
+    /// <summary> 
+    /// The time when the device sent the last message to Cumulocity IoT. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("lastMessage")]
+    public System.DateTime? LastMessage { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

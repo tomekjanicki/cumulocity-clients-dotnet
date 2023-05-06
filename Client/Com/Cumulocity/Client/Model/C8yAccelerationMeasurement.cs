@@ -10,30 +10,29 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// Measurement of the acceleration sensor. <br />
+/// </summary>
+///
+public class C8yAccelerationMeasurement 
 {
-	/// <summary> 
-	/// Measurement of the acceleration sensor. <br />
-	/// </summary>
-	///
-	public class C8yAccelerationMeasurement 
-	{
 	
-		/// <summary> 
-		/// A measurement is a value with a unit. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("acceleration")]
-		public C8yMeasurementValue? Acceleration { get; set; }
+    /// <summary> 
+    /// A measurement is a value with a unit. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("acceleration")]
+    public C8yMeasurementValue? Acceleration { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

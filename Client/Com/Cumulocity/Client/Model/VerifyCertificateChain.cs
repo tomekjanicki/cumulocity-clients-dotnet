@@ -10,47 +10,46 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class VerifyCertificateChain 
 {
-	public class VerifyCertificateChain 
-	{
 	
-		/// <summary> 
-		/// The result of validating the certificate chain. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("successfullyValidated")]
-		public bool? SuccessfullyValidated { get; set; }
+    /// <summary> 
+    /// The result of validating the certificate chain. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("successfullyValidated")]
+    public bool? SuccessfullyValidated { get; set; }
 	
-		/// <summary> 
-		/// The tenant ID used for validation. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("tenantId")]
-		public string? TenantId { get; set; }
+    /// <summary> 
+    /// The tenant ID used for validation. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("tenantId")]
+    public string? TenantId { get; set; }
 	
-		/// <summary> 
-		/// The name of the organization which signed the certificate. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("issuer")]
-		public string? Issuer { get; set; }
+    /// <summary> 
+    /// The name of the organization which signed the certificate. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("issuer")]
+    public string? Issuer { get; set; }
 	
-		/// <summary> 
-		/// The name of the organization to which the certificate belongs. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("subject")]
-		public string? Subject { get; set; }
+    /// <summary> 
+    /// The name of the organization to which the certificate belongs. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("subject")]
+    public string? Subject { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

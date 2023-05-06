@@ -11,89 +11,88 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class ApplicationBinaries 
 {
-	public class ApplicationBinaries 
-	{
 	
-		/// <summary> 
-		/// An array of attachments. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("attachments")]
-		public List<Attachments> PAttachments { get; set; } = new List<Attachments>();
+    /// <summary> 
+    /// An array of attachments. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("attachments")]
+    public List<Attachments> PAttachments { get; set; } = new List<Attachments>();
 	
-		public class Attachments 
-		{
+    public class Attachments 
+    {
 		
-			/// <summary> 
-			/// The application context path. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("contextPath")]
-			public string? ContextPath { get; set; }
+        /// <summary> 
+        /// The application context path. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("contextPath")]
+        public string? ContextPath { get; set; }
 		
-			/// <summary> 
-			/// The date and time when the attachment was created. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("created")]
-			public System.DateTime? Created { get; set; }
+        /// <summary> 
+        /// The date and time when the attachment was created. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("created")]
+        public System.DateTime? Created { get; set; }
 		
-			/// <summary> 
-			/// A description for the attachment. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("description")]
-			public string? Description { get; set; }
+        /// <summary> 
+        /// A description for the attachment. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("description")]
+        public string? Description { get; set; }
 		
-			/// <summary> 
-			/// A download URL for the attachment. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("downloadUrl")]
-			public string? DownloadUrl { get; set; }
+        /// <summary> 
+        /// A download URL for the attachment. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("downloadUrl")]
+        public string? DownloadUrl { get; set; }
 		
-			/// <summary> 
-			/// The ID of the attachment. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("id")]
-			public string? Id { get; set; }
+        /// <summary> 
+        /// The ID of the attachment. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("id")]
+        public string? Id { get; set; }
 		
-			/// <summary> 
-			/// The length of the attachment, in bytes. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("length")]
-			public int? Length { get; set; }
+        /// <summary> 
+        /// The length of the attachment, in bytes. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("length")]
+        public int? Length { get; set; }
 		
-			/// <summary> 
-			/// The name of the attachment. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("name")]
-			public string? Name { get; set; }
+        /// <summary> 
+        /// The name of the attachment. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("name")]
+        public string? Name { get; set; }
 		
-			public override string ToString()
-			{
-				var jsonOptions = new JsonSerializerOptions() 
-				{ 
-					WriteIndented = true,
-					DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-				};
-				return JsonSerializer.Serialize(this, jsonOptions);
-			}
-		}
+        public override string ToString()
+        {
+            var jsonOptions = new JsonSerializerOptions() 
+            { 
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+            return JsonSerializer.Serialize(this, jsonOptions);
+        }
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

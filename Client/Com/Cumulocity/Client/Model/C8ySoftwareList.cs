@@ -10,44 +10,43 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// Details of the installed software. <br />
+/// </summary>
+///
+public class C8ySoftwareList 
 {
-	/// <summary> 
-	/// Details of the installed software. <br />
-	/// </summary>
-	///
-	public class C8ySoftwareList 
-	{
 	
-		/// <summary> 
-		/// The name of the software. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("name")]
-		public string? Name { get; set; }
+    /// <summary> 
+    /// The name of the software. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("name")]
+    public string? Name { get; set; }
 	
-		/// <summary> 
-		/// The version of the software. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("version")]
-		public string? Version { get; set; }
+    /// <summary> 
+    /// The version of the software. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("version")]
+    public string? Version { get; set; }
 	
-		/// <summary> 
-		/// The URL of the software, for example, its code repository. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("url")]
-		public string? Url { get; set; }
+    /// <summary> 
+    /// The URL of the software, for example, its code repository. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("url")]
+    public string? Url { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

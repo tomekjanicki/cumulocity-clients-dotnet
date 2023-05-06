@@ -10,54 +10,53 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// Reference to the tenant owning this application. The default value is a reference to the current tenant. <br />
+/// </summary>
+///
+public class ApplicationOwner 
 {
-	/// <summary> 
-	/// Reference to the tenant owning this application. The default value is a reference to the current tenant. <br />
-	/// </summary>
-	///
-	public class ApplicationOwner 
-	{
 	
-		/// <summary> 
-		/// A URL linking to this resource. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("self")]
-		public string? Self { get; set; }
+    /// <summary> 
+    /// A URL linking to this resource. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("self")]
+    public string? Self { get; set; }
 	
-		[JsonPropertyName("tenant")]
-		public Tenant? PTenant { get; set; }
+    [JsonPropertyName("tenant")]
+    public Tenant? PTenant { get; set; }
 	
-		public class Tenant 
-		{
+    public class Tenant 
+    {
 		
-			/// <summary> 
-			/// The tenant ID. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("id")]
-			public string? Id { get; set; }
+        /// <summary> 
+        /// The tenant ID. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("id")]
+        public string? Id { get; set; }
 		
-			public override string ToString()
-			{
-				var jsonOptions = new JsonSerializerOptions() 
-				{ 
-					WriteIndented = true,
-					DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-				};
-				return JsonSerializer.Serialize(this, jsonOptions);
-			}
-		}
+        public override string ToString()
+        {
+            var jsonOptions = new JsonSerializerOptions() 
+            { 
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+            return JsonSerializer.Serialize(this, jsonOptions);
+        }
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

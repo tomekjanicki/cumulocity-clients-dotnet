@@ -10,51 +10,50 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// A tuple storing tenant configuration. <br />
+/// </summary>
+///
+public class Option 
 {
-	/// <summary> 
-	/// A tuple storing tenant configuration. <br />
-	/// </summary>
-	///
-	public class Option 
-	{
 	
-		/// <summary> 
-		/// Name of the option category. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("category")]
-		public string? Category { get; set; }
+    /// <summary> 
+    /// Name of the option category. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("category")]
+    public string? Category { get; set; }
 	
-		/// <summary> 
-		/// A unique identifier for this option. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("key")]
-		public string? Key { get; set; }
+    /// <summary> 
+    /// A unique identifier for this option. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("key")]
+    public string? Key { get; set; }
 	
-		/// <summary> 
-		/// Value of this option. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("value")]
-		public string? Value { get; set; }
+    /// <summary> 
+    /// Value of this option. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("value")]
+    public string? Value { get; set; }
 	
-		/// <summary> 
-		/// A URL linking to this resource. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("self")]
-		public string? Self { get; set; }
+    /// <summary> 
+    /// A URL linking to this resource. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("self")]
+    public string? Self { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

@@ -10,47 +10,46 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class UsageStatisticsResourcesUsedBy 
 {
-	public class UsageStatisticsResourcesUsedBy 
-	{
 	
-		/// <summary> 
-		/// Reason for calculating statistics of the specified microservice. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("cause")]
-		public string? Cause { get; set; }
+    /// <summary> 
+    /// Reason for calculating statistics of the specified microservice. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("cause")]
+    public string? Cause { get; set; }
 	
-		/// <summary> 
-		/// Number of CPU usage for a single microservice. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("cpu")]
-		public int? Cpu { get; set; }
+    /// <summary> 
+    /// Number of CPU usage for a single microservice. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("cpu")]
+    public int? Cpu { get; set; }
 	
-		/// <summary> 
-		/// Number of memory usage for a single microservice. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("memory")]
-		public int? Memory { get; set; }
+    /// <summary> 
+    /// Number of memory usage for a single microservice. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("memory")]
+    public int? Memory { get; set; }
 	
-		/// <summary> 
-		/// Name of the microservice. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("name")]
-		public string? Name { get; set; }
+    /// <summary> 
+    /// Name of the microservice. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("name")]
+    public string? Name { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

@@ -10,53 +10,52 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class PlatformApiResource<TCustomProperties, TAlarm, TAuditRecord, TMeasurement, TManagedObject, TEvent> where TCustomProperties : CustomProperties where TAlarm : Alarm where TManagedObject : ManagedObject where TAuditRecord : AuditRecord where TEvent : Event where TMeasurement : Measurement
 {
-	public class PlatformApiResource<TCustomProperties, TAlarm, TAuditRecord, TMeasurement, TManagedObject, TEvent> where TCustomProperties : CustomProperties where TAlarm : Alarm where TManagedObject : ManagedObject where TAuditRecord : AuditRecord where TEvent : Event where TMeasurement : Measurement
-	{
 	
-		/// <summary> 
-		/// A URL linking to this resource. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("self")]
-		public string? Self { get; set; }
+    /// <summary> 
+    /// A URL linking to this resource. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("self")]
+    public string? Self { get; set; }
 	
-		[JsonPropertyName("alarm")]
-		public AlarmsApiResource<TAlarm>? Alarm { get; set; }
+    [JsonPropertyName("alarm")]
+    public AlarmsApiResource<TAlarm>? Alarm { get; set; }
 	
-		[JsonPropertyName("audit")]
-		public AuditApiResource<TAuditRecord>? Audit { get; set; }
+    [JsonPropertyName("audit")]
+    public AuditApiResource<TAuditRecord>? Audit { get; set; }
 	
-		[JsonPropertyName("deviceControl")]
-		public DeviceControlApiResource? DeviceControl { get; set; }
+    [JsonPropertyName("deviceControl")]
+    public DeviceControlApiResource? DeviceControl { get; set; }
 	
-		[JsonPropertyName("event")]
-		public EventsApiResource<TEvent>? Event { get; set; }
+    [JsonPropertyName("event")]
+    public EventsApiResource<TEvent>? Event { get; set; }
 	
-		[JsonPropertyName("identity")]
-		public IdentityApiResource? Identity { get; set; }
+    [JsonPropertyName("identity")]
+    public IdentityApiResource? Identity { get; set; }
 	
-		[JsonPropertyName("inventory")]
-		public InventoryApiResource<TManagedObject>? Inventory { get; set; }
+    [JsonPropertyName("inventory")]
+    public InventoryApiResource<TManagedObject>? Inventory { get; set; }
 	
-		[JsonPropertyName("measurement")]
-		public MeasurementApiResource<TMeasurement>? Measurement { get; set; }
+    [JsonPropertyName("measurement")]
+    public MeasurementApiResource<TMeasurement>? Measurement { get; set; }
 	
-		[JsonPropertyName("tenant")]
-		public TenantApiResource<TCustomProperties>? Tenant { get; set; }
+    [JsonPropertyName("tenant")]
+    public TenantApiResource<TCustomProperties>? Tenant { get; set; }
 	
-		[JsonPropertyName("user")]
-		public UserApiResource? User { get; set; }
+    [JsonPropertyName("user")]
+    public UserApiResource? User { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

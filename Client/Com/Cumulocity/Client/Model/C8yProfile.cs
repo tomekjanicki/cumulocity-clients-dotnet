@@ -10,44 +10,43 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// Device capability to manage device profiles. Device profiles represent a combination of a firmware version, one or multiple software packages and one or multiple configuration files which can be deployed on a device. <br />
+/// </summary>
+///
+public class C8yProfile 
 {
-	/// <summary> 
-	/// Device capability to manage device profiles. Device profiles represent a combination of a firmware version, one or multiple software packages and one or multiple configuration files which can be deployed on a device. <br />
-	/// </summary>
-	///
-	public class C8yProfile 
-	{
 	
-		/// <summary> 
-		/// The name of the profile. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("profileName")]
-		public string? ProfileName { get; set; }
+    /// <summary> 
+    /// The name of the profile. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("profileName")]
+    public string? ProfileName { get; set; }
 	
-		/// <summary> 
-		/// The ID of the profile. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("profileId")]
-		public string? ProfileId { get; set; }
+    /// <summary> 
+    /// The ID of the profile. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("profileId")]
+    public string? ProfileId { get; set; }
 	
-		/// <summary> 
-		/// Indicates whether the profile has been executed. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("profileExecuted")]
-		public bool? ProfileExecuted { get; set; }
+    /// <summary> 
+    /// Indicates whether the profile has been executed. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("profileExecuted")]
+    public bool? ProfileExecuted { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

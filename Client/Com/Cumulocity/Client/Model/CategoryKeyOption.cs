@@ -10,26 +10,25 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class CategoryKeyOption 
 {
-	public class CategoryKeyOption 
-	{
 	
-		/// <summary> 
-		/// The value of this option. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("value")]
-		public string? Value { get; set; }
+    /// <summary> 
+    /// The value of this option. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("value")]
+    public string? Value { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

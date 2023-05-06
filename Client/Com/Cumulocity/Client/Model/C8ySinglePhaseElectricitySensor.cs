@@ -10,23 +10,22 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// In a managed object, a single phase electricity meter is modeled as a simple empty fragment. <br />
+/// </summary>
+///
+public class C8ySinglePhaseElectricitySensor 
 {
-	/// <summary> 
-	/// In a managed object, a single phase electricity meter is modeled as a simple empty fragment. <br />
-	/// </summary>
-	///
-	public class C8ySinglePhaseElectricitySensor 
-	{
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

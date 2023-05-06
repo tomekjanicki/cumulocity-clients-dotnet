@@ -19,96 +19,95 @@ using System.Web;
 using Com.Cumulocity.Client.Model;
 using Com.Cumulocity.Client.Supplementary;
 
-namespace Com.Cumulocity.Client.Api 
+namespace Com.Cumulocity.Client.Api;
+
+/// <summary> 
+/// An API method to upload an application binary. It is a deployable microservice or web application. <br />
+/// </summary>
+///
+#nullable enable
+public class ApplicationBinariesApi : AdaptableApi, IApplicationBinariesApi
 {
-	/// <summary> 
-	/// An API method to upload an application binary. It is a deployable microservice or web application. <br />
-	/// </summary>
-	///
-	#nullable enable
-	public class ApplicationBinariesApi : AdaptableApi, IApplicationBinariesApi
-	{
-		public ApplicationBinariesApi(HttpClient httpClient) : base(httpClient)
-		{
-		}
+    public ApplicationBinariesApi(HttpClient httpClient) : base(httpClient)
+    {
+    }
 	
-		/// <inheritdoc />
-		public async Task<ApplicationBinaries?> GetApplicationAttachments(string id, CancellationToken cToken = default) 
-		{
-			var client = HttpClient;
-			var resourcePath = $"/application/applications/{id}/binaries";
-			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			using var request = new HttpRequestMessage 
-			{
-				Method = HttpMethod.Get,
-				RequestUri = new Uri(uriBuilder.ToString())
-			};
-			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.applicationbinaries+json, application/vnd.com.nsn.cumulocity.error+json");
-			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
-            await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-			return await JsonSerializer.DeserializeAsync<ApplicationBinaries?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
-		}
+    /// <inheritdoc />
+    public async Task<ApplicationBinaries?> GetApplicationAttachments(string id, CancellationToken cToken = default) 
+    {
+        var client = HttpClient;
+        var resourcePath = $"/application/applications/{id}/binaries";
+        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        using var request = new HttpRequestMessage 
+        {
+            Method = HttpMethod.Get,
+            RequestUri = new Uri(uriBuilder.ToString())
+        };
+        request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.applicationbinaries+json, application/vnd.com.nsn.cumulocity.error+json");
+        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        return await JsonSerializer.DeserializeAsync<ApplicationBinaries?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+    }
 		
-		/// <inheritdoc />
-		public async Task<Application?> UploadApplicationAttachment(byte[] file, string id, CancellationToken cToken = default) 
-		{
-			var client = HttpClient;
-			var resourcePath = $"/application/applications/{id}/binaries";
-			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			var requestContent = new MultipartFormDataContent();
-			var fileContentFile = new ByteArrayContent(file);
-			fileContentFile.Headers.ContentType = MediaTypeHeaderValue.Parse("application/zip");
-			requestContent.Add(fileContentFile, "file");
-			using var request = new HttpRequestMessage 
-			{
-				Content = requestContent,
-				Method = HttpMethod.Post,
-				RequestUri = new Uri(uriBuilder.ToString())
-			};
-			request.Headers.TryAddWithoutValidation("Content-Type", "multipart/form-data");
-			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.application+json");
-			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
-            await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-			return await JsonSerializer.DeserializeAsync<Application?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
-		}
+    /// <inheritdoc />
+    public async Task<Application?> UploadApplicationAttachment(byte[] file, string id, CancellationToken cToken = default) 
+    {
+        var client = HttpClient;
+        var resourcePath = $"/application/applications/{id}/binaries";
+        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        var requestContent = new MultipartFormDataContent();
+        var fileContentFile = new ByteArrayContent(file);
+        fileContentFile.Headers.ContentType = MediaTypeHeaderValue.Parse("application/zip");
+        requestContent.Add(fileContentFile, "file");
+        using var request = new HttpRequestMessage 
+        {
+            Content = requestContent,
+            Method = HttpMethod.Post,
+            RequestUri = new Uri(uriBuilder.ToString())
+        };
+        request.Headers.TryAddWithoutValidation("Content-Type", "multipart/form-data");
+        request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.application+json");
+        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        return await JsonSerializer.DeserializeAsync<Application?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
+    }
 		
-		/// <inheritdoc />
-		public async Task<System.IO.Stream> GetApplicationAttachment(string id, string binaryId, CancellationToken cToken = default) 
-		{
-			var client = HttpClient;
-			var resourcePath = $"/application/applications/{id}/binaries/{binaryId}";
-			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			using var request = new HttpRequestMessage 
-			{
-				Method = HttpMethod.Get,
-				RequestUri = new Uri(uriBuilder.ToString())
-			};
-			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/zip");
-			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
-            await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-			return responseStream;
-		}
+    /// <inheritdoc />
+    public async Task<System.IO.Stream> GetApplicationAttachment(string id, string binaryId, CancellationToken cToken = default) 
+    {
+        var client = HttpClient;
+        var resourcePath = $"/application/applications/{id}/binaries/{binaryId}";
+        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        using var request = new HttpRequestMessage 
+        {
+            Method = HttpMethod.Get,
+            RequestUri = new Uri(uriBuilder.ToString())
+        };
+        request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/zip");
+        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        return responseStream;
+    }
 		
-		/// <inheritdoc />
-		public async Task<System.IO.Stream> DeleteApplicationAttachment(string id, string binaryId, CancellationToken cToken = default) 
-		{
-			var client = HttpClient;
-			var resourcePath = $"/application/applications/{id}/binaries/{binaryId}";
-			var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
-			using var request = new HttpRequestMessage 
-			{
-				Method = HttpMethod.Delete,
-				RequestUri = new Uri(uriBuilder.ToString())
-			};
-			request.Headers.TryAddWithoutValidation("Accept", "application/json");
-			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
-            await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-			return responseStream;
-		}
-	}
-	#nullable disable
+    /// <inheritdoc />
+    public async Task<System.IO.Stream> DeleteApplicationAttachment(string id, string binaryId, CancellationToken cToken = default) 
+    {
+        var client = HttpClient;
+        var resourcePath = $"/application/applications/{id}/binaries/{binaryId}";
+        var uriBuilder = new UriBuilder(new Uri(HttpClient?.BaseAddress ?? new Uri(resourcePath), resourcePath));
+        using var request = new HttpRequestMessage 
+        {
+            Method = HttpMethod.Delete,
+            RequestUri = new Uri(uriBuilder.ToString())
+        };
+        request.Headers.TryAddWithoutValidation("Accept", "application/json");
+        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
+        await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        return responseStream;
+    }
 }
+#nullable disable

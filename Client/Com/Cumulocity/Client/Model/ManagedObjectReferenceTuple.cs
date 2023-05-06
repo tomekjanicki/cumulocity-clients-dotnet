@@ -10,72 +10,71 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class ManagedObjectReferenceTuple 
 {
-	public class ManagedObjectReferenceTuple 
-	{
 	
-		/// <summary> 
-		/// Details of the referenced managed object. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("managedObject")]
-		public ManagedObject? PManagedObject { get; set; }
+    /// <summary> 
+    /// Details of the referenced managed object. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("managedObject")]
+    public ManagedObject? PManagedObject { get; set; }
 	
-		/// <summary> 
-		/// A URL linking to this resource. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("self")]
-		public string? Self { get; set; }
+    /// <summary> 
+    /// A URL linking to this resource. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("self")]
+    public string? Self { get; set; }
 	
-		/// <summary> 
-		/// Details of the referenced managed object. <br />
-		/// </summary>
-		///
-		public class ManagedObject 
-		{
+    /// <summary> 
+    /// Details of the referenced managed object. <br />
+    /// </summary>
+    ///
+    public class ManagedObject 
+    {
 		
-			/// <summary> 
-			/// Unique identifier of the object. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("id")]
-			public string? Id { get; set; }
+        /// <summary> 
+        /// Unique identifier of the object. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("id")]
+        public string? Id { get; set; }
 		
-			/// <summary> 
-			/// Human-readable name that is used for representing the object in user interfaces. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("name")]
-			public string? Name { get; set; }
+        /// <summary> 
+        /// Human-readable name that is used for representing the object in user interfaces. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("name")]
+        public string? Name { get; set; }
 		
-			/// <summary> 
-			/// A URL linking to this resource. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("self")]
-			public string? Self { get; set; }
+        /// <summary> 
+        /// A URL linking to this resource. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("self")]
+        public string? Self { get; set; }
 		
-			public override string ToString()
-			{
-				var jsonOptions = new JsonSerializerOptions() 
-				{ 
-					WriteIndented = true,
-					DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-				};
-				return JsonSerializer.Serialize(this, jsonOptions);
-			}
-		}
+        public override string ToString()
+        {
+            var jsonOptions = new JsonSerializerOptions() 
+            { 
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+            return JsonSerializer.Serialize(this, jsonOptions);
+        }
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

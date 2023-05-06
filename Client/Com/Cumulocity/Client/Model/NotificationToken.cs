@@ -10,26 +10,25 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class NotificationToken 
 {
-	public class NotificationToken 
-	{
 	
-		/// <summary> 
-		/// JWT (JSON Web Token) access token. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("token")]
-		public string? Token { get; set; }
+    /// <summary> 
+    /// JWT (JSON Web Token) access token. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("token")]
+    public string? Token { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

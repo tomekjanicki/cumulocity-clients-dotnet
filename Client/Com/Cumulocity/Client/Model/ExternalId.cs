@@ -10,89 +10,88 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class ExternalId 
 {
-	public class ExternalId 
-	{
 	
-		/// <summary> 
-		/// The identifier used in the external system that Cumulocity IoT interfaces with. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("externalId")]
-		public string? PExternalId { get; set; }
+    /// <summary> 
+    /// The identifier used in the external system that Cumulocity IoT interfaces with. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("externalId")]
+    public string? PExternalId { get; set; }
 	
-		/// <summary> 
-		/// The managed object linked to the external ID. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("managedObject")]
-		public ManagedObject? PManagedObject { get; set; }
+    /// <summary> 
+    /// The managed object linked to the external ID. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("managedObject")]
+    public ManagedObject? PManagedObject { get; set; }
 	
-		/// <summary> 
-		/// A URL linking to this resource. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("self")]
-		public string? Self { get; set; }
+    /// <summary> 
+    /// A URL linking to this resource. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("self")]
+    public string? Self { get; set; }
 	
-		/// <summary> 
-		/// The type of the external identifier. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("type")]
-		public string? Type { get; set; }
+    /// <summary> 
+    /// The type of the external identifier. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("type")]
+    public string? Type { get; set; }
 	
-		public ExternalId() 
-		{
-		}
+    public ExternalId() 
+    {
+    }
 	
-		public ExternalId(string externalId, string type)
-		{
-			this.PExternalId = externalId;
-			this.Type = type;
-		}
+    public ExternalId(string externalId, string type)
+    {
+        this.PExternalId = externalId;
+        this.Type = type;
+    }
 	
-		/// <summary> 
-		/// The managed object linked to the external ID. <br />
-		/// </summary>
-		///
-		public class ManagedObject 
-		{
+    /// <summary> 
+    /// The managed object linked to the external ID. <br />
+    /// </summary>
+    ///
+    public class ManagedObject 
+    {
 		
-			/// <summary> 
-			/// Unique identifier of the object. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("id")]
-			public string? Id { get; set; }
+        /// <summary> 
+        /// Unique identifier of the object. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("id")]
+        public string? Id { get; set; }
 		
-			/// <summary> 
-			/// A URL linking to this resource. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("self")]
-			public string? Self { get; set; }
+        /// <summary> 
+        /// A URL linking to this resource. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("self")]
+        public string? Self { get; set; }
 		
-			public override string ToString()
-			{
-				var jsonOptions = new JsonSerializerOptions() 
-				{ 
-					WriteIndented = true,
-					DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-				};
-				return JsonSerializer.Serialize(this, jsonOptions);
-			}
-		}
+        public override string ToString()
+        {
+            var jsonOptions = new JsonSerializerOptions() 
+            { 
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+            return JsonSerializer.Serialize(this, jsonOptions);
+        }
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

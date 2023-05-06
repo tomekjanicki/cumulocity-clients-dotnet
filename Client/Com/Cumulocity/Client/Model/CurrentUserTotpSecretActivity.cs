@@ -10,35 +10,34 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class CurrentUserTotpSecretActivity 
 {
-	public class CurrentUserTotpSecretActivity 
-	{
 	
-		/// <summary> 
-		/// Indicates whether the two-factor authentication secret is active. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("isActive")]
-		public bool? IsActive { get; set; }
+    /// <summary> 
+    /// Indicates whether the two-factor authentication secret is active. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("isActive")]
+    public bool? IsActive { get; set; }
 	
-		public CurrentUserTotpSecretActivity() 
-		{
-		}
+    public CurrentUserTotpSecretActivity() 
+    {
+    }
 	
-		public CurrentUserTotpSecretActivity(bool isActive)
-		{
-			this.IsActive = isActive;
-		}
+    public CurrentUserTotpSecretActivity(bool isActive)
+    {
+        this.IsActive = isActive;
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

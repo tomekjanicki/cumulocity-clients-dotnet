@@ -11,16 +11,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using Com.Cumulocity.Client.Model;
 
-namespace Com.Cumulocity.Client.Api 
+namespace Com.Cumulocity.Client.Api;
+
+/// <summary> 
+/// API methods to obtain access tokens to the Cumulocity IoT platform in case of OAI-Secure or SSO authentication. <br />
+/// </summary>
+///
+#nullable enable
+public interface ILoginTokensApi
 {
-	/// <summary> 
-	/// API methods to obtain access tokens to the Cumulocity IoT platform in case of OAI-Secure or SSO authentication. <br />
-	/// </summary>
-	///
-	#nullable enable
-	public interface ILoginTokensApi
-	{
 	
-	}
-	#nullable disable
 }
+#nullable disable

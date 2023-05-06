@@ -19,19 +19,18 @@ using System.Web;
 using Com.Cumulocity.Client.Model;
 using Com.Cumulocity.Client.Supplementary;
 
-namespace Com.Cumulocity.Client.Api 
+namespace Com.Cumulocity.Client.Api;
+
+/// <summary> 
+/// API methods to obtain access tokens to the Cumulocity IoT platform in case of OAI-Secure or SSO authentication. <br />
+/// </summary>
+///
+#nullable enable
+public class LoginTokensApi : AdaptableApi, ILoginTokensApi
 {
-	/// <summary> 
-	/// API methods to obtain access tokens to the Cumulocity IoT platform in case of OAI-Secure or SSO authentication. <br />
-	/// </summary>
-	///
-	#nullable enable
-	public class LoginTokensApi : AdaptableApi, ILoginTokensApi
-	{
-		public LoginTokensApi(HttpClient httpClient) : base(httpClient)
-		{
-		}
+    public LoginTokensApi(HttpClient httpClient) : base(httpClient)
+    {
+    }
 	
-	}
-	#nullable disable
 }
+#nullable disable

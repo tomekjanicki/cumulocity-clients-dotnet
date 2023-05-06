@@ -10,33 +10,32 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class CurrentUserTotpSecret 
 {
-	public class CurrentUserTotpSecret 
-	{
 	
-		/// <summary> 
-		/// Secret used by two-factor authentication applications to generate the TFA codes. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("rawSecret")]
-		public string? RawSecret { get; set; }
+    /// <summary> 
+    /// Secret used by two-factor authentication applications to generate the TFA codes. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("rawSecret")]
+    public string? RawSecret { get; set; }
 	
-		/// <summary> 
-		/// URL used to set the two-factor authentication secret for the TFA application. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("secretQrUrl")]
-		public string? SecretQrUrl { get; set; }
+    /// <summary> 
+    /// URL used to set the two-factor authentication secret for the TFA application. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("secretQrUrl")]
+    public string? SecretQrUrl { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

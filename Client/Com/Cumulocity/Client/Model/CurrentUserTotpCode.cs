@@ -10,35 +10,34 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class CurrentUserTotpCode 
 {
-	public class CurrentUserTotpCode 
-	{
 	
-		/// <summary> 
-		/// Two-factor authentication code entered by the user to log in to the platform. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("code")]
-		public string? Code { get; set; }
+    /// <summary> 
+    /// Two-factor authentication code entered by the user to log in to the platform. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("code")]
+    public string? Code { get; set; }
 	
-		public CurrentUserTotpCode() 
-		{
-		}
+    public CurrentUserTotpCode() 
+    {
+    }
 	
-		public CurrentUserTotpCode(string code)
-		{
-			this.Code = code;
-		}
+    public CurrentUserTotpCode(string code)
+    {
+        this.Code = code;
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

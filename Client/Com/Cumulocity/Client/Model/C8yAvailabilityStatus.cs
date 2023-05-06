@@ -10,22 +10,21 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using Com.Cumulocity.Client.Converter;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// The current status, one of <c>AVAILABLE</c>, <c>CONNECTED</c>, <c>MAINTENANCE</c>, <c>DISCONNECTED</c>. <br />
+/// </summary>
+///
+[JsonConverter(typeof(EnumConverterFactory))]
+public enum C8yAvailabilityStatus 
 {
-	/// <summary> 
-	/// The current status, one of <c>AVAILABLE</c>, <c>CONNECTED</c>, <c>MAINTENANCE</c>, <c>DISCONNECTED</c>. <br />
-	/// </summary>
-	///
-	[JsonConverter(typeof(EnumConverterFactory))]
-	public enum C8yAvailabilityStatus 
-	{
-		[EnumMember(Value = "AVAILABLE")]
-		AVAILABLE,
-		[EnumMember(Value = "CONNECTED")]
-		CONNECTED,
-		[EnumMember(Value = "MAINTENANCE")]
-		MAINTENANCE,
-		[EnumMember(Value = "DISCONNECTED")]
-		DISCONNECTED
-	}
+    [EnumMember(Value = "AVAILABLE")]
+    AVAILABLE,
+    [EnumMember(Value = "CONNECTED")]
+    CONNECTED,
+    [EnumMember(Value = "MAINTENANCE")]
+    MAINTENANCE,
+    [EnumMember(Value = "DISCONNECTED")]
+    DISCONNECTED
 }

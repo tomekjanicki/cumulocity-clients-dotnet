@@ -10,30 +10,29 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// A voltage sensor measures the voltage difference between two points in an electric circuit. <br />
+/// </summary>
+///
+public class C8yVoltageMeasurement 
 {
-	/// <summary> 
-	/// A voltage sensor measures the voltage difference between two points in an electric circuit. <br />
-	/// </summary>
-	///
-	public class C8yVoltageMeasurement 
-	{
 	
-		/// <summary> 
-		/// A measurement is a value with a unit. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("voltage")]
-		public C8yMeasurementValue? Voltage { get; set; }
+    /// <summary> 
+    /// A measurement is a value with a unit. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("voltage")]
+    public C8yMeasurementValue? Voltage { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

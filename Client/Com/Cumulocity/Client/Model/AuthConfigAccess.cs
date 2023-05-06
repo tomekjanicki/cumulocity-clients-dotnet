@@ -10,26 +10,25 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class AuthConfigAccess 
 {
-	public class AuthConfigAccess 
-	{
 	
-		/// <summary> 
-		/// Indicates whether the configuration is only accessible to the management tenant. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("onlyManagementTenantAccess")]
-		public bool? OnlyManagementTenantAccess { get; set; }
+    /// <summary> 
+    /// Indicates whether the configuration is only accessible to the management tenant. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("onlyManagementTenantAccess")]
+    public bool? OnlyManagementTenantAccess { get; set; }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

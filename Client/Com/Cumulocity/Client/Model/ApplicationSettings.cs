@@ -10,79 +10,78 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class ApplicationSettings 
 {
-	public class ApplicationSettings 
-	{
 	
-		/// <summary> 
-		/// The name of the setting. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("key")]
-		public string? Key { get; set; }
+    /// <summary> 
+    /// The name of the setting. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("key")]
+    public string? Key { get; set; }
 	
-		/// <summary> 
-		/// The value schema determines the values that the microservice can process. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("valueSchema")]
-		public ValueSchema? PValueSchema { get; set; }
+    /// <summary> 
+    /// The value schema determines the values that the microservice can process. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("valueSchema")]
+    public ValueSchema? PValueSchema { get; set; }
 	
-		/// <summary> 
-		/// The default value. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("defaultValue")]
-		public string? DefaultValue { get; set; }
+    /// <summary> 
+    /// The default value. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("defaultValue")]
+    public string? DefaultValue { get; set; }
 	
-		/// <summary> 
-		/// Indicates if the value is editable. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("editable")]
-		public bool? Editable { get; set; }
+    /// <summary> 
+    /// Indicates if the value is editable. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("editable")]
+    public bool? Editable { get; set; }
 	
-		/// <summary> 
-		/// Indicated wether this setting is inherited. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("inheritFromOwner")]
-		public bool? InheritFromOwner { get; set; }
+    /// <summary> 
+    /// Indicated wether this setting is inherited. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("inheritFromOwner")]
+    public bool? InheritFromOwner { get; set; }
 	
-		/// <summary> 
-		/// The value schema determines the values that the microservice can process. <br />
-		/// </summary>
-		///
-		public class ValueSchema 
-		{
+    /// <summary> 
+    /// The value schema determines the values that the microservice can process. <br />
+    /// </summary>
+    ///
+    public class ValueSchema 
+    {
 		
-			/// <summary> 
-			/// The value schema type. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("type")]
-			public string? Type { get; set; }
+        /// <summary> 
+        /// The value schema type. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("type")]
+        public string? Type { get; set; }
 		
-			public override string ToString()
-			{
-				var jsonOptions = new JsonSerializerOptions() 
-				{ 
-					WriteIndented = true,
-					DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-				};
-				return JsonSerializer.Serialize(this, jsonOptions);
-			}
-		}
+        public override string ToString()
+        {
+            var jsonOptions = new JsonSerializerOptions() 
+            { 
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+            return JsonSerializer.Serialize(this, jsonOptions);
+        }
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

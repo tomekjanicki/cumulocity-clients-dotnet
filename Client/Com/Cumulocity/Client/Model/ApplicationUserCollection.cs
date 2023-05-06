@@ -11,65 +11,64 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class ApplicationUserCollection 
 {
-	public class ApplicationUserCollection 
-	{
 	
-		/// <summary> 
-		/// A list of users who are subscribed to the current application. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("users")]
-		public List<Users> PUsers { get; set; } = new List<Users>();
+    /// <summary> 
+    /// A list of users who are subscribed to the current application. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("users")]
+    public List<Users> PUsers { get; set; } = new List<Users>();
 	
-		/// <summary> 
-		/// A user who is subscribed to the current application. <br />
-		/// </summary>
-		///
-		public class Users 
-		{
+    /// <summary> 
+    /// A user who is subscribed to the current application. <br />
+    /// </summary>
+    ///
+    public class Users 
+    {
 		
-			/// <summary> 
-			/// The username. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("name")]
-			public string? Name { get; set; }
+        /// <summary> 
+        /// The username. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("name")]
+        public string? Name { get; set; }
 		
-			/// <summary> 
-			/// The user password. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("password")]
-			public string? Password { get; set; }
+        /// <summary> 
+        /// The user password. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("password")]
+        public string? Password { get; set; }
 		
-			/// <summary> 
-			/// The user tenant. <br />
-			/// </summary>
-			///
-			[JsonPropertyName("tenant")]
-			public string? Tenant { get; set; }
+        /// <summary> 
+        /// The user tenant. <br />
+        /// </summary>
+        ///
+        [JsonPropertyName("tenant")]
+        public string? Tenant { get; set; }
 		
-			public override string ToString()
-			{
-				var jsonOptions = new JsonSerializerOptions() 
-				{ 
-					WriteIndented = true,
-					DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-				};
-				return JsonSerializer.Serialize(this, jsonOptions);
-			}
-		}
+        public override string ToString()
+        {
+            var jsonOptions = new JsonSerializerOptions() 
+            { 
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+            return JsonSerializer.Serialize(this, jsonOptions);
+        }
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

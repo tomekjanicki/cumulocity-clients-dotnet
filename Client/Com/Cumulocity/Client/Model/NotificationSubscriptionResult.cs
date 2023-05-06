@@ -11,40 +11,39 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+public class NotificationSubscriptionResult 
 {
-	public class NotificationSubscriptionResult 
-	{
 	
-		/// <summary> 
-		/// The status of the notification subscription deletion. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("result")]
-		public Result? PResult { get; set; }
+    /// <summary> 
+    /// The status of the notification subscription deletion. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("result")]
+    public Result? PResult { get; set; }
 	
-		/// <summary> 
-		/// The status of the notification subscription deletion. <br />
-		/// </summary>
-		///
-		[JsonConverter(typeof(EnumConverterFactory))]
-		public enum Result 
-		{
-			[EnumMember(Value = "DONE")]
-			DONE,
-			[EnumMember(Value = "SCHEDULED")]
-			SCHEDULED
-		}
+    /// <summary> 
+    /// The status of the notification subscription deletion. <br />
+    /// </summary>
+    ///
+    [JsonConverter(typeof(EnumConverterFactory))]
+    public enum Result 
+    {
+        [EnumMember(Value = "DONE")]
+        DONE,
+        [EnumMember(Value = "SCHEDULED")]
+        SCHEDULED
+    }
 	
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
-	}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 }

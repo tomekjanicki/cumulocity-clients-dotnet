@@ -12,55 +12,54 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model 
+namespace Com.Cumulocity.Client.Model;
+
+/// <summary> 
+/// An object with a list of custom properties. <br />
+/// </summary>
+///
+[JsonConverter(typeof(CustomPropertiesJsonConverter<CustomProperties>))]
+public class CustomProperties 
 {
-	/// <summary> 
-	/// An object with a list of custom properties. <br />
-	/// </summary>
-	///
-	[JsonConverter(typeof(CustomPropertiesJsonConverter<CustomProperties>))]
-	public class CustomProperties 
-	{
 	
-		/// <summary> 
-		/// The preferred language to be used in the platform. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("language")]
-		public string? Language { get; set; }
+    /// <summary> 
+    /// The preferred language to be used in the platform. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("language")]
+    public string? Language { get; set; }
 	
-		/// <summary> 
-		/// It is possible to add an arbitrary number of custom properties as a list of key-value pairs, for example, <c>"property": "value"</c>. <br />
-		/// </summary>
-		///
-		[JsonPropertyName("customProperties")]
-		public Dictionary<string, object> PCustomProperties { get; set; } = new Dictionary<string, object>();
+    /// <summary> 
+    /// It is possible to add an arbitrary number of custom properties as a list of key-value pairs, for example, <c>"property": "value"</c>. <br />
+    /// </summary>
+    ///
+    [JsonPropertyName("customProperties")]
+    public Dictionary<string, object> PCustomProperties { get; set; } = new Dictionary<string, object>();
 		
-		[JsonIgnore]
-		public object this[string key]
-		{
-			get => PCustomProperties[key];
-			set => PCustomProperties[key] = value;
-		}
+    [JsonIgnore]
+    public object this[string key]
+    {
+        get => PCustomProperties[key];
+        set => PCustomProperties[key] = value;
+    }
 	
-		public override string ToString()
-		{
-			var jsonOptions = new JsonSerializerOptions() 
-			{ 
-				WriteIndented = true,
-				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-			};
-			return JsonSerializer.Serialize(this, jsonOptions);
-		}
+    public override string ToString()
+    {
+        var jsonOptions = new JsonSerializerOptions() 
+        { 
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        return JsonSerializer.Serialize(this, jsonOptions);
+    }
 	
-		public class Serialization
-		{
-			public static readonly IDictionary<string, System.Type> AdditionalPropertyClasses = new Dictionary<string, System.Type>();
+    public class Serialization
+    {
+        public static readonly IDictionary<string, System.Type> AdditionalPropertyClasses = new Dictionary<string, System.Type>();
 		
-			public static void RegisterAdditionalProperty(string typeName, System.Type type)
-			{
-				AdditionalPropertyClasses[typeName] = type;
-			}
-		}
-	}
+        public static void RegisterAdditionalProperty(string typeName, System.Type type)
+        {
+            AdditionalPropertyClasses[typeName] = type;
+        }
+    }
 }
