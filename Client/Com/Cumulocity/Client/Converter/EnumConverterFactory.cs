@@ -7,7 +7,6 @@
 ///
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -18,11 +17,6 @@ namespace Client.Com.Cumulocity.Client.Converter;
 
 public sealed class EnumConverterFactory : JsonConverterFactory
 {
-	
-    public EnumConverterFactory()
-    {
-    }
-	
     public override bool CanConvert(Type typeToConvert)
     {
         return typeToConvert.IsEnum;
@@ -37,18 +31,5 @@ public sealed class EnumConverterFactory : JsonConverterFactory
         var dictionary = findEnumMembers.ToDictionary(p => p.Item1, p => p.Item2);
         var converter = new JsonStringEnumConverter(namingPolicy: new DictionaryLookupNamingPolicy(literalNames: dictionary), allowIntegerValues: false);
         return converter.CreateConverter(typeToConvert, options);
-    }
-}
-	
-internal class DictionaryLookupNamingPolicy : JsonNamingPolicy
-{
-	
-    readonly Dictionary<string, string> literalNames;
-	
-    public DictionaryLookupNamingPolicy(Dictionary<string, string> literalNames) : base() => this.literalNames = literalNames;
-	
-    public override string ConvertName(string name)
-    {
-        return literalNames.TryGetValue(name, out var value) ? value : name;
     }
 }
