@@ -10,9 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Com.Cumulocity.Client.Model;
+using Client.Com.Cumulocity.Client.Model;
 
-namespace Com.Cumulocity.Client.Api;
+namespace Client.Com.Cumulocity.Client.Api;
 
 /// <summary> 
 /// API methods to retrieve and update the current application and to retrieve its subscribers.It is the authenticated microservice user's application. <br />

@@ -8,18 +8,16 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using Com.Cumulocity.Client.Model;
-using Com.Cumulocity.Client.Supplementary;
+using Client.Com.Cumulocity.Client.Model;
+using Client.Com.Cumulocity.Client.Supplementary;
 
-namespace Com.Cumulocity.Client.Api;
+namespace Client.Com.Cumulocity.Client.Api;
 
 /// <summary> 
 /// Managed objects can perform operations to store, retrieve and delete binaries. One binary can store only one file. Together with the binary, a managed object is created which acts as a metadata information for the binary. <br />

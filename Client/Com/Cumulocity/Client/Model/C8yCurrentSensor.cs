@@ -8,9 +8,8 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model;
+namespace Client.Com.Cumulocity.Client.Model;
 
 /// <summary> 
 /// A current sensor measures the current flowing through it. In a managed object, a current sensor is modeled as a simple empty fragment. <br />

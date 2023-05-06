@@ -8,9 +8,8 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model;
+namespace Client.Com.Cumulocity.Client.Model;
 
 /// <summary> 
 /// Light is measured with two main alternative sets of units. <br />

@@ -8,9 +8,8 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model;
+namespace Client.Com.Cumulocity.Client.Model;
 
 /// <summary> 
 /// A temperature sensor reports the temperature in degrees Celsius (C). In a managed object, a temperature sensor is modeled as a simple empty fragment. <br />

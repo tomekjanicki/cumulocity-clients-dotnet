@@ -9,7 +9,7 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
 
-namespace Com.Cumulocity.Client.Supplementary;
+namespace Test.Com.Cumulocity.Client.Supplementary;
 
 public class TestConfiguration
 {

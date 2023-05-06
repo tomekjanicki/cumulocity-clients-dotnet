@@ -6,13 +6,11 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
-using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Com.Cumulocity.Client.Model;
+using Client.Com.Cumulocity.Client.Model;
 
-namespace Com.Cumulocity.Client.Api;
+namespace Client.Com.Cumulocity.Client.Api;
 
 /// <summary> 
 /// Tenants are physically separated data spaces with a separate URL, with own users, a separate application management and no sharing of data by default. Users in a single tenant by default share the same URL and the same data space. <br />

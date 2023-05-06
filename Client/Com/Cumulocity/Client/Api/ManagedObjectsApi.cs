@@ -8,18 +8,16 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using Com.Cumulocity.Client.Model;
-using Com.Cumulocity.Client.Supplementary;
+using Client.Com.Cumulocity.Client.Model;
+using Client.Com.Cumulocity.Client.Supplementary;
 
-namespace Com.Cumulocity.Client.Api;
+namespace Client.Com.Cumulocity.Client.Api;
 
 /// <summary> 
 /// The inventory stores devices and other assets relevant to your IoT solution. We refer to them as managed objects and such can be “smart objects”, for example, smart electricity meters, home automation gateways or GPS devices. <br />

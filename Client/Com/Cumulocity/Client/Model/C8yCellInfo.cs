@@ -9,9 +9,8 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model;
+namespace Client.Com.Cumulocity.Client.Model;
 
 /// <summary> 
 /// Provides detailed information about the closest mobile cell towers. When the functionality is activated, the location of the device is determined based on this fragment, in order to track the device whereabouts when GPS tracking is not available. <br />

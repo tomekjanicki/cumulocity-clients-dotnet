@@ -6,12 +6,11 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Com.Cumulocity.Client.Model;
+using Client.Com.Cumulocity.Client.Model;
 
-namespace Com.Cumulocity.Client.Api;
+namespace Client.Com.Cumulocity.Client.Api;
 
 /// <summary> 
 /// Cumulocity IoT can associate devices and assets with multiple external identities.For instance, devices can often be identified by the IMEI of their modem, by a micro-controller serial number or by an asset tag.This is useful, for example, when you have non-functional hardware and must replace the hardware without losing the data that was recorded. <br />

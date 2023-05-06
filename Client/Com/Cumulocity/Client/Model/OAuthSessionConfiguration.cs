@@ -8,9 +8,8 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model;
+namespace Client.Com.Cumulocity.Client.Model;
 
 /// <summary> 
 /// The session configuration properties are only available for OAuth internal. See <see href="https://cumulocity.com/guides/users-guide/administration/#oauth-internal" langword="Changing settings > OAuth internal" /> for more details. <br />

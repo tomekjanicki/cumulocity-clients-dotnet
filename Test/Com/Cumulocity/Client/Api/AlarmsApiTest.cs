@@ -10,11 +10,12 @@ using System;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
+using Client.Com.Cumulocity.Client.Api;
+using Client.Com.Cumulocity.Client.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Com.Cumulocity.Client.Supplementary;
-using Com.Cumulocity.Client.Model;
+using Test.Com.Cumulocity.Client.Supplementary;
 
-namespace Com.Cumulocity.Client.Api;
+namespace Test.Com.Cumulocity.Client.Api;
 
 [TestClass]
 public class AlarmsApiTest

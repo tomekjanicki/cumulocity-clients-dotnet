@@ -13,9 +13,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Com.Cumulocity.Client.Model;
+using Client.Com.Cumulocity.Client.Model;
 
-namespace Com.Cumulocity.Client.Converter;
+namespace Client.Com.Cumulocity.Client.Converter;
 
 public class EventJsonConverter<T> : JsonConverter<T> where T : Event
 {

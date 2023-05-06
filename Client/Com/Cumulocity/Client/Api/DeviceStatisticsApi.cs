@@ -7,19 +7,15 @@
 ///
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using Com.Cumulocity.Client.Model;
-using Com.Cumulocity.Client.Supplementary;
+using Client.Com.Cumulocity.Client.Model;
+using Client.Com.Cumulocity.Client.Supplementary;
 
-namespace Com.Cumulocity.Client.Api;
+namespace Client.Com.Cumulocity.Client.Api;
 
 /// <summary> 
 /// Device statistics are collected for each inventory object with at least one measurement, event or alarm. There are no additional checks if the inventory object is marked as device using the <c>c8y_IsDevice</c> fragment. When the first measurement, event or alarm is created for a specific inventory object, Cumulocity IoT is always considering this as a device and starts counting. <br />

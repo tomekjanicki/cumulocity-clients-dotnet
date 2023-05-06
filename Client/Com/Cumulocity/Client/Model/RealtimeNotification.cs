@@ -7,12 +7,12 @@
 ///
 
 using System.Collections.Generic;
-using Com.Cumulocity.Client.Converter;
+using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Runtime.Serialization;
+using Client.Com.Cumulocity.Client.Converter;
 
-namespace Com.Cumulocity.Client.Model;
+namespace Client.Com.Cumulocity.Client.Model;
 
 public class RealtimeNotification 
 {

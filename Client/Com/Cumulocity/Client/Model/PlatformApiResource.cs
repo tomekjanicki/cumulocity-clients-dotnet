@@ -8,9 +8,8 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Runtime.Serialization;
 
-namespace Com.Cumulocity.Client.Model;
+namespace Client.Com.Cumulocity.Client.Model;
 
 public class PlatformApiResource<TCustomProperties, TAlarm, TAuditRecord, TMeasurement, TManagedObject, TEvent> where TCustomProperties : CustomProperties where TAlarm : Alarm where TManagedObject : ManagedObject where TAuditRecord : AuditRecord where TEvent : Event where TMeasurement : Measurement
 {

@@ -7,9 +7,9 @@
 ///
 
 using System.Net.Http;
-using Com.Cumulocity.Client.Api;
+using Client.Com.Cumulocity.Client.Api;
 
-namespace Com.Cumulocity.Client.Supplementary;
+namespace Client.Com.Cumulocity.Client.Supplementary;
 
 public class CumulocityCoreLibrary 
 {

@@ -8,9 +8,9 @@
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using Com.Cumulocity.Client.Converter;
+using Client.Com.Cumulocity.Client.Converter;
 
-namespace Com.Cumulocity.Client.Model;
+namespace Client.Com.Cumulocity.Client.Model;
 
 /// <summary> 
 /// The current status, one of <c>AVAILABLE</c>, <c>CONNECTED</c>, <c>MAINTENANCE</c>, <c>DISCONNECTED</c>. <br />

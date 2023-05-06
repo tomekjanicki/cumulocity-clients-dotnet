@@ -8,13 +8,13 @@
 
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Net.Http;
 using System.Linq;
+using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
-namespace Com.Cumulocity.Client.Supplementary;
+namespace Client.Com.Cumulocity.Client.Supplementary;
 
 public class AdaptableApi
 {

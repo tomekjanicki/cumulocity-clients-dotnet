@@ -7,14 +7,12 @@
 ///
 
 using System;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Com.Cumulocity.Client.Supplementary;
-using Com.Cumulocity.Client.Model;
+using Test.Com.Cumulocity.Client.Supplementary;
 
-namespace Com.Cumulocity.Client.Api;
+namespace Test.Com.Cumulocity.Client.Api;
 
 [TestClass]
 public class TokensApiTest

@@ -6,13 +6,11 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
-using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Com.Cumulocity.Client.Model;
+using Client.Com.Cumulocity.Client.Model;
 
-namespace Com.Cumulocity.Client.Api;
+namespace Client.Com.Cumulocity.Client.Api;
 
 /// <summary> 
 /// It is possible to define rules that make the platform remove certain data. A retention rule shows which data will be deleted. For example, a retention rule with <c>dataType=EVENT</c> and <c>maximumAge=30</c> removes from the system all events older than 30 days. <br />

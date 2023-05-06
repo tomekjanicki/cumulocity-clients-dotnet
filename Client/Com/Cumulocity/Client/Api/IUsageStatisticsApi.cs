@@ -7,12 +7,11 @@
 ///
 
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Com.Cumulocity.Client.Model;
+using Client.Com.Cumulocity.Client.Model;
 
-namespace Com.Cumulocity.Client.Api;
+namespace Client.Com.Cumulocity.Client.Api;
 
 /// <summary> 
 /// Days are counted according to server timezone, so be aware that the tenant usage statistics displaying/filtering may not work correctly when the client is not in the same timezone as the server. However, it is possible to send a request with a time range (using the query parameters <c>dateFrom</c> and <c>dateTo</c>) in zoned format (for example, <c>2020-10-26T03:00:00%2B01:00</c>). Statistics from past days are stored with daily aggregations, which means that for a specific day you get either the statistics for the whole day or none at all. <br />

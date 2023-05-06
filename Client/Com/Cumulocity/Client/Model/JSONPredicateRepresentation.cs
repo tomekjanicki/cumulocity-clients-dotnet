@@ -7,12 +7,12 @@
 ///
 
 using System.Collections.Generic;
-using Com.Cumulocity.Client.Converter;
+using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Runtime.Serialization;
+using Client.Com.Cumulocity.Client.Converter;
 
-namespace Com.Cumulocity.Client.Model;
+namespace Client.Com.Cumulocity.Client.Model;
 
 /// <summary> 
 /// Represents a predicate for verification. It acts as a condition which is necessary to assign a user to the given groups, permit access to the specified applications or to assign specific inventory roles to device groups. <br />
