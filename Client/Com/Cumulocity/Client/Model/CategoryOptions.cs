@@ -14,7 +14,7 @@ using Client.Com.Cumulocity.Client.Converter;
 namespace Client.Com.Cumulocity.Client.Model;
 
 [JsonConverter(typeof(CategoryOptionsJsonConverter<CategoryOptions>))]
-public class CategoryOptions 
+public class CategoryOptions : IWithCustomFragments
 {
 	
     /// <summary> 
@@ -22,13 +22,13 @@ public class CategoryOptions
     /// </summary>
     ///
     [JsonPropertyName("keyValuePairs")]
-    public Dictionary<string, object> KeyValuePairs { get; set; } = new Dictionary<string, object>();
+    public Dictionary<string, object?> CustomFragments { get; set; } = new Dictionary<string, object?>();
 		
     [JsonIgnore]
-    public object this[string key]
+    public object? this[string key]
     {
-        get => KeyValuePairs[key];
-        set => KeyValuePairs[key] = value;
+        get => CustomFragments[key];
+        set => CustomFragments[key] = value;
     }
 	
     public override string ToString()

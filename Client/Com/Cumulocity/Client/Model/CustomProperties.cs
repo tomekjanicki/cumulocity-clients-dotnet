@@ -18,7 +18,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// </summary>
 ///
 [JsonConverter(typeof(CustomPropertiesJsonConverter<CustomProperties>))]
-public class CustomProperties 
+public class CustomProperties : IWithCustomFragments
 {
 	
     /// <summary> 
@@ -33,13 +33,13 @@ public class CustomProperties
     /// </summary>
     ///
     [JsonPropertyName("customProperties")]
-    public Dictionary<string, object> PCustomProperties { get; set; } = new Dictionary<string, object>();
+    public Dictionary<string, object?> CustomFragments { get; set; } = new Dictionary<string, object?>();
 		
     [JsonIgnore]
-    public object this[string key]
+    public object? this[string key]
     {
-        get => PCustomProperties[key];
-        set => PCustomProperties[key] = value;
+        get => CustomFragments[key];
+        set => CustomFragments[key] = value;
     }
 	
     public override string ToString()

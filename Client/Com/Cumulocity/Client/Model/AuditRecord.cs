@@ -15,7 +15,7 @@ using Client.Com.Cumulocity.Client.Converter;
 namespace Client.Com.Cumulocity.Client.Model;
 
 [JsonConverter(typeof(AuditRecordJsonConverter<AuditRecord>))]
-public class AuditRecord 
+public class AuditRecord  : IWithCustomFragments
 {
 	
     /// <summary> 
@@ -114,13 +114,13 @@ public class AuditRecord
     /// </summary>
     ///
     [JsonPropertyName("customProperties")]
-    public Dictionary<string, object> CustomProperties { get; set; } = new Dictionary<string, object>();
+    public Dictionary<string, object?> CustomFragments { get; set; } = new Dictionary<string, object?>();
 		
     [JsonIgnore]
-    public object this[string key]
+    public object? this[string key]
     {
-        get => CustomProperties[key];
-        set => CustomProperties[key] = value;
+        get => CustomFragments[key];
+        set => CustomFragments[key] = value;
     }
 	
     public AuditRecord() 

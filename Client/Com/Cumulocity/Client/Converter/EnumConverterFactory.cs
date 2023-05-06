@@ -22,7 +22,7 @@ public sealed class EnumConverterFactory : JsonConverterFactory
         return typeToConvert.IsEnum;
     }
 	
-    public override JsonConverter? CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+    public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
     {
         var findEnumMembers = from field in typeToConvert.GetFields(BindingFlags.Public | BindingFlags.Static)
             let attr = field.GetCustomAttribute<EnumMemberAttribute>()

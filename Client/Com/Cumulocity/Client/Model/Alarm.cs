@@ -15,7 +15,7 @@ using Client.Com.Cumulocity.Client.Converter;
 namespace Client.Com.Cumulocity.Client.Model;
 
 [JsonConverter(typeof(AlarmJsonConverter<Alarm>))]
-public class Alarm 
+public class Alarm : IWithCustomFragments
 {
 	
     /// <summary> 
@@ -108,10 +108,10 @@ public class Alarm
     /// </summary>
     ///
     [JsonPropertyName("customFragments")]
-    public Dictionary<string, object> CustomFragments { get; set; } = new Dictionary<string, object>();
+    public Dictionary<string, object?> CustomFragments { get; set; } = new Dictionary<string, object?>();
 		
     [JsonIgnore]
-    public object this[string key]
+    public object? this[string key]
     {
         get => CustomFragments[key];
         set => CustomFragments[key] = value;
