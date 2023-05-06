@@ -37,12 +37,4 @@ public static class NameValueCollectionExtensions
             }
         }
     }
-	
-    public static void AddIfRequired(this NameValueCollection collection, string key, object[]? value, bool explode = true)
-    {
-        if (value != null)
-        {
-            collection.AddIfRequired<object>(key, value.ToList(), explode);
-        }
-    }
 }
