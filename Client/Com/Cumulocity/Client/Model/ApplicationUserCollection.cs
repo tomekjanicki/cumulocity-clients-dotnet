@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -20,7 +21,7 @@ public sealed class ApplicationUserCollection
     /// </summary>
     ///
     [JsonPropertyName("users")]
-    public List<Users> PUsers { get; set; } = new List<Users>();
+    public IReadOnlyList<Users> PUsers { get; set; } = Array.Empty<Users>();
 	
     /// <summary> 
     /// A user who is subscribed to the current application. <br />

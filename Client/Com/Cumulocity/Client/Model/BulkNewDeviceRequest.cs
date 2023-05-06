@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -50,14 +51,14 @@ public sealed class BulkNewDeviceRequest
     /// </summary>
     ///
     [JsonPropertyName("credentialUpdatedList")]
-    public List<CredentialUpdatedList> PCredentialUpdatedList { get; set; } = new List<CredentialUpdatedList>();
+    public IReadOnlyList<CredentialUpdatedList> PCredentialUpdatedList { get; set; } = Array.Empty<CredentialUpdatedList>();
 	
     /// <summary> 
     /// An array with details of the failed device credentials. <br />
     /// </summary>
     ///
     [JsonPropertyName("failedCreationList")]
-    public List<FailedCreationList> PFailedCreationList { get; set; } = new List<FailedCreationList>();
+    public IReadOnlyList<FailedCreationList> PFailedCreationList { get; set; } = Array.Empty<FailedCreationList>();
 	
     public sealed class CredentialUpdatedList 
     {

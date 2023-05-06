@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -99,7 +100,7 @@ public sealed class RealtimeNotification
     /// </summary>
     ///
     [JsonPropertyName("supportedConnectionTypes")]
-    public List<string> SupportedConnectionTypes { get; set; } = new List<string>();
+    public IReadOnlyList<string> SupportedConnectionTypes { get; set; } = Array.Empty<string>();
 	
     /// <summary> 
     /// <see href="https://docs.cometd.org/current/reference/#_concepts_bayeux_protocol" langword="Bayeux protocol" /> version used by the client (in a request) or server (in a response). <br />

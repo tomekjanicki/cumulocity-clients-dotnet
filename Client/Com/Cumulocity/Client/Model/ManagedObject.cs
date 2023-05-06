@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -127,14 +128,14 @@ public class ManagedObject : IWithCustomFragments
     /// </summary>
     ///
     [JsonPropertyName("c8y_DeviceTypes")]
-    public List<string> C8yDeviceTypes { get; set; } = new List<string>();
+    public IReadOnlyList<string> C8yDeviceTypes { get; set; } = Array.Empty<string>();
 	
     /// <summary> 
     /// Lists the operations that are available for a particular device, so that applications can trigger the operations. <br />
     /// </summary>
     ///
     [JsonPropertyName("c8y_SupportedOperations")]
-    public List<string> C8ySupportedOperations { get; set; } = new List<string>();
+    public IReadOnlyList<string> C8ySupportedOperations { get; set; } = Array.Empty<string>();
 	
     /// <summary> 
     /// It is possible to add an arbitrary number of additional properties as a list of key-value pairs, for example, <c>"property1": {}</c>, <c>"property2": "value"</c>. These properties are known as custom fragments and can be of any type, for example, object or string. Each custom fragment is identified by a unique name. <br />

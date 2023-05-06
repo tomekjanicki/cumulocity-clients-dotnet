@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -20,7 +21,7 @@ public sealed class MeasurementCollection<TMeasurement> where TMeasurement : Mea
     /// </summary>
     ///
     [JsonPropertyName("measurements")]
-    public List<TMeasurement> Measurements { get; set; } = new List<TMeasurement>();
+    public IReadOnlyList<TMeasurement> Measurements { get; set; } = Array.Empty<TMeasurement>();
 	
     /// <summary> 
     /// A URI reference [<see href="https://tools.ietf.org/html/rfc3986" langword="RFC3986" />] to a potential next page of managed objects. <br />

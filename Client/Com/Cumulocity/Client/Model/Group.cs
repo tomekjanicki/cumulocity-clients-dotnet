@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -20,7 +21,7 @@ public sealed class Group<TCustomProperties> where TCustomProperties : CustomPro
     /// </summary>
     ///
     [JsonPropertyName("applications")]
-    public List<Application> Applications { get; set; } = new List<Application>();
+    public IReadOnlyList<Application> Applications { get; set; } = Array.Empty<Application>();
 	
     /// <summary> 
     /// An object with a list of custom properties. <br />
@@ -107,7 +108,7 @@ public sealed class Group<TCustomProperties> where TCustomProperties : CustomPro
         /// </summary>
         ///
         [JsonPropertyName("references")]
-        public List<RoleReference> References { get; set; } = new List<RoleReference>();
+        public IReadOnlyList<RoleReference> References { get; set; } = Array.Empty<RoleReference>();
 		
         /// <summary> 
         /// Information about paging statistics. <br />
@@ -146,7 +147,7 @@ public sealed class Group<TCustomProperties> where TCustomProperties : CustomPro
         /// </summary>
         ///
         [JsonPropertyName("references")]
-        public List<User<T>> References { get; set; } = new List<User<T>>();
+        public IReadOnlyList<User<T>> References { get; set; } = Array.Empty<User<T>>();
 		
         public override string ToString()
         {

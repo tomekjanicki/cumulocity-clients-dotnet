@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -20,7 +21,7 @@ public sealed class ExternalIds
     /// </summary>
     ///
     [JsonPropertyName("externalIds")]
-    public List<ExternalId> PExternalIds { get; set; } = new List<ExternalId>();
+    public IReadOnlyList<ExternalId> PExternalIds { get; set; } = Array.Empty<ExternalId>();
 	
     /// <summary> 
     /// A URL linking to this resource. <br />

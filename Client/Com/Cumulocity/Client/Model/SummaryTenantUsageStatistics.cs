@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -162,7 +163,7 @@ public sealed class SummaryTenantUsageStatistics
     /// </summary>
     ///
     [JsonPropertyName("subscribedApplications")]
-    public List<string> SubscribedApplications { get; set; } = new List<string>();
+    public IReadOnlyList<string> SubscribedApplications { get; set; } = Array.Empty<string>();
 	
     /// <summary> 
     /// Sum of all inbound transfers. <br />

@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -52,7 +53,7 @@ public sealed class TenantUsageStatisticsFileCollection
     /// </summary>
     ///
     [JsonPropertyName("statisticsFiles")]
-    public List<StatisticsFile> StatisticsFiles { get; set; } = new List<StatisticsFile>();
+    public IReadOnlyList<StatisticsFile> StatisticsFiles { get; set; } = Array.Empty<StatisticsFile>();
 	
     public override string ToString()
     {

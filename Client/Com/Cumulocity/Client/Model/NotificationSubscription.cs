@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -30,7 +31,7 @@ public sealed class NotificationSubscription
     /// </summary>
     ///
     [JsonPropertyName("fragmentsToCopy")]
-    public List<string> FragmentsToCopy { get; set; } = new List<string>();
+    public IReadOnlyList<string> FragmentsToCopy { get; set; } = Array.Empty<string>();
 	
     /// <summary> 
     /// Unique identifier of the subscription. <br />
@@ -152,7 +153,7 @@ public sealed class NotificationSubscription
         /// </summary>
         ///
         [JsonPropertyName("apis")]
-        public List<string> Apis { get; set; } = new List<string>();
+        public IReadOnlyList<string> Apis { get; set; } = Array.Empty<string>();
 		
         /// <summary> 
         /// Used to match the <c>type</c> property of the data. An OData expression must be provided. <br />

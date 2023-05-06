@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -20,7 +21,7 @@ public sealed class SupportedMeasurements
     /// </summary>
     ///
     [JsonPropertyName("c8y_SupportedMeasurements")]
-    public List<string> C8ySupportedMeasurements { get; set; } = new List<string>();
+    public IReadOnlyList<string> C8ySupportedMeasurements { get; set; } = Array.Empty<string>();
 	
     public override string ToString()
     {

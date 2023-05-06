@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -24,7 +25,7 @@ public sealed class LoginOptionCollection
     /// </summary>
     ///
     [JsonPropertyName("loginOptions")]
-    public List<LoginOption> LoginOptions { get; set; } = new List<LoginOption>();
+    public IReadOnlyList<LoginOption> LoginOptions { get; set; } = Array.Empty<LoginOption>();
 	
     /// <summary> 
     /// A URL linking to this resource. <br />

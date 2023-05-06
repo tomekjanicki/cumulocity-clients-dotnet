@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -48,7 +49,7 @@ public sealed class UserCollection<TCustomProperties> where TCustomProperties : 
     /// </summary>
     ///
     [JsonPropertyName("users")]
-    public List<User<TCustomProperties>> Users { get; set; } = new List<User<TCustomProperties>>();
+    public IReadOnlyList<User<TCustomProperties>> Users { get; set; } = Array.Empty<User<TCustomProperties>>();
 	
     public override string ToString()
     {

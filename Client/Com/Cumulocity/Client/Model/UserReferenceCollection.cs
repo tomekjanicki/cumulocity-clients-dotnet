@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -34,7 +35,7 @@ public sealed class UserReferenceCollection<TCustomProperties> where TCustomProp
     /// </summary>
     ///
     [JsonPropertyName("references")]
-    public List<UserReference<TCustomProperties>> References { get; set; } = new List<UserReference<TCustomProperties>>();
+    public IReadOnlyList<UserReference<TCustomProperties>> References { get; set; } = Array.Empty<UserReference<TCustomProperties>>();
 	
     /// <summary> 
     /// A URL linking to this resource. <br />

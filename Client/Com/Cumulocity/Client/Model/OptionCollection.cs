@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -52,7 +53,7 @@ public sealed class OptionCollection
     /// </summary>
     ///
     [JsonPropertyName("options")]
-    public List<Option> Options { get; set; } = new List<Option>();
+    public IReadOnlyList<Option> Options { get; set; } = Array.Empty<Option>();
 	
     public override string ToString()
     {

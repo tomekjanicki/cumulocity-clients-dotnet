@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -22,7 +23,7 @@ public sealed class User<TCustomProperties> where TCustomProperties : CustomProp
     /// </summary>
     ///
     [JsonPropertyName("applications")]
-    public List<Application> Applications { get; set; } = new List<Application>();
+    public IReadOnlyList<Application> Applications { get; set; } = Array.Empty<Application>();
 	
     /// <summary> 
     /// An object with a list of custom properties. <br />
@@ -208,7 +209,7 @@ public sealed class User<TCustomProperties> where TCustomProperties : CustomProp
         /// </summary>
         ///
         [JsonPropertyName("references")]
-        public List<GroupReference<T>> References { get; set; } = new List<GroupReference<T>>();
+        public IReadOnlyList<GroupReference<T>> References { get; set; } = Array.Empty<GroupReference<T>>();
 		
         /// <summary> 
         /// Information about paging statistics. <br />
@@ -248,7 +249,7 @@ public sealed class User<TCustomProperties> where TCustomProperties : CustomProp
         /// </summary>
         ///
         [JsonPropertyName("references")]
-        public List<RoleReference> References { get; set; } = new List<RoleReference>();
+        public IReadOnlyList<RoleReference> References { get; set; } = Array.Empty<RoleReference>();
 		
         /// <summary> 
         /// Information about paging statistics. <br />

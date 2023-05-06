@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -93,7 +94,7 @@ public sealed class MeasurementApiResource<TMeasurement> where TMeasurement : Me
     {
 		
         [JsonPropertyName("measurements")]
-        public List<T> PMeasurements { get; set; } = new List<T>();
+        public IReadOnlyList<T> PMeasurements { get; set; } = Array.Empty<T>();
 		
         /// <summary> 
         /// A URL linking to this resource. <br />

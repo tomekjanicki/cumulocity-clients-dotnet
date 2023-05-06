@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -24,21 +25,21 @@ public sealed class BasicAuthenticationRestrictions
     /// </summary>
     ///
     [JsonPropertyName("forbiddenClients")]
-    public List<string> ForbiddenClients { get; set; } = new List<string>();
+    public IReadOnlyList<string> ForbiddenClients { get; set; } = Array.Empty<string>();
 	
     /// <summary> 
     /// List of user agents, passed in <c>User-Agent</c> HTTP header, which are blocked if basic authentication is used. <br />
     /// </summary>
     ///
     [JsonPropertyName("forbiddenUserAgents")]
-    public List<string> ForbiddenUserAgents { get; set; } = new List<string>();
+    public IReadOnlyList<string> ForbiddenUserAgents { get; set; } = Array.Empty<string>();
 	
     /// <summary> 
     /// List of user agents, passed in <c>User-Agent</c> HTTP header, which are allowed to use basic authentication. <br />
     /// </summary>
     ///
     [JsonPropertyName("trustedUserAgents")]
-    public List<string> TrustedUserAgents { get; set; } = new List<string>();
+    public IReadOnlyList<string> TrustedUserAgents { get; set; } = Array.Empty<string>();
 	
     public override string ToString()
     {

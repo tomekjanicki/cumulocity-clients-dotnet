@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -20,7 +21,7 @@ public sealed class ChildOperationsAddMultiple
     /// </summary>
     ///
     [JsonPropertyName("references")]
-    public List<References> PReferences { get; set; } = new List<References>();
+    public IReadOnlyList<References> PReferences { get; set; } = Array.Empty<References>();
 	
     public ChildOperationsAddMultiple() 
     {

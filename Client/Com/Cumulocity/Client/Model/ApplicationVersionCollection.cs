@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -20,7 +21,7 @@ public sealed class ApplicationVersionCollection
     /// </summary>
     ///
     [JsonPropertyName("versions")]
-    public List<ApplicationVersion> Versions { get; set; } = new List<ApplicationVersion>();
+    public IReadOnlyList<ApplicationVersion> Versions { get; set; } = Array.Empty<ApplicationVersion>();
 	
     public override string ToString()
     {

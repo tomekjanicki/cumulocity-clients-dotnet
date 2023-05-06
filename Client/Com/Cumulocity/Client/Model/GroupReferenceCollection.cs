@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -27,7 +28,7 @@ public sealed class GroupReferenceCollection<TCustomProperties> where TCustomPro
     /// </summary>
     ///
     [JsonPropertyName("references")]
-    public List<GroupReference<TCustomProperties>> References { get; set; } = new List<GroupReference<TCustomProperties>>();
+    public IReadOnlyList<GroupReference<TCustomProperties>> References { get; set; } = Array.Empty<GroupReference<TCustomProperties>>();
 	
     /// <summary> 
     /// A URI reference [<see href="https://tools.ietf.org/html/rfc3986" langword="RFC3986" />] to a potential previous page of managed objects. <br />

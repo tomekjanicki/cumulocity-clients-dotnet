@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -34,7 +35,7 @@ public sealed class ApplicationVersion
     /// </summary>
     ///
     [JsonPropertyName("tag")]
-    public List<string> Tag { get; set; } = new List<string>();
+    public IReadOnlyList<string> Tag { get; set; } = Array.Empty<string>();
 	
     public override string ToString()
     {

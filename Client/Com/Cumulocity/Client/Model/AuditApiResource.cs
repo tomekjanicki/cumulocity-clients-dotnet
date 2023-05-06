@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -93,7 +94,7 @@ public sealed class AuditApiResource<TAuditRecord> where TAuditRecord : AuditRec
         public string? Self { get; set; }
 		
         [JsonPropertyName("auditRecords")]
-        public List<T> PAuditRecords { get; set; } = new List<T>();
+        public IReadOnlyList<T> PAuditRecords { get; set; } = Array.Empty<T>();
 		
         public override string ToString()
         {

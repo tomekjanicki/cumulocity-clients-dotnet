@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -44,7 +45,7 @@ public class AuditRecord  : IWithCustomFragments
     /// </summary>
     ///
     [JsonPropertyName("changes")]
-    public List<Changes> PChanges { get; set; } = new List<Changes>();
+    public IReadOnlyList<Changes> PChanges { get; set; } = Array.Empty<Changes>();
 	
     /// <summary> 
     /// The date and time when the audit record was created. <br />

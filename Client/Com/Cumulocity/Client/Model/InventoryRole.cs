@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -45,7 +46,7 @@ public sealed class InventoryRole
     /// </summary>
     ///
     [JsonPropertyName("permissions")]
-    public List<InventoryRolePermission> Permissions { get; set; } = new List<InventoryRolePermission>();
+    public IReadOnlyList<InventoryRolePermission> Permissions { get; set; } = Array.Empty<InventoryRolePermission>();
 	
     /// <summary> 
     /// A URL linking to this resource. <br />

@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -38,7 +39,7 @@ public sealed class DeviceStatistics
     /// </summary>
     ///
     [JsonPropertyName("deviceParents")]
-    public List<string> DeviceParents { get; set; } = new List<string>();
+    public IReadOnlyList<string> DeviceParents { get; set; } = Array.Empty<string>();
 	
     /// <summary> 
     /// Value of the <c>type</c> field from the corresponding device. Available only with monthly data. <br />

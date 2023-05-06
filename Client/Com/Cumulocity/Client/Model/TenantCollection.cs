@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -48,7 +49,7 @@ public sealed class TenantCollection<TCustomProperties> where TCustomProperties 
     /// </summary>
     ///
     [JsonPropertyName("tenants")]
-    public List<Tenant<TCustomProperties>> Tenants { get; set; } = new List<Tenant<TCustomProperties>>();
+    public IReadOnlyList<Tenant<TCustomProperties>> Tenants { get; set; } = Array.Empty<Tenant<TCustomProperties>>();
 	
     public override string ToString()
     {

@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -311,14 +312,14 @@ public sealed class AuthConfig
             /// </summary>
             ///
             [JsonPropertyName("mappings")]
-            public List<Mappings> PMappings { get; set; } = new List<Mappings>();
+            public IReadOnlyList<Mappings> PMappings { get; set; } = Array.Empty<Mappings>();
 			
             /// <summary> 
             /// Represents rules used to assign inventory roles. <br />
             /// </summary>
             ///
             [JsonPropertyName("inventoryMappings")]
-            public List<InventoryMappings> PInventoryMappings { get; set; } = new List<InventoryMappings>();
+            public IReadOnlyList<InventoryMappings> PInventoryMappings { get; set; } = Array.Empty<InventoryMappings>();
 			
             /// <summary> 
             /// Configuration of the mapping. <br />
@@ -371,14 +372,14 @@ public sealed class AuthConfig
                 /// </summary>
                 ///
                 [JsonPropertyName("thenApplications")]
-                public List<int> ThenApplications { get; set; } = new List<int>();
+                public IReadOnlyList<int> ThenApplications { get; set; } = Array.Empty<int>();
 				
                 /// <summary> 
                 /// List of the groups' identifiers. <br />
                 /// </summary>
                 ///
                 [JsonPropertyName("thenGroups")]
-                public List<int> ThenGroups { get; set; } = new List<int>();
+                public IReadOnlyList<int> ThenGroups { get; set; } = Array.Empty<int>();
 				
                 public override string ToString()
                 {
@@ -410,7 +411,7 @@ public sealed class AuthConfig
                 /// </summary>
                 ///
                 [JsonPropertyName("thenInventoryRoles")]
-                public List<ThenInventoryRoles> PThenInventoryRoles { get; set; } = new List<ThenInventoryRoles>();
+                public IReadOnlyList<ThenInventoryRoles> PThenInventoryRoles { get; set; } = Array.Empty<ThenInventoryRoles>();
 				
                 /// <summary> 
                 /// Represents inventory roles for a specific device group. <br />
@@ -431,7 +432,7 @@ public sealed class AuthConfig
                     /// </summary>
                     ///
                     [JsonPropertyName("roleIds")]
-                    public List<int> RoleIds { get; set; } = new List<int>();
+                    public IReadOnlyList<int> RoleIds { get; set; } = Array.Empty<int>();
 					
                     public override string ToString()
                     {

@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -38,7 +39,7 @@ public sealed class UsageStatisticsResources
     /// </summary>
     ///
     [JsonPropertyName("usedBy")]
-    public List<UsageStatisticsResourcesUsedBy> UsedBy { get; set; } = new List<UsageStatisticsResourcesUsedBy>();
+    public IReadOnlyList<UsageStatisticsResourcesUsedBy> UsedBy { get; set; } = Array.Empty<UsageStatisticsResourcesUsedBy>();
 	
     public override string ToString()
     {

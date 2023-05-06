@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -65,7 +66,7 @@ public sealed class NotificationApiResource
         public string? Self { get; set; }
 		
         [JsonPropertyName("subscriptions")]
-        public List<NotificationSubscription> Subscriptions { get; set; } = new List<NotificationSubscription>();
+        public IReadOnlyList<NotificationSubscription> Subscriptions { get; set; } = Array.Empty<NotificationSubscription>();
 		
         public override string ToString()
         {

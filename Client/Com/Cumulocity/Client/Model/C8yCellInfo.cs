@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -31,7 +32,7 @@ public sealed class C8yCellInfo
     /// </summary>
     ///
     [JsonPropertyName("cellTowers")]
-    public List<C8yCellTower> CellTowers { get; set; } = new List<C8yCellTower>();
+    public IReadOnlyList<C8yCellTower> CellTowers { get; set; } = Array.Empty<C8yCellTower>();
 	
     public C8yCellInfo() 
     {

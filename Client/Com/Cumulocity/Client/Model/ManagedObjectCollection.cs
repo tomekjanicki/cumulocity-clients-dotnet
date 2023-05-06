@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -20,7 +21,7 @@ public sealed class ManagedObjectCollection<TManagedObject> where TManagedObject
     /// </summary>
     ///
     [JsonPropertyName("managedObjects")]
-    public List<TManagedObject> ManagedObjects { get; set; } = new List<TManagedObject>();
+    public IReadOnlyList<TManagedObject> ManagedObjects { get; set; } = Array.Empty<TManagedObject>();
 	
     /// <summary> 
     /// A URI reference [<see href="https://tools.ietf.org/html/rfc3986" langword="RFC3986" />] to a potential next page of managed objects. <br />

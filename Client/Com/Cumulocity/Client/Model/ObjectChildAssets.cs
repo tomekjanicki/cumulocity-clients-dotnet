@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -31,7 +32,7 @@ public sealed class ObjectChildAssets
     /// </summary>
     ///
     [JsonPropertyName("references")]
-    public List<ManagedObjectReferenceTuple> References { get; set; } = new List<ManagedObjectReferenceTuple>();
+    public IReadOnlyList<ManagedObjectReferenceTuple> References { get; set; } = Array.Empty<ManagedObjectReferenceTuple>();
 	
     /// <summary> 
     /// Link to this resource's child assets. <br />

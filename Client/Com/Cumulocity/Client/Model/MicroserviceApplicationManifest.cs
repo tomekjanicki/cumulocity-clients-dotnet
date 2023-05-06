@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -48,7 +49,7 @@ public sealed class MicroserviceApplicationManifest
     /// </summary>
     ///
     [JsonPropertyName("extensions")]
-    public List<Extensions> PExtensions { get; set; } = new List<Extensions>();
+    public IReadOnlyList<Extensions> PExtensions { get; set; } = Array.Empty<Extensions>();
 	
     /// <summary> 
     /// Deployment isolation.In case of PER_TENANT, there is a separate instance for each tenant.Otherwise, there is one single instance for all subscribed tenants.This will affect billing. <br />
@@ -89,14 +90,14 @@ public sealed class MicroserviceApplicationManifest
     /// </summary>
     ///
     [JsonPropertyName("roles")]
-    public List<string> Roles { get; set; } = new List<string>();
+    public IReadOnlyList<string> Roles { get; set; } = Array.Empty<string>();
 	
     /// <summary> 
     /// List of permissions required by a microservice to work. <br />
     /// </summary>
     ///
     [JsonPropertyName("requiredRoles")]
-    public List<string> RequiredRoles { get; set; } = new List<string>();
+    public IReadOnlyList<string> RequiredRoles { get; set; } = Array.Empty<string>();
 	
     /// <summary> 
     /// Allows to configure a microservice auto scaling policy.If the microservice uses a lot of CPU resources, a second instance will be created automatically when this is set to <c>AUTO</c>.The default is <c>NONE</c>, meaning auto scaling will not happen. <br />
@@ -110,7 +111,7 @@ public sealed class MicroserviceApplicationManifest
     /// </summary>
     ///
     [JsonPropertyName("settings")]
-    public List<ApplicationSettings> Settings { get; set; } = new List<ApplicationSettings>();
+    public IReadOnlyList<ApplicationSettings> Settings { get; set; } = Array.Empty<ApplicationSettings>();
 	
     /// <summary> 
     /// Allows to specify a custom category for microservice settings.By default, <c>contextPath</c> is used. <br />

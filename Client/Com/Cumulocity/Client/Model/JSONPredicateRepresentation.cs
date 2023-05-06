@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -26,7 +27,7 @@ public sealed class JSONPredicateRepresentation
     /// </summary>
     ///
     [JsonPropertyName("childPredicates")]
-    public List<JSONPredicateRepresentation> ChildPredicates { get; set; } = new List<JSONPredicateRepresentation>();
+    public IReadOnlyList<JSONPredicateRepresentation> ChildPredicates { get; set; } = Array.Empty<JSONPredicateRepresentation>();
 	
     /// <summary> 
     /// Operator executed on the parameter from the JWT access token claim pointed by <c>parameterPath</c> and the provided parameter <c>value</c>. <br />

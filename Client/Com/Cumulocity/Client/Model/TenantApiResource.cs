@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -100,7 +101,7 @@ public sealed class TenantApiResource<TCustomProperties> where TCustomProperties
         public string? Self { get; set; }
 		
         [JsonPropertyName("options")]
-        public List<Option> POptions { get; set; } = new List<Option>();
+        public IReadOnlyList<Option> POptions { get; set; } = Array.Empty<Option>();
 		
         public override string ToString()
         {
@@ -128,7 +129,7 @@ public sealed class TenantApiResource<TCustomProperties> where TCustomProperties
         public string? Self { get; set; }
 		
         [JsonPropertyName("tenants")]
-        public List<Tenant<T>> PTenants { get; set; } = new List<Tenant<T>>();
+        public IReadOnlyList<Tenant<T>> PTenants { get; set; } = Array.Empty<Tenant<T>>();
 		
         public override string ToString()
         {

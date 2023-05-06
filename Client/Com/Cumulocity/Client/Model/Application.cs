@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -88,14 +89,14 @@ public sealed class Application
     /// </summary>
     ///
     [JsonPropertyName("roles")]
-    public List<string> Roles { get; set; } = new List<string>();
+    public IReadOnlyList<string> Roles { get; set; } = Array.Empty<string>();
 	
     /// <summary> 
     /// List of permissions required by a microservice to work. <br />
     /// </summary>
     ///
     [JsonPropertyName("requiredRoles")]
-    public List<string> RequiredRoles { get; set; } = new List<string>();
+    public IReadOnlyList<string> RequiredRoles { get; set; } = Array.Empty<string>();
 	
     /// <summary> 
     /// A flag to indicate if the application has a breadcrumbs navigation on the UI. <br />

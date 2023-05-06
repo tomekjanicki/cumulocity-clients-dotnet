@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -83,7 +84,7 @@ public sealed class DeviceControlApiResource
         /// </summary>
         ///
         [JsonPropertyName("operations")]
-        public List<OperationReference> POperations { get; set; } = new List<OperationReference>();
+        public IReadOnlyList<OperationReference> POperations { get; set; } = Array.Empty<OperationReference>();
 		
         public override string ToString()
         {

@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -27,7 +28,7 @@ public sealed class MeasurementSeries
     /// </summary>
     ///
     [JsonPropertyName("series")]
-    public List<MeasurementFragmentSeries> Series { get; set; } = new List<MeasurementFragmentSeries>();
+    public IReadOnlyList<MeasurementFragmentSeries> Series { get; set; } = Array.Empty<MeasurementFragmentSeries>();
 	
     /// <summary> 
     /// If there were more than 5000 values, the final result was truncated. <br />

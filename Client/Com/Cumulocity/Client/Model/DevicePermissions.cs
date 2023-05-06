@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -20,10 +21,10 @@ public sealed class DevicePermissions<TCustomProperties> where TCustomProperties
 {
 	
     [JsonPropertyName("users")]
-    public List<User<TCustomProperties>> Users { get; set; } = new List<User<TCustomProperties>>();
+    public IReadOnlyList<User<TCustomProperties>> Users { get; set; } = Array.Empty<User<TCustomProperties>>();
 	
     [JsonPropertyName("groups")]
-    public List<Group<TCustomProperties>> Groups { get; set; } = new List<Group<TCustomProperties>>();
+    public IReadOnlyList<Group<TCustomProperties>> Groups { get; set; } = Array.Empty<Group<TCustomProperties>>();
 	
     public override string ToString()
     {

@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -20,7 +21,7 @@ public sealed class ApplicationBinaries
     /// </summary>
     ///
     [JsonPropertyName("attachments")]
-    public List<Attachments> PAttachments { get; set; } = new List<Attachments>();
+    public IReadOnlyList<Attachments> PAttachments { get; set; } = Array.Empty<Attachments>();
 	
     public sealed class Attachments 
     {

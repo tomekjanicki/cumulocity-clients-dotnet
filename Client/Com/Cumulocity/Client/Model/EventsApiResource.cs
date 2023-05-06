@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -86,7 +87,7 @@ public sealed class EventsApiResource<TEvent> where TEvent : Event
         public string? Self { get; set; }
 		
         [JsonPropertyName("events")]
-        public List<T> PEvents { get; set; } = new List<T>();
+        public IReadOnlyList<T> PEvents { get; set; } = Array.Empty<T>();
 		
         public override string ToString()
         {

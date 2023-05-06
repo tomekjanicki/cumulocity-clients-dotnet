@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -45,7 +46,7 @@ public sealed class DeviceStatisticsCollection
     /// </summary>
     ///
     [JsonPropertyName("statistics")]
-    public List<DeviceStatistics> Statistics { get; set; } = new List<DeviceStatistics>();
+    public IReadOnlyList<DeviceStatistics> Statistics { get; set; } = Array.Empty<DeviceStatistics>();
 	
     public override string ToString()
     {

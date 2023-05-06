@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -24,7 +25,7 @@ public sealed class CurrentUser
     /// </summary>
     ///
     [JsonPropertyName("effectiveRoles")]
-    public List<Role> EffectiveRoles { get; set; } = new List<Role>();
+    public IReadOnlyList<Role> EffectiveRoles { get; set; } = Array.Empty<Role>();
 	
     /// <summary> 
     /// The user's email address. <br />

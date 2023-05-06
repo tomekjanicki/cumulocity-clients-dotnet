@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -34,7 +35,7 @@ public sealed class RetentionRuleCollection
     /// </summary>
     ///
     [JsonPropertyName("retentionRules")]
-    public List<RetentionRule> RetentionRules { get; set; } = new List<RetentionRule>();
+    public IReadOnlyList<RetentionRule> RetentionRules { get; set; } = Array.Empty<RetentionRule>();
 	
     /// <summary> 
     /// A URL linking to this resource. <br />

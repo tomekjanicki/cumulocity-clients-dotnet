@@ -6,6 +6,7 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -155,7 +156,7 @@ public sealed class Tenant<TCustomProperties> where TCustomProperties : CustomPr
         /// </summary>
         ///
         [JsonPropertyName("references")]
-        public List<Application> References { get; set; } = new List<Application>();
+        public IReadOnlyList<Application> References { get; set; } = Array.Empty<Application>();
 		
         /// <summary> 
         /// A URL linking to this resource. <br />
@@ -187,7 +188,7 @@ public sealed class Tenant<TCustomProperties> where TCustomProperties : CustomPr
         /// </summary>
         ///
         [JsonPropertyName("references")]
-        public List<Application> References { get; set; } = new List<Application>();
+        public IReadOnlyList<Application> References { get; set; } = Array.Empty<Application>();
 		
         /// <summary> 
         /// A URL linking to this resource. <br />
