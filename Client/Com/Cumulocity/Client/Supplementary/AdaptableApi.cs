@@ -6,13 +6,9 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Threading.Tasks;
 
 namespace Client.Com.Cumulocity.Client.Supplementary;
 
@@ -29,101 +25,5 @@ public class AdaptableApi
     {
         var jsonString = JsonSerializer.Serialize(body);
         return JsonSerializer.Deserialize<JsonNode>(jsonString);
-    }
-}
-	
-public static class JsonNodeExtensions
-{
-    public static void RemoveFromNode(this JsonNode node, params string[] pathItem)
-    {
-        if (pathItem.Length > 0)
-        {
-            var currentNode = node;
-            string nodeName = pathItem[0];
-            int index = 0;
-            while (index < (pathItem.Length - 1))
-            {
-                currentNode = node[nodeName];
-                index++;
-                nodeName = pathItem[index];
-            }
-            if (currentNode?.GetType() == typeof(JsonObject))
-            {
-                var objectNode = (JsonObject) currentNode;
-                objectNode.Remove(nodeName);
-            }
-        }
-    }
-}
-	
-public static class NameValueCollectionExtensions
-{
-    public static string GetStringValue(this object input)
-    {
-        if (input is System.DateTime dateTime)
-        {
-            return dateTime.ToString("O");
-        }
-        return input.ToString() ?? string.Empty;
-    }
-	
-    public static void AddIfRequired(this NameValueCollection collection, string key, object? value)
-    {
-        if (value != null)
-        {
-            collection.Add(key, value.GetStringValue());
-        }
-    }
-	
-    public static void AddIfRequired<T>(this NameValueCollection collection, string key, List<T>? value, bool explode = true)
-    {
-        if (value != null)
-        {
-            if (explode)
-            {
-                value.Where(e => e != null).ToList().ForEach(e => collection.Add(key, e.GetStringValue()));
-            }
-            else
-            {
-                collection.Add(key, string.Join(',', value.Where(e => e != null)));
-            }
-        }
-    }
-	
-    public static void AddIfRequired(this NameValueCollection collection, string key, object[]? value, bool explode = true)
-    {
-        if (value != null)
-        {
-            collection.AddIfRequired<object>(key, value.ToList(), explode);
-        }
-    }
-}
-
-public static class HttpResponseMessageExtensions
-{
-    public static async Task EnsureSuccessStatusCodeWithContentInfoIfAvailable(this HttpResponseMessage httpResponseMessage)
-    {
-        if (!httpResponseMessage.IsSuccessStatusCode)
-        {
-            var content = await httpResponseMessage.GetContent().ConfigureAwait(false);
-            if (content != string.Empty)
-            {
-                throw new HttpRequestException($"Request failed. Status code: {httpResponseMessage.StatusCode}, Reason: {httpResponseMessage.ReasonPhrase}, Additional info: {content}");
-            }
-
-            throw new HttpRequestException($"Request failed. Status code: {httpResponseMessage.StatusCode}, Reason: {httpResponseMessage.ReasonPhrase}");
-        }
-    }
-
-    private static async Task<string> GetContent(this HttpResponseMessage httpResponseMessage)
-    {
-        try
-        {
-            return await httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
-        }
-        catch
-        {
-            return string.Empty;
-        }
     }
 }
