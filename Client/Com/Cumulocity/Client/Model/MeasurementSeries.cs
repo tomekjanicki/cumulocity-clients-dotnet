@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class MeasurementSeries 
+public sealed class MeasurementSeries 
 {
 	
     /// <summary> 
@@ -40,7 +40,7 @@ public class MeasurementSeries
     /// Each property contained here is a date taken from the measurement and it contains an array of objects specifying <c>min</c> and <c>max</c> pair of values. Each pair corresponds to a single series object in the <c>series</c> array. If there is no aggregation used, <c>min</c> is equal to <c>max</c> in every pair. <br />
     /// </summary>
     ///
-    public class Values 
+    public sealed class Values 
     {
 		
         public override string ToString()

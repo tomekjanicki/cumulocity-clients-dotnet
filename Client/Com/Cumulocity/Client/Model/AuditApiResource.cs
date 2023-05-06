@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class AuditApiResource<TAuditRecord> where TAuditRecord : AuditRecord
+public sealed class AuditApiResource<TAuditRecord> where TAuditRecord : AuditRecord
 {
 	
     /// <summary> 
@@ -82,7 +82,7 @@ public class AuditApiResource<TAuditRecord> where TAuditRecord : AuditRecord
     /// Collection of audit records <br />
     /// </summary>
     ///
-    public class AuditRecords<TAuditRecord> where TAuditRecord : AuditRecord
+    public sealed class AuditRecords<TAuditRecord> where TAuditRecord : AuditRecord
     {
 		
         /// <summary> 

@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A voltage sensor measures the voltage difference between two points in an electric circuit. <br />
 /// </summary>
 ///
-public class C8yVoltageMeasurement 
+public sealed class C8yVoltageMeasurement 
 {
 	
     /// <summary> 

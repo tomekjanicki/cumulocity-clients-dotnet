@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class ChildOperationsAddMultiple 
+public sealed class ChildOperationsAddMultiple 
 {
 	
     /// <summary> 
@@ -31,13 +31,13 @@ public class ChildOperationsAddMultiple
         this.PReferences = references;
     }
 	
-    public class References 
+    public sealed class References 
     {
 		
         [JsonPropertyName("managedObject")]
         public ManagedObject? PManagedObject { get; set; }
 		
-        public class ManagedObject 
+        public sealed class ManagedObject 
         {
 			
             /// <summary> 

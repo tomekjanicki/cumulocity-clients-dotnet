@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class UserReference<TCustomProperties> where TCustomProperties : CustomProperties
+public sealed class UserReference<TCustomProperties> where TCustomProperties : CustomProperties
 {
 	
     /// <summary> 

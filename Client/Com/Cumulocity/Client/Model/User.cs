@@ -14,7 +14,7 @@ using Client.Com.Cumulocity.Client.Converter;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class User<TCustomProperties> where TCustomProperties : CustomProperties
+public sealed class User<TCustomProperties> where TCustomProperties : CustomProperties
 {
 	
     /// <summary> 
@@ -193,7 +193,7 @@ public class User<TCustomProperties> where TCustomProperties : CustomProperties
     /// An object with a list of user groups. <br />
     /// </summary>
     ///
-    public class Groups<TCustomProperties> where TCustomProperties : CustomProperties
+    public sealed class Groups<TCustomProperties> where TCustomProperties : CustomProperties
     {
 		
         /// <summary> 
@@ -233,7 +233,7 @@ public class User<TCustomProperties> where TCustomProperties : CustomProperties
     /// An object with a list of user roles. <br />
     /// </summary>
     ///
-    public class Roles 
+    public sealed class Roles 
     {
 		
         /// <summary> 

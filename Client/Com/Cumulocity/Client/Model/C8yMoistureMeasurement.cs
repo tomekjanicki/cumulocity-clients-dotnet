@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Absolute moisture is the absolute water content of a substance. Relative moisture, expressed as a percentage, measures the current absolute moisture relative to the maximum for that temperature. Specific humidity is a ratio of the water vapour content of the mixture to the total substance content on a mass basis. <br />
 /// </summary>
 ///
-public class C8yMoistureMeasurement 
+public sealed class C8yMoistureMeasurement 
 {
 	
     /// <summary> 

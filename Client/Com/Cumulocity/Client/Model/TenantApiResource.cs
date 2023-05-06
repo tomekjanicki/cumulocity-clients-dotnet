@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class TenantApiResource<TCustomProperties> where TCustomProperties : CustomProperties
+public sealed class TenantApiResource<TCustomProperties> where TCustomProperties : CustomProperties
 {
 	
     /// <summary> 
@@ -89,7 +89,7 @@ public class TenantApiResource<TCustomProperties> where TCustomProperties : Cust
     /// Collection of tenant options <br />
     /// </summary>
     ///
-    public class Options 
+    public sealed class Options 
     {
 		
         /// <summary> 
@@ -117,7 +117,7 @@ public class TenantApiResource<TCustomProperties> where TCustomProperties : Cust
     /// Collection of subtenants <br />
     /// </summary>
     ///
-    public class Tenants<TCustomProperties> where TCustomProperties : CustomProperties
+    public sealed class Tenants<TCustomProperties> where TCustomProperties : CustomProperties
     {
 		
         /// <summary> 

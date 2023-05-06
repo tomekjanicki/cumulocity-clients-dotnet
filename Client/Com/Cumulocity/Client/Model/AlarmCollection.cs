@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class AlarmCollection<TAlarm> where TAlarm : Alarm
+public sealed class AlarmCollection<TAlarm> where TAlarm : Alarm
 {
 	
     /// <summary> 

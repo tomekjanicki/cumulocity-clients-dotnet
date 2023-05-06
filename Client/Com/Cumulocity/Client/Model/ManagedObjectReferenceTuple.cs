@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class ManagedObjectReferenceTuple 
+public sealed class ManagedObjectReferenceTuple 
 {
 	
     /// <summary> 
@@ -32,7 +32,7 @@ public class ManagedObjectReferenceTuple
     /// Details of the referenced managed object. <br />
     /// </summary>
     ///
-    public class ManagedObject 
+    public sealed class ManagedObject 
     {
 		
         /// <summary> 

@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A temperature sensor reports the temperature in degrees Celsius (C). In a managed object, a temperature sensor is modeled as a simple empty fragment. <br />
 /// </summary>
 ///
-public class C8yTemperatureSensor 
+public sealed class C8yTemperatureSensor 
 {
 	
     public override string ToString()

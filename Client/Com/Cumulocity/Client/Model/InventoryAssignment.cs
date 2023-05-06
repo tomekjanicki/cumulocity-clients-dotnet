@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// An inventory assignment. <br />
 /// </summary>
 ///
-public class InventoryAssignment 
+public sealed class InventoryAssignment 
 {
 	
     /// <summary> 

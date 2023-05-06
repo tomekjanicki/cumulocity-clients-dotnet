@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class SubscribedApplicationReference 
+public sealed class SubscribedApplicationReference 
 {
 	
     /// <summary> 
@@ -34,7 +34,7 @@ public class SubscribedApplicationReference
     /// The application to be subscribed to. <br />
     /// </summary>
     ///
-    public class Application 
+    public sealed class Application 
     {
 		
         /// <summary> 

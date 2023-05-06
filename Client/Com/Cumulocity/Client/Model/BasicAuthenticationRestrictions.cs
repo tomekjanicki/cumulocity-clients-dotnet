@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// For basic authentication case only. <br />
 /// </summary>
 ///
-public class BasicAuthenticationRestrictions 
+public sealed class BasicAuthenticationRestrictions 
 {
 	
     /// <summary> 

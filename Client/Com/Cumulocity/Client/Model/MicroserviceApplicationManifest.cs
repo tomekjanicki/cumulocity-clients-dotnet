@@ -18,7 +18,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// The manifest of the microservice application. <br />
 /// </summary>
 ///
-public class MicroserviceApplicationManifest 
+public sealed class MicroserviceApplicationManifest 
 {
 	
     /// <summary> 
@@ -167,7 +167,7 @@ public class MicroserviceApplicationManifest
     }
 	
 	
-    public class Extensions 
+    public sealed class Extensions 
     {
 		
         /// <summary> 
@@ -200,7 +200,7 @@ public class MicroserviceApplicationManifest
     /// Application provider information.Simple name allowed for predefined providers, for example, c8y.Detailed object for external provider. <br />
     /// </summary>
     ///
-    public class Provider 
+    public sealed class Provider 
     {
 		
         /// <summary> 
@@ -225,7 +225,7 @@ public class MicroserviceApplicationManifest
     /// The minimum required resources for the microservice application. <br />
     /// </summary>
     ///
-    public class RequestResources 
+    public sealed class RequestResources 
     {
 		
         /// <summary> 
@@ -257,7 +257,7 @@ public class MicroserviceApplicationManifest
     /// The recommended resources for this microservice application. <br />
     /// </summary>
     ///
-    public class Resources 
+    public sealed class Resources 
     {
 		
         /// <summary> 

@@ -18,7 +18,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Parameters determining the authentication process. <br />
 /// </summary>
 ///
-public class AuthConfig 
+public sealed class AuthConfig 
 {
 	
     /// <summary> 
@@ -235,7 +235,7 @@ public class AuthConfig
     /// SSO specific. Describes the fields in the access token from the external server containing user information. <br />
     /// </summary>
     ///
-    public class AccessTokenToUserDataMapping 
+    public sealed class AccessTokenToUserDataMapping 
     {
 		
         /// <summary> 
@@ -282,7 +282,7 @@ public class AuthConfig
     /// SSO specific. Describes the process of internal user creation during login with the external authorization server. <br />
     /// </summary>
     ///
-    public class OnNewUser 
+    public sealed class OnNewUser 
     {
 		
         /// <summary> 
@@ -296,7 +296,7 @@ public class AuthConfig
         /// Modern version of configuration of default groups and applications. This ensures backward compatibility. <br />
         /// </summary>
         ///
-        public class DynamicMapping 
+        public sealed class DynamicMapping 
         {
 			
             /// <summary> 
@@ -324,7 +324,7 @@ public class AuthConfig
             /// Configuration of the mapping. <br />
             /// </summary>
             ///
-            public class Configuration 
+            public sealed class Configuration 
             {
 				
                 /// <summary> 
@@ -356,7 +356,7 @@ public class AuthConfig
             /// Represents information of mapping access to groups and applications. <br />
             /// </summary>
             ///
-            public class Mappings 
+            public sealed class Mappings 
             {
 				
                 /// <summary> 
@@ -395,7 +395,7 @@ public class AuthConfig
             /// Represents information of mapping access to inventory roles. <br />
             /// </summary>
             ///
-            public class InventoryMappings 
+            public sealed class InventoryMappings 
             {
 				
                 /// <summary> 
@@ -416,7 +416,7 @@ public class AuthConfig
                 /// Represents inventory roles for a specific device group. <br />
                 /// </summary>
                 ///
-                public class ThenInventoryRoles 
+                public sealed class ThenInventoryRoles 
                 {
 					
                     /// <summary> 
@@ -481,7 +481,7 @@ public class AuthConfig
     /// SSO specific and authorization server dependent. Describes the method of access token signature verification on the Cumulocity IoT platform. <br />
     /// </summary>
     ///
-    public class SignatureVerificationConfig 
+    public sealed class SignatureVerificationConfig 
     {
 		
         /// <summary> 
@@ -516,7 +516,7 @@ public class AuthConfig
         /// AAD signature verification configuration. <br />
         /// </summary>
         ///
-        public class Aad 
+        public sealed class Aad 
         {
 			
             /// <summary> 
@@ -541,7 +541,7 @@ public class AuthConfig
         /// ADFS manifest signature verification configuration. <br />
         /// </summary>
         ///
-        public class AdfsManifest 
+        public sealed class AdfsManifest 
         {
 			
             /// <summary> 
@@ -566,7 +566,7 @@ public class AuthConfig
         /// The address of the endpoint which is used to retrieve the public key used to verify the JWT access token signature. <br />
         /// </summary>
         ///
-        public class Jwks 
+        public sealed class Jwks 
         {
 			
             /// <summary> 
@@ -591,7 +591,7 @@ public class AuthConfig
         /// Describes the process of verification of JWT access token with the public keys embedded in the provided X.509 certificates. <br />
         /// </summary>
         ///
-        public class Manual 
+        public sealed class Manual 
         {
 			
             /// <summary> 
@@ -619,7 +619,7 @@ public class AuthConfig
             /// Details of the certificates. <br />
             /// </summary>
             ///
-            public class Certificates 
+            public sealed class Certificates 
             {
 				
                 /// <summary> 
@@ -702,7 +702,7 @@ public class AuthConfig
     /// SSO specific. Points to the field in the obtained JWT access token that should be used as the username in the Cumulocity IoT platform. <br />
     /// </summary>
     ///
-    public class UserIdConfig 
+    public sealed class UserIdConfig 
     {
 		
         /// <summary> 
@@ -742,7 +742,7 @@ public class AuthConfig
     /// A configuration for authentication with an access token from the authorization server. <br />
     /// </summary>
     ///
-    public class ExternalTokenConfig 
+    public sealed class ExternalTokenConfig 
     {
 		
         /// <summary> 
@@ -800,7 +800,7 @@ public class AuthConfig
         /// Points to the claim of the access token from the authorization server that must be used as the username in the Cumulocity IoT platform. <br />
         /// </summary>
         ///
-        public class UserOrAppIdConfig 
+        public sealed class UserOrAppIdConfig 
         {
 			
             /// <summary> 

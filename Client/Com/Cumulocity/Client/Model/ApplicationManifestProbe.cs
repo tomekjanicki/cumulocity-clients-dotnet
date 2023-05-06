@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class ApplicationManifestProbe 
+public sealed class ApplicationManifestProbe 
 {
 	
     /// <summary> 
@@ -60,7 +60,7 @@ public class ApplicationManifestProbe
     /// The probe's HTTP GET method information. <br />
     /// </summary>
     ///
-    public class HttpGet 
+    public sealed class HttpGet 
     {
 		
         /// <summary> 

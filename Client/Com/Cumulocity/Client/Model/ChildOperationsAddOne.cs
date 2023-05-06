@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class ChildOperationsAddOne 
+public sealed class ChildOperationsAddOne 
 {
 	
     [JsonPropertyName("managedObject")]
@@ -26,7 +26,7 @@ public class ChildOperationsAddOne
         this.PManagedObject = managedObject;
     }
 	
-    public class ManagedObject 
+    public sealed class ManagedObject 
     {
 		
         /// <summary> 

@@ -14,7 +14,7 @@ using Client.Com.Cumulocity.Client.Converter;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class Tenant<TCustomProperties> where TCustomProperties : CustomProperties
+public sealed class Tenant<TCustomProperties> where TCustomProperties : CustomProperties
 {
 	
     /// <summary> 
@@ -147,7 +147,7 @@ public class Tenant<TCustomProperties> where TCustomProperties : CustomPropertie
     /// Collection of the subscribed applications. <br />
     /// </summary>
     ///
-    public class Applications 
+    public sealed class Applications 
     {
 		
         /// <summary> 
@@ -179,7 +179,7 @@ public class Tenant<TCustomProperties> where TCustomProperties : CustomPropertie
     /// Collection of the owned applications. <br />
     /// </summary>
     ///
-    public class OwnedApplications 
+    public sealed class OwnedApplications 
     {
 		
         /// <summary> 

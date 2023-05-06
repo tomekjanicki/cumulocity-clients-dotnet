@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Measurement of the single phase energy meter. <br />
 /// </summary>
 ///
-public class C8ySinglePhaseEnergyMeasurement 
+public sealed class C8ySinglePhaseEnergyMeasurement 
 {
 	
     [JsonPropertyName("additionalProperties")]

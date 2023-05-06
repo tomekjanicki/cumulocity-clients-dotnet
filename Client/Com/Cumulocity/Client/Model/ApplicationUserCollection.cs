@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class ApplicationUserCollection 
+public sealed class ApplicationUserCollection 
 {
 	
     /// <summary> 
@@ -26,7 +26,7 @@ public class ApplicationUserCollection
     /// A user who is subscribed to the current application. <br />
     /// </summary>
     ///
-    public class Users 
+    public sealed class Users 
     {
 		
         /// <summary> 

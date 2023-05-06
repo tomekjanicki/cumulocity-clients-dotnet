@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class ManagedObjectReferenceCollection<TManagedObject> where TManagedObject : ManagedObject
+public sealed class ManagedObjectReferenceCollection<TManagedObject> where TManagedObject : ManagedObject
 {
 	
     /// <summary> 
@@ -50,7 +50,7 @@ public class ManagedObjectReferenceCollection<TManagedObject> where TManagedObje
     [JsonPropertyName("statistics")]
     public PageStatistics? Statistics { get; set; }
 	
-    public class References<TManagedObject> where TManagedObject : ManagedObject
+    public sealed class References<TManagedObject> where TManagedObject : ManagedObject
     {
 		
         [JsonPropertyName("managedObject")]

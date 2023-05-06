@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Reference to the tenant owning this application. The default value is a reference to the current tenant. <br />
 /// </summary>
 ///
-public class ApplicationOwner 
+public sealed class ApplicationOwner 
 {
 	
     /// <summary> 
@@ -28,7 +28,7 @@ public class ApplicationOwner
     [JsonPropertyName("tenant")]
     public Tenant? PTenant { get; set; }
 	
-    public class Tenant 
+    public sealed class Tenant 
     {
 		
         /// <summary> 

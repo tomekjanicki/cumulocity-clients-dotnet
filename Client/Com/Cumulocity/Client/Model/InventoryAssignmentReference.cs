@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// An inventory role reference. <br />
 /// </summary>
 ///
-public class InventoryAssignmentReference 
+public sealed class InventoryAssignmentReference 
 {
 	
     /// <summary> 
@@ -26,7 +26,7 @@ public class InventoryAssignmentReference
     [JsonPropertyName("roles")]
     public List<Roles> PRoles { get; set; } = new List<Roles>();
 	
-    public class Roles 
+    public sealed class Roles 
     {
 		
         /// <summary> 

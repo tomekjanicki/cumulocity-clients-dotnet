@@ -154,7 +154,7 @@ public class Alarm
     /// The managed object to which the alarm is associated. <br />
     /// </summary>
     ///
-    public class Source 
+    public sealed class Source 
     {
 		
         /// <summary> 
@@ -200,7 +200,7 @@ public class Alarm
         return JsonSerializer.Serialize(this, jsonOptions);
     }
 	
-    public class Serialization
+    public sealed class Serialization
     {
         public static readonly IDictionary<string, System.Type> AdditionalPropertyClasses = new Dictionary<string, System.Type>();
 		

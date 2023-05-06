@@ -41,7 +41,7 @@ public class CategoryOptions
         return JsonSerializer.Serialize(this, jsonOptions);
     }
 	
-    public class Serialization
+    public sealed class Serialization
     {
         public static readonly IDictionary<string, System.Type> AdditionalPropertyClasses = new Dictionary<string, System.Type>();
 		

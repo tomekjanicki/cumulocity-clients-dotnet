@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Device capability to manage device profiles. Device profiles represent a combination of a firmware version, one or multiple software packages and one or multiple configuration files which can be deployed on a device. <br />
 /// </summary>
 ///
-public class C8yProfile 
+public sealed class C8yProfile 
 {
 	
     /// <summary> 

@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class CurrentTenant<TCustomProperties> where TCustomProperties : CustomProperties
+public sealed class CurrentTenant<TCustomProperties> where TCustomProperties : CustomProperties
 {
 	
     /// <summary> 
@@ -68,7 +68,7 @@ public class CurrentTenant<TCustomProperties> where TCustomProperties : CustomPr
     /// Collection of the subscribed applications. <br />
     /// </summary>
     ///
-    public class Applications 
+    public sealed class Applications 
     {
 		
         /// <summary> 

@@ -18,7 +18,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Represents a predicate for verification. It acts as a condition which is necessary to assign a user to the given groups, permit access to the specified applications or to assign specific inventory roles to device groups. <br />
 /// </summary>
 ///
-public class JSONPredicateRepresentation 
+public sealed class JSONPredicateRepresentation 
 {
 	
     /// <summary> 

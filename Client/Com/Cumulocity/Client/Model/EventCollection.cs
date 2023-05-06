@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class EventCollection<TEvent> where TEvent : Event
+public sealed class EventCollection<TEvent> where TEvent : Event
 {
 	
     /// <summary> 

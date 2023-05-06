@@ -13,7 +13,7 @@ using Client.Com.Cumulocity.Client.Converter;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class NotificationTokenClaims 
+public sealed class NotificationTokenClaims 
 {
 	
     /// <summary> 

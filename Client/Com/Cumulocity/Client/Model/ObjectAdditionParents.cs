@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A collection of references to addition parent objects. <br />
 /// </summary>
 ///
-public class ObjectAdditionParents 
+public sealed class ObjectAdditionParents 
 {
 	
     /// <summary> 

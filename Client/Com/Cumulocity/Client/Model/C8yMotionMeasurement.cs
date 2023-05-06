@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Measurement of the motion sensor. <br />
 /// </summary>
 ///
-public class C8yMotionMeasurement 
+public sealed class C8yMotionMeasurement 
 {
 	
     /// <summary> 
@@ -36,7 +36,7 @@ public class C8yMotionMeasurement
     /// Boolean value indicating if motion has been detected (non-zero value) or not (zero value). <br />
     /// </summary>
     ///
-    public class MotionDetected 
+    public sealed class MotionDetected 
     {
 		
         [JsonPropertyName("value")]

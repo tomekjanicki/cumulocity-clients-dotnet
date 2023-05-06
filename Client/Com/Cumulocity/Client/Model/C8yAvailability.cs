@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// The availability information computed by Cumulocity IoT is stored in fragments <c>c8y_Availability</c> and <c>c8y_Connection</c> of the device. <br />
 /// </summary>
 ///
-public class C8yAvailability 
+public sealed class C8yAvailability 
 {
 	
     /// <summary> 

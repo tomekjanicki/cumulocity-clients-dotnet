@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class ApplicationBinaries 
+public sealed class ApplicationBinaries 
 {
 	
     /// <summary> 
@@ -22,7 +22,7 @@ public class ApplicationBinaries
     [JsonPropertyName("attachments")]
     public List<Attachments> PAttachments { get; set; } = new List<Attachments>();
 	
-    public class Attachments 
+    public sealed class Attachments 
     {
 		
         /// <summary> 

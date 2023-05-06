@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Resources usage for each subscribed microservice application. <br />
 /// </summary>
 ///
-public class UsageStatisticsResources 
+public sealed class UsageStatisticsResources 
 {
 	
     /// <summary> 

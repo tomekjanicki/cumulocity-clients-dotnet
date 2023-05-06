@@ -14,7 +14,7 @@ using Client.Com.Cumulocity.Client.Converter;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class RealtimeNotification 
+public sealed class RealtimeNotification 
 {
 	
     /// <summary> 
@@ -140,7 +140,7 @@ public class RealtimeNotification
     /// Configuration parameters for the current connect message. <br />
     /// </summary>
     ///
-    public class Advice 
+    public sealed class Advice 
     {
 		
         /// <summary> 
@@ -173,7 +173,7 @@ public class RealtimeNotification
     /// List of notifications from the channel. <br />
     /// </summary>
     ///
-    public class Data 
+    public sealed class Data 
     {
 		
         public override string ToString()
@@ -191,7 +191,7 @@ public class RealtimeNotification
     /// Authentication object passed to handshake (only over WebSockets). <br />
     /// </summary>
     ///
-    public class Ext 
+    public sealed class Ext 
     {
 		
         [JsonPropertyName("com.cumulocity.authn")]
@@ -217,7 +217,7 @@ public class RealtimeNotification
             METRIC
         }
 		
-        public class Comcumulocityauthn 
+        public sealed class Comcumulocityauthn 
         {
 			
             /// <summary> 

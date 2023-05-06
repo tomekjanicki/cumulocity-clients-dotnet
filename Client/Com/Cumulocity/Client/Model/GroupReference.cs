@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class GroupReference<TCustomProperties> where TCustomProperties : CustomProperties
+public sealed class GroupReference<TCustomProperties> where TCustomProperties : CustomProperties
 {
 	
     [JsonPropertyName("group")]

@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class Group<TCustomProperties> where TCustomProperties : CustomProperties
+public sealed class Group<TCustomProperties> where TCustomProperties : CustomProperties
 {
 	
     /// <summary> 
@@ -92,7 +92,7 @@ public class Group<TCustomProperties> where TCustomProperties : CustomProperties
     /// An object containing user roles for this group. <br />
     /// </summary>
     ///
-    public class Roles 
+    public sealed class Roles 
     {
 		
         /// <summary> 
@@ -131,7 +131,7 @@ public class Group<TCustomProperties> where TCustomProperties : CustomProperties
     /// The list of users in this group. <br />
     /// </summary>
     ///
-    public class Users<TCustomProperties> where TCustomProperties : CustomProperties
+    public sealed class Users<TCustomProperties> where TCustomProperties : CustomProperties
     {
 		
         /// <summary> 

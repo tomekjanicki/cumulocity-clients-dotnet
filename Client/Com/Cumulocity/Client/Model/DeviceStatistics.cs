@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Statistics of a specific device (identified by an ID). <br />
 /// </summary>
 ///
-public class DeviceStatistics 
+public sealed class DeviceStatistics 
 {
 	
     /// <summary> 

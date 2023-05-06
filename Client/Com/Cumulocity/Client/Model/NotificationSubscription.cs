@@ -14,7 +14,7 @@ using Client.Com.Cumulocity.Client.Converter;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class NotificationSubscription 
+public sealed class NotificationSubscription 
 {
 	
     /// <summary> 
@@ -103,7 +103,7 @@ public class NotificationSubscription
     /// The managed object to which the subscription is associated. <br />
     /// </summary>
     ///
-    public class Source 
+    public sealed class Source 
     {
 		
         /// <summary> 
@@ -142,7 +142,7 @@ public class NotificationSubscription
     /// Applicable filters to the subscription. <br />
     /// </summary>
     ///
-    public class SubscriptionFilter 
+    public sealed class SubscriptionFilter 
     {
 		
         /// <summary> 

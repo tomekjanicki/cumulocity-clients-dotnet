@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// The signed verification code to prove the user's possession of the certificate. <br />
 /// </summary>
 ///
-public class UploadedTrustedCertSignedVerificationCode 
+public sealed class UploadedTrustedCertSignedVerificationCode 
 {
 	
     /// <summary> 

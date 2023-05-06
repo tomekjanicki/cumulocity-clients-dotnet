@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A collection of references to child additions. <br />
 /// </summary>
 ///
-public class ObjectChildAdditions 
+public sealed class ObjectChildAdditions 
 {
 	
     /// <summary> 

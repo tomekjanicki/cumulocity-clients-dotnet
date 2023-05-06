@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// In a managed object, a single phase electricity meter is modeled as a simple empty fragment. <br />
 /// </summary>
 ///
-public class C8ySinglePhaseElectricitySensor 
+public sealed class C8ySinglePhaseElectricitySensor 
 {
 	
     public override string ToString()

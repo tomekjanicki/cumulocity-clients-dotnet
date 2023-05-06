@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Holds basic connectivity-related information, such as the equipment identifier of the modem (IMEI) in the device. This identifier is globally unique and often used to identify a mobile device. <br />
 /// </summary>
 ///
-public class C8yMobile 
+public sealed class C8yMobile 
 {
 	
     /// <summary> 

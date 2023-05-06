@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Contains information on a device's firmware. In the inventory, <c>c8y_Firmware</c> represents the currently installed firmware on the device. As part of an operation, <c>c8y_Firmware</c> requests the device to install the indicated firmware. To enable firmware installation through the user interface, add <c>c8y_Firmware</c> to the list of supported operations. <br />
 /// </summary>
 ///
-public class C8yFirmware 
+public sealed class C8yFirmware 
 {
 	
     /// <summary> 

@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// To carry out interactive sessions with a device, use the <c>c8y_Command</c> fragment. If this fragment is in the list of supported operations for a device, a tab <c>Shell</c> will be shown. Using the <c>Shell</c> tab, the user can send commands in an arbitrary, device-specific syntax to the device. The command is sent to the device in a property <c>text</c>. <br />
 /// </summary>
 ///
-public class C8yCommand 
+public sealed class C8yCommand 
 {
 	
     /// <summary> 

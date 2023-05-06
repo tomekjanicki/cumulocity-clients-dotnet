@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// OAI-Secure access token. <br />
 /// </summary>
 ///
-public class AccessToken 
+public sealed class AccessToken 
 {
 	
     /// <summary> 

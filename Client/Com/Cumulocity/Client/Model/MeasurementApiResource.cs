@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class MeasurementApiResource<TMeasurement> where TMeasurement : Measurement
+public sealed class MeasurementApiResource<TMeasurement> where TMeasurement : Measurement
 {
 	
     /// <summary> 
@@ -89,7 +89,7 @@ public class MeasurementApiResource<TMeasurement> where TMeasurement : Measureme
     /// Collection of all measurements <br />
     /// </summary>
     ///
-    public class Measurements<TMeasurement> where TMeasurement : Measurement
+    public sealed class Measurements<TMeasurement> where TMeasurement : Measurement
     {
 		
         [JsonPropertyName("measurements")]

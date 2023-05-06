@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class UserGroupCollection<TCustomProperties> where TCustomProperties : CustomProperties
+public sealed class UserGroupCollection<TCustomProperties> where TCustomProperties : CustomProperties
 {
 	
     /// <summary> 

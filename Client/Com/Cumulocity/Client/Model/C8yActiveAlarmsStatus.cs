@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// The number of currently active and acknowledged alarms is stored in this fragment. <br />
 /// </summary>
 ///
-public class C8yActiveAlarmsStatus 
+public sealed class C8yActiveAlarmsStatus 
 {
 	
     [JsonPropertyName("critical")]

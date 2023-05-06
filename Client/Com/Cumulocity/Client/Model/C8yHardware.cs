@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Contains basic hardware information for a device, such as make and serial number. Often, the hardware serial number is printed on the board of the device or on an asset tag on the device to uniquely identify the device within all devices of the same make. <br />
 /// </summary>
 ///
-public class C8yHardware 
+public sealed class C8yHardware 
 {
 	
     /// <summary> 

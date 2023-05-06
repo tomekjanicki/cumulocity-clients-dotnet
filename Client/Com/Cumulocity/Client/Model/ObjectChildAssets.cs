@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A collection of references to child assets. <br />
 /// </summary>
 ///
-public class ObjectChildAssets 
+public sealed class ObjectChildAssets 
 {
 	
     /// <summary> 

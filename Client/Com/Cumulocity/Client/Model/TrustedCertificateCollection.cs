@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A collection of trusted certificates. <br />
 /// </summary>
 ///
-public class TrustedCertificateCollection 
+public sealed class TrustedCertificateCollection 
 {
 	
     /// <summary> 

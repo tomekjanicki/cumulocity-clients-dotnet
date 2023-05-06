@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// All available system options of the tenant. <br />
 /// </summary>
 ///
-public class SystemOptionCollection 
+public sealed class SystemOptionCollection 
 {
 	
     /// <summary> 

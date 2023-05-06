@@ -17,7 +17,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Statistics file metadata. <br />
 /// </summary>
 ///
-public class StatisticsFile 
+public sealed class StatisticsFile 
 {
 	
     /// <summary> 

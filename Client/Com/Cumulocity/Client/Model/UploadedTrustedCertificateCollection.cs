@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A collection of uploaded trusted certificates. <br />
 /// </summary>
 ///
-public class UploadedTrustedCertificateCollection 
+public sealed class UploadedTrustedCertificateCollection 
 {
 	
     [JsonPropertyName("certificates")]

@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Devices that have not sent any message in the response interval are considered disconnected. The response interval can have a value between <c>-32768</c> and <c>32767</c> and any values out of range will be shrunk to the range borders. Such devices are marked as unavailable and an unavailability alarm is raised. <br />
 /// </summary>
 ///
-public class C8yRequiredAvailability 
+public sealed class C8yRequiredAvailability 
 {
 	
     [JsonPropertyName("responseInterval")]

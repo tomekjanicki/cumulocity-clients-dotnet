@@ -14,7 +14,7 @@ using Client.Com.Cumulocity.Client.Converter;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class BulkNewDeviceRequest 
+public sealed class BulkNewDeviceRequest 
 {
 	
     /// <summary> 
@@ -59,7 +59,7 @@ public class BulkNewDeviceRequest
     [JsonPropertyName("failedCreationList")]
     public List<FailedCreationList> PFailedCreationList { get; set; } = new List<FailedCreationList>();
 	
-    public class CredentialUpdatedList 
+    public sealed class CredentialUpdatedList 
     {
 		
         /// <summary> 
@@ -103,7 +103,7 @@ public class BulkNewDeviceRequest
         }
     }
 	
-    public class FailedCreationList 
+    public sealed class FailedCreationList 
     {
 		
         /// <summary> 

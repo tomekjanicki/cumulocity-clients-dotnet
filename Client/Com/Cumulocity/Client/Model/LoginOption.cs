@@ -17,7 +17,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Login option properties. <br />
 /// </summary>
 ///
-public class LoginOption 
+public sealed class LoginOption 
 {
 	
     /// <summary> 

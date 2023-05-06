@@ -13,7 +13,7 @@ using Client.Com.Cumulocity.Client.Converter;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class BulkOperation 
+public sealed class BulkOperation 
 {
 	
     /// <summary> 
@@ -130,7 +130,7 @@ public class BulkOperation
     /// Operation to be executed for every device in a group. <br />
     /// </summary>
     ///
-    public class OperationPrototype 
+    public sealed class OperationPrototype 
     {
 		
         public override string ToString()
@@ -150,7 +150,7 @@ public class BulkOperation
     /// Contains information about the number of processed operations. <br />
     /// </summary>
     ///
-    public class Progress 
+    public sealed class Progress 
     {
 		
         /// <summary> 

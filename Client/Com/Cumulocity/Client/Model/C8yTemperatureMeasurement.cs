@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Measurement of the temperature. <br />
 /// </summary>
 ///
-public class C8yTemperatureMeasurement 
+public sealed class C8yTemperatureMeasurement 
 {
 	
     /// <summary> 

@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// All available login options of the tenant. <br />
 /// </summary>
 ///
-public class LoginOptionCollection 
+public sealed class LoginOptionCollection 
 {
 	
     /// <summary> 

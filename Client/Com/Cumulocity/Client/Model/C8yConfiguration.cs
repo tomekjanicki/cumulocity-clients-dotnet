@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// In the inventory, <c>c8y_Configuration</c> represents the currently active configuration on the device. As part of an operation, <c>c8y_Configuration</c> requests the device to switch the transmitted configuration to the currently active one. To enable configuration through the user interface, add <c>c8y_Configuration</c> to the list of supported operations. <br />
 /// </summary>
 ///
-public class C8yConfiguration 
+public sealed class C8yConfiguration 
 {
 	
     /// <summary> 

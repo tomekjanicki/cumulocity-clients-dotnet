@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A user role. <br />
 /// </summary>
 ///
-public class Role 
+public sealed class Role 
 {
 	
     /// <summary> 

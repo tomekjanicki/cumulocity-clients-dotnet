@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Altitude is given in meters. To report the current location of an asset or a device, <c>c8y_Position</c> is added to the managed object representing the asset or device. To trace the position of an asset or a device, <c>c8y_Position</c> is sent as part of an event of type <c>c8y_LocationUpdate</c>. <br />
 /// </summary>
 ///
-public class C8yPosition 
+public sealed class C8yPosition 
 {
 	
     /// <summary> 

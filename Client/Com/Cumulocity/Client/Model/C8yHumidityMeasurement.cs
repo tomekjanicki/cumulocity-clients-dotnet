@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Absolute humidity is the water content of air. Relative humidity, expressed as a percentage, measures the current absolute humidity relative to the maximum for that temperature. Specific humidity is a ratio of the water vapour content of the mixture to the total air content on a mass basis. <br />
 /// </summary>
 ///
-public class C8yHumidityMeasurement 
+public sealed class C8yHumidityMeasurement 
 {
 	
     /// <summary> 

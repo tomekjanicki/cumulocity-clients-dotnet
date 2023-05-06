@@ -208,7 +208,7 @@ public class AuditRecord
     /// Metadata of the audit record. <br />
     /// </summary>
     ///
-    public class C8yMetadata 
+    public sealed class C8yMetadata 
     {
 		
         /// <summary> 
@@ -247,7 +247,7 @@ public class AuditRecord
         }
     }
 	
-    public class Changes 
+    public sealed class Changes 
     {
 		
         /// <summary> 
@@ -315,7 +315,7 @@ public class AuditRecord
     /// The managed object to which the audit is associated. <br />
     /// </summary>
     ///
-    public class Source 
+    public sealed class Source 
     {
 		
         /// <summary> 
@@ -363,7 +363,7 @@ public class AuditRecord
         return JsonSerializer.Serialize(this, jsonOptions);
     }
 	
-    public class Serialization
+    public sealed class Serialization
     {
         public static readonly IDictionary<string, System.Type> AdditionalPropertyClasses = new Dictionary<string, System.Type>();
 		

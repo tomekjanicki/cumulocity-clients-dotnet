@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class MeasurementFragmentSeries 
+public sealed class MeasurementFragmentSeries 
 {
 	
     /// <summary> 

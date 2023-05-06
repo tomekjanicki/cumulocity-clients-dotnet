@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Information about paging statistics. <br />
 /// </summary>
 ///
-public class PageStatistics 
+public sealed class PageStatistics 
 {
 	
     /// <summary> 

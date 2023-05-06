@@ -14,7 +14,7 @@ using Client.Com.Cumulocity.Client.Converter;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class RequestRepresentation 
+public sealed class RequestRepresentation 
 {
 	
     /// <summary> 
@@ -89,7 +89,7 @@ public class RequestRepresentation
     /// Headers of the request. <br />
     /// </summary>
     ///
-    public class Headers 
+    public sealed class Headers 
     {
 		
         /// <summary> 
@@ -123,7 +123,7 @@ public class RequestRepresentation
     /// Parameters of the request. <br />
     /// </summary>
     ///
-    public class RequestParams 
+    public sealed class RequestParams 
     {
 		
         /// <summary> 

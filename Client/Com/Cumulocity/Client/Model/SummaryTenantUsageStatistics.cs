@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Summary of the usage statistics. <br />
 /// </summary>
 ///
-public class SummaryTenantUsageStatistics 
+public sealed class SummaryTenantUsageStatistics 
 {
 	
     /// <summary> 

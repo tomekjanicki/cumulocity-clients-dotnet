@@ -17,7 +17,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A permission object of an inventory role. <br />
 /// </summary>
 ///
-public class InventoryRolePermission 
+public sealed class InventoryRolePermission 
 {
 	
     /// <summary> 

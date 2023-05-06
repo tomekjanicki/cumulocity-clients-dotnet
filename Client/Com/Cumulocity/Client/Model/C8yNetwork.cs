@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Device capability to either display or display and manage the WAN, LAN, and DHCP settings. <br />
 /// </summary>
 ///
-public class C8yNetwork 
+public sealed class C8yNetwork 
 {
 	
     /// <summary> 
@@ -43,7 +43,7 @@ public class C8yNetwork
     /// Local network information. <br />
     /// </summary>
     ///
-    public class C8yLAN 
+    public sealed class C8yLAN 
     {
 		
         /// <summary> 
@@ -96,7 +96,7 @@ public class C8yNetwork
     /// Mobile internet connectivity interface status. <br />
     /// </summary>
     ///
-    public class C8yWAN 
+    public sealed class C8yWAN 
     {
 		
         /// <summary> 
@@ -149,7 +149,7 @@ public class C8yNetwork
     /// Information for DHCP server status. <br />
     /// </summary>
     ///
-    public class C8yDHCP 
+    public sealed class C8yDHCP 
     {
 		
         /// <summary> 
@@ -191,7 +191,7 @@ public class C8yNetwork
         /// IP address range. <br />
         /// </summary>
         ///
-        public class AddressRange 
+        public sealed class AddressRange 
         {
 			
             /// <summary> 

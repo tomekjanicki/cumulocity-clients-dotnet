@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Measurement of the acceleration sensor. <br />
 /// </summary>
 ///
-public class C8yAccelerationMeasurement 
+public sealed class C8yAccelerationMeasurement 
 {
 	
     /// <summary> 

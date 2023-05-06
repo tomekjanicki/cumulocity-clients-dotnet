@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// The current user. <br />
 /// </summary>
 ///
-public class CurrentUser 
+public sealed class CurrentUser 
 {
 	
     /// <summary> 

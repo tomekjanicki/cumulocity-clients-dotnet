@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// The manifest of the web application. <br />
 /// </summary>
 ///
-public class WebApplicationManifest 
+public sealed class WebApplicationManifest 
 {
 	
     /// <summary> 

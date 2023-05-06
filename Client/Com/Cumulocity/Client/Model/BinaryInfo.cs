@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Contains information about the file. <br />
 /// </summary>
 ///
-public class BinaryInfo 
+public sealed class BinaryInfo 
 {
 	
     /// <summary> 

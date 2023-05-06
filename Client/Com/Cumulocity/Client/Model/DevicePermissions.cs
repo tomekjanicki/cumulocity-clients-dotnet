@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A list of device permissions. <br />
 /// </summary>
 ///
-public class DevicePermissions<TCustomProperties> where TCustomProperties : CustomProperties
+public sealed class DevicePermissions<TCustomProperties> where TCustomProperties : CustomProperties
 {
 	
     [JsonPropertyName("users")]

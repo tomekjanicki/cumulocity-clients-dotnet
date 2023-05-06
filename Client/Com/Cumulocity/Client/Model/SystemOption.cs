@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A tuple storing tenant configuration. <br />
 /// </summary>
 ///
-public class SystemOption 
+public sealed class SystemOption 
 {
 	
     /// <summary> 

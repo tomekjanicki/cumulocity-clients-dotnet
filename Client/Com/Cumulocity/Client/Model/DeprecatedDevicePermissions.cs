@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// An object with a list of the user's device permissions. <br />
 /// </summary>
 ///
-public class DeprecatedDevicePermissions 
+public sealed class DeprecatedDevicePermissions 
 {
 	
     public override string ToString()

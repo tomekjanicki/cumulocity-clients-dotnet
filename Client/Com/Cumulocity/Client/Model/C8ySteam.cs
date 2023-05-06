@@ -15,13 +15,13 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A type of measurement fragment. <br />
 /// </summary>
 ///
-public class C8ySteam 
+public sealed class C8ySteam 
 {
 	
     [JsonPropertyName("Temperature")]
     public Temperature? PTemperature { get; set; }
 	
-    public class Temperature 
+    public sealed class Temperature 
     {
 		
         /// <summary> 

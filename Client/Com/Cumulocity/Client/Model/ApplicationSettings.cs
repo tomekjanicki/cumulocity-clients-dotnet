@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class ApplicationSettings 
+public sealed class ApplicationSettings 
 {
 	
     /// <summary> 
@@ -53,7 +53,7 @@ public class ApplicationSettings
     /// The value schema determines the values that the microservice can process. <br />
     /// </summary>
     ///
-    public class ValueSchema 
+    public sealed class ValueSchema 
     {
 		
         /// <summary> 

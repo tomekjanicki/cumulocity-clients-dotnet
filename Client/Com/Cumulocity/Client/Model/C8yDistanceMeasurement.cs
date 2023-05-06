@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Measurement of the distance. <br />
 /// </summary>
 ///
-public class C8yDistanceMeasurement 
+public sealed class C8yDistanceMeasurement 
 {
 	
     /// <summary> 

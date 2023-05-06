@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class EventsApiResource<TEvent> where TEvent : Event
+public sealed class EventsApiResource<TEvent> where TEvent : Event
 {
 	
     /// <summary> 
@@ -75,7 +75,7 @@ public class EventsApiResource<TEvent> where TEvent : Event
     /// Collection of all events <br />
     /// </summary>
     ///
-    public class Events<TEvent> where TEvent : Event
+    public sealed class Events<TEvent> where TEvent : Event
     {
 		
         /// <summary> 

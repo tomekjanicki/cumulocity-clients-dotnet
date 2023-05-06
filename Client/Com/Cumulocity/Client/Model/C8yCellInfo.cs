@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Provides detailed information about the closest mobile cell towers. When the functionality is activated, the location of the device is determined based on this fragment, in order to track the device whereabouts when GPS tracking is not available. <br />
 /// </summary>
 ///
-public class C8yCellInfo 
+public sealed class C8yCellInfo 
 {
 	
     /// <summary> 

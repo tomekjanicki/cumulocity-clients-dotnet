@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class ManagedObjectCollection<TManagedObject> where TManagedObject : ManagedObject
+public sealed class ManagedObjectCollection<TManagedObject> where TManagedObject : ManagedObject
 {
 	
     /// <summary> 

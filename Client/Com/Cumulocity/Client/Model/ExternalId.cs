@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class ExternalId 
+public sealed class ExternalId 
 {
 	
     /// <summary> 
@@ -56,7 +56,7 @@ public class ExternalId
     /// The managed object linked to the external ID. <br />
     /// </summary>
     ///
-    public class ManagedObject 
+    public sealed class ManagedObject 
     {
 		
         /// <summary> 

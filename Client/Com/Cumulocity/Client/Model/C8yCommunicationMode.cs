@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// In order to send commands as text messages to devices, the devices must be put into SMS mode. To indicate that it supports SMS mode, a device needs to add the fragment <c>c8y_CommunicationMode</c> with a mode property of <c>SMS</c>. <br />
 /// </summary>
 ///
-public class C8yCommunicationMode 
+public sealed class C8yCommunicationMode 
 {
 	
     [JsonPropertyName("mode")]

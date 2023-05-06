@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Current measurement. <br />
 /// </summary>
 ///
-public class C8yCurrentMeasurement 
+public sealed class C8yCurrentMeasurement 
 {
 	
     /// <summary> 

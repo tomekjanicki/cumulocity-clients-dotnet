@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class SupportedMeasurements 
+public sealed class SupportedMeasurements 
 {
 	
     /// <summary> 

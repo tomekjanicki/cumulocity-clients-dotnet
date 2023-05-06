@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class SubscribedUser 
+public sealed class SubscribedUser 
 {
 	
     /// <summary> 
@@ -25,7 +25,7 @@ public class SubscribedUser
     /// An object with a user reference URL. <br />
     /// </summary>
     ///
-    public class User 
+    public sealed class User 
     {
 		
         /// <summary> 

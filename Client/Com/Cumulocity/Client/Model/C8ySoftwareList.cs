@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Details of the installed software. <br />
 /// </summary>
 ///
-public class C8ySoftwareList 
+public sealed class C8ySoftwareList 
 {
 	
     /// <summary> 

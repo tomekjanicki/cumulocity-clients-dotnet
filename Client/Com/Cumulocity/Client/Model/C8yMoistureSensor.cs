@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A moisture sensor measures the water content of a substance. In a managed object, a moisture sensor is modeled as a simple empty fragment. <br />
 /// </summary>
 ///
-public class C8yMoistureSensor 
+public sealed class C8yMoistureSensor 
 {
 	
     public override string ToString()

@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class OperationCollection<TOperation> where TOperation : Operation
+public sealed class OperationCollection<TOperation> where TOperation : Operation
 {
 	
     /// <summary> 

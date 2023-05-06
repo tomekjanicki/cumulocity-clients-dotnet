@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A humidity sensor measures the amount of water vapour in the air. In a managed object, a humidity sensor is modeled as a simple empty fragment. <br />
 /// </summary>
 ///
-public class C8yHumiditySensor 
+public sealed class C8yHumiditySensor 
 {
 	
     public override string ToString()

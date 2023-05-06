@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A distance sensor measures the distance between itself and the closest object in a certain direction. In a managed object, a distance sensor is modeled as a simple empty fragment. <br />
 /// </summary>
 ///
-public class C8yDistanceSensor 
+public sealed class C8yDistanceSensor 
 {
 	
     public override string ToString()

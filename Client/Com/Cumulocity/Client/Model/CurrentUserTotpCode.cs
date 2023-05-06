@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class CurrentUserTotpCode 
+public sealed class CurrentUserTotpCode 
 {
 	
     /// <summary> 

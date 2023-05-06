@@ -155,7 +155,7 @@ public class ManagedObject
     /// A fragment which identifies this managed object as a device. <br />
     /// </summary>
     ///
-    public class C8yIsDevice 
+    public sealed class C8yIsDevice 
     {
 		
         public override string ToString()
@@ -173,7 +173,7 @@ public class ManagedObject
     /// A fragment which identifies this managed object as a device group. <br />
     /// </summary>
     ///
-    public class C8yIsDeviceGroup 
+    public sealed class C8yIsDeviceGroup 
     {
 		
         public override string ToString()
@@ -197,7 +197,7 @@ public class ManagedObject
         return JsonSerializer.Serialize(this, jsonOptions);
     }
 	
-    public class Serialization
+    public sealed class Serialization
     {
         public static readonly IDictionary<string, System.Type> AdditionalPropertyClasses = new Dictionary<string, System.Type>();
 		

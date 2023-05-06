@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Detailed information about a neighbouring cell tower. <br />
 /// </summary>
 ///
-public class C8yCellTower 
+public sealed class C8yCellTower 
 {
 	
     /// <summary> 

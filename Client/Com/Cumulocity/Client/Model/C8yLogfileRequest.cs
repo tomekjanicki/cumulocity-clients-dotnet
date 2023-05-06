@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Request a device to send a log file and view it in Cumulocity IoT's log viewer. <br />
 /// </summary>
 ///
-public class C8yLogfileRequest 
+public sealed class C8yLogfileRequest 
 {
 	
     /// <summary> 

@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Statistics of the tenant devices. <br />
 /// </summary>
 ///
-public class DeviceStatisticsCollection 
+public sealed class DeviceStatisticsCollection 
 {
 	
     /// <summary> 

@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A collection of references to child devices. <br />
 /// </summary>
 ///
-public class ObjectChildDevices 
+public sealed class ObjectChildDevices 
 {
 	
     /// <summary> 

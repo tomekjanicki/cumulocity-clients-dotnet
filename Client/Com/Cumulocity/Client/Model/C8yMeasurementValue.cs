@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A measurement is a value with a unit. <br />
 /// </summary>
 ///
-public class C8yMeasurementValue 
+public sealed class C8yMeasurementValue 
 {
 	
     [JsonPropertyName("value")]

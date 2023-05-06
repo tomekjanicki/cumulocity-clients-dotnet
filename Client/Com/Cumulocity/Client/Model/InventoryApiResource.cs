@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class InventoryApiResource<TManagedObject> where TManagedObject : ManagedObject
+public sealed class InventoryApiResource<TManagedObject> where TManagedObject : ManagedObject
 {
 	
     /// <summary> 
@@ -54,7 +54,7 @@ public class InventoryApiResource<TManagedObject> where TManagedObject : Managed
     /// Collection of all managed objects <br />
     /// </summary>
     ///
-    public class ManagedObjects<TManagedObject> where TManagedObject : ManagedObject
+    public sealed class ManagedObjects<TManagedObject> where TManagedObject : ManagedObject
     {
 		
         /// <summary> 

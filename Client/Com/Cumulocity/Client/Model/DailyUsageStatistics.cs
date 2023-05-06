@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// Daily usage statistics. <br />
 /// </summary>
 ///
-public class DailyUsageStatistics 
+public sealed class DailyUsageStatistics 
 {
 	
     /// <summary> 

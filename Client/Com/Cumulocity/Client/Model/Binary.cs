@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class Binary 
+public sealed class Binary 
 {
 	
     /// <summary> 
@@ -81,7 +81,7 @@ public class Binary
     /// Fragment to identify this managed object as a file. <br />
     /// </summary>
     ///
-    public class C8yIsBinary 
+    public sealed class C8yIsBinary 
     {
 		
         public override string ToString()

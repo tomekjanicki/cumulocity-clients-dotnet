@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class ManagedObjectReference<TManagedObject> where TManagedObject : ManagedObject
+public sealed class ManagedObjectReference<TManagedObject> where TManagedObject : ManagedObject
 {
 	
     [JsonPropertyName("managedObject")]

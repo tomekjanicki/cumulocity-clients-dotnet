@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class OperationReference 
+public sealed class OperationReference 
 {
 	
     /// <summary> 
@@ -32,7 +32,7 @@ public class OperationReference
     /// The referenced operation. <br />
     /// </summary>
     ///
-    public class Operation 
+    public sealed class Operation 
     {
 		
         /// <summary> 

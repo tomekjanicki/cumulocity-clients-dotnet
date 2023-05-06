@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// The session configuration properties are only available for OAuth internal. See <see href="https://cumulocity.com/guides/users-guide/administration/#oauth-internal" langword="Changing settings > OAuth internal" /> for more details. <br />
 /// </summary>
 ///
-public class OAuthSessionConfiguration 
+public sealed class OAuthSessionConfiguration 
 {
 	
     /// <summary> 

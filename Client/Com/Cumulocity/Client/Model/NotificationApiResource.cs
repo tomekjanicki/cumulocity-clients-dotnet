@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class NotificationApiResource 
+public sealed class NotificationApiResource 
 {
 	
     /// <summary> 
@@ -54,7 +54,7 @@ public class NotificationApiResource
     /// Collection of all notification subscriptions. <br />
     /// </summary>
     ///
-    public class NotificationSubscriptions 
+    public sealed class NotificationSubscriptions 
     {
 		
         /// <summary> 

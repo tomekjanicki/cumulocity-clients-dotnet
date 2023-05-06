@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class RoleReferenceCollection 
+public sealed class RoleReferenceCollection 
 {
 	
     /// <summary> 

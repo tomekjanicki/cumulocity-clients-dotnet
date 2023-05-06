@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class DeviceControlApiResource 
+public sealed class DeviceControlApiResource 
 {
 	
     /// <summary> 
@@ -68,7 +68,7 @@ public class DeviceControlApiResource
     /// Collection of all operations. <br />
     /// </summary>
     ///
-    public class Operations 
+    public sealed class Operations 
     {
 		
         /// <summary> 

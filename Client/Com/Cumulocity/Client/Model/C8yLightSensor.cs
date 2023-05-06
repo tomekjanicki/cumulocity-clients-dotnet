@@ -15,7 +15,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// A light sensor measures the intensity of light. In a managed object, a light sensor is modeled as a simple empty fragment. <br />
 /// </summary>
 ///
-public class C8yLightSensor 
+public sealed class C8yLightSensor 
 {
 	
     public override string ToString()

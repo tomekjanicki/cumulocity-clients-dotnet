@@ -13,7 +13,7 @@ using Client.Com.Cumulocity.Client.Converter;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-public class TenantTfaData 
+public sealed class TenantTfaData 
 {
 	
     /// <summary> 
