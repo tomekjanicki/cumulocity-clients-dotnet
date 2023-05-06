@@ -53,7 +53,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<TrustedCertificateCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -78,7 +78,7 @@ namespace Com.Cumulocity.Client.Api
 			request.Headers.TryAddWithoutValidation("Content-Type", "application/json");
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<TrustedCertificate?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -106,7 +106,7 @@ namespace Com.Cumulocity.Client.Api
 			request.Headers.TryAddWithoutValidation("Content-Type", "application/json");
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<TrustedCertificateCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -124,7 +124,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<TrustedCertificate?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -158,7 +158,7 @@ namespace Com.Cumulocity.Client.Api
 			request.Headers.TryAddWithoutValidation("Content-Type", "application/json");
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<TrustedCertificate?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -176,7 +176,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return responseStream;
 		}
@@ -197,7 +197,7 @@ namespace Com.Cumulocity.Client.Api
 			request.Headers.TryAddWithoutValidation("Content-Type", "application/json");
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<TrustedCertificate?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -215,7 +215,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<TrustedCertificate?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -233,7 +233,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<TrustedCertificate?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -260,7 +260,7 @@ namespace Com.Cumulocity.Client.Api
 			request.Headers.TryAddWithoutValidation("Content-Type", "multipart/form-data");
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<VerifyCertificateChain?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -280,7 +280,7 @@ namespace Com.Cumulocity.Client.Api
 			request.Headers.TryAddWithoutValidation("X-Cumulocity-Client-Cert-Chain", xCumulocityClientCertChain);
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<VerifyCertificateChain?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}

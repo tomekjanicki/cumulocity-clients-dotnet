@@ -90,7 +90,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<DeviceStatisticsCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -114,7 +114,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<DeviceStatisticsCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}

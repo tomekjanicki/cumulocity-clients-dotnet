@@ -51,7 +51,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.inventoryrolecollection+json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<InventoryRoleCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -74,7 +74,7 @@ namespace Com.Cumulocity.Client.Api
 			request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.inventoryrole+json");
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.inventoryrole+json, application/vnd.com.nsn.cumulocity.error+json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<InventoryRole?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -92,7 +92,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.inventoryrole+json, application/vnd.com.nsn.cumulocity.error+json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<InventoryRole?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -115,7 +115,7 @@ namespace Com.Cumulocity.Client.Api
 			request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.inventoryrole+json");
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.inventoryrole+json, application/vnd.com.nsn.cumulocity.error+json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<InventoryRole?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -133,7 +133,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return responseStream;
 		}
@@ -151,7 +151,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.inventoryassignmentcollection+json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<InventoryAssignmentCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -174,7 +174,7 @@ namespace Com.Cumulocity.Client.Api
 			request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.inventoryassignment+json");
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.inventoryassignment+json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<InventoryAssignment?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -192,7 +192,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.inventoryassignment+json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<InventoryAssignment?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -213,7 +213,7 @@ namespace Com.Cumulocity.Client.Api
 			request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.inventoryassignment+json");
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.inventoryassignment+json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<InventoryAssignment?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -231,7 +231,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return responseStream;
 		}

@@ -52,7 +52,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.rolecollection+json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<UserRoleCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -70,7 +70,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.role+json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<Role?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -92,7 +92,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.rolereferencecollection+json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<RoleReferenceCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -113,7 +113,7 @@ namespace Com.Cumulocity.Client.Api
 			request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.rolereference+json");
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.rolereference+json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<RoleReference?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -131,7 +131,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return responseStream;
 		}
@@ -152,7 +152,7 @@ namespace Com.Cumulocity.Client.Api
 			request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.rolereference+json");
 			request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.rolereference+json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return await JsonSerializer.DeserializeAsync<RoleReference?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);;
 		}
@@ -170,7 +170,7 @@ namespace Com.Cumulocity.Client.Api
 			};
 			request.Headers.TryAddWithoutValidation("Accept", "application/json");
 			using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
-			response.EnsureSuccessStatusCode();
+			await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);;
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 			return responseStream;
 		}
