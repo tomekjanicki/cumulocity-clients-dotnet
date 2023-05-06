@@ -35,7 +35,7 @@ public sealed class SubscriptionsApi : ISubscriptionsApi
     /// <inheritdoc />
     public async Task<NotificationSubscriptionCollection?> GetSubscriptions(string? context = null, int? currentPage = null, int? pageSize = null, string? source = null, string? subscription = null, string? typeFilter = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/notification2/subscriptions";
+        var resourcePath = "/notification2/subscriptions";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("context", context);
@@ -66,7 +66,7 @@ public sealed class SubscriptionsApi : ISubscriptionsApi
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("source", "self");
-        var resourcePath = $"/notification2/subscriptions";
+        var resourcePath = "/notification2/subscriptions";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -86,7 +86,7 @@ public sealed class SubscriptionsApi : ISubscriptionsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteSubscriptions(string? xCumulocityProcessingMode = null, string? context = null, string? source = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/notification2/subscriptions";
+        var resourcePath = "/notification2/subscriptions";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("context", context);

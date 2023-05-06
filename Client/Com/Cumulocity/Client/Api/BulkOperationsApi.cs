@@ -49,7 +49,7 @@ public sealed class BulkOperationsApi : IBulkOperationsApi
     /// <inheritdoc />
     public async Task<BulkOperationCollection?> GetBulkOperations(int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/devicecontrol/bulkoperations";
+        var resourcePath = "/devicecontrol/bulkoperations";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -77,7 +77,7 @@ public sealed class BulkOperationsApi : IBulkOperationsApi
         jsonNode?.RemoveFromNode("progress");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("status");
-        var resourcePath = $"/devicecontrol/bulkoperations";
+        var resourcePath = "/devicecontrol/bulkoperations";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

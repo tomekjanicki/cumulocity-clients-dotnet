@@ -43,7 +43,7 @@ public sealed class DeviceCredentialsApi : IDeviceCredentialsApi
         jsonNode?.RemoveFromNode("tenantId");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("username");
-        var resourcePath = $"/devicecontrol/deviceCredentials";
+        var resourcePath = "/devicecontrol/deviceCredentials";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -63,7 +63,7 @@ public sealed class DeviceCredentialsApi : IDeviceCredentialsApi
     /// <inheritdoc />
     public async Task<BulkNewDeviceRequest?> CreateBulkDeviceCredentials(byte[] file, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/devicecontrol/bulkNewDeviceRequests";
+        var resourcePath = "/devicecontrol/bulkNewDeviceRequests";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
         var fileContentFile = new ByteArrayContent(file);

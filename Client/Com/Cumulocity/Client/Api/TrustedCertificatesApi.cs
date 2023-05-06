@@ -233,7 +233,7 @@ public sealed class TrustedCertificatesApi : ITrustedCertificatesApi
     /// <inheritdoc />
     public async Task<VerifyCertificateChain?> ValidateChainByFileUpload(string tenantId, byte[] file, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/tenants/verify-cert-chain/fileUpload";
+        var resourcePath = "/tenant/tenants/verify-cert-chain/fileUpload";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
         var fileContentTenantId = new StringContent(JsonSerializer.Serialize(tenantId));
@@ -259,7 +259,7 @@ public sealed class TrustedCertificatesApi : ITrustedCertificatesApi
     /// <inheritdoc />
     public async Task<VerifyCertificateChain?> ValidateChainByHeader(string? xCumulocityTenantId = null, string? xCumulocityClientCertChain = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/tenants/verify-cert-chain";
+        var resourcePath = "/tenant/tenants/verify-cert-chain";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

@@ -36,7 +36,7 @@ public sealed class InventoryRolesApi : IInventoryRolesApi
     /// <inheritdoc />
     public async Task<InventoryRoleCollection?> GetInventoryRoles(int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/user/inventoryroles";
+        var resourcePath = "/user/inventoryroles";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -61,7 +61,7 @@ public sealed class InventoryRolesApi : IInventoryRolesApi
         var jsonNode = body.ToJsonNode<InventoryRole>();
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
-        var resourcePath = $"/user/inventoryroles";
+        var resourcePath = "/user/inventoryroles";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

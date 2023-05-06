@@ -35,7 +35,7 @@ public sealed class CurrentApplicationApi : ICurrentApplicationApi
     /// <inheritdoc />
     public async Task<Application?> GetCurrentApplication(CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/currentApplication";
+        var resourcePath = "/application/currentApplication";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -58,7 +58,7 @@ public sealed class CurrentApplicationApi : ICurrentApplicationApi
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("resourcesUrl");
-        var resourcePath = $"/application/currentApplication";
+        var resourcePath = "/application/currentApplication";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -77,7 +77,7 @@ public sealed class CurrentApplicationApi : ICurrentApplicationApi
     /// <inheritdoc />
     public async Task<List<ApplicationSettings>?> GetCurrentApplicationSettings(CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/currentApplication/settings";
+        var resourcePath = "/application/currentApplication/settings";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -94,7 +94,7 @@ public sealed class CurrentApplicationApi : ICurrentApplicationApi
     /// <inheritdoc />
     public async Task<ApplicationUserCollection?> GetSubscribedUsers(CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/currentApplication/subscriptions";
+        var resourcePath = "/application/currentApplication/subscriptions";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

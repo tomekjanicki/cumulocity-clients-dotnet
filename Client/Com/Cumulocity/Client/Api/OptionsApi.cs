@@ -36,7 +36,7 @@ public sealed class OptionsApi : IOptionsApi
     /// <inheritdoc />
     public async Task<OptionCollection?> GetOptions(int? currentPage = null, int? pageSize = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/options";
+        var resourcePath = "/tenant/options";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -60,7 +60,7 @@ public sealed class OptionsApi : IOptionsApi
     {
         var jsonNode = body.ToJsonNode<Option>();
         jsonNode?.RemoveFromNode("self");
-        var resourcePath = $"/tenant/options";
+        var resourcePath = "/tenant/options";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

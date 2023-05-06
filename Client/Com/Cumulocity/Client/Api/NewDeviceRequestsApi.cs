@@ -36,7 +36,7 @@ public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
     /// <inheritdoc />
     public async Task<NewDeviceRequestCollection?> GetNewDeviceRequests(int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/devicecontrol/newDeviceRequests";
+        var resourcePath = "/devicecontrol/newDeviceRequests";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -62,7 +62,7 @@ public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
         var jsonNode = body.ToJsonNode<NewDeviceRequest>();
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("status");
-        var resourcePath = $"/devicecontrol/newDeviceRequests";
+        var resourcePath = "/devicecontrol/newDeviceRequests";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

@@ -37,7 +37,7 @@ public sealed class ManagedObjectsApi : IManagedObjectsApi
     /// <inheritdoc />
     public async Task<ManagedObjectCollection<TManagedObject>?> GetManagedObjects<TManagedObject>(string? childAdditionId = null, string? childAssetId = null, string? childDeviceId = null, int? currentPage = null, string? fragmentType = null, List<string>? ids = null, bool? onlyRoots = null, string? owner = null, int? pageSize = null, string? q = null, string? query = null, bool? skipChildrenNames = null, string? text = null, string? type = null, bool? withChildren = null, bool? withChildrenCount = null, bool? withGroups = null, bool? withParents = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TManagedObject : ManagedObject
     {
-        var resourcePath = $"/inventory/managedObjects";
+        var resourcePath = "/inventory/managedObjects";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("childAdditionId", childAdditionId);
@@ -88,7 +88,7 @@ public sealed class ManagedObjectsApi : IManagedObjectsApi
         jsonNode?.RemoveFromNode("assetParents");
         jsonNode?.RemoveFromNode("deviceParents");
         jsonNode?.RemoveFromNode("id");
-        var resourcePath = $"/inventory/managedObjects";
+        var resourcePath = "/inventory/managedObjects";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -108,7 +108,7 @@ public sealed class ManagedObjectsApi : IManagedObjectsApi
     /// <inheritdoc />
     public async Task<int> GetNumberOfManagedObjects(string? childAdditionId = null, string? childAssetId = null, string? childDeviceId = null, string? fragmentType = null, List<string>? ids = null, string? owner = null, string? text = null, string? type = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/inventory/managedObjects/count";
+        var resourcePath = "/inventory/managedObjects/count";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("childAdditionId", childAdditionId);
