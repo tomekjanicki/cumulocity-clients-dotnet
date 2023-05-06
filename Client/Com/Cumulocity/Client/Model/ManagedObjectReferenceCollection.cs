@@ -50,11 +50,11 @@ public sealed class ManagedObjectReferenceCollection<TManagedObject> where TMana
     [JsonPropertyName("statistics")]
     public PageStatistics? Statistics { get; set; }
 	
-    public sealed class References<TManagedObject> where TManagedObject : ManagedObject
+    public sealed class References<T> where T : ManagedObject
     {
 		
         [JsonPropertyName("managedObject")]
-        public TManagedObject? PManagedObject { get; set; }
+        public T? PManagedObject { get; set; }
 		
         public override string ToString()
         {

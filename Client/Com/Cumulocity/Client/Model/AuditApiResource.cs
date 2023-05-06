@@ -82,7 +82,7 @@ public sealed class AuditApiResource<TAuditRecord> where TAuditRecord : AuditRec
     /// Collection of audit records <br />
     /// </summary>
     ///
-    public sealed class AuditRecords<TAuditRecord> where TAuditRecord : AuditRecord
+    public sealed class AuditRecords<T> where T : AuditRecord
     {
 		
         /// <summary> 
@@ -93,7 +93,7 @@ public sealed class AuditApiResource<TAuditRecord> where TAuditRecord : AuditRec
         public string? Self { get; set; }
 		
         [JsonPropertyName("auditRecords")]
-        public List<TAuditRecord> PAuditRecords { get; set; } = new List<TAuditRecord>();
+        public List<T> PAuditRecords { get; set; } = new List<T>();
 		
         public override string ToString()
         {

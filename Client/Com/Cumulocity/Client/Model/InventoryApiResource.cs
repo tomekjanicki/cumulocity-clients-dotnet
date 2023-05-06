@@ -54,7 +54,7 @@ public sealed class InventoryApiResource<TManagedObject> where TManagedObject : 
     /// Collection of all managed objects <br />
     /// </summary>
     ///
-    public sealed class ManagedObjects<TManagedObject> where TManagedObject : ManagedObject
+    public sealed class ManagedObjects<T> where T : ManagedObject
     {
 		
         /// <summary> 
@@ -62,7 +62,7 @@ public sealed class InventoryApiResource<TManagedObject> where TManagedObject : 
         /// </summary>
         ///
         [JsonPropertyName("references")]
-        public List<TManagedObject> References { get; set; } = new List<TManagedObject>();
+        public List<T> References { get; set; } = new List<T>();
 		
         /// <summary> 
         /// A URL linking to this resource. <br />

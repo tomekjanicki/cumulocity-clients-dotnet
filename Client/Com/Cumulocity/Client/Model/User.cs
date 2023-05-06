@@ -193,7 +193,7 @@ public sealed class User<TCustomProperties> where TCustomProperties : CustomProp
     /// An object with a list of user groups. <br />
     /// </summary>
     ///
-    public sealed class Groups<TCustomProperties> where TCustomProperties : CustomProperties
+    public sealed class Groups<T> where T : CustomProperties
     {
 		
         /// <summary> 
@@ -208,7 +208,7 @@ public sealed class User<TCustomProperties> where TCustomProperties : CustomProp
         /// </summary>
         ///
         [JsonPropertyName("references")]
-        public List<GroupReference<TCustomProperties>> References { get; set; } = new List<GroupReference<TCustomProperties>>();
+        public List<GroupReference<T>> References { get; set; } = new List<GroupReference<T>>();
 		
         /// <summary> 
         /// Information about paging statistics. <br />

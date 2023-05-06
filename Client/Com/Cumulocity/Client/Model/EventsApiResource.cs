@@ -75,7 +75,7 @@ public sealed class EventsApiResource<TEvent> where TEvent : Event
     /// Collection of all events <br />
     /// </summary>
     ///
-    public sealed class Events<TEvent> where TEvent : Event
+    public sealed class Events<T> where T : Event
     {
 		
         /// <summary> 
@@ -86,7 +86,7 @@ public sealed class EventsApiResource<TEvent> where TEvent : Event
         public string? Self { get; set; }
 		
         [JsonPropertyName("events")]
-        public List<TEvent> PEvents { get; set; } = new List<TEvent>();
+        public List<T> PEvents { get; set; } = new List<T>();
 		
         public override string ToString()
         {

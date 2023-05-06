@@ -82,7 +82,7 @@ public sealed class AlarmsApiResource<TAlarm> where TAlarm : Alarm
     /// Collection of all alarms <br />
     /// </summary>
     ///
-    public sealed class Alarms<TAlarm> where TAlarm : Alarm
+    public sealed class Alarms<T> where T : Alarm
     {
 		
         /// <summary> 
@@ -93,7 +93,7 @@ public sealed class AlarmsApiResource<TAlarm> where TAlarm : Alarm
         public string? Self { get; set; }
 		
         [JsonPropertyName("alarms")]
-        public List<TAlarm> PAlarms { get; set; } = new List<TAlarm>();
+        public List<T> PAlarms { get; set; } = new List<T>();
 		
         public override string ToString()
         {

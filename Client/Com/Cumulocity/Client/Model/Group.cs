@@ -131,7 +131,7 @@ public sealed class Group<TCustomProperties> where TCustomProperties : CustomPro
     /// The list of users in this group. <br />
     /// </summary>
     ///
-    public sealed class Users<TCustomProperties> where TCustomProperties : CustomProperties
+    public sealed class Users<T> where T : CustomProperties
     {
 		
         /// <summary> 
@@ -146,7 +146,7 @@ public sealed class Group<TCustomProperties> where TCustomProperties : CustomPro
         /// </summary>
         ///
         [JsonPropertyName("references")]
-        public List<User<TCustomProperties>> References { get; set; } = new List<User<TCustomProperties>>();
+        public List<User<T>> References { get; set; } = new List<User<T>>();
 		
         public override string ToString()
         {

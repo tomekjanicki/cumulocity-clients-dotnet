@@ -117,7 +117,7 @@ public sealed class TenantApiResource<TCustomProperties> where TCustomProperties
     /// Collection of subtenants <br />
     /// </summary>
     ///
-    public sealed class Tenants<TCustomProperties> where TCustomProperties : CustomProperties
+    public sealed class Tenants<T> where T : CustomProperties
     {
 		
         /// <summary> 
@@ -128,7 +128,7 @@ public sealed class TenantApiResource<TCustomProperties> where TCustomProperties
         public string? Self { get; set; }
 		
         [JsonPropertyName("tenants")]
-        public List<Tenant<TCustomProperties>> PTenants { get; set; } = new List<Tenant<TCustomProperties>>();
+        public List<Tenant<T>> PTenants { get; set; } = new List<Tenant<T>>();
 		
         public override string ToString()
         {

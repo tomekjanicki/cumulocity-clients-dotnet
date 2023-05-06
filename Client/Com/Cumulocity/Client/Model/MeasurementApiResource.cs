@@ -89,11 +89,11 @@ public sealed class MeasurementApiResource<TMeasurement> where TMeasurement : Me
     /// Collection of all measurements <br />
     /// </summary>
     ///
-    public sealed class Measurements<TMeasurement> where TMeasurement : Measurement
+    public sealed class Measurements<T> where T : Measurement
     {
 		
         [JsonPropertyName("measurements")]
-        public List<TMeasurement> PMeasurements { get; set; } = new List<TMeasurement>();
+        public List<T> PMeasurements { get; set; } = new List<T>();
 		
         /// <summary> 
         /// A URL linking to this resource. <br />
