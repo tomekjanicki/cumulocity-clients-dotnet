@@ -15,7 +15,7 @@ using Test.Com.Cumulocity.Client.Supplementary;
 namespace Test.Com.Cumulocity.Client.Api;
 
 [TestClass]
-public class DeviceCredentialsApiTest
+public sealed class DeviceCredentialsApiTest
 {
 	
     private static HttpClient? HttpClient { get; set; }

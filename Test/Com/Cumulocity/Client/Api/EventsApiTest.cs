@@ -18,7 +18,7 @@ using Test.Com.Cumulocity.Client.Supplementary;
 namespace Test.Com.Cumulocity.Client.Api;
 
 [TestClass]
-public class EventsApiTest
+public sealed class EventsApiTest
 {
 	
     private static HttpClient? HttpClient { get; set; }

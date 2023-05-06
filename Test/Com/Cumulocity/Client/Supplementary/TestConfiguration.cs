@@ -8,7 +8,7 @@
 
 namespace Test.Com.Cumulocity.Client.Supplementary;
 
-public class TestConfiguration
+public sealed class TestConfiguration
 {
     public string Hostname { get; set; }
     public string Username { get; set; }
