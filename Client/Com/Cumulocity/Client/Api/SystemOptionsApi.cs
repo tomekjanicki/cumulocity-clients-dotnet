@@ -36,7 +36,6 @@ public sealed class SystemOptionsApi : ISystemOptionsApi
     /// <inheritdoc />
     public async Task<SystemOptionCollection?> GetSystemOptions(CancellationToken cToken = default) 
     {
-        var client = _httpClient;
         var resourcePath = $"/tenant/system/options";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -45,7 +44,7 @@ public sealed class SystemOptionsApi : ISystemOptionsApi
             RequestUri = new Uri(uriBuilder.ToString())
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.optioncollection+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<SystemOptionCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -54,7 +53,6 @@ public sealed class SystemOptionsApi : ISystemOptionsApi
     /// <inheritdoc />
     public async Task<SystemOption?> GetSystemOption(string category, string key, CancellationToken cToken = default) 
     {
-        var client = _httpClient;
         var resourcePath = $"/tenant/system/options/{category}/{key}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -63,7 +61,7 @@ public sealed class SystemOptionsApi : ISystemOptionsApi
             RequestUri = new Uri(uriBuilder.ToString())
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.option+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<SystemOption?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);

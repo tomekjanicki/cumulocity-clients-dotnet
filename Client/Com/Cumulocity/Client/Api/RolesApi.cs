@@ -36,7 +36,6 @@ public sealed class RolesApi : IRolesApi
     /// <inheritdoc />
     public async Task<UserRoleCollection?> GetUserRoles(int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var client = _httpClient;
         var resourcePath = $"/user/roles";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
@@ -51,7 +50,7 @@ public sealed class RolesApi : IRolesApi
             RequestUri = new Uri(uriBuilder.ToString())
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.rolecollection+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<UserRoleCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -60,7 +59,6 @@ public sealed class RolesApi : IRolesApi
     /// <inheritdoc />
     public async Task<Role?> GetUserRole(string name, CancellationToken cToken = default) 
     {
-        var client = _httpClient;
         var resourcePath = $"/user/roles/{name}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -69,7 +67,7 @@ public sealed class RolesApi : IRolesApi
             RequestUri = new Uri(uriBuilder.ToString())
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.role+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<Role?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -78,7 +76,6 @@ public sealed class RolesApi : IRolesApi
     /// <inheritdoc />
     public async Task<RoleReferenceCollection?> GetGroupRoles(string tenantId, int groupId, int? currentPage = null, int? pageSize = null, CancellationToken cToken = default) 
     {
-        var client = _httpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}/roles";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
@@ -91,7 +88,7 @@ public sealed class RolesApi : IRolesApi
             RequestUri = new Uri(uriBuilder.ToString())
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.rolereferencecollection+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<RoleReferenceCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -101,7 +98,6 @@ public sealed class RolesApi : IRolesApi
     public async Task<RoleReference?> AssignGroupRole(SubscribedRole body, string tenantId, int groupId, CancellationToken cToken = default) 
     {
         var jsonNode = body.ToJsonNode<SubscribedRole>();
-        var client = _httpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}/roles";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -112,7 +108,7 @@ public sealed class RolesApi : IRolesApi
         };
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.rolereference+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.rolereference+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<RoleReference?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -121,7 +117,6 @@ public sealed class RolesApi : IRolesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> UnassignGroupRole(string tenantId, int groupId, string roleId, CancellationToken cToken = default) 
     {
-        var client = _httpClient;
         var resourcePath = $"/user/{tenantId}/groups/{groupId}/roles/{roleId}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -130,7 +125,7 @@ public sealed class RolesApi : IRolesApi
             RequestUri = new Uri(uriBuilder.ToString())
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
@@ -140,7 +135,6 @@ public sealed class RolesApi : IRolesApi
     public async Task<RoleReference?> AssignUserRole(SubscribedRole body, string tenantId, string userId, CancellationToken cToken = default) 
     {
         var jsonNode = body.ToJsonNode<SubscribedRole>();
-        var client = _httpClient;
         var resourcePath = $"/user/{tenantId}/users/{userId}/roles";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -151,7 +145,7 @@ public sealed class RolesApi : IRolesApi
         };
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.rolereference+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.rolereference+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<RoleReference?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -160,7 +154,6 @@ public sealed class RolesApi : IRolesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> UnassignUserRole(string tenantId, string userId, string roleId, CancellationToken cToken = default) 
     {
-        var client = _httpClient;
         var resourcePath = $"/user/{tenantId}/users/{userId}/roles/{roleId}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -169,7 +162,7 @@ public sealed class RolesApi : IRolesApi
             RequestUri = new Uri(uriBuilder.ToString())
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;

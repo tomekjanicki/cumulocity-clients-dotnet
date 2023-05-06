@@ -36,7 +36,6 @@ public sealed class OperationsApi : IOperationsApi
     /// <inheritdoc />
     public async Task<OperationCollection<TOperation>?> GetOperations<TOperation>(string? agentId = null, string? bulkOperationId = null, int? currentPage = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? deviceId = null, string? fragmentType = null, int? pageSize = null, bool? revert = null, string? status = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TOperation : Operation
     {
-        var client = _httpClient;
         var resourcePath = $"/devicecontrol/operations";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
@@ -59,7 +58,7 @@ public sealed class OperationsApi : IOperationsApi
             RequestUri = new Uri(uriBuilder.ToString())
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.operationcollection+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<OperationCollection<TOperation>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -76,7 +75,6 @@ public sealed class OperationsApi : IOperationsApi
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("status");
-        var client = _httpClient;
         var resourcePath = $"/devicecontrol/operations";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -88,7 +86,7 @@ public sealed class OperationsApi : IOperationsApi
         request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.operation+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.operation+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<TOperation?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -97,7 +95,6 @@ public sealed class OperationsApi : IOperationsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteOperations(string? xCumulocityProcessingMode = null, string? agentId = null, System.DateTime? dateFrom = null, System.DateTime? dateTo = null, string? deviceId = null, string? status = null, CancellationToken cToken = default) 
     {
-        var client = _httpClient;
         var resourcePath = $"/devicecontrol/operations";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
@@ -114,7 +111,7 @@ public sealed class OperationsApi : IOperationsApi
         };
         request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
@@ -123,7 +120,6 @@ public sealed class OperationsApi : IOperationsApi
     /// <inheritdoc />
     public async Task<TOperation?> GetOperation<TOperation>(string id, CancellationToken cToken = default) where TOperation : Operation
     {
-        var client = _httpClient;
         var resourcePath = $"/devicecontrol/operations/{id}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -132,7 +128,7 @@ public sealed class OperationsApi : IOperationsApi
             RequestUri = new Uri(uriBuilder.ToString())
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.operation+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<TOperation?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -149,7 +145,6 @@ public sealed class OperationsApi : IOperationsApi
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("deviceId");
-        var client = _httpClient;
         var resourcePath = $"/devicecontrol/operations/{id}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -161,7 +156,7 @@ public sealed class OperationsApi : IOperationsApi
         request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.operation+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.operation+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<TOperation?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);

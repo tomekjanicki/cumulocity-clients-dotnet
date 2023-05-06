@@ -33,7 +33,6 @@ public sealed class BootstrapUserApi : IBootstrapUserApi
     /// <inheritdoc />
     public async Task<BootstrapUser?> GetBootstrapUser(string id, CancellationToken cToken = default) 
     {
-        var client = _httpClient;
         var resourcePath = $"/application/applications/{id}/bootstrapUser";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -42,7 +41,7 @@ public sealed class BootstrapUserApi : IBootstrapUserApi
             RequestUri = new Uri(uriBuilder.ToString())
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.user+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<BootstrapUser?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);

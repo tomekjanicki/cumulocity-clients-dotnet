@@ -43,7 +43,6 @@ public sealed class DeviceCredentialsApi : IDeviceCredentialsApi
         jsonNode?.RemoveFromNode("tenantId");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("username");
-        var client = _httpClient;
         var resourcePath = $"/devicecontrol/deviceCredentials";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -55,7 +54,7 @@ public sealed class DeviceCredentialsApi : IDeviceCredentialsApi
         request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.devicecredentials+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.devicecredentials+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<DeviceCredentials?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -64,7 +63,6 @@ public sealed class DeviceCredentialsApi : IDeviceCredentialsApi
     /// <inheritdoc />
     public async Task<BulkNewDeviceRequest?> CreateBulkDeviceCredentials(byte[] file, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var client = _httpClient;
         var resourcePath = $"/devicecontrol/bulkNewDeviceRequests";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
@@ -80,7 +78,7 @@ public sealed class DeviceCredentialsApi : IDeviceCredentialsApi
         request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
         request.Headers.TryAddWithoutValidation("Content-Type", "multipart/form-data");
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.bulknewdevicerequest+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<BulkNewDeviceRequest?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);

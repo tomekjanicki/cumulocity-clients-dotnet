@@ -36,7 +36,6 @@ public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
     /// <inheritdoc />
     public async Task<NewDeviceRequestCollection?> GetNewDeviceRequests(int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var client = _httpClient;
         var resourcePath = $"/devicecontrol/newDeviceRequests";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
@@ -51,7 +50,7 @@ public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
             RequestUri = new Uri(uriBuilder.ToString())
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.error+json, application/vnd.com.nsn.cumulocity.newdevicerequestcollection+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<NewDeviceRequestCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -63,7 +62,6 @@ public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
         var jsonNode = body.ToJsonNode<NewDeviceRequest>();
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("status");
-        var client = _httpClient;
         var resourcePath = $"/devicecontrol/newDeviceRequests";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -75,7 +73,7 @@ public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
         request.Headers.TryAddWithoutValidation("X-Cumulocity-Processing-Mode", xCumulocityProcessingMode);
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.newdevicerequest+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.newdevicerequest+json, application/vnd.com.nsn.cumulocity.error+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<NewDeviceRequest?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -84,7 +82,6 @@ public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
     /// <inheritdoc />
     public async Task<NewDeviceRequest?> GetNewDeviceRequest(string requestId, CancellationToken cToken = default) 
     {
-        var client = _httpClient;
         var resourcePath = $"/devicecontrol/newDeviceRequests/{requestId}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -93,7 +90,7 @@ public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
             RequestUri = new Uri(uriBuilder.ToString())
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.newdevicerequest+json, application/vnd.com.nsn.cumulocity.error+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<NewDeviceRequest?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -105,7 +102,6 @@ public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
         var jsonNode = body.ToJsonNode<NewDeviceRequest>();
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
-        var client = _httpClient;
         var resourcePath = $"/devicecontrol/newDeviceRequests/{requestId}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -116,7 +112,7 @@ public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
         };
         request.Headers.TryAddWithoutValidation("Content-Type", "application/vnd.com.nsn.cumulocity.newdevicerequest+json");
         request.Headers.TryAddWithoutValidation("Accept", "application/vnd.com.nsn.cumulocity.newdevicerequest+json, application/vnd.com.nsn.cumulocity.error+json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return await JsonSerializer.DeserializeAsync<NewDeviceRequest?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
@@ -125,7 +121,6 @@ public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteNewDeviceRequest(string requestId, CancellationToken cToken = default) 
     {
-        var client = _httpClient;
         var resourcePath = $"/devicecontrol/newDeviceRequests/{requestId}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
@@ -134,7 +129,7 @@ public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
             RequestUri = new Uri(uriBuilder.ToString())
         };
         request.Headers.TryAddWithoutValidation("Accept", "application/json");
-        using var response = await client.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
+        using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         return responseStream;
