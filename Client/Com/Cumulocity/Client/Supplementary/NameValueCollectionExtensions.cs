@@ -29,7 +29,7 @@ public static class NameValueCollectionExtensions
         {
             if (explode)
             {
-                value.Where(e => e != null).ToList().ForEach(e => collection.Add(key, e.GetStringValue()));
+                value.Where(e => e != null).ToList().ForEach(e => collection.Add(key, e!.GetStringValue()));
             }
             else
             {

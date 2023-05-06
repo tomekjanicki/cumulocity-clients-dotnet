@@ -52,6 +52,6 @@ public sealed class AlarmsApiTest
     {
         var api = new AlarmsApi(HttpClient!);
         var response = await api.GetNumberOfAlarms();
-        Debug.Assert(response != null);
+        Debug.Assert(response >= 0);
     }
 }

@@ -10,7 +10,7 @@ namespace Test.Com.Cumulocity.Client.Supplementary;
 
 public sealed class TestConfiguration
 {
-    public string Hostname { get; set; }
-    public string Username { get; set; }
-    public string Password { get; set; }
+    public string Hostname { get; set; } = string.Empty;
+    public string Username { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
 }

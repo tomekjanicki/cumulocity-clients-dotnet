@@ -4,6 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<PackOnBuild>true</PackOnBuild>
 		<Nullable>enable</Nullable>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 	</PropertyGroup>
 
   	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

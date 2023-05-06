@@ -52,6 +52,6 @@ public sealed class ManagedObjectsApiTest
     {
         var api = new ManagedObjectsApi(HttpClient!);
         var response = await api.GetNumberOfManagedObjects();
-        Debug.Assert(response != null);
+        Debug.Assert(response >= 0);
     }
 }
