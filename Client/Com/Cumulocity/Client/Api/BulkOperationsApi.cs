@@ -37,7 +37,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class BulkOperationsApi : IBulkOperationsApi
+public sealed class BulkOperationsApi : IBulkOperationsApi
 {
     private readonly HttpClient _httpClient;
 

@@ -183,7 +183,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class RealtimeNotificationApi : IRealtimeNotificationApi
+public sealed class RealtimeNotificationApi : IRealtimeNotificationApi
 {
     private readonly HttpClient _httpClient;
 

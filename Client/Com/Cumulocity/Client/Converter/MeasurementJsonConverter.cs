@@ -17,7 +17,7 @@ using Client.Com.Cumulocity.Client.Model;
 
 namespace Client.Com.Cumulocity.Client.Converter;
 
-public class MeasurementJsonConverter<T> : JsonConverter<T> where T : Measurement
+public sealed class MeasurementJsonConverter<T> : JsonConverter<T> where T : Measurement
 {
 	
     public override T? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

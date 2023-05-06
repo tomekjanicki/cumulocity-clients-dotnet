@@ -26,7 +26,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class DeviceCredentialsApi : IDeviceCredentialsApi
+public sealed class DeviceCredentialsApi : IDeviceCredentialsApi
 {
     private readonly HttpClient _httpClient;
 

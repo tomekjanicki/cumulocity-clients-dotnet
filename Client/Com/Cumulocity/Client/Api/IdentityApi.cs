@@ -22,7 +22,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class IdentityApi : IIdentityApi
+public sealed class IdentityApi : IIdentityApi
 {
     private readonly HttpClient _httpClient;
 

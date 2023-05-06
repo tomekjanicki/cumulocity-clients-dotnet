@@ -23,7 +23,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class ExternalIDsApi : IExternalIDsApi
+public sealed class ExternalIDsApi : IExternalIDsApi
 {
     private readonly HttpClient _httpClient;
 

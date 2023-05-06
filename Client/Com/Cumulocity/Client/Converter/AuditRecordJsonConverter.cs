@@ -17,7 +17,7 @@ using Client.Com.Cumulocity.Client.Model;
 
 namespace Client.Com.Cumulocity.Client.Converter;
 
-public class AuditRecordJsonConverter<T> : JsonConverter<T> where T : AuditRecord
+public sealed class AuditRecordJsonConverter<T> : JsonConverter<T> where T : AuditRecord
 {
 	
     public override T? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

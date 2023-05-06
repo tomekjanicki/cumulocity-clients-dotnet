@@ -17,7 +17,7 @@ using Client.Com.Cumulocity.Client.Model;
 
 namespace Client.Com.Cumulocity.Client.Converter;
 
-public class AlarmJsonConverter<T> : JsonConverter<T> where T : Alarm
+public sealed class AlarmJsonConverter<T> : JsonConverter<T> where T : Alarm
 {
 	
     public override T? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

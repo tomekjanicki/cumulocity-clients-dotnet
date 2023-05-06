@@ -26,7 +26,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class TrustedCertificatesApi : ITrustedCertificatesApi
+public sealed class TrustedCertificatesApi : ITrustedCertificatesApi
 {
     private readonly HttpClient _httpClient;
 

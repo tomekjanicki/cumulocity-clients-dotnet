@@ -25,7 +25,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class MeasurementsApi : IMeasurementsApi
+public sealed class MeasurementsApi : IMeasurementsApi
 {
     private readonly HttpClient _httpClient;
 

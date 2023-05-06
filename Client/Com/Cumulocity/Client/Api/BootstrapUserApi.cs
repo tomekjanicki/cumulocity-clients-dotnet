@@ -21,7 +21,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class BootstrapUserApi : IBootstrapUserApi
+public sealed class BootstrapUserApi : IBootstrapUserApi
 {
     private readonly HttpClient _httpClient;
 

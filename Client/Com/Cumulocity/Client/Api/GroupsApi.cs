@@ -25,7 +25,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class GroupsApi : IGroupsApi
+public sealed class GroupsApi : IGroupsApi
 {
     private readonly HttpClient _httpClient;
 

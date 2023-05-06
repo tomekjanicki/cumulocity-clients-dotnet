@@ -16,7 +16,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Converter;
 
-public class EnumConverterFactory : JsonConverterFactory
+public sealed class EnumConverterFactory : JsonConverterFactory
 {
 	
     public EnumConverterFactory()

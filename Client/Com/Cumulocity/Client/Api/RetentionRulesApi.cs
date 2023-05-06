@@ -24,7 +24,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class RetentionRulesApi : IRetentionRulesApi
+public sealed class RetentionRulesApi : IRetentionRulesApi
 {
     private readonly HttpClient _httpClient;
 

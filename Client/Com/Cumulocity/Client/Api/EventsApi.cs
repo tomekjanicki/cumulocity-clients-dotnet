@@ -24,7 +24,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class EventsApi : IEventsApi
+public sealed class EventsApi : IEventsApi
 {
     private readonly HttpClient _httpClient;
 

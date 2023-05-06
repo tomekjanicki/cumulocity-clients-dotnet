@@ -16,7 +16,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class LoginTokensApi : ILoginTokensApi
+public sealed class LoginTokensApi : ILoginTokensApi
 {
     public LoginTokensApi(HttpClient httpClient)
     {

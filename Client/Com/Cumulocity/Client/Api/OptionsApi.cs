@@ -24,7 +24,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class OptionsApi : IOptionsApi
+public sealed class OptionsApi : IOptionsApi
 {
     private readonly HttpClient _httpClient;
 

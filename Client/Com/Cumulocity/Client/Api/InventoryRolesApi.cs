@@ -24,7 +24,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class InventoryRolesApi : IInventoryRolesApi
+public sealed class InventoryRolesApi : IInventoryRolesApi
 {
     private readonly HttpClient _httpClient;
 

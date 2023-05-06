@@ -43,7 +43,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class AuditsApi : IAuditsApi
+public sealed class AuditsApi : IAuditsApi
 {
     private readonly HttpClient _httpClient;
 

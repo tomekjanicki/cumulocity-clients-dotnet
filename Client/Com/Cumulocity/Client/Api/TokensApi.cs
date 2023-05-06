@@ -23,7 +23,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class TokensApi : ITokensApi
+public sealed class TokensApi : ITokensApi
 {
     private readonly HttpClient _httpClient;
 

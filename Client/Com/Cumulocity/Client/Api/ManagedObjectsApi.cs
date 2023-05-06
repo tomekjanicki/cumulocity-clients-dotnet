@@ -25,7 +25,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class ManagedObjectsApi : IManagedObjectsApi
+public sealed class ManagedObjectsApi : IManagedObjectsApi
 {
     private readonly HttpClient _httpClient;
 

@@ -24,7 +24,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class RolesApi : IRolesApi
+public sealed class RolesApi : IRolesApi
 {
     private readonly HttpClient _httpClient;
 

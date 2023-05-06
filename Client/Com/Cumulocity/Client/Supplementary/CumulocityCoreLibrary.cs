@@ -11,7 +11,7 @@ using Client.Com.Cumulocity.Client.Api;
 
 namespace Client.Com.Cumulocity.Client.Supplementary;
 
-public class CumulocityCoreLibrary 
+public sealed class CumulocityCoreLibrary 
 {
     private static readonly CumulocityCoreLibrary instance = new();
     public static CumulocityCoreLibrary Instance
@@ -42,7 +42,7 @@ public class CumulocityCoreLibrary
         HttpClient = new();
     }
 	
-    public class ApplicationsFactory
+    public sealed class ApplicationsFactory
     {
         public IApplicationsApi ApplicationsApi => new ApplicationsApi(Instance.HttpClient);
         public IApplicationVersionsApi ApplicationVersionsApi => new ApplicationVersionsApi(Instance.HttpClient);
@@ -51,17 +51,17 @@ public class CumulocityCoreLibrary
         public ICurrentApplicationApi CurrentApplicationApi => new CurrentApplicationApi(Instance.HttpClient);
     }
 	
-    public class MeasurementsFactory
+    public sealed class MeasurementsFactory
     {
         public IMeasurementsApi MeasurementsApi => new MeasurementsApi(Instance.HttpClient);
     }
 	
-    public class AlarmsFactory
+    public sealed class AlarmsFactory
     {
         public IAlarmsApi AlarmsApi => new AlarmsApi(Instance.HttpClient);
     }
 	
-    public class TenantsFactory
+    public sealed class TenantsFactory
     {
         public ITenantsApi TenantsApi => new TenantsApi(Instance.HttpClient);
         public ITenantApplicationsApi TenantApplicationsApi => new TenantApplicationsApi(Instance.HttpClient);
@@ -74,7 +74,7 @@ public class CumulocityCoreLibrary
         public ISystemOptionsApi SystemOptionsApi => new SystemOptionsApi(Instance.HttpClient);
     }
 	
-    public class UsersFactory
+    public sealed class UsersFactory
     {
         public ICurrentUserApi CurrentUserApi => new CurrentUserApi(Instance.HttpClient);
         public IUsersApi UsersApi => new UsersApi(Instance.HttpClient);
@@ -84,40 +84,40 @@ public class CumulocityCoreLibrary
         public IDevicePermissionsApi DevicePermissionsApi => new DevicePermissionsApi(Instance.HttpClient);
     }
 	
-    public class AuditsFactory
+    public sealed class AuditsFactory
     {
         public IAuditsApi AuditsApi => new AuditsApi(Instance.HttpClient);
     }
 	
-    public class RealtimenotificationsFactory
+    public sealed class RealtimenotificationsFactory
     {
         public IRealtimeNotificationApi RealtimeNotificationApi => new RealtimeNotificationApi(Instance.HttpClient);
     }
 	
-    public class EventsFactory
+    public sealed class EventsFactory
     {
         public IEventsApi EventsApi => new EventsApi(Instance.HttpClient);
         public IAttachmentsApi AttachmentsApi => new AttachmentsApi(Instance.HttpClient);
     }
 	
-    public class Notifications20Factory
+    public sealed class Notifications20Factory
     {
         public ISubscriptionsApi SubscriptionsApi => new SubscriptionsApi(Instance.HttpClient);
         public ITokensApi TokensApi => new TokensApi(Instance.HttpClient);
     }
 	
-    public class RetentionsFactory
+    public sealed class RetentionsFactory
     {
         public IRetentionRulesApi RetentionRulesApi => new RetentionRulesApi(Instance.HttpClient);
     }
 	
-    public class IdentityFactory
+    public sealed class IdentityFactory
     {
         public IIdentityApi IdentityApi => new IdentityApi(Instance.HttpClient);
         public IExternalIDsApi ExternalIDsApi => new ExternalIDsApi(Instance.HttpClient);
     }
 	
-    public class DevicecontrolFactory
+    public sealed class DevicecontrolFactory
     {
         public IOperationsApi OperationsApi => new OperationsApi(Instance.HttpClient);
         public IBulkOperationsApi BulkOperationsApi => new BulkOperationsApi(Instance.HttpClient);
@@ -125,7 +125,7 @@ public class CumulocityCoreLibrary
         public INewDeviceRequestsApi NewDeviceRequestsApi => new NewDeviceRequestsApi(Instance.HttpClient);
     }
 	
-    public class InventoryFactory
+    public sealed class InventoryFactory
     {
         public IManagedObjectsApi ManagedObjectsApi => new ManagedObjectsApi(Instance.HttpClient);
         public IBinariesApi BinariesApi => new BinariesApi(Instance.HttpClient);

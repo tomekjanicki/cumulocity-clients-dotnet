@@ -51,7 +51,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class DevicePermissionsApi : IDevicePermissionsApi
+public sealed class DevicePermissionsApi : IDevicePermissionsApi
 {
     private readonly HttpClient _httpClient;
 

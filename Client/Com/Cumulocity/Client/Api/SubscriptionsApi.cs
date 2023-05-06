@@ -23,7 +23,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class SubscriptionsApi : ISubscriptionsApi
+public sealed class SubscriptionsApi : ISubscriptionsApi
 {
     private readonly HttpClient _httpClient;
 

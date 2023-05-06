@@ -61,7 +61,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class DeviceStatisticsApi : IDeviceStatisticsApi
+public sealed class DeviceStatisticsApi : IDeviceStatisticsApi
 {
     private readonly HttpClient _httpClient;
 

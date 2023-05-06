@@ -24,7 +24,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class NewDeviceRequestsApi : INewDeviceRequestsApi
+public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
 {
     private readonly HttpClient _httpClient;
 

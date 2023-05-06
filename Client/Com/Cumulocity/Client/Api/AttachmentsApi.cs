@@ -22,7 +22,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class AttachmentsApi : IAttachmentsApi
+public sealed class AttachmentsApi : IAttachmentsApi
 {
     private readonly HttpClient _httpClient;
 

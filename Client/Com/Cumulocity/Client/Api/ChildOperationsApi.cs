@@ -24,7 +24,7 @@ namespace Client.Com.Cumulocity.Client.Api;
 /// </summary>
 ///
 
-public class ChildOperationsApi : IChildOperationsApi
+public sealed class ChildOperationsApi : IChildOperationsApi
 {
     private readonly HttpClient _httpClient;
 
