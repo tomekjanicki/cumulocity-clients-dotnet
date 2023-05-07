@@ -93,7 +93,6 @@ public sealed class RootClient : IRootClient
     //    public IUsageStatisticsApi UsageStatisticsApi => new UsageStatisticsApi(Instance.HttpClient);
     //    public IOptionsApi OptionsApi => new OptionsApi(Instance.HttpClient);
     //    public ILoginOptionsApi LoginOptionsApi => new LoginOptionsApi(Instance.HttpClient);
-    //    public ILoginTokensApi LoginTokensApi => new LoginTokensApi(Instance.HttpClient);
     //    public ISystemOptionsApi SystemOptionsApi => new SystemOptionsApi(Instance.HttpClient);
     //}
 	
