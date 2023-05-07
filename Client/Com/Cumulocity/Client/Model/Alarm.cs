@@ -207,7 +207,7 @@ public class Alarm : IWithCustomFragments
         return AdditionalPropertyClasses.TryAdd(key, type);
     }
 
-    public sealed class AlarmJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : Alarm
+    internal sealed class AlarmJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : Alarm
     {
         public AlarmJsonConverter() : base(AdditionalPropertyClasses)
         {

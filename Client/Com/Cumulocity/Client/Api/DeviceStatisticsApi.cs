@@ -65,7 +65,7 @@ public sealed class DeviceStatisticsApi : IDeviceStatisticsApi
 {
     private readonly HttpClient _httpClient;
 
-    public DeviceStatisticsApi(HttpClient httpClient)
+    internal DeviceStatisticsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

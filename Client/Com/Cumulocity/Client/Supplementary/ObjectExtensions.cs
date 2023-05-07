@@ -3,7 +3,7 @@ using System.Text.Json.Nodes;
 
 namespace Client.Com.Cumulocity.Client.Supplementary;
 
-public static class ObjectExtensions
+internal static class ObjectExtensions
 {
     public static JsonNode? ToJsonNode<T>(this T body)
     {

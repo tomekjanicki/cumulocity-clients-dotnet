@@ -29,7 +29,7 @@ public sealed class LoginOptionsApi : ILoginOptionsApi
 {
     private readonly HttpClient _httpClient;
 
-    public LoginOptionsApi(HttpClient httpClient)
+    internal LoginOptionsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

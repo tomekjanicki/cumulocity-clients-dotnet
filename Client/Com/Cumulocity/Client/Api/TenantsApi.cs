@@ -40,7 +40,7 @@ public sealed class TenantsApi : ITenantsApi
 {
     private readonly HttpClient _httpClient;
 
-    public TenantsApi(HttpClient httpClient)
+    internal TenantsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

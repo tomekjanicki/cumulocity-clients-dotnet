@@ -6,7 +6,6 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
-using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -121,7 +120,7 @@ public class Operation : IWithCustomFragments
         return AdditionalPropertyClasses.TryAdd(key, type);
     }
 
-    public sealed class OperationJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : Operation
+    internal sealed class OperationJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : Operation
     {
         public OperationJsonConverter() : base(AdditionalPropertyClasses)
         {

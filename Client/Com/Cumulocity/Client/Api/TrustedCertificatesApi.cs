@@ -30,7 +30,7 @@ public sealed class TrustedCertificatesApi : ITrustedCertificatesApi
 {
     private readonly HttpClient _httpClient;
 
-    public TrustedCertificatesApi(HttpClient httpClient)
+    internal TrustedCertificatesApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

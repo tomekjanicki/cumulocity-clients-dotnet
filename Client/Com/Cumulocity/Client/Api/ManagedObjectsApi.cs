@@ -29,7 +29,7 @@ public sealed class ManagedObjectsApi : IManagedObjectsApi
 {
     private readonly HttpClient _httpClient;
 
-    public ManagedObjectsApi(HttpClient httpClient)
+    internal ManagedObjectsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

@@ -2,7 +2,7 @@ using System.Text.Json.Nodes;
 
 namespace Client.Com.Cumulocity.Client.Supplementary;
 
-public static class JsonNodeExtensions
+internal static class JsonNodeExtensions
 {
     public static void RemoveFromNode(this JsonNode node, params string[] pathItem)
     {

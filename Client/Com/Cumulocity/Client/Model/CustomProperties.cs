@@ -59,7 +59,7 @@ public class CustomProperties : IWithCustomFragments
         return AdditionalPropertyClasses.TryAdd(key, type);
     }
 
-    public sealed class CustomPropertiesJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : CustomProperties
+    internal sealed class CustomPropertiesJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : CustomProperties
     {
         public CustomPropertiesJsonConverter() : base(AdditionalPropertyClasses)
         {

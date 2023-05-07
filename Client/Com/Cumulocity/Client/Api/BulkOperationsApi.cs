@@ -41,7 +41,7 @@ public sealed class BulkOperationsApi : IBulkOperationsApi
 {
     private readonly HttpClient _httpClient;
 
-    public BulkOperationsApi(HttpClient httpClient)
+    internal BulkOperationsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

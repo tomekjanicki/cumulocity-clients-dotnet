@@ -29,7 +29,7 @@ public sealed class UsersApi : IUsersApi
 {
     private readonly HttpClient _httpClient;
 
-    public UsersApi(HttpClient httpClient)
+    internal UsersApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

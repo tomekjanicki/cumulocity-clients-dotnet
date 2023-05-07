@@ -48,7 +48,7 @@ public class CategoryOptions : IWithCustomFragments
         return AdditionalPropertyClasses.TryAdd(key, type);
     }
 
-    public sealed class CategoryOptionsJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : CategoryOptions
+    internal sealed class CategoryOptionsJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : CategoryOptions
     {
         public CategoryOptionsJsonConverter() : base(AdditionalPropertyClasses)
         {

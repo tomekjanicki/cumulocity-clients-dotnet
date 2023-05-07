@@ -143,7 +143,7 @@ public class Measurement : IWithCustomFragments
         return AdditionalPropertyClasses.TryAdd(key, type);
     }
 
-    public sealed class MeasurementJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : Measurement
+    internal sealed class MeasurementJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : Measurement
     {
         public MeasurementJsonConverter() : base(AdditionalPropertyClasses)
         {

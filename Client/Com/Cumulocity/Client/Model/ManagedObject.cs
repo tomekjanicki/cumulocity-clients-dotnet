@@ -205,7 +205,7 @@ public class ManagedObject : IWithCustomFragments
         return AdditionalPropertyClasses.TryAdd(key, type);
     }
 
-    public sealed class ManagedObjectJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : ManagedObject
+    internal sealed class ManagedObjectJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : ManagedObject
     {
         public ManagedObjectJsonConverter() : base(AdditionalPropertyClasses)
         {

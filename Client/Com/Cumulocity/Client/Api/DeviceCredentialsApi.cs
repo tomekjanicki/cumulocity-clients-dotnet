@@ -30,7 +30,7 @@ public sealed class DeviceCredentialsApi : IDeviceCredentialsApi
 {
     private readonly HttpClient _httpClient;
 
-    public DeviceCredentialsApi(HttpClient httpClient)
+    internal DeviceCredentialsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

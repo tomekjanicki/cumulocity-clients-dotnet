@@ -25,7 +25,7 @@ public sealed class BootstrapUserApi : IBootstrapUserApi
 {
     private readonly HttpClient _httpClient;
 
-    public BootstrapUserApi(HttpClient httpClient)
+    internal BootstrapUserApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

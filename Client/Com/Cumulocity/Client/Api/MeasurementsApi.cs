@@ -29,7 +29,7 @@ public sealed class MeasurementsApi : IMeasurementsApi
 {
     private readonly HttpClient _httpClient;
 
-    public MeasurementsApi(HttpClient httpClient)
+    internal MeasurementsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

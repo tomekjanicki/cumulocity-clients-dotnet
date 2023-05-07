@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Client.Com.Cumulocity.Client.Supplementary;
 
-public static class HttpResponseMessageExtensions
+internal static class HttpResponseMessageExtensions
 {
     public static async Task EnsureSuccessStatusCodeWithContentInfoIfAvailable(this HttpResponseMessage httpResponseMessage)
     {

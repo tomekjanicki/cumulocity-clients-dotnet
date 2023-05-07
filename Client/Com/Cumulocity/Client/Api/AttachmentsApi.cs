@@ -26,7 +26,7 @@ public sealed class AttachmentsApi : IAttachmentsApi
 {
     private readonly HttpClient _httpClient;
 
-    public AttachmentsApi(HttpClient httpClient)
+    internal AttachmentsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

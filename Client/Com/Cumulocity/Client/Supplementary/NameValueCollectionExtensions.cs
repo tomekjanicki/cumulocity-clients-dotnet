@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Client.Com.Cumulocity.Client.Supplementary;
 
-public static class NameValueCollectionExtensions
+internal static class NameValueCollectionExtensions
 {
     private static string GetStringValue(this object input)
     {

@@ -31,7 +31,7 @@ public sealed class ApplicationsApi : IApplicationsApi
 {
     private readonly HttpClient _httpClient;
 
-    public ApplicationsApi(HttpClient httpClient)
+    internal ApplicationsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

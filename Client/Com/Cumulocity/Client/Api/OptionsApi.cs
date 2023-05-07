@@ -28,7 +28,7 @@ public sealed class OptionsApi : IOptionsApi
 {
     private readonly HttpClient _httpClient;
 
-    public OptionsApi(HttpClient httpClient)
+    internal OptionsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

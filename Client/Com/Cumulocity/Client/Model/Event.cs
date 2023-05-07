@@ -137,7 +137,7 @@ public class Event : IWithCustomFragments
         return AdditionalPropertyClasses.TryAdd(key, type);
     }
 
-    public sealed class EventJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : Event
+    internal sealed class EventJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : Event
     {
         public EventJsonConverter() : base(AdditionalPropertyClasses)
         {

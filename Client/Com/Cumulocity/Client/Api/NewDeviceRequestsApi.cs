@@ -28,7 +28,7 @@ public sealed class NewDeviceRequestsApi : INewDeviceRequestsApi
 {
     private readonly HttpClient _httpClient;
 
-    public NewDeviceRequestsApi(HttpClient httpClient)
+    internal NewDeviceRequestsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

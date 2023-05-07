@@ -110,7 +110,7 @@ public sealed class UsageStatisticsApi : IUsageStatisticsApi
 {
     private readonly HttpClient _httpClient;
 
-    public UsageStatisticsApi(HttpClient httpClient)
+    internal UsageStatisticsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

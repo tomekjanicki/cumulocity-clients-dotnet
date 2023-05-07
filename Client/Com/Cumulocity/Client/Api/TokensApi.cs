@@ -27,7 +27,7 @@ public sealed class TokensApi : ITokensApi
 {
     private readonly HttpClient _httpClient;
 
-    public TokensApi(HttpClient httpClient)
+    internal TokensApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

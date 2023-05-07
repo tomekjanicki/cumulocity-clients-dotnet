@@ -7,7 +7,6 @@
 ///
 
 using System.Net.Http;
-using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Api;
 

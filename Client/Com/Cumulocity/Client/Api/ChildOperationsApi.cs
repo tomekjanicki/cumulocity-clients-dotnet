@@ -28,7 +28,7 @@ public sealed class ChildOperationsApi : IChildOperationsApi
 {
     private readonly HttpClient _httpClient;
 
-    public ChildOperationsApi(HttpClient httpClient)
+    internal ChildOperationsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

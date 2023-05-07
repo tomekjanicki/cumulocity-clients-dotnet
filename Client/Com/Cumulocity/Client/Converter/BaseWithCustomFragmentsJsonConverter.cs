@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Converter;
 
-public abstract class BaseWithCustomFragmentsJsonConverter<T> : JsonConverter<T>
+internal abstract class BaseWithCustomFragmentsJsonConverter<T> : JsonConverter<T>
     where T : class, IWithCustomFragments
 {
     private readonly IReadOnlyDictionary<string, Type> _additionalPropertyClasses;

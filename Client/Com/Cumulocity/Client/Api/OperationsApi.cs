@@ -28,7 +28,7 @@ public sealed class OperationsApi : IOperationsApi
 {
     private readonly HttpClient _httpClient;
 
-    public OperationsApi(HttpClient httpClient)
+    internal OperationsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

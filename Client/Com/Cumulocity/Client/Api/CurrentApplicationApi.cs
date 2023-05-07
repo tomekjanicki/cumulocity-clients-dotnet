@@ -27,7 +27,7 @@ public sealed class CurrentApplicationApi : ICurrentApplicationApi
 {
     private readonly HttpClient _httpClient;
 
-    public CurrentApplicationApi(HttpClient httpClient)
+    internal CurrentApplicationApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

@@ -28,7 +28,7 @@ public sealed class SystemOptionsApi : ISystemOptionsApi
 {
     private readonly HttpClient _httpClient;
 
-    public SystemOptionsApi(HttpClient httpClient)
+    internal SystemOptionsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

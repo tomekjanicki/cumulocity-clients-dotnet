@@ -28,7 +28,7 @@ public sealed class RolesApi : IRolesApi
 {
     private readonly HttpClient _httpClient;
 
-    public RolesApi(HttpClient httpClient)
+    internal RolesApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

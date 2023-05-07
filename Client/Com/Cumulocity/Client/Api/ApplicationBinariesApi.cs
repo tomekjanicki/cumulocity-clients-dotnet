@@ -26,7 +26,7 @@ public sealed class ApplicationBinariesApi : IApplicationBinariesApi
 {
     private readonly HttpClient _httpClient;
 
-    public ApplicationBinariesApi(HttpClient httpClient)
+    internal ApplicationBinariesApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

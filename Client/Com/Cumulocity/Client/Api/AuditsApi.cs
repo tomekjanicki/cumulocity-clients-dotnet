@@ -47,7 +47,7 @@ public sealed class AuditsApi : IAuditsApi
 {
     private readonly HttpClient _httpClient;
 
-    public AuditsApi(HttpClient httpClient)
+    internal AuditsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

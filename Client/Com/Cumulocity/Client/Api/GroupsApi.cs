@@ -29,7 +29,7 @@ public sealed class GroupsApi : IGroupsApi
 {
     private readonly HttpClient _httpClient;
 
-    public GroupsApi(HttpClient httpClient)
+    internal GroupsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

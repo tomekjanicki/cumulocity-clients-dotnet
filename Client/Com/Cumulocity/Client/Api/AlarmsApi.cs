@@ -29,7 +29,7 @@ public sealed class AlarmsApi : IAlarmsApi
 {
     private readonly HttpClient _httpClient;
 
-    public AlarmsApi(HttpClient httpClient)
+    internal AlarmsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

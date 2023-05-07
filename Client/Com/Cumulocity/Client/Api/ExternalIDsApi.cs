@@ -27,7 +27,7 @@ public sealed class ExternalIDsApi : IExternalIDsApi
 {
     private readonly HttpClient _httpClient;
 
-    public ExternalIDsApi(HttpClient httpClient)
+    internal ExternalIDsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

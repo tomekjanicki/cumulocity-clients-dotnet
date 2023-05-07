@@ -187,7 +187,7 @@ public sealed class RealtimeNotificationApi : IRealtimeNotificationApi
 {
     private readonly HttpClient _httpClient;
 
-    public RealtimeNotificationApi(HttpClient httpClient)
+    internal RealtimeNotificationApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

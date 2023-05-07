@@ -28,7 +28,7 @@ public sealed class EventsApi : IEventsApi
 {
     private readonly HttpClient _httpClient;
 
-    public EventsApi(HttpClient httpClient)
+    internal EventsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

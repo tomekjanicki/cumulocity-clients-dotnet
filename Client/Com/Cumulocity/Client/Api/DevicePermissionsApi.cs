@@ -55,7 +55,7 @@ public sealed class DevicePermissionsApi : IDevicePermissionsApi
 {
     private readonly HttpClient _httpClient;
 
-    public DevicePermissionsApi(HttpClient httpClient)
+    internal DevicePermissionsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

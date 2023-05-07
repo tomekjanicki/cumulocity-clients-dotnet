@@ -27,7 +27,7 @@ public sealed class SubscriptionsApi : ISubscriptionsApi
 {
     private readonly HttpClient _httpClient;
 
-    public SubscriptionsApi(HttpClient httpClient)
+    internal SubscriptionsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

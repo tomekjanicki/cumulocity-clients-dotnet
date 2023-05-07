@@ -371,7 +371,7 @@ public class AuditRecord  : IWithCustomFragments
         return AdditionalPropertyClasses.TryAdd(key, type);
     }
 
-    public sealed class AuditRecordJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : AuditRecord
+    internal sealed class AuditRecordJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : AuditRecord
     {
         public AuditRecordJsonConverter() : base(AdditionalPropertyClasses)
         {

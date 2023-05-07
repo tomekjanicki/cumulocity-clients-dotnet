@@ -28,7 +28,7 @@ public sealed class TenantApplicationsApi : ITenantApplicationsApi
 {
     private readonly HttpClient _httpClient;
 
-    public TenantApplicationsApi(HttpClient httpClient)
+    internal TenantApplicationsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

@@ -28,7 +28,7 @@ public sealed class RetentionRulesApi : IRetentionRulesApi
 {
     private readonly HttpClient _httpClient;
 
-    public RetentionRulesApi(HttpClient httpClient)
+    internal RetentionRulesApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

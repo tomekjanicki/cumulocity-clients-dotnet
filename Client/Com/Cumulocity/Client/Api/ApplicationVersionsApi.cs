@@ -28,7 +28,7 @@ public sealed class ApplicationVersionsApi : IApplicationVersionsApi
 {
     private readonly HttpClient _httpClient;
 
-    public ApplicationVersionsApi(HttpClient httpClient)
+    internal ApplicationVersionsApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

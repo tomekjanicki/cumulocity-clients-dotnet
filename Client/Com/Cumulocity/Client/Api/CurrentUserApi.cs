@@ -27,7 +27,7 @@ public sealed class CurrentUserApi : ICurrentUserApi
 {
     private readonly HttpClient _httpClient;
 
-    public CurrentUserApi(HttpClient httpClient)
+    internal CurrentUserApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

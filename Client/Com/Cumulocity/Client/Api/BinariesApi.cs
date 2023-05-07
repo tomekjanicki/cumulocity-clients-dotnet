@@ -29,7 +29,7 @@ public sealed class BinariesApi : IBinariesApi
 {
     private readonly HttpClient _httpClient;
 
-    public BinariesApi(HttpClient httpClient)
+    internal BinariesApi(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }
