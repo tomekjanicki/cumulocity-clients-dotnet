@@ -24,11 +24,12 @@ internal sealed class EnumConverterFactory : JsonConverterFactory
 	
     public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
     {
-        var findEnumMembers = from field in typeToConvert.GetFields(BindingFlags.Public | BindingFlags.Static)
-            let attr = field.GetCustomAttribute<EnumMemberAttribute>()
-            where attr != null
-            select (field.Name, attr.Value);
-        var dictionary = findEnumMembers.ToDictionary(p => p.Item1, p => p.Item2);
+        var findEnumMembers = typeToConvert
+            .GetFields(BindingFlags.Public | BindingFlags.Static)
+            .Select(static info => (info.Name, Attribute: info.GetCustomAttribute<EnumMemberAttribute>()))
+            .Where(static tuple => tuple.Attribute != null)
+            .Select(static tuple => (tuple.Name, tuple.Attribute.Value));
+        var dictionary = findEnumMembers.ToDictionary(static p => p.Name, static p => p.Value);
         var converter = new JsonStringEnumConverter(namingPolicy: new DictionaryLookupNamingPolicy(literalNames: dictionary), allowIntegerValues: false);
         return converter.CreateConverter(typeToConvert, options);
     }
