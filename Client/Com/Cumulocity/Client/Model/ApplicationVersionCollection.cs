@@ -8,8 +8,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text.Json;
 using System.Text.Json.Serialization;
+using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
@@ -23,13 +23,5 @@ public sealed class ApplicationVersionCollection
     [JsonPropertyName("versions")]
     public IReadOnlyList<ApplicationVersion> Versions { get; set; } = Array.Empty<ApplicationVersion>();
 	
-    public override string ToString()
-    {
-        var jsonOptions = new JsonSerializerOptions() 
-        { 
-            WriteIndented = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-        };
-        return JsonSerializer.Serialize(this, jsonOptions);
-    }
+    public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
 }

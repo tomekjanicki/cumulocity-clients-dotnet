@@ -7,9 +7,9 @@
 ///
 
 using System.Collections.Generic;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using Client.Com.Cumulocity.Client.Converter;
+using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
@@ -42,15 +42,7 @@ public class CustomProperties : IWithCustomFragments
         set => CustomFragments[key] = value;
     }
 	
-    public override string ToString()
-    {
-        var jsonOptions = new JsonSerializerOptions() 
-        { 
-            WriteIndented = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-        };
-        return JsonSerializer.Serialize(this, jsonOptions);
-    }
+    public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
 
     private static readonly Dictionary<string, System.Type> AdditionalPropertyClasses = new();
 

@@ -9,7 +9,6 @@
 using System;
 using System.Net.Http;
 using System.Text;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
@@ -56,7 +55,7 @@ public sealed class SubscriptionsApi : ISubscriptionsApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<NotificationSubscriptionCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<NotificationSubscriptionCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -80,7 +79,7 @@ public sealed class SubscriptionsApi : ISubscriptionsApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<NotificationSubscription?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<NotificationSubscription?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -119,7 +118,7 @@ public sealed class SubscriptionsApi : ISubscriptionsApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<NotificationSubscription?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<NotificationSubscription?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />

@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
@@ -59,7 +58,7 @@ public sealed class UsersApi : IUsersApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<UserCollection<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<UserCollection<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -90,7 +89,7 @@ public sealed class UsersApi : IUsersApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<User<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<User<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -107,7 +106,7 @@ public sealed class UsersApi : IUsersApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<User<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<User<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -139,7 +138,7 @@ public sealed class UsersApi : IUsersApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<User<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<User<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -193,7 +192,7 @@ public sealed class UsersApi : IUsersApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<UserTfaData?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<UserTfaData?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -210,7 +209,7 @@ public sealed class UsersApi : IUsersApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<User<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<User<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -232,7 +231,7 @@ public sealed class UsersApi : IUsersApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<UserReferenceCollection<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<UserReferenceCollection<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -252,7 +251,7 @@ public sealed class UsersApi : IUsersApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<UserReference<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<UserReference<TCustomProperties>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />

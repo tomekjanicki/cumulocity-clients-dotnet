@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Client.Com.Cumulocity.Client.Model;
@@ -46,7 +45,7 @@ public sealed class CurrentApplicationApi : ICurrentApplicationApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<Application?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<Application?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -71,7 +70,7 @@ public sealed class CurrentApplicationApi : ICurrentApplicationApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<Application?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<Application?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -88,7 +87,7 @@ public sealed class CurrentApplicationApi : ICurrentApplicationApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<List<ApplicationSettings>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<List<ApplicationSettings>?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -105,6 +104,6 @@ public sealed class CurrentApplicationApi : ICurrentApplicationApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<ApplicationUserCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<ApplicationUserCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 }

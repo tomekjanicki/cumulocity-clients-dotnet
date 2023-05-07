@@ -8,8 +8,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text.Json;
 using System.Text.Json.Serialization;
+using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
@@ -103,15 +103,7 @@ public sealed class TenantApiResource<TCustomProperties> where TCustomProperties
         [JsonPropertyName("options")]
         public IReadOnlyList<Option> POptions { get; set; } = Array.Empty<Option>();
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
     /// <summary> 
@@ -131,24 +123,8 @@ public sealed class TenantApiResource<TCustomProperties> where TCustomProperties
         [JsonPropertyName("tenants")]
         public IReadOnlyList<Tenant<T>> PTenants { get; set; } = Array.Empty<Tenant<T>>();
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
-    public override string ToString()
-    {
-        var jsonOptions = new JsonSerializerOptions() 
-        { 
-            WriteIndented = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-        };
-        return JsonSerializer.Serialize(this, jsonOptions);
-    }
+    public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
 }

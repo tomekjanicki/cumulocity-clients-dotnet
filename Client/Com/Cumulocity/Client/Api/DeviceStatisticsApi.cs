@@ -8,7 +8,6 @@
 
 using System;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
@@ -90,7 +89,7 @@ public sealed class DeviceStatisticsApi : IDeviceStatisticsApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<DeviceStatisticsCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<DeviceStatisticsCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 		
     /// <inheritdoc />
@@ -113,6 +112,6 @@ public sealed class DeviceStatisticsApi : IDeviceStatisticsApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<DeviceStatisticsCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<DeviceStatisticsCollection?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 }

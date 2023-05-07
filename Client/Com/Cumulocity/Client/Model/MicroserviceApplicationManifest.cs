@@ -9,9 +9,9 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using Client.Com.Cumulocity.Client.Converter;
+using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
@@ -185,15 +185,7 @@ public sealed class MicroserviceApplicationManifest
         [JsonPropertyName("type")]
         public string? Type { get; set; }
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
 	
@@ -211,15 +203,7 @@ public sealed class MicroserviceApplicationManifest
         [JsonPropertyName("name")]
         public string? Name { get; set; }
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
     /// <summary> 
@@ -243,15 +227,7 @@ public sealed class MicroserviceApplicationManifest
         [JsonPropertyName("memory")]
         public string? Memory { get; set; }
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
     /// <summary> 
@@ -275,25 +251,9 @@ public sealed class MicroserviceApplicationManifest
         [JsonPropertyName("memory")]
         public string? Memory { get; set; }
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
 	
-    public override string ToString()
-    {
-        var jsonOptions = new JsonSerializerOptions() 
-        { 
-            WriteIndented = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-        };
-        return JsonSerializer.Serialize(this, jsonOptions);
-    }
+    public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
 }

@@ -9,9 +9,9 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using Client.Com.Cumulocity.Client.Converter;
+using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
@@ -267,15 +267,7 @@ public sealed class AuthConfig
         [JsonPropertyName("phoneNumberClaimName")]
         public string? PhoneNumberClaimName { get; set; }
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
 	
@@ -342,15 +334,7 @@ public sealed class AuthConfig
                 [JsonPropertyName("manageRolesOnlyFromAccessMapping")]
                 public bool? ManageRolesOnlyFromAccessMapping { get; set; }
 				
-                public override string ToString()
-                {
-                    var jsonOptions = new JsonSerializerOptions() 
-                    { 
-                        WriteIndented = true,
-                        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                    };
-                    return JsonSerializer.Serialize(this, jsonOptions);
-                }
+                public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
             }
 			
             /// <summary> 
@@ -381,15 +365,7 @@ public sealed class AuthConfig
                 [JsonPropertyName("thenGroups")]
                 public IReadOnlyList<int> ThenGroups { get; set; } = Array.Empty<int>();
 				
-                public override string ToString()
-                {
-                    var jsonOptions = new JsonSerializerOptions() 
-                    { 
-                        WriteIndented = true,
-                        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                    };
-                    return JsonSerializer.Serialize(this, jsonOptions);
-                }
+                public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
             }
 			
             /// <summary> 
@@ -434,48 +410,16 @@ public sealed class AuthConfig
                     [JsonPropertyName("roleIds")]
                     public IReadOnlyList<int> RoleIds { get; set; } = Array.Empty<int>();
 					
-                    public override string ToString()
-                    {
-                        var jsonOptions = new JsonSerializerOptions() 
-                        { 
-                            WriteIndented = true,
-                            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                        };
-                        return JsonSerializer.Serialize(this, jsonOptions);
-                    }
+                    public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
                 }
 				
-                public override string ToString()
-                {
-                    var jsonOptions = new JsonSerializerOptions() 
-                    { 
-                        WriteIndented = true,
-                        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                    };
-                    return JsonSerializer.Serialize(this, jsonOptions);
-                }
+                public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
             }
 			
-            public override string ToString()
-            {
-                var jsonOptions = new JsonSerializerOptions() 
-                { 
-                    WriteIndented = true,
-                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                };
-                return JsonSerializer.Serialize(this, jsonOptions);
-            }
+            public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
         }
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
     /// <summary> 
@@ -527,15 +471,7 @@ public sealed class AuthConfig
             [JsonPropertyName("publicKeyDiscoveryUrl")]
             public string? PublicKeyDiscoveryUrl { get; set; }
 			
-            public override string ToString()
-            {
-                var jsonOptions = new JsonSerializerOptions() 
-                { 
-                    WriteIndented = true,
-                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                };
-                return JsonSerializer.Serialize(this, jsonOptions);
-            }
+            public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
         }
 		
         /// <summary> 
@@ -552,15 +488,7 @@ public sealed class AuthConfig
             [JsonPropertyName("manifestUrl")]
             public string? ManifestUrl { get; set; }
 			
-            public override string ToString()
-            {
-                var jsonOptions = new JsonSerializerOptions() 
-                { 
-                    WriteIndented = true,
-                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                };
-                return JsonSerializer.Serialize(this, jsonOptions);
-            }
+            public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
         }
 		
         /// <summary> 
@@ -577,15 +505,7 @@ public sealed class AuthConfig
             [JsonPropertyName("jwksUrl")]
             public string? JwksUrl { get; set; }
 			
-            public override string ToString()
-            {
-                var jsonOptions = new JsonSerializerOptions() 
-                { 
-                    WriteIndented = true,
-                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                };
-                return JsonSerializer.Serialize(this, jsonOptions);
-            }
+            public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
         }
 		
         /// <summary> 
@@ -665,37 +585,13 @@ public sealed class AuthConfig
                 }
 				
 				
-                public override string ToString()
-                {
-                    var jsonOptions = new JsonSerializerOptions() 
-                    { 
-                        WriteIndented = true,
-                        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                    };
-                    return JsonSerializer.Serialize(this, jsonOptions);
-                }
+                public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
             }
 			
-            public override string ToString()
-            {
-                var jsonOptions = new JsonSerializerOptions() 
-                { 
-                    WriteIndented = true,
-                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                };
-                return JsonSerializer.Serialize(this, jsonOptions);
-            }
+            public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
         }
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
 	
@@ -727,15 +623,7 @@ public sealed class AuthConfig
         [JsonPropertyName("useConstantValue")]
         public bool? UseConstantValue { get; set; }
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
 	
@@ -825,36 +713,12 @@ public sealed class AuthConfig
             [JsonPropertyName("useConstantValue")]
             public bool? UseConstantValue { get; set; }
 			
-            public override string ToString()
-            {
-                var jsonOptions = new JsonSerializerOptions() 
-                { 
-                    WriteIndented = true,
-                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                };
-                return JsonSerializer.Serialize(this, jsonOptions);
-            }
+            public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
         }
 		
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
-    public override string ToString()
-    {
-        var jsonOptions = new JsonSerializerOptions() 
-        { 
-            WriteIndented = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-        };
-        return JsonSerializer.Serialize(this, jsonOptions);
-    }
+    public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
 }

@@ -8,7 +8,6 @@
 
 using System;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Client.Com.Cumulocity.Client.Model;
@@ -45,6 +44,6 @@ public sealed class IdentityApi : IIdentityApi
         using var response = await _httpClient.SendAsync(request: request, cancellationToken: cToken).ConfigureAwait(false);
         await response.EnsureSuccessStatusCodeWithContentInfoIfAvailable().ConfigureAwait(false);
         await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        return await JsonSerializer.DeserializeAsync<IdentityApiResource?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
+        return await JsonSerializerWrapper.DeserializeAsync<IdentityApiResource?>(responseStream, cancellationToken: cToken).ConfigureAwait(false);
     }
 }

@@ -6,8 +6,8 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
-using System.Text.Json;
 using System.Text.Json.Serialization;
+using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
@@ -22,13 +22,5 @@ public sealed class C8yRequiredAvailability
     [JsonPropertyName("responseInterval")]
     public int? ResponseInterval { get; set; }
 	
-    public override string ToString()
-    {
-        var jsonOptions = new JsonSerializerOptions() 
-        { 
-            WriteIndented = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-        };
-        return JsonSerializer.Serialize(this, jsonOptions);
-    }
+    public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
 }

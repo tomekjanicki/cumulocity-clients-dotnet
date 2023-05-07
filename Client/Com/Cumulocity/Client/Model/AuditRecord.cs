@@ -9,9 +9,9 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using Client.Com.Cumulocity.Client.Converter;
+using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
@@ -237,15 +237,7 @@ public class AuditRecord  : IWithCustomFragments
         }
 		
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
     public sealed class Changes 
@@ -300,15 +292,7 @@ public class AuditRecord  : IWithCustomFragments
         }
 		
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
 	
@@ -342,27 +326,11 @@ public class AuditRecord  : IWithCustomFragments
             this.Id = id;
         }
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
 	
-    public override string ToString()
-    {
-        var jsonOptions = new JsonSerializerOptions() 
-        { 
-            WriteIndented = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-        };
-        return JsonSerializer.Serialize(this, jsonOptions);
-    }
+    public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
 
     private static readonly Dictionary<string, System.Type> AdditionalPropertyClasses = new();
 

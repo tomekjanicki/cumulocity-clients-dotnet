@@ -8,8 +8,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text.Json;
 using System.Text.Json.Serialization;
+using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
@@ -57,35 +57,11 @@ public sealed class ChildOperationsAddMultiple
                 this.Id = id;
             }
 			
-            public override string ToString()
-            {
-                var jsonOptions = new JsonSerializerOptions() 
-                { 
-                    WriteIndented = true,
-                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                };
-                return JsonSerializer.Serialize(this, jsonOptions);
-            }
+            public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
         }
 		
-        public override string ToString()
-        {
-            var jsonOptions = new JsonSerializerOptions() 
-            { 
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            return JsonSerializer.Serialize(this, jsonOptions);
-        }
+        public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
     }
 	
-    public override string ToString()
-    {
-        var jsonOptions = new JsonSerializerOptions() 
-        { 
-            WriteIndented = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-        };
-        return JsonSerializer.Serialize(this, jsonOptions);
-    }
+    public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
 }

@@ -1,3 +1,4 @@
+using Client.Com.Cumulocity.Client.Supplementary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -103,12 +104,12 @@ internal abstract class BaseWithCustomFragmentsJsonConverter<T> : JsonConverter<
         {
             var jsonPropertyName = attribute.Name;
             writer.WritePropertyName(jsonPropertyName);
-            JsonSerializer.Serialize(writer, propertyValue, options);
+            JsonSerializerWrapper.Serialize(writer, propertyValue, options);
 
             return;
         }
         writer.WritePropertyName(property.Name);
-        JsonSerializer.Serialize(writer, propertyValue, options);
+        JsonSerializerWrapper.Serialize(writer, propertyValue, options);
     }
 
     private static void HandleDictionarySerialization(Utf8JsonWriter writer, JsonSerializerOptions options, object propertyValue)
@@ -117,7 +118,7 @@ internal abstract class BaseWithCustomFragmentsJsonConverter<T> : JsonConverter<
         foreach (var item in dictionary)
         {
             writer.WritePropertyName(item.Key);
-            JsonSerializer.Serialize(writer, item.Value, options);
+            JsonSerializerWrapper.Serialize(writer, item.Value, options);
         }
     }
 }
