@@ -230,7 +230,7 @@ public sealed class UsageStatisticsApi : IUsageStatisticsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> GetStatisticsFile(string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/statistics/files/{id}";
+        var resourcePath = $"/tenant/statistics/files/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

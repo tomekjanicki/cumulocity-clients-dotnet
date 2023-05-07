@@ -96,7 +96,7 @@ public sealed class ApplicationsApi : IApplicationsApi
     /// <inheritdoc />
     public async Task<Application?> GetApplication(string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applications/{id}";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -120,7 +120,7 @@ public sealed class ApplicationsApi : IApplicationsApi
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("type");
         jsonNode?.RemoveFromNode("resourcesUrl");
-        var resourcePath = $"/application/applications/{id}";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -140,7 +140,7 @@ public sealed class ApplicationsApi : IApplicationsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteApplication(string id, bool? force = null, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applications/{id}";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("force", force);
@@ -161,7 +161,7 @@ public sealed class ApplicationsApi : IApplicationsApi
     /// <inheritdoc />
     public async Task<Application?> CopyApplication(string id, string? version = null, string? tag = null, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applications/{id}/clone";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}/clone";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("version", version);
@@ -183,7 +183,7 @@ public sealed class ApplicationsApi : IApplicationsApi
     /// <inheritdoc />
     public async Task<ApplicationCollection?> GetApplicationsByName(string name, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applicationsByName/{name}";
+        var resourcePath = $"/application/applicationsByName/{HttpUtility.UrlEncode(name)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -200,7 +200,7 @@ public sealed class ApplicationsApi : IApplicationsApi
     /// <inheritdoc />
     public async Task<ApplicationCollection?> GetApplicationsByTenant(string tenantId, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applicationsByTenant/{tenantId}";
+        var resourcePath = $"/application/applicationsByTenant/{HttpUtility.UrlEncode(tenantId)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -217,7 +217,7 @@ public sealed class ApplicationsApi : IApplicationsApi
     /// <inheritdoc />
     public async Task<ApplicationCollection?> GetApplicationsByOwner(string tenantId, int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applicationsByOwner/{tenantId}";
+        var resourcePath = $"/application/applicationsByOwner/{HttpUtility.UrlEncode(tenantId)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -240,7 +240,7 @@ public sealed class ApplicationsApi : IApplicationsApi
     /// <inheritdoc />
     public async Task<ApplicationCollection?> GetApplicationsByUser(string username, int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applicationsByUser/{username}";
+        var resourcePath = $"/application/applicationsByUser/{HttpUtility.UrlEncode(username)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);

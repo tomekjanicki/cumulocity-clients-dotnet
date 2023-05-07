@@ -37,7 +37,7 @@ public sealed class GroupsApi : IGroupsApi
     /// <inheritdoc />
     public async Task<UserGroupCollection<TCustomProperties>?> GetTenantUserGroups<TCustomProperties>(string tenantId, int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var resourcePath = $"/user/{tenantId}/groups";
+        var resourcePath = $"/user/{HttpUtility.UrlEncode(tenantId)}/groups";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -67,7 +67,7 @@ public sealed class GroupsApi : IGroupsApi
         jsonNode?.RemoveFromNode("devicePermissions");
         jsonNode?.RemoveFromNode("users");
         jsonNode?.RemoveFromNode("applications");
-        var resourcePath = $"/user/{tenantId}/groups";
+        var resourcePath = $"/user/{HttpUtility.UrlEncode(tenantId)}/groups";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -86,7 +86,7 @@ public sealed class GroupsApi : IGroupsApi
     /// <inheritdoc />
     public async Task<Group<TCustomProperties>?> GetUserGroup<TCustomProperties>(string tenantId, int groupId, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var resourcePath = $"/user/{tenantId}/groups/{groupId}";
+        var resourcePath = $"/user/{HttpUtility.UrlEncode(tenantId)}/groups/{HttpUtility.UrlEncode(groupId.ToString())}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -110,7 +110,7 @@ public sealed class GroupsApi : IGroupsApi
         jsonNode?.RemoveFromNode("devicePermissions");
         jsonNode?.RemoveFromNode("users");
         jsonNode?.RemoveFromNode("applications");
-        var resourcePath = $"/user/{tenantId}/groups/{groupId}";
+        var resourcePath = $"/user/{HttpUtility.UrlEncode(tenantId)}/groups/{HttpUtility.UrlEncode(groupId.ToString())}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -129,7 +129,7 @@ public sealed class GroupsApi : IGroupsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteUserGroup(string tenantId, int groupId, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/user/{tenantId}/groups/{groupId}";
+        var resourcePath = $"/user/{HttpUtility.UrlEncode(tenantId)}/groups/{HttpUtility.UrlEncode(groupId.ToString())}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -146,7 +146,7 @@ public sealed class GroupsApi : IGroupsApi
     /// <inheritdoc />
     public async Task<Group<TCustomProperties>?> GetUserGroupByName<TCustomProperties>(string tenantId, string groupName, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var resourcePath = $"/user/{tenantId}/groupByName/{groupName}";
+        var resourcePath = $"/user/{HttpUtility.UrlEncode(tenantId)}/groupByName/{HttpUtility.UrlEncode(groupName)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -163,7 +163,7 @@ public sealed class GroupsApi : IGroupsApi
     /// <inheritdoc />
     public async Task<GroupReferenceCollection<TCustomProperties>?> GetUserGroups<TCustomProperties>(string tenantId, string userId, int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var resourcePath = $"/user/{tenantId}/users/{userId}/groups";
+        var resourcePath = $"/user/{HttpUtility.UrlEncode(tenantId)}/users/{HttpUtility.UrlEncode(userId)}/groups";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);

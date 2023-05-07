@@ -97,7 +97,7 @@ public sealed class BulkOperationsApi : IBulkOperationsApi
     /// <inheritdoc />
     public async Task<BulkOperation?> GetBulkOperation(string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/devicecontrol/bulkoperations/{id}";
+        var resourcePath = $"/devicecontrol/bulkoperations/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -120,7 +120,7 @@ public sealed class BulkOperationsApi : IBulkOperationsApi
         jsonNode?.RemoveFromNode("progress");
         jsonNode?.RemoveFromNode("id");
         jsonNode?.RemoveFromNode("status");
-        var resourcePath = $"/devicecontrol/bulkoperations/{id}";
+        var resourcePath = $"/devicecontrol/bulkoperations/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -140,7 +140,7 @@ public sealed class BulkOperationsApi : IBulkOperationsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteBulkOperation(string id, string? xCumulocityProcessingMode = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/devicecontrol/bulkoperations/{id}";
+        var resourcePath = $"/devicecontrol/bulkoperations/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

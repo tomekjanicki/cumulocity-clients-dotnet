@@ -36,7 +36,7 @@ public sealed class ApplicationVersionsApi : IApplicationVersionsApi
     /// <inheritdoc />
     public async Task<ApplicationVersion?> GetApplicationVersion(string id, string? version = null, string? tag = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applications/{id}/versions?version=1.0";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}/versions?version=1.0";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("version", version);
@@ -57,7 +57,7 @@ public sealed class ApplicationVersionsApi : IApplicationVersionsApi
     /// <inheritdoc />
     public async Task<ApplicationVersionCollection?> GetApplicationVersions(string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applications/{id}/versions";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}/versions";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -74,7 +74,7 @@ public sealed class ApplicationVersionsApi : IApplicationVersionsApi
     /// <inheritdoc />
     public async Task<ApplicationVersion?> CreateApplicationVersion(byte[] applicationBinary, string applicationVersion, string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applications/{id}/versions";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}/versions";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
         var fileContentApplicationBinary = new ByteArrayContent(applicationBinary);
@@ -100,7 +100,7 @@ public sealed class ApplicationVersionsApi : IApplicationVersionsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteApplicationVersion(string id, string? version = null, string? tag = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applications/{id}/versions";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}/versions";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("version", version);
@@ -122,7 +122,7 @@ public sealed class ApplicationVersionsApi : IApplicationVersionsApi
     public async Task<ApplicationVersion?> UpdateApplicationVersion(ApplicationVersionTag body, string id, string version, CancellationToken cToken = default) 
     {
         var jsonNode = body.ToJsonNode<ApplicationVersionTag>();
-        var resourcePath = $"/application/applications/{id}/versions/{version}";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}/versions/{HttpUtility.UrlEncode(version)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using Client.Com.Cumulocity.Client.Model;
 using Client.Com.Cumulocity.Client.Supplementary;
 
@@ -33,7 +34,7 @@ public sealed class BootstrapUserApi : IBootstrapUserApi
     /// <inheritdoc />
     public async Task<BootstrapUser?> GetBootstrapUser(string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applications/{id}/bootstrapUser";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}/bootstrapUser";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

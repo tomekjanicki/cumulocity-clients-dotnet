@@ -12,6 +12,7 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using Client.Com.Cumulocity.Client.Model;
 using Client.Com.Cumulocity.Client.Supplementary;
 
@@ -34,7 +35,7 @@ public sealed class ApplicationBinariesApi : IApplicationBinariesApi
     /// <inheritdoc />
     public async Task<ApplicationBinaries?> GetApplicationAttachments(string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applications/{id}/binaries";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}/binaries";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -51,7 +52,7 @@ public sealed class ApplicationBinariesApi : IApplicationBinariesApi
     /// <inheritdoc />
     public async Task<Application?> UploadApplicationAttachment(byte[] file, string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applications/{id}/binaries";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}/binaries";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var requestContent = new MultipartFormDataContent();
         var fileContentFile = new ByteArrayContent(file);
@@ -74,7 +75,7 @@ public sealed class ApplicationBinariesApi : IApplicationBinariesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> GetApplicationAttachment(string id, string binaryId, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applications/{id}/binaries/{binaryId}";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}/binaries/{HttpUtility.UrlEncode(binaryId)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -91,7 +92,7 @@ public sealed class ApplicationBinariesApi : IApplicationBinariesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteApplicationAttachment(string id, string binaryId, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/application/applications/{id}/binaries/{binaryId}";
+        var resourcePath = $"/application/applications/{HttpUtility.UrlEncode(id)}/binaries/{HttpUtility.UrlEncode(binaryId)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

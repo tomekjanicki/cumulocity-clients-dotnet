@@ -59,7 +59,7 @@ public sealed class RolesApi : IRolesApi
     /// <inheritdoc />
     public async Task<Role?> GetUserRole(string name, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/user/roles/{name}";
+        var resourcePath = $"/user/roles/{HttpUtility.UrlEncode(name)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -76,7 +76,7 @@ public sealed class RolesApi : IRolesApi
     /// <inheritdoc />
     public async Task<RoleReferenceCollection?> GetGroupRoles(string tenantId, int groupId, int? currentPage = null, int? pageSize = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/user/{tenantId}/groups/{groupId}/roles";
+        var resourcePath = $"/user/{HttpUtility.UrlEncode(tenantId)}/groups/{HttpUtility.UrlEncode(groupId.ToString())}/roles";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -98,7 +98,7 @@ public sealed class RolesApi : IRolesApi
     public async Task<RoleReference?> AssignGroupRole(SubscribedRole body, string tenantId, int groupId, CancellationToken cToken = default) 
     {
         var jsonNode = body.ToJsonNode<SubscribedRole>();
-        var resourcePath = $"/user/{tenantId}/groups/{groupId}/roles";
+        var resourcePath = $"/user/{HttpUtility.UrlEncode(tenantId)}/groups/{HttpUtility.UrlEncode(groupId.ToString())}/roles";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -117,7 +117,7 @@ public sealed class RolesApi : IRolesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> UnassignGroupRole(string tenantId, int groupId, string roleId, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/user/{tenantId}/groups/{groupId}/roles/{roleId}";
+        var resourcePath = $"/user/{HttpUtility.UrlEncode(tenantId)}/groups/{HttpUtility.UrlEncode(groupId.ToString())}/roles/{roleId}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -135,7 +135,7 @@ public sealed class RolesApi : IRolesApi
     public async Task<RoleReference?> AssignUserRole(SubscribedRole body, string tenantId, string userId, CancellationToken cToken = default) 
     {
         var jsonNode = body.ToJsonNode<SubscribedRole>();
-        var resourcePath = $"/user/{tenantId}/users/{userId}/roles";
+        var resourcePath = $"/user/{HttpUtility.UrlEncode(tenantId)}/users/{HttpUtility.UrlEncode(userId)}/roles";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -154,7 +154,7 @@ public sealed class RolesApi : IRolesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> UnassignUserRole(string tenantId, string userId, string roleId, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/user/{tenantId}/users/{userId}/roles/{roleId}";
+        var resourcePath = $"/user/{HttpUtility.UrlEncode(tenantId)}/users/{HttpUtility.UrlEncode(userId)}/roles/{roleId}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

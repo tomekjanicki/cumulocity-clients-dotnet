@@ -81,7 +81,7 @@ public sealed class RetentionRulesApi : IRetentionRulesApi
     /// <inheritdoc />
     public async Task<RetentionRule?> GetRetentionRule(string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/retention/retentions/{id}";
+        var resourcePath = $"/retention/retentions/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -101,7 +101,7 @@ public sealed class RetentionRulesApi : IRetentionRulesApi
         var jsonNode = body.ToJsonNode<RetentionRule>();
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("id");
-        var resourcePath = $"/retention/retentions/{id}";
+        var resourcePath = $"/retention/retentions/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -120,7 +120,7 @@ public sealed class RetentionRulesApi : IRetentionRulesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteRetentionRule(string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/retention/retentions/{id}";
+        var resourcePath = $"/retention/retentions/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

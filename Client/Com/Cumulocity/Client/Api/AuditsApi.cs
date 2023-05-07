@@ -112,7 +112,7 @@ public sealed class AuditsApi : IAuditsApi
     /// <inheritdoc />
     public async Task<TAuditRecord?> GetAuditRecord<TAuditRecord>(string id, CancellationToken cToken = default) where TAuditRecord : AuditRecord
     {
-        var resourcePath = $"/audit/auditRecords/{id}";
+        var resourcePath = $"/audit/auditRecords/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

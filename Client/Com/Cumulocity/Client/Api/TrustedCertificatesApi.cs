@@ -38,7 +38,7 @@ public sealed class TrustedCertificatesApi : ITrustedCertificatesApi
     /// <inheritdoc />
     public async Task<TrustedCertificateCollection?> GetTrustedCertificates(string tenantId, int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}/trusted-certificates";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -62,7 +62,7 @@ public sealed class TrustedCertificatesApi : ITrustedCertificatesApi
     public async Task<TrustedCertificate?> AddTrustedCertificate(UploadedTrustedCertificate body, string tenantId, string? xCumulocityProcessingMode = null, bool? addToTrustStore = null, CancellationToken cToken = default) 
     {
         var jsonNode = body.ToJsonNode<UploadedTrustedCertificate>();
-        var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}/trusted-certificates";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("addToTrustStore", addToTrustStore);
@@ -90,7 +90,7 @@ public sealed class TrustedCertificatesApi : ITrustedCertificatesApi
         jsonNode?.RemoveFromNode("prev");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("statistics");
-        var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates/bulk";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}/trusted-certificates/bulk";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("addToTrustStore", addToTrustStore);
@@ -112,7 +112,7 @@ public sealed class TrustedCertificatesApi : ITrustedCertificatesApi
     /// <inheritdoc />
     public async Task<TrustedCertificate?> GetTrustedCertificate(string tenantId, string fingerprint, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates/{fingerprint}";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}/trusted-certificates/{HttpUtility.UrlEncode(fingerprint)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -143,7 +143,7 @@ public sealed class TrustedCertificatesApi : ITrustedCertificatesApi
         jsonNode?.RemoveFromNode("fingerprint");
         jsonNode?.RemoveFromNode("self");
         jsonNode?.RemoveFromNode("certInPemFormat");
-        var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates/{fingerprint}";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}/trusted-certificates/{HttpUtility.UrlEncode(fingerprint)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -162,7 +162,7 @@ public sealed class TrustedCertificatesApi : ITrustedCertificatesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> RemoveTrustedCertificate(string tenantId, string fingerprint, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates/{fingerprint}";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}/trusted-certificates/{HttpUtility.UrlEncode(fingerprint)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -180,7 +180,7 @@ public sealed class TrustedCertificatesApi : ITrustedCertificatesApi
     public async Task<TrustedCertificate?> ProveCertificatePossession(UploadedTrustedCertSignedVerificationCode body, string tenantId, string fingerprint, CancellationToken cToken = default) 
     {
         var jsonNode = body.ToJsonNode<UploadedTrustedCertSignedVerificationCode>();
-        var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates-pop/{fingerprint}/pop";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}/trusted-certificates-pop/{HttpUtility.UrlEncode(fingerprint)}/pop";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -199,7 +199,7 @@ public sealed class TrustedCertificatesApi : ITrustedCertificatesApi
     /// <inheritdoc />
     public async Task<TrustedCertificate?> ConfirmCertificate(string tenantId, string fingerprint, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates-pop/{fingerprint}/confirmed";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}/trusted-certificates-pop/{HttpUtility.UrlEncode(fingerprint)}/confirmed";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -216,7 +216,7 @@ public sealed class TrustedCertificatesApi : ITrustedCertificatesApi
     /// <inheritdoc />
     public async Task<TrustedCertificate?> GenerateVerificationCode(string tenantId, string fingerprint, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/tenants/{tenantId}/trusted-certificates-pop/{fingerprint}/verification-code";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}/trusted-certificates-pop/{HttpUtility.UrlEncode(fingerprint)}/verification-code";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

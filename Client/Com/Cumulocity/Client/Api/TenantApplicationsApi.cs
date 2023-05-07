@@ -36,7 +36,7 @@ public sealed class TenantApplicationsApi : ITenantApplicationsApi
     /// <inheritdoc />
     public async Task<ApplicationReferenceCollection?> GetSubscribedApplications(string tenantId, int? currentPage = null, int? pageSize = null, bool? withTotalElements = null, bool? withTotalPages = null, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/tenants/{tenantId}/applications";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}/applications";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("currentPage", currentPage);
@@ -60,7 +60,7 @@ public sealed class TenantApplicationsApi : ITenantApplicationsApi
     public async Task<ApplicationReference?> SubscribeApplication(SubscribedApplicationReference body, string tenantId, CancellationToken cToken = default) 
     {
         var jsonNode = body.ToJsonNode<SubscribedApplicationReference>();
-        var resourcePath = $"/tenant/tenants/{tenantId}/applications";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}/applications";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -79,7 +79,7 @@ public sealed class TenantApplicationsApi : ITenantApplicationsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> UnsubscribeApplication(string tenantId, string applicationId, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/tenants/{tenantId}/applications/{applicationId}";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}/applications/{applicationId}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

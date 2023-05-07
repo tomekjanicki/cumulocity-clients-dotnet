@@ -176,7 +176,7 @@ public sealed class AlarmsApi : IAlarmsApi
     /// <inheritdoc />
     public async Task<TAlarm?> GetAlarm<TAlarm>(string id, CancellationToken cToken = default) where TAlarm : Alarm
     {
-        var resourcePath = $"/alarm/alarms/{id}";
+        var resourcePath = $"/alarm/alarms/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -203,7 +203,7 @@ public sealed class AlarmsApi : IAlarmsApi
         jsonNode?.RemoveFromNode("source");
         jsonNode?.RemoveFromNode("time");
         jsonNode?.RemoveFromNode("type");
-        var resourcePath = $"/alarm/alarms/{id}";
+        var resourcePath = $"/alarm/alarms/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

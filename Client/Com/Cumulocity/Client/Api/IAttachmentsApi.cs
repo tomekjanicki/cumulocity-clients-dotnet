@@ -94,7 +94,7 @@ public interface IAttachmentsApi
     /// ]]>
     /// When using <c>multipart/form-data</c> each value is sent as a block of data (body part), with a user agent-defined delimiter (<c>boundary</c>) separating each part. The keys are given in the <c>Content-Disposition</c> header of each part. <br />
     /// <![CDATA[
-    /// POST /event/events/{id}/binaries
+    /// POST /event/events/{HttpUtility.UrlEncode(id)}/binaries
     /// Host: https://<TENANT_DOMAIN>
     /// Authorization: <AUTHORIZATION>
     /// Accept: application/json
@@ -156,7 +156,7 @@ public interface IAttachmentsApi
     /// ]]>
     /// When using <c>multipart/form-data</c> each value is sent as a block of data (body part), with a user agent-defined delimiter (<c>boundary</c>) separating each part. The keys are given in the <c>Content-Disposition</c> header of each part. <br />
     /// <![CDATA[
-    /// POST /event/events/{id}/binaries
+    /// POST /event/events/{HttpUtility.UrlEncode(id)}/binaries
     /// Host: https://<TENANT_DOMAIN>
     /// Authorization: <AUTHORIZATION>
     /// Accept: application/json

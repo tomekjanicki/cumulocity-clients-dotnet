@@ -122,7 +122,7 @@ public sealed class TenantsApi : ITenantsApi
     /// <inheritdoc />
     public async Task<Tenant<TCustomProperties>?> GetTenant<TCustomProperties>(string tenantId, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var resourcePath = $"/tenant/tenants/{tenantId}";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -149,7 +149,7 @@ public sealed class TenantsApi : ITenantsApi
         jsonNode?.RemoveFromNode("ownedApplications");
         jsonNode?.RemoveFromNode("applications");
         jsonNode?.RemoveFromNode("status");
-        var resourcePath = $"/tenant/tenants/{tenantId}";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -168,7 +168,7 @@ public sealed class TenantsApi : ITenantsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteTenant(string tenantId, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/tenants/{tenantId}";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -185,7 +185,7 @@ public sealed class TenantsApi : ITenantsApi
     /// <inheritdoc />
     public async Task<TenantTfaData?> GetTenantTfaSettings(string tenantId, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/tenants/{tenantId}/tfa";
+        var resourcePath = $"/tenant/tenants/{HttpUtility.UrlEncode(tenantId)}/tfa";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

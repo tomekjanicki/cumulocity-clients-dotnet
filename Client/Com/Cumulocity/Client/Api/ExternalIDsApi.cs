@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using Client.Com.Cumulocity.Client.Model;
 using Client.Com.Cumulocity.Client.Supplementary;
 
@@ -35,7 +36,7 @@ public sealed class ExternalIDsApi : IExternalIDsApi
     /// <inheritdoc />
     public async Task<ExternalIds?> GetExternalIds(string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/identity/globalIds/{id}/externalIds";
+        var resourcePath = $"/identity/globalIds/{HttpUtility.UrlEncode(id)}/externalIds";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -55,7 +56,7 @@ public sealed class ExternalIDsApi : IExternalIDsApi
         var jsonNode = body.ToJsonNode<ExternalId>();
         jsonNode?.RemoveFromNode("managedObject");
         jsonNode?.RemoveFromNode("self");
-        var resourcePath = $"/identity/globalIds/{id}/externalIds";
+        var resourcePath = $"/identity/globalIds/{HttpUtility.UrlEncode(id)}/externalIds";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -74,7 +75,7 @@ public sealed class ExternalIDsApi : IExternalIDsApi
     /// <inheritdoc />
     public async Task<ExternalId?> GetExternalId(string type, string externalId, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/identity/externalIds/{type}/{externalId}";
+        var resourcePath = $"/identity/externalIds/{HttpUtility.UrlEncode(type)}/{HttpUtility.UrlEncode(externalId)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -91,7 +92,7 @@ public sealed class ExternalIDsApi : IExternalIDsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteExternalId(string type, string externalId, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/identity/externalIds/{type}/{externalId}";
+        var resourcePath = $"/identity/externalIds/{HttpUtility.UrlEncode(type)}/{HttpUtility.UrlEncode(externalId)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

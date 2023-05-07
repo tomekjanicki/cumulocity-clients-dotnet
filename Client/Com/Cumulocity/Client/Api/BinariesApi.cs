@@ -92,7 +92,7 @@ public sealed class BinariesApi : IBinariesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> GetBinary(string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/inventory/binaries/{id}";
+        var resourcePath = $"/inventory/binaries/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -109,7 +109,7 @@ public sealed class BinariesApi : IBinariesApi
     /// <inheritdoc />
     public async Task<Binary?> ReplaceBinary(byte[] body, string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/inventory/binaries/{id}";
+        var resourcePath = $"/inventory/binaries/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -128,7 +128,7 @@ public sealed class BinariesApi : IBinariesApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> RemoveBinary(string id, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/inventory/binaries/{id}";
+        var resourcePath = $"/inventory/binaries/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {

@@ -80,7 +80,7 @@ public sealed class LoginOptionsApi : ILoginOptionsApi
     /// <inheritdoc />
     public async Task<AuthConfig?> GetLoginOption(string typeOrId, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/loginOptions/{typeOrId}";
+        var resourcePath = $"/tenant/loginOptions/{HttpUtility.UrlEncode(typeOrId)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -99,7 +99,7 @@ public sealed class LoginOptionsApi : ILoginOptionsApi
     {
         var jsonNode = body.ToJsonNode<AuthConfig>();
         jsonNode?.RemoveFromNode("self");
-        var resourcePath = $"/tenant/loginOptions/{typeOrId}";
+        var resourcePath = $"/tenant/loginOptions/{HttpUtility.UrlEncode(typeOrId)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -119,7 +119,7 @@ public sealed class LoginOptionsApi : ILoginOptionsApi
     /// <inheritdoc />
     public async Task<System.IO.Stream> DeleteLoginOption(string typeOrId, CancellationToken cToken = default) 
     {
-        var resourcePath = $"/tenant/loginOptions/{typeOrId}";
+        var resourcePath = $"/tenant/loginOptions/{HttpUtility.UrlEncode(typeOrId)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -137,7 +137,7 @@ public sealed class LoginOptionsApi : ILoginOptionsApi
     public async Task<AuthConfig?> UpdateLoginOptionAccess(AuthConfigAccess body, string typeOrId, string? targetTenant = null, CancellationToken cToken = default) 
     {
         var jsonNode = body.ToJsonNode<AuthConfigAccess>();
-        var resourcePath = $"/tenant/loginOptions/{typeOrId}/restrict";
+        var resourcePath = $"/tenant/loginOptions/{HttpUtility.UrlEncode(typeOrId)}/restrict";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         var queryString = HttpUtility.ParseQueryString(uriBuilder.Query);
         queryString.AddIfRequired("targetTenant", targetTenant);

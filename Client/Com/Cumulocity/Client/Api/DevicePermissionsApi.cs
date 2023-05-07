@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using Client.Com.Cumulocity.Client.Model;
 using Client.Com.Cumulocity.Client.Supplementary;
 
@@ -63,7 +64,7 @@ public sealed class DevicePermissionsApi : IDevicePermissionsApi
     /// <inheritdoc />
     public async Task<DevicePermissions<TCustomProperties>?> GetDevicePermissionAssignments<TCustomProperties>(string id, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
-        var resourcePath = $"/user/devicePermissions/{id}";
+        var resourcePath = $"/user/devicePermissions/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
@@ -81,7 +82,7 @@ public sealed class DevicePermissionsApi : IDevicePermissionsApi
     public async Task<System.IO.Stream> UpdateDevicePermissionAssignments<TCustomProperties>(DevicePermissions<TCustomProperties> body, string id, CancellationToken cToken = default) where TCustomProperties : CustomProperties
     {
         var jsonNode = body.ToJsonNode<DevicePermissions<TCustomProperties>>();
-        var resourcePath = $"/user/devicePermissions/{id}";
+        var resourcePath = $"/user/devicePermissions/{HttpUtility.UrlEncode(id)}";
         var uriBuilder = new UriBuilder(new Uri(_httpClient.BaseAddress ?? new Uri(resourcePath), resourcePath));
         using var request = new HttpRequestMessage 
         {
