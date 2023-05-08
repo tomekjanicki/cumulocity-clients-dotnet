@@ -14,4 +14,9 @@ public interface IRootClient
         IBootstrapUserApi BootstrapUserApi { get; }
         ICurrentApplicationApi CurrentApplicationApi { get; }
     }
+
+    public interface IAlarmsFactory
+    {
+        IAlarmsApiV2 AlarmsApi { get; }
+    }
 }

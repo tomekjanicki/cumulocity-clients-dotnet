@@ -46,4 +46,9 @@ internal static class JsonSerializerWrapper
     {
         JsonSerializer.Serialize(writer, value, options);
     }
+
+    public static byte[] SerializeToUtf8Bytes<T>(T obj)
+    {
+        return JsonSerializer.SerializeToUtf8Bytes(obj, JsonSerializerOptions);
+    }
 }

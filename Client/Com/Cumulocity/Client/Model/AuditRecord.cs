@@ -15,7 +15,7 @@ using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-[JsonConverter(typeof(AuditRecordJsonConverter<AuditRecord>))]
+[JsonConverter(typeof(WithCustomFragmentsJsonConverter<AuditRecord>))]
 public class AuditRecord  : IWithCustomFragments
 {
 	
@@ -114,16 +114,9 @@ public class AuditRecord  : IWithCustomFragments
     /// It is possible to add an arbitrary number of additional properties as a list of key-value pairs, for example, <c>"property1": {}</c>, <c>"property2": "value"</c>. These properties can be of any type, for example, object or string. <br />
     /// </summary>
     ///
-    [JsonPropertyName("customProperties")]
-    public IDictionary<string, object?> CustomFragments { get; set; } = new Dictionary<string, object?>();
-		
     [JsonIgnore]
-    public object? this[string key]
-    {
-        get => CustomFragments[key];
-        set => CustomFragments[key] = value;
-    }
-	
+    IDictionary<string, object?> IWithCustomFragments.CustomFragments { get; set; } = new Dictionary<string, object?>();
+    
     public AuditRecord() 
     {
     }
@@ -331,18 +324,4 @@ public class AuditRecord  : IWithCustomFragments
 	
 	
     public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
-
-    private static readonly Dictionary<string, System.Type> AdditionalPropertyClasses = new();
-
-    public static bool TryAddProperty(string key, System.Type type)
-    {
-        return AdditionalPropertyClasses.TryAdd(key, type);
-    }
-
-    internal sealed class AuditRecordJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : AuditRecord
-    {
-        public AuditRecordJsonConverter() : base(AdditionalPropertyClasses)
-        {
-        }
-    }
 }

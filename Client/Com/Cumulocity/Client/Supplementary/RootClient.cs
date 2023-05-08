@@ -15,15 +15,17 @@ namespace Client.Com.Cumulocity.Client.Supplementary;
 public sealed class RootClient : IRootClient
 {
     private readonly Lazy<IRootClient.IApplicationsFactory> _lazyApplications;
+    private readonly Lazy<IRootClient.IAlarmsFactory> _lazyAlarms;
 
     public RootClient(HttpClient httpClient)
     {
         _lazyApplications = new Lazy<IRootClient.IApplicationsFactory>(() => new ApplicationsFactory(httpClient));
+        _lazyAlarms = new Lazy<IRootClient.IAlarmsFactory>(() => new AlarmsFactory(httpClient));
     }
 
     public IRootClient.IApplicationsFactory Applications => _lazyApplications.Value;
     //public MeasurementsFactory Measurements => new(_httpClient);
-    //public AlarmsFactory Alarms => new(_httpClient);
+    public IRootClient.IAlarmsFactory Alarms => _lazyAlarms.Value;
     //public TenantsFactory Tenants => new(_httpClient);
     //public UsersFactory Users => new(_httpClient);
     //public AuditsFactory Audits => new(_httpClient);
@@ -58,7 +60,7 @@ public sealed class RootClient : IRootClient
         public IBootstrapUserApi BootstrapUserApi => _lazyBootstrapUserApi.Value;
         public ICurrentApplicationApi CurrentApplicationApi => _lazyCurrentApplicationApi.Value;
     }
-	
+
     //public sealed class MeasurementsFactory
     //{
     //    internal MeasurementsFactory(HttpClient httpClient)
@@ -68,17 +70,18 @@ public sealed class RootClient : IRootClient
 
     //    public IMeasurementsApi MeasurementsApi => new MeasurementsApi(Instance.HttpClient);
     //}
-	
-    //public sealed class AlarmsFactory
-    //{
-    //    internal AlarmsFactory(HttpClient httpClient)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
 
-    //    public IAlarmsApi AlarmsApi => new AlarmsApi(Instance.HttpClient);
-    //}
-	
+    public sealed class AlarmsFactory : IRootClient.IAlarmsFactory
+    {
+        private readonly Lazy<IAlarmsApiV2> _lazyAlarmsApi;
+        internal AlarmsFactory(HttpClient httpClient)
+        {
+            _lazyAlarmsApi = new Lazy<IAlarmsApiV2>(() => new AlarmsApiV2(httpClient));
+        }
+
+        public IAlarmsApiV2 AlarmsApi => _lazyAlarmsApi.Value;
+    }
+
     //public sealed class TenantsFactory
     //{
     //    internal TenantsFactory(HttpClient httpClient)
@@ -95,7 +98,7 @@ public sealed class RootClient : IRootClient
     //    public ILoginOptionsApi LoginOptionsApi => new LoginOptionsApi(Instance.HttpClient);
     //    public ISystemOptionsApi SystemOptionsApi => new SystemOptionsApi(Instance.HttpClient);
     //}
-	
+
     //public sealed class UsersFactory
     //{
     //    internal UsersFactory(HttpClient httpClient)
@@ -110,7 +113,7 @@ public sealed class RootClient : IRootClient
     //    public IInventoryRolesApi InventoryRolesApi => new InventoryRolesApi(Instance.HttpClient);
     //    public IDevicePermissionsApi DevicePermissionsApi => new DevicePermissionsApi(Instance.HttpClient);
     //}
-	
+
     //public sealed class AuditsFactory
     //{
     //    internal AuditsFactory(HttpClient httpClient)
@@ -120,7 +123,7 @@ public sealed class RootClient : IRootClient
 
     //    public IAuditsApi AuditsApi => new AuditsApi(Instance.HttpClient);
     //}
-	
+
     //public sealed class RealtimeNotificationsFactory
     //{
     //    internal RealtimeNotificationsFactory(HttpClient httpClient)
@@ -130,7 +133,7 @@ public sealed class RootClient : IRootClient
 
     //    public IRealtimeNotificationApi RealtimeNotificationApi => new RealtimeNotificationApi(Instance.HttpClient);
     //}
-	
+
     //public sealed class EventsFactory
     //{
     //    internal EventsFactory(HttpClient httpClient)
@@ -141,7 +144,7 @@ public sealed class RootClient : IRootClient
     //    public IEventsApi EventsApi => new EventsApi(Instance.HttpClient);
     //    public IAttachmentsApi AttachmentsApi => new AttachmentsApi(Instance.HttpClient);
     //}
-	
+
     //public sealed class Notifications20Factory
     //{
     //    internal Notifications20Factory(HttpClient httpClient)
@@ -152,7 +155,7 @@ public sealed class RootClient : IRootClient
     //    public ISubscriptionsApi SubscriptionsApi => new SubscriptionsApi(Instance.HttpClient);
     //    public ITokensApi TokensApi => new TokensApi(Instance.HttpClient);
     //}
-	
+
     //public sealed class RetentionsFactory
     //{
     //    internal RetentionsFactory(HttpClient httpClient)
@@ -162,7 +165,7 @@ public sealed class RootClient : IRootClient
 
     //    public IRetentionRulesApi RetentionRulesApi => new RetentionRulesApi(Instance.HttpClient);
     //}
-	
+
     //public sealed class IdentityFactory
     //{
     //    internal IdentityFactory(HttpClient httpClient)
@@ -173,7 +176,7 @@ public sealed class RootClient : IRootClient
     //    public IIdentityApi IdentityApi => new IdentityApi(Instance.HttpClient);
     //    public IExternalIDsApi ExternalIDsApi => new ExternalIDsApi(Instance.HttpClient);
     //}
-	
+
     //public sealed class DeviceControlFactory
     //{
     //    internal DeviceControlFactory(HttpClient httpClient)
@@ -186,7 +189,7 @@ public sealed class RootClient : IRootClient
     //    public IDeviceCredentialsApi DeviceCredentialsApi => new DeviceCredentialsApi(Instance.HttpClient);
     //    public INewDeviceRequestsApi NewDeviceRequestsApi => new NewDeviceRequestsApi(Instance.HttpClient);
     //}
-	
+
     //public sealed class InventoryFactory
     //{
     //    internal InventoryFactory(HttpClient httpClient)

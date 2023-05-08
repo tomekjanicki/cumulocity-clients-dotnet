@@ -17,7 +17,7 @@ namespace Client.Com.Cumulocity.Client.Model;
 /// An object with a list of custom properties. <br />
 /// </summary>
 ///
-[JsonConverter(typeof(CustomPropertiesJsonConverter<CustomProperties>))]
+[JsonConverter(typeof(WithCustomFragmentsJsonConverter<CustomProperties>))]
 public class CustomProperties : IWithCustomFragments
 {
 	
@@ -32,29 +32,8 @@ public class CustomProperties : IWithCustomFragments
     /// It is possible to add an arbitrary number of custom properties as a list of key-value pairs, for example, <c>"property": "value"</c>. <br />
     /// </summary>
     ///
-    [JsonPropertyName("customProperties")]
-    public IDictionary<string, object?> CustomFragments { get; set; } = new Dictionary<string, object?>();
-		
     [JsonIgnore]
-    public object? this[string key]
-    {
-        get => CustomFragments[key];
-        set => CustomFragments[key] = value;
-    }
-	
+    IDictionary<string, object?> IWithCustomFragments.CustomFragments { get; set; } = new Dictionary<string, object?>();
+    
     public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
-
-    private static readonly Dictionary<string, System.Type> AdditionalPropertyClasses = new();
-
-    public static bool TryAddProperty(string key, System.Type type)
-    {
-        return AdditionalPropertyClasses.TryAdd(key, type);
-    }
-
-    internal sealed class CustomPropertiesJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : CustomProperties
-    {
-        public CustomPropertiesJsonConverter() : base(AdditionalPropertyClasses)
-        {
-        }
-    }
 }

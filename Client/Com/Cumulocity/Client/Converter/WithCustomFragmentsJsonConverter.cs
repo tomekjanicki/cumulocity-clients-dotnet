@@ -8,16 +8,9 @@ using System.Text.Json.Serialization;
 
 namespace Client.Com.Cumulocity.Client.Converter;
 
-internal abstract class BaseWithCustomFragmentsJsonConverter<T> : JsonConverter<T>
+internal sealed class WithCustomFragmentsJsonConverter<T> : JsonConverter<T>
     where T : class, IWithCustomFragments
 {
-    private readonly IReadOnlyDictionary<string, Type> _additionalPropertyClasses;
-
-    protected BaseWithCustomFragmentsJsonConverter(IReadOnlyDictionary<string, Type> additionalPropertyClasses)
-    {
-        _additionalPropertyClasses = additionalPropertyClasses;
-    }
-
     public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         var instance = (T)Activator.CreateInstance(typeof(T));
@@ -45,12 +38,9 @@ internal abstract class BaseWithCustomFragmentsJsonConverter<T> : JsonConverter<
         return instance;
     }
 
-    private void HandleFillingCustomFragments(JsonSerializerOptions options, JsonProperty current, IDictionary<string, object?> additionalObjects)
+    private static void HandleFillingCustomFragments(JsonSerializerOptions options, JsonProperty current, IDictionary<string, object?> additionalObjects)
     {
-        additionalObjects.Add(current.Name,
-            _additionalPropertyClasses.TryGetValue(current.Name, out var type)
-                ? current.Value.Deserialize(type, options)
-                : current.Value.Deserialize<object>(options));
+        additionalObjects.Add(current.Name, current.Value.Deserialize<object>(options));
     }
 
     private static PropertyInfo? FindProperty(List<PropertyInfo> instanceProperties, JsonProperty current)

@@ -14,7 +14,7 @@ using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-[JsonConverter(typeof(OperationJsonConverter<Operation>))]
+[JsonConverter(typeof(WithCustomFragmentsJsonConverter<Operation>))]
 public class Operation : IWithCustomFragments
 {
 	
@@ -75,16 +75,9 @@ public class Operation : IWithCustomFragments
     /// Review the <see href="https://cumulocity.com/guides/concepts/domain-model/#naming-conventions-of-fragments" langword="Naming conventions of fragments" /> as there are characters that can not be used when naming custom fragments. <br />
     /// </summary>
     ///
-    [JsonPropertyName("customFragments")]
-    public IDictionary<string, object?> CustomFragments { get; set; } = new Dictionary<string, object?>();
-		
     [JsonIgnore]
-    public object? this[string key]
-    {
-        get => CustomFragments[key];
-        set => CustomFragments[key] = value;
-    }
-	
+    IDictionary<string, object?> IWithCustomFragments.CustomFragments { get; set; } = new Dictionary<string, object?>();
+    
     /// <summary> 
     /// The status of the operation. <br />
     /// </summary>
@@ -104,18 +97,4 @@ public class Operation : IWithCustomFragments
 	
 	
     public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
-
-    private static readonly Dictionary<string, System.Type> AdditionalPropertyClasses = new();
-
-    public static bool TryAddProperty(string key, System.Type type)
-    {
-        return AdditionalPropertyClasses.TryAdd(key, type);
-    }
-
-    internal sealed class OperationJsonConverter<T> : BaseWithCustomFragmentsJsonConverter<T> where T : Operation
-    {
-        public OperationJsonConverter() : base(AdditionalPropertyClasses)
-        {
-        }
-    }
 }
