@@ -2,3 +2,6 @@
 1. when "Accept" is "application/zip", "application/octet-stream" return signature should be Task<byte[]>
 2. when "Accept" is "application/json" return signature should be Task<string>
 or alternativly configure proper streaming
+
+3. for create and for update endpoints (i.e. CreateAlarm, UpdateAlarm) - always object should be created, not null - in case when even null is passed, we should create empty object
+4. for collections (i.e. GetAlarms) - always object should be created, not null - in case when even null is passed, we should create empty object
