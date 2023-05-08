@@ -7,6 +7,7 @@ namespace Client.Com.Cumulocity.Client.Converter;
 
 internal sealed class ReadOnlyListJsonConvertFactory : JsonConverterFactory
 {
+    //todo handle more generic type like IEnumerable<>
     public override bool CanConvert(Type typeToConvert)
         => JsonSerializationHelper.CanConvert(typeToConvert, typeof(IReadOnlyList<>));
 
