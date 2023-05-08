@@ -1,0 +1,4 @@
+﻿change api methods which returns Task<System.IO.Stream> - currently stream is not readable and causes errors
+1. when "Accept" is "application/zip", "application/octet-stream" return signature should be Task<byte[]>
+2. when "Accept" is "application/json" return signature should be Task<string>
+or alternativly configure proper streaming
