@@ -6,15 +6,12 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
-using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using Client.Com.Cumulocity.Client.Converter;
 using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-[JsonConverter(typeof(WithCustomFragmentsJsonConverter<Event>))]
-public class Event : IWithCustomFragments
+public class Event
 {
 	
     /// <summary> 
@@ -72,14 +69,6 @@ public class Event : IWithCustomFragments
     ///
     [JsonPropertyName("type")]
     public string? Type { get; set; }
-	
-    /// <summary> 
-    /// It is possible to add an arbitrary number of additional properties as a list of key-value pairs, for example, <c>"property1": {}</c>, <c>"property2": "value"</c>. These properties are known as custom fragments and can be of any type, for example, object or string. Each custom fragment is identified by a unique name. <br />
-    /// Review the <see href="https://cumulocity.com/guides/concepts/domain-model/#naming-conventions-of-fragments" langword="Naming conventions of fragments" /> as there are characters that can not be used when naming custom fragments. <br />
-    /// </summary>
-    ///
-    [JsonIgnore]
-    IDictionary<string, object?> IWithCustomFragments.CustomFragments { get; set; } = new Dictionary<string, object?>();
     
     /// <summary> 
     /// The managed object to which the event is associated. <br />

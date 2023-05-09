@@ -6,23 +6,11 @@
 /// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
 ///
 
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using Client.Com.Cumulocity.Client.Converter;
 using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-[JsonConverter(typeof(WithCustomFragmentsJsonConverter<CategoryOptions>))]
-public class CategoryOptions : IWithCustomFragments
+public class CategoryOptions
 {
-	
-    /// <summary> 
-    /// It is possible to specify an arbitrary number of existing options as a list of key-value pairs, for example, <c>"key1": "value1"</c>, <c>"key2": "value2"</c>. <br />
-    /// </summary>
-    ///
-    [JsonIgnore]
-    IDictionary<string, object?> IWithCustomFragments.CustomFragments { get; set; } = new Dictionary<string, object?>();
-    
     public override string ToString() => JsonSerializerWrapper.SerializeToString(this);
 }

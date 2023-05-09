@@ -1,10 +1,10 @@
-///
-/// CumulocityCoreLibrary.cs
-/// CumulocityCoreLibrary
-///
-/// Copyright (c) 2014-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
-/// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
-///
+//
+// CumulocityCoreLibrary.cs
+// CumulocityCoreLibrary
+//
+// Copyright (c) 2014-2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
+// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG.
+//
 
 using System;
 using System.Net.Http;
@@ -16,16 +16,20 @@ public sealed class RootClient : IRootClient
 {
     private readonly Lazy<IRootClient.IApplicationsFactory> _lazyApplications;
     private readonly Lazy<IRootClient.IAlarmsFactory> _lazyAlarms;
+    private readonly Lazy<IRootClient.IInventoryFactory> _lazyInventory;
 
     public RootClient(HttpClient httpClient)
     {
         _lazyApplications = new Lazy<IRootClient.IApplicationsFactory>(() => new ApplicationsFactory(httpClient));
         _lazyAlarms = new Lazy<IRootClient.IAlarmsFactory>(() => new AlarmsFactory(httpClient));
+        _lazyInventory = new Lazy<IRootClient.IInventoryFactory>(() => new InventoryFactory(httpClient));
     }
 
     public IRootClient.IApplicationsFactory Applications => _lazyApplications.Value;
     //public MeasurementsFactory Measurements => new(_httpClient);
     public IRootClient.IAlarmsFactory Alarms => _lazyAlarms.Value;
+    public IRootClient.IInventoryFactory Inventory => _lazyInventory.Value;
+
     //public TenantsFactory Tenants => new(_httpClient);
     //public UsersFactory Users => new(_httpClient);
     //public AuditsFactory Audits => new(_httpClient);
@@ -74,12 +78,15 @@ public sealed class RootClient : IRootClient
     public sealed class AlarmsFactory : IRootClient.IAlarmsFactory
     {
         private readonly Lazy<IAlarmsApiV2> _lazyAlarmsApi;
+        private readonly Lazy<IAlarmsApi> _lazyAlarmsApiOld;
         internal AlarmsFactory(HttpClient httpClient)
         {
             _lazyAlarmsApi = new Lazy<IAlarmsApiV2>(() => new AlarmsApiV2(httpClient));
+            _lazyAlarmsApiOld = new Lazy<IAlarmsApi>(() => new AlarmsApi(httpClient));
         }
 
         public IAlarmsApiV2 AlarmsApi => _lazyAlarmsApi.Value;
+        public IAlarmsApi AlarmsApiOld => _lazyAlarmsApiOld.Value;
     }
 
     //public sealed class TenantsFactory
@@ -190,15 +197,16 @@ public sealed class RootClient : IRootClient
     //    public INewDeviceRequestsApi NewDeviceRequestsApi => new NewDeviceRequestsApi(Instance.HttpClient);
     //}
 
-    //public sealed class InventoryFactory
-    //{
-    //    internal InventoryFactory(HttpClient httpClient)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
+    public sealed class InventoryFactory : IRootClient.IInventoryFactory
+    {
+        private readonly Lazy<IManagedObjectsApi> _lazyManagedObjectsApi;
+        internal InventoryFactory(HttpClient httpClient)
+        {
+            _lazyManagedObjectsApi = new Lazy<IManagedObjectsApi>(() => new ManagedObjectsApi(httpClient));
+        }
 
-    //    public IManagedObjectsApi ManagedObjectsApi => new ManagedObjectsApi(Instance.HttpClient);
+        public IManagedObjectsApi ManagedObjectsApi => _lazyManagedObjectsApi.Value;
     //    public IBinariesApi BinariesApi => new BinariesApi(Instance.HttpClient);
     //    public IChildOperationsApi ChildOperationsApi => new ChildOperationsApi(Instance.HttpClient);
-    //}
+    }
 }

@@ -15,8 +15,7 @@ using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-[JsonConverter(typeof(WithCustomFragmentsJsonConverter<AuditRecord>))]
-public class AuditRecord  : IWithCustomFragments
+public class AuditRecord
 {
 	
     /// <summary> 
@@ -109,13 +108,6 @@ public class AuditRecord  : IWithCustomFragments
     ///
     [JsonPropertyName("user")]
     public string? User { get; set; }
-	
-    /// <summary> 
-    /// It is possible to add an arbitrary number of additional properties as a list of key-value pairs, for example, <c>"property1": {}</c>, <c>"property2": "value"</c>. These properties can be of any type, for example, object or string. <br />
-    /// </summary>
-    ///
-    [JsonIgnore]
-    IDictionary<string, object?> IWithCustomFragments.CustomFragments { get; set; } = new Dictionary<string, object?>();
     
     public AuditRecord() 
     {

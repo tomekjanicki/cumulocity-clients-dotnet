@@ -6,6 +6,10 @@ public interface IRootClient
 {
     IApplicationsFactory Applications { get; }
 
+    IAlarmsFactory Alarms { get; }
+
+    IInventoryFactory Inventory { get; }
+
     public interface IApplicationsFactory
     {
         IApplicationsApi ApplicationsApi { get; }
@@ -18,5 +22,12 @@ public interface IRootClient
     public interface IAlarmsFactory
     {
         IAlarmsApiV2 AlarmsApi { get; }
+
+        IAlarmsApi AlarmsApiOld { get; }
+    }
+
+    public interface IInventoryFactory
+    {
+        IManagedObjectsApi ManagedObjectsApi { get; }
     }
 }

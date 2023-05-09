@@ -18,9 +18,9 @@ internal static class JsonSerializerWrapper
 
     private static readonly JsonSerializerOptions JsonSerializerOptions = new()
     {
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         Converters = { new ReadOnlyListJsonConvertFactory() }
     };
-
 
     public static string SerializeToString<T>(T obj)
     {
@@ -40,11 +40,6 @@ internal static class JsonSerializerWrapper
     public static T? Deserialize<T>(string jsonString)
     {
         return JsonSerializer.Deserialize<T>(jsonString, JsonSerializerOptions);
-    }
-
-    public static void Serialize<TValue>(Utf8JsonWriter writer, TValue value, JsonSerializerOptions options)
-    {
-        JsonSerializer.Serialize(writer, value, options);
     }
 
     public static byte[] SerializeToUtf8Bytes<T>(T obj)

@@ -9,13 +9,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using Client.Com.Cumulocity.Client.Converter;
 using Client.Com.Cumulocity.Client.Supplementary;
 
 namespace Client.Com.Cumulocity.Client.Model;
 
-[JsonConverter(typeof(WithCustomFragmentsJsonConverter<ManagedObject>))]
-public class ManagedObject : IWithCustomFragments
+public class ManagedObject
 {
 	
     /// <summary> 
@@ -136,14 +134,6 @@ public class ManagedObject : IWithCustomFragments
     ///
     [JsonPropertyName("c8y_SupportedOperations")]
     public IReadOnlyList<string> C8ySupportedOperations { get; set; } = Array.Empty<string>();
-	
-    /// <summary> 
-    /// It is possible to add an arbitrary number of additional properties as a list of key-value pairs, for example, <c>"property1": {}</c>, <c>"property2": "value"</c>. These properties are known as custom fragments and can be of any type, for example, object or string. Each custom fragment is identified by a unique name. <br />
-    /// Review the <see href="https://cumulocity.com/guides/concepts/domain-model/#naming-conventions-of-fragments" langword="Naming conventions of fragments" /> as there are characters that can not be used when naming custom fragments. <br />
-    /// </summary>
-    ///
-    [JsonIgnore]
-    IDictionary<string, object?> IWithCustomFragments.CustomFragments { get; set; } = new Dictionary<string, object?>();
     
     /// <summary> 
     /// A fragment which identifies this managed object as a device. <br />
